@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Aapelin vieraskirja</title>
+  </head>
+  <body>
+   <h1>GreippiKysely</h1>
+   <p><a href="Rekisteröid.html">Lähetä uusi viesti</a></p>
+  </body>
+</html>
