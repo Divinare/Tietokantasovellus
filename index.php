@@ -20,5 +20,13 @@
              }
 
             ?>
+	  <h5>Sähköposti</h5>
+          <input type="text" name="nimi">
+          <br>
+          <h5>Salasana</h5>
+          <input type="passowrd" name="nimi">
+          <br>
+          <input type="submit" value="Kirjaudu sisään">
+          <br>
         </body>
 

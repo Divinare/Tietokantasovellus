@@ -1,3 +1,4 @@
+DROP TABLE Henkilö;
 DROP TABLE Admin;
 DROP TABLE Vastaus;
 DROP TABLE Kysymys;
@@ -6,33 +7,27 @@ DROP TABLE Kurssi;
 DROP TABLE Opettaja;
 DROP TABLE Tunnus;
 
-
-CREATE TABLE Tunnus (
-tunnusID numeric(4) NOT NULL,
-salasana varchar(15) NOT NULL,
-PRIMARY KEY (tunnusID)
-);
-CREATE TABLE Opettaja (
-opettajaID numeric(4) NOT NULL,
+CREATE TABLE Henkilö (
+henkilöID numeric(3) NOT NULL,
 etunimi varchar(30) NOT NULL,
 sukunimi varchar(30) NOT NULL,
-tunnusID numeric(4) NOT NULL,
 email varchar(80) NOT NULL,
-PRIMARY KEY (opettajaID),
-FOREIGN KEY (tunnusID) REFERENCES Tunnus
+salasana varchar(15) NOT NULL,
+rooli varchar(30) NOT NULL,
+PRIMARY KEY (henkilöID),
 );
 CREATE TABLE Kurssi (
-kurssiID numeric(15) NOT NULL,
-opettajaID numeric(4) NOT NULL,
+kurssiID numeric(10) NOT NULL,
+henkilöID numeric(3) NOT NULL,
 nimi varchar(50) NOT NULL,
 periodi numeric(1) NOT NULL,
 vuosi numeric(4) NOT NULL,
 PRIMARY KEY (kurssiID),
-FOREIGN KEY (opettajaID) REFERENCES Opettaja
+FOREIGN KEY (HenkiloöD) REFERENCES Henkilö
 );
 CREATE TABLE Kurssikysely (
 kurssikyselyID numeric(15) NOT NULL,
-kurssiID numeric(15) NOT NULL,
+kurssiID numeric(10) NOT NULL,
 kknimi varchar(50) NOT NULL,
 PRIMARY KEY (kurssikyselyID),
 FOREIGN KEY (kurssiID) REFERENCES Kurssi
@@ -52,32 +47,21 @@ kommentti varchar(300),
 PRIMARY KEY (vastausID),
 FOREIGN KEY (kysymysID) REFERENCES Kysymys
 );
-CREATE TABLE Admin (
-adminID numeric(4) NOT NULL,
-tunnusID numeric(4) NOT NULL,
-etunimi varchar(30) NOT NULL,
-sukunimi varchar(30) NOT NULL,
-email varchar(80) NOT NULL,
-PRIMARY KEY (adminID),
-FOREIGN KEY (tunnusID) REFERENCES Tunnus
-);
-INSERT INTO tunnus VALUES (1001, 'broileri');
-INSERT INTO tunnus VALUES (1000, 'apina');
-INSERT INTO admin VALUES (7777, 1001, 'Jenna', 'Lindh', 'jelindh@cs.helsinki.fi');
-INSERT INTO admin VALUES (5555, 1000, 'Joe', 'Niemi', 'joeniemi@cs.helsinki.fi');
+INSERT INTO henkilö VALUES (1, 'Jenna', 'Lindh', 'jelindh@cs.helsinki.fi', 'broileri', 'admin');
+INSERT INTO henkilö VALUES (1, 'Joe', 'Niemi', 'joeniemi@cs.helsinki.fi', 'apina', 'admin');
 
-INSERT INTO tunnus VALUES (1002, 'lol');
-INSERT INTO opettaja VALUES (1000, 'Matti', 'Meikäläinen', 1002, 'joeniemi@cs.helsinki.fi');
+INSERT INTO henkilö VALUES (20, 'Leidi', 'Lol', 'joeniemi@cs.helsinki.fi', 'haha', 'opettaja');
+INSERT INTO henkilö VALUES (21, 'Arto', 'Wikla', 'joeniemi@cs.helsinki.fi', 'roskienkeraaja', 'opettaja');
 
-INSERT INTO kurssi VALUES (123, 1000, 'Ohjelmoinnin perusteet', 4, 2012);
-INSERT INTO kurssi VALUES (124, 1000, 'Ohjelmoinnin jatkokurssi', 3, 2012);
-INSERT INTO kurssi VALUES (125, 1000, 'Johdatus funktionaaliseen ohjelmointiin', 1, 2011);
+INSERT INTO kurssi VALUES (123, 21, 'Ohjelmoinnin perusteet', 4, 2012);
+INSERT INTO kurssi VALUES (124, 21, 'Ohjelmoinnin jatkokurssi', 3, 2012);
+INSERT INTO kurssi VALUES (125, 20, 'Johdatus funktionaaliseen ohjelmointiin', 1, 2011);
 
-INSERT INTO kurssikysely VALUES (10000, 123, 'Ohpe-kysely');
-INSERT INTO kurssikysely VALUES (10001, 124, 'Ohja-kysely');
+INSERT INTO kurssikysely VALUES (10000, 123, 'OhPe-kysely');
+INSERT INTO kurssikysely VALUES (10001, 124, 'OhJa-kysely');
 INSERT INTO kurssikysely VALUES (10002, 125, 'JFO-kysely');
+
 INSERT INTO kysymys VALUES (1, 'Oliko kiva kurssi?', 10000);
 INSERT INTO vastaus VALUES (1, 1, 5, 'Oli kiva kurssi, lisää tälläisiä kiitos!');
 INSERT INTO kysymys VALUES (2, 'Olivatko tehtävät sopivia?', 10000);
 INSERT INTO kysymys VALUES (3, 'Oliko luennoitsijalla hieno paita?', 10000);
-
