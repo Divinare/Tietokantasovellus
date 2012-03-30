@@ -16,7 +16,7 @@
              $tulokset = $kysely->fetchAll();
 
              foreach($tulokset as $tulos) {
-               echo "<a href=http://jelindh.users.cs.helsinki.fi/kysely.php?kysely=".$tulos['kknimi'].">".$tulos['kknimi']."</a>" . "</br>";
+               echo "<a href=http://jelindh.users.cs.helsinki.fi/kysely.php?kysely=".$tulos['kknimi'].">".$tulos['kknimi']."</a>"."</br>";
              }
 
             ?>

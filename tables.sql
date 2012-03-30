@@ -74,6 +74,8 @@ INSERT INTO kurssi VALUES (124, 1000, 'Ohjelmoinnin jatkokurssi', 3, 2012);
 INSERT INTO kurssi VALUES (125, 1000, 'Johdatus funktionaaliseen ohjelmointiin', 1, 2011);
 
 INSERT INTO kurssikysely VALUES (10000, 123, 'Ohpe-kysely');
+INSERT INTO kurssikysely VALUES (10001, 124, 'Ohja-kysely');
+INSERT INTO kurssikysely VALUES (10002, 125, 'JFO-kysely');
 INSERT INTO kysymys VALUES (1, 'Oliko kiva kurssi?', 10000);
 INSERT INTO vastaus VALUES (1, 1, 5, 'Oli kiva kurssi, lisää tälläisiä kiitos!');
 INSERT INTO kysymys VALUES (2, 'Olivatko tehtävät sopivia?', 10000);
