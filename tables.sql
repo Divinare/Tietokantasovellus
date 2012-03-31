@@ -1,29 +1,26 @@
-DROP TABLE Henkilö;
-DROP TABLE Admin;
 DROP TABLE Vastaus;
 DROP TABLE Kysymys;
 DROP TABLE Kurssikysely;
 DROP TABLE Kurssi;
-DROP TABLE Opettaja;
-DROP TABLE Tunnus;
+DROP TABLE Henkilo;
 
-CREATE TABLE Henkilö (
-henkilöID numeric(3) NOT NULL,
+CREATE TABLE Henkilo (
+henkiloID numeric(3) NOT NULL,
 etunimi varchar(30) NOT NULL,
 sukunimi varchar(30) NOT NULL,
 email varchar(80) NOT NULL,
 salasana varchar(15) NOT NULL,
 rooli varchar(30) NOT NULL,
-PRIMARY KEY (henkilöID),
+PRIMARY KEY (henkiloID)
 );
 CREATE TABLE Kurssi (
 kurssiID numeric(10) NOT NULL,
-henkilöID numeric(3) NOT NULL,
+henkiloID numeric(3) NOT NULL,
 nimi varchar(50) NOT NULL,
 periodi numeric(1) NOT NULL,
 vuosi numeric(4) NOT NULL,
 PRIMARY KEY (kurssiID),
-FOREIGN KEY (HenkiloöD) REFERENCES Henkilö
+FOREIGN KEY (henkiloID) REFERENCES Henkilo
 );
 CREATE TABLE Kurssikysely (
 kurssikyselyID numeric(15) NOT NULL,
@@ -47,11 +44,11 @@ kommentti varchar(300),
 PRIMARY KEY (vastausID),
 FOREIGN KEY (kysymysID) REFERENCES Kysymys
 );
-INSERT INTO henkilö VALUES (1, 'Jenna', 'Lindh', 'jelindh@cs.helsinki.fi', 'broileri', 'admin');
-INSERT INTO henkilö VALUES (1, 'Joe', 'Niemi', 'joeniemi@cs.helsinki.fi', 'apina', 'admin');
+INSERT INTO henkilo VALUES (1, 'Jenna', 'Lindh', 'jelindh@cs.helsinki.fi', 'broileri', 'admin');
+INSERT INTO henkilo VALUES (2, 'Joe', 'Niemi', 'joeniemi@cs.helsinki.fi', 'apina', 'admin');
 
-INSERT INTO henkilö VALUES (20, 'Leidi', 'Lol', 'joeniemi@cs.helsinki.fi', 'haha', 'opettaja');
-INSERT INTO henkilö VALUES (21, 'Arto', 'Wikla', 'joeniemi@cs.helsinki.fi', 'roskienkeraaja', 'opettaja');
+INSERT INTO henkilo VALUES (20, 'Leidi', 'Lol', 'joeniemi@cs.helsinki.fi', 'haha', 'opettaja');
+INSERT INTO henkilo VALUES (21, 'Arto', 'Wikla', 'joeniemi@cs.helsinki.fi', 'roskienkeraaja', 'opettaja');
 
 INSERT INTO kurssi VALUES (123, 21, 'Ohjelmoinnin perusteet', 4, 2012);
 INSERT INTO kurssi VALUES (124, 21, 'Ohjelmoinnin jatkokurssi', 3, 2012);
