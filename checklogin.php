@@ -1,4 +1,4 @@
-<?php require_once 'DB.php'; ?>
+'<?php require_once 'DB.php'; ?>
 <!DOCTYPE html>
 
 <head>
@@ -12,42 +12,24 @@
         $salasana = $_POST['salasana'];
 
         $yhteys = db::getDB();
+        //$sql = 'SELECT * FROM henkilo WHERE email='.$email.' and salasana = '.$salasana;
+        $sql = 'SELECT * FROM henkilo WHERE email='."joeniemi@cs.helsinki.fi".' and salasana = '."apina";
+	$kysely = $yhteys->prepare($sql);
+        $kysely->execute();
 
-        $sql = 'SELECT * FROM henkilo WHERE email='.$email.' and salasana = '.$salasana;
-        $kyselytitle = $yhteys->prepare($sql);
-        $kyselytitle->execute();
-
-        $htmltitle = $kyselytitle->fetch();
-
-        //$host = "localhost"; // Host name
-        //$username = ""; // Mysql username
-        //$password = ""; // Mysql password
-        //$db_name = "test"; // Database name
-        //$tbl_name = "members"; // Table name
-        // Connect to server and select databse.
-        //mysql_connect("$host", "$username", "$password") or die("cannot connect");
-        //mysql_select_db("$db_name") or die("cannot select DB");
-
-        // username and password sent from form
-        // To protect MySQL injection (more detail about MySQL injection)
-        //$myusername = stripslashes($myusername);
-        //$mypassword = stripslashes($mypassword);
-        //$myusername = mysql_real_escape_string($myusername);
-        //$mypassword = mysql_real_escape_string($mypassword);
-
-        //$sql = "SELECT * FROM $tbl_name WHERE username='$myusername' and password='$mypassword'";
-        $result = pg_query($sql);
-
-        // Mysql_num_row is counting table row
-        $count = pg_num_rows($result);
-        // If result matched $myusername and $mypassword, table row must be 1 row
-        if ($count == 1) {
-            // Register $myusername, $mypassword and redirect to file "login_success.php"
-            session_register("email");
-            session_register("salasana");
-            header("location:login_success.php");
+//        $testi = pg_query($sql);
+        $taulu = $kysely->fetch();
+       //  if (!$testi) {
+        if (count($taulu) == 1) {
+            echo count($taulu);
+            //echo $email;
+            //echo $salasana;
+            //echo $testi;
+            echo $taulu;
+            //header("location:login_success.php");
+	    //header('Location: http://www.example.com');
         } else {
-            echo $count . " testi " . $result . " Wrong Username or Password";
+            echo $sql . " testi " . $taulu . " Wrong Username or Password";
                  }
         ?>
     </body>
