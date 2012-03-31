@@ -3,23 +3,26 @@
 
 <head>
    <?php
-     echo "<title>".$_GET["kysely"]."</title>";
-    ?>
+     $yhteys = db::getDB();
+
+     $sql = 'SELECT kknimi FROM kurssikysely WHERE kurssikyselyid ='.$_GET["kysely"];
+     $kyselytitle = $yhteys->prepare($sql);
+     $kyselytitle->execute();
+     
+     $htmltitle = $kyselytitle->fetch();
+     echo "<title>".$htmltitle['kknimi']."</title>";
+
+   ?>
    <meta charset="utf-8">
 </head>
        <body>
 
           <?php
-             $yhteys = db::getDB();
-             echo "<h1>".$_GET["kysely"]."</h1>";
+            echo "<h1>".htmltitle['kknimi']."</h1>";
 
-             $idkysely = $yhteys->prepare('select kysymys from kysymys inner join kurssikysely on kysymys.kurssikyselyid = kurssikysely.kurssikyselyid where kknimi = ?');
-             $idkysely->execute(array($_GET["kysely"]));
-
-             $tulokset = $idkysely->fetchAll();
-
-	     foreach($tulokset as $tulos) {
-               echo $tulos['kysymys']."</br>";
-             }
-            ?>
+            $kysely = 'SELECT kysymys FROM kysymys WHERE kurssikyselyid ='.$_GET["kysely"];
+            foreach ($yhteys->query($kysely) as $tulos) {
+                print $tulos['kysymys']."</br>";
+            }
+          ?>
        </body>

@@ -11,15 +11,14 @@
           <?php
              $yhteys = db::getDB();
              echo "<h1>Käynnissä olevat kurssikyselyt</h1></br>";
-             $kysely = $yhteys->prepare('select kurssikysely.kknimi from kurssikysely');
-             $kysely->execute();
-             $tulokset = $kysely->fetchAll();
 
-             foreach($tulokset as $tulos) {
-               echo "<a href=http://jelindh.users.cs.helsinki.fi/kysely.php?kysely=".$tulos['kknimi'].">".$tulos['kknimi']."</a>"."</br>";
+
+             $kysely = 'SELECT kurssikyselyid, kknimi FROM Kurssikysely ORDER BY kknimi';
+             foreach ($yhteys->query($kysely) as $tulos) {
+                print "<a href=http://jelindh.users.cs.helsinki.fi/kysely.php?kysely=".$tulos['kurssikyselyid'].">".$tulos['kknimi']."</a>"."</br>";
              }
 
-            ?>
+          ?>
 	  <h5>Sähköposti</h5>
           <input type="text" name="nimi">
           <br>
