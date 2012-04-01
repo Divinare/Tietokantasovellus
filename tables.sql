@@ -44,6 +44,12 @@ kommentti varchar(300),
 PRIMARY KEY (vastausID),
 FOREIGN KEY (kysymysID) REFERENCES Kysymys
 );
+CREATE TABLE Kommentti (
+kommenttiID numeric(10) NOT NULL,
+kommentti varchar(300),
+kysymysID numeric(10) NOT NULL,
+FOREIGN KEY (kysymysID) REFERENCES Kurssi
+);
 INSERT INTO henkilo VALUES (1, 'Jenna', 'Lindh', 'jelindh@cs.helsinki.fi', 'broileri', 'admin');
 INSERT INTO henkilo VALUES (2, 'Joe', 'Niemi', 'joeniemi@cs.helsinki.fi', 'apina', 'admin');
 
