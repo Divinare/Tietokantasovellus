@@ -1,3 +1,4 @@
+DROP TABLE Kommentti;
 DROP TABLE Vastaus;
 DROP TABLE Kysymys;
 DROP TABLE Kurssikysely;
@@ -40,15 +41,14 @@ CREATE TABLE Vastaus (
 vastausID numeric(10) NOT NULL,
 kysymysID numeric(10) NOT NULL,
 vastausarvo numeric (1) NOT NULL,
-kommentti varchar(300),
 PRIMARY KEY (vastausID),
 FOREIGN KEY (kysymysID) REFERENCES Kysymys
 );
 CREATE TABLE Kommentti (
 kommenttiID numeric(10) NOT NULL,
-kommentti varchar(300),
+kommentti varchar(300) NOT NULL,
 kysymysID numeric(10) NOT NULL,
-FOREIGN KEY (kysymysID) REFERENCES Kurssi
+FOREIGN KEY (kysymysID) REFERENCES Kysymys
 );
 INSERT INTO henkilo VALUES (1, 'Jenna', 'Lindh', 'jelindh@cs.helsinki.fi', 'broileri', 'admin');
 INSERT INTO henkilo VALUES (2, 'Joe', 'Niemi', 'joeniemi@cs.helsinki.fi', 'apina', 'admin');
@@ -65,6 +65,6 @@ INSERT INTO kurssikysely VALUES (10001, 124, 'OhJa-kysely');
 INSERT INTO kurssikysely VALUES (10002, 125, 'JFO-kysely');
 
 INSERT INTO kysymys VALUES (1, 'Oliko kiva kurssi?', 10000);
-INSERT INTO vastaus VALUES (1, 1, 5, 'Oli kiva kurssi, lisää tälläisiä kiitos!');
+INSERT INTO vastaus VALUES (1, 1, 5);
 INSERT INTO kysymys VALUES (2, 'Olivatko tehtävät sopivia?', 10000);
 INSERT INTO kysymys VALUES (3, 'Oliko luennoitsijalla hieno paita?', 10000);

@@ -35,7 +35,7 @@
                     print "</br></br>";
 
 //  Kommentteja ei käsitellä vielä end.php:ssä
-                    print 'Kommentti'."</br>";
+                    print 'Kommentti (max. 300 merkkiä)'."</br>";
                     print "<textarea Name= 'kommentti[".$indeksi."]' rows='4' cols='30'></textarea>"."</br></br>";
 
                     print "<input type='hidden' name='kysymysidt[".$indeksi."]' value='".$tulos['kysymysid']."'>";

@@ -25,6 +25,7 @@
             //session_register("mypassword");
             //header("location:login_success.php");
 	    print $taulu['henkiloid'];
+            print $taulu[0][0];
 
         }
         else {
