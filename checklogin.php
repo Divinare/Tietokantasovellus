@@ -18,19 +18,19 @@
         $taulu = $kysely->fetchall();
         // print "</br>".sizeof($taulu)."</br>";
 
-
+	//$kirjautuminen = True;
         if (sizeof($taulu) == 1) {
             print 'Kirjautuminen onnistui.';
-            //echo count($taulu);
-            //echo $email;
-            //echo $salasana;
-            //echo $testi;
-            //echo $taulu;
+            //session_register("myusername");
+            //session_register("mypassword");
             //header("location:login_success.php");
-	    //header('Location: http://www.example.com');
+	    print $taulu['henkiloid'];
+
         }
         else {
             echo 'Wrong Username or Password';
-        }
+            header('Location: http://joeniemi.users.cs.helsinki.fi/');
+	    //$kirjautuminen = False;
+	    }
         ?>
     </body>

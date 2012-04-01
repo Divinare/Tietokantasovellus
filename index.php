@@ -47,5 +47,16 @@
                 </form>
             </tr>
         </table>
+        <br></br>
+	<br></br>
+	<br></br>
+	<br></br>
+        <?php
+	// kokeiluja:
+	//$kirjautuminenn = True;
+	//$kirjautuminen = $_POST['kirjautuminen'];
+	//if ($kirjautuminen == False) {
+        //echo $email;
+	//}
+        ?>
         </body>
-
