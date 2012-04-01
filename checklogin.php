@@ -24,10 +24,15 @@
             //session_register("myusername");
             //session_register("mypassword");
             //header("location:login_success.php");
+<<<<<<< HEAD
 	    if ($taulu[0][0] >= 1 && $taulu[0][0] <= 9) {
             header("Location: http://joeniemi.users.cs.helsinki.fi/admin.php?admin=".$taulu[0][0]);
 	    }
 	    //print $taulu[0][0];
+=======
+	    print $taulu['henkiloid'];
+            print $taulu[0][0];
+>>>>>>> 80fb05f80af383fa7fafe928a87d21572ed5d012
 
         }
         else {
