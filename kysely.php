@@ -34,7 +34,7 @@
                     print "<Input type = 'Radio' Name ='arvosana[".$indeksi."]' value= '5'>5";
                     print "</br></br>";
 
-//  Kommentteja ei käsitellä vielä end.php:ssä
+
                     print 'Kommentti (max. 300 merkkiä)'."</br>";
                     print "<textarea Name= 'kommentti[".$indeksi."]' rows='4' cols='30'></textarea>"."</br></br>";
 
