@@ -16,6 +16,7 @@
        	$kysely = $yhteys->prepare($sql);
         $kysely->execute();
         $taulu = $kysely->fetchall();
+        // print "</br>".sizeof($taulu)."</br>";
 
 	//$kirjautuminen = True;
         if (sizeof($taulu) == 1) {
@@ -23,16 +24,11 @@
             //session_register("myusername");
             //session_register("mypassword");
             //header("location:login_success.php");
-	    if ($taulu[0][0] >= 1 && $taulu[0][0] <= 9) {
-            header("Location: http://joeniemi.users.cs.helsinki.fi/admin.php?admin=".$taulu[0][0]);
-	    }
-	    if ($taulu[0][0] >= 20) {
-            header("Location: http://joeniemi.users.cs.helsinki.fi/opettaja.php?opettaja=".$taulu[0][0]);
-            }
+	    echo $taulu[1];
 
         }
         else {
-            //echo 'Wrong Username or Password';
+            echo 'Wrong Username or Password';
             header('Location: http://joeniemi.users.cs.helsinki.fi/');
 	    //$kirjautuminen = False;
 	    }
