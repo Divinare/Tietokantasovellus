@@ -14,7 +14,7 @@
 
              $kysely = 'SELECT kurssikyselyid, kknimi FROM Kurssikysely ORDER BY kknimi';
              foreach ($yhteys->query($kysely) as $tulos) {
-                print "<a href=http://jelindh.users.cs.helsinki.fi/kysely.php?kysely=".$tulos['kurssikyselyid'].">".$tulos['kknimi']."</a>"."</br>";
+                print "<a href=kysely.php?kysely=".$tulos['kurssikyselyid'].">".$tulos['kknimi']."</a>"."</br>";
              }
 
           ?>

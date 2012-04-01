@@ -12,9 +12,9 @@
        $kysymysidt = $_POST["kysymysidt"];
 
         // Palkkiotsikko
-        $sql = 'SELECT kknimi FROM kurssikysely WHERE kurssikyselyid ='.$_GET["kysely"];
+        $sql = 'SELECT kknimi FROM kurssikysely WHERE kurssikyselyid = ?';
         $kyselytitle = $yhteys->prepare($sql);
-        $kyselytitle->execute();
+        $kyselytitle->execute(array($_GET["kysely"]));
         $htmltitle = $kyselytitle->fetch();
         echo "<title>".$htmltitle['kknimi']."</title>";
       ?>
@@ -42,9 +42,9 @@
         for ($i = 0, $size = sizeof($arvosanat); $i < $size; ++$i) {
 
            $maara++;
-           $sql3 = 'INSERT INTO vastaus VALUES ('.$maara.', '.$kysymysidt[$i].', '.$arvosanat[$i].')';
+           $sql3 = 'INSERT INTO vastaus VALUES  (?, ?, ?)';
            $insertti = $yhteys->prepare($sql3);
-           $insertti->execute();
+           $insertti->execute(array($maara, $kysymysidt[$i], $arvosanat[$i]));
         }
 
         // Kommentit tauluun
@@ -52,9 +52,9 @@
 
           if (!$kommentit[$k] == "") {
            $kmaara++;
-           $sql4 = "INSERT INTO kommentti VALUES (".$kmaara.", '".$kommentit[$k]."', ".$kysymysidt[$k].")";
+           $sql4 = 'INSERT INTO kommentti VALUES (?, ?, ?)';
            $kinsertti = $yhteys->prepare($sql4);
-           $kinsertti->execute();
+           $kinsertti->execute(array($kmaara, $kommentit[$k], $kysymysidt[$k]));
           }
         }
 

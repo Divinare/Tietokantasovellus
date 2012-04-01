@@ -5,9 +5,9 @@
    <?php
      $yhteys = db::getDB();
 
-     $sql = 'SELECT kknimi FROM kurssikysely WHERE kurssikyselyid ='.$_GET["kysely"];
+     $sql = 'SELECT kknimi FROM kurssikysely WHERE kurssikyselyid = ?';
      $kyselytitle = $yhteys->prepare($sql);
-     $kyselytitle->execute();
+     $kyselytitle->execute(array($_GET["kysely"]));
      $htmltitle = $kyselytitle->fetch();
      echo "<title>".$htmltitle['kknimi']."</title>";
    ?>
@@ -16,33 +16,33 @@
        <body>
 
          <?php
-            echo "<h1>".$htmltitle['kknimi']."</h1>"."</br>";
 
-            $kysely = 'SELECT kysymys, kysymysid FROM kysymys WHERE kurssikyselyid ='.$_GET["kysely"];
+              echo "<h1>".$htmltitle['kknimi']."</h1>"."</br>";
+              $kysely = 'SELECT kysymys, kysymysid FROM kysymys WHERE kurssikyselyid ='.$_GET["kysely"];
 
-            print "<Form name ='vastaukset' Method ='Post' ACTION ='end.php?kysely=".$_GET["kysely"]."'>";
+              print "<Form name ='vastaukset' Method ='Post' ACTION ='end.php?kysely=".$_GET["kysely"]."'>";
 
-            $indeksi = 0;
-               foreach ($yhteys->query($kysely) as $tulos) {
+                 $indeksi = 0;
+                 foreach ($yhteys->query($kysely) as $tulos) {
 
-                   print "<h3>".$tulos['kysymys']."</h3>";
+                     print "<h3>".$tulos['kysymys']."</h3>";
 
-                    print "<Input type = 'Radio' Name ='arvosana[".$indeksi."]' value= '1'>1";
-                    print "<Input type = 'Radio' Name ='arvosana[".$indeksi."]' value= '2'>2";
-                    print "<Input type = 'Radio' Name ='arvosana[".$indeksi."]' value= '3'>3";
-                    print "<Input type = 'Radio' Name ='arvosana[".$indeksi."]' value= '4'>4";
-                    print "<Input type = 'Radio' Name ='arvosana[".$indeksi."]' value= '5'>5";
-                    print "</br></br>";
+                      print "<Input type = 'Radio' Name ='arvosana[".$indeksi."]' value= '1'>1";
+                      print "<Input type = 'Radio' Name ='arvosana[".$indeksi."]' value= '2'>2";
+                      print "<Input type = 'Radio' Name ='arvosana[".$indeksi."]' value= '3'>3";
+                      print "<Input type = 'Radio' Name ='arvosana[".$indeksi."]' value= '4'>4";
+                      print "<Input type = 'Radio' Name ='arvosana[".$indeksi."]' value= '5'>5";
+                      print "</br></br>";
 
 
-                    print 'Kommentti (max. 300 merkkiä)'."</br>";
-                    print "<textarea Name= 'kommentti[".$indeksi."]' rows='4' cols='30'></textarea>"."</br></br>";
+                      print 'Kommentti (max. 300 merkkiä)'."</br>";
+                      print "<textarea Name= 'kommentti[".$indeksi."]' rows='4' cols='30'></textarea>"."</br></br>";
 
-                    print "<input type='hidden' name='kysymysidt[".$indeksi."]' value='".$tulos['kysymysid']."'>";
+                      print "<input type='hidden' name='kysymysidt[".$indeksi."]' value='".$tulos['kysymysid']."'>";
 
-                    $indeksi = $indeksi + 1;
-              }
-           print "<Input type = 'Submit' Name = 'submit' Value = 'Lähetä'>";
-           print "</form>";
+                      $indeksi++;
+                }
+             print "<Input type = 'Submit' Name = 'submit' Value = 'Lähetä'>";
+             print "</form>";
           ?>
        </body>
