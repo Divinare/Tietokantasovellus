@@ -1,4 +1,4 @@
-'<?php require_once 'DB.php'; ?>
+<?php require_once 'DB.php'; ?>
 <!DOCTYPE html>
 
 <head>
@@ -12,24 +12,25 @@
         $salasana = $_POST['salasana'];
 
         $yhteys = db::getDB();
-        //$sql = 'SELECT * FROM henkilo WHERE email='.$email.' and salasana = '.$salasana;
-        $sql = 'SELECT * FROM henkilo WHERE email='."joeniemi@cs.helsinki.fi".' and salasana = '."apina";
-	$kysely = $yhteys->prepare($sql);
+        $sql = "SELECT henkiloid FROM henkilo WHERE email = '".$email."' and salasana = '".$salasana."'";
+       	$kysely = $yhteys->prepare($sql);
         $kysely->execute();
+        $taulu = $kysely->fetchall();
+        // print "</br>".sizeof($taulu)."</br>";
 
-//        $testi = pg_query($sql);
-        $taulu = $kysely->fetch();
-       //  if (!$testi) {
-        if (count($taulu) == 1) {
-            echo count($taulu);
+
+        if (sizeof($taulu) == 1) {
+            print 'Kirjautuminen onnistui.';
+            //echo count($taulu);
             //echo $email;
             //echo $salasana;
             //echo $testi;
-            echo $taulu;
+            //echo $taulu;
             //header("location:login_success.php");
 	    //header('Location: http://www.example.com');
-        } else {
-            echo $sql . " testi " . $taulu . " Wrong Username or Password";
-                 }
+        }
+        else {
+            echo 'Wrong Username or Password';
+        }
         ?>
     </body>
