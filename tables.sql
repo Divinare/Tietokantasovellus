@@ -27,7 +27,9 @@ CREATE TABLE Kurssikysely (
 kurssikyselyID numeric(15) NOT NULL,
 kurssiID numeric(10) NOT NULL,
 kknimi varchar(50) NOT NULL,
+henkiloID numeric(3) NOT NULL,
 PRIMARY KEY (kurssikyselyID),
+FOREIGN KEY (henkiloID) REFERENCES Henkilo,
 FOREIGN KEY (kurssiID) REFERENCES Kurssi
 );
 CREATE TABLE Kysymys (
@@ -60,9 +62,9 @@ INSERT INTO kurssi VALUES (123, 21, 'Ohjelmoinnin perusteet', 4, 2012);
 INSERT INTO kurssi VALUES (124, 21, 'Ohjelmoinnin jatkokurssi', 3, 2012);
 INSERT INTO kurssi VALUES (125, 20, 'Johdatus funktionaaliseen ohjelmointiin', 1, 2011);
 
-INSERT INTO kurssikysely VALUES (10000, 123, 'OhPe-kysely');
-INSERT INTO kurssikysely VALUES (10001, 124, 'OhJa-kysely');
-INSERT INTO kurssikysely VALUES (10002, 125, 'JFO-kysely');
+INSERT INTO kurssikysely VALUES (10000, 123, 'OhPe-kysely', 21);
+INSERT INTO kurssikysely VALUES (10001, 124, 'OhJa-kysely', 21);
+INSERT INTO kurssikysely VALUES (10002, 125, 'JFO-kysely', 20);
 
 INSERT INTO kysymys VALUES (1, 'Oliko kiva kurssi?', 10000);
 INSERT INTO vastaus VALUES (1, 1, 5);

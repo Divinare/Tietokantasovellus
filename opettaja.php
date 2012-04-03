@@ -7,10 +7,14 @@
        <body>
           <?php
           $yhteys = db::getDB();
-          $sql = 'SELECT etunimi, sukunimi FROM henkilo WHERE henkiloid ='.$_GET["opettaja"];
+          $sql = 'SELECT etunimi, sukunimi FROM henkilo WHERE henkiloid = ?';
           $kyselyopettaja = $yhteys->prepare($sql);
-          $kyselyopettaja->execute();
+          $kyselyopettaja->execute(array($_GET["opettaja"]));
           $nimi = $kyselyopettaja->fetch();
-          echo "<h1>Opettaja - $nimi[0] $nimi[1]</h1>";
+          print "<h1>Opettaja - $nimi[0] $nimi[1]</h1>";
+
+
+          print "<h3>Omat kyselyt</h3>";
+          $sql2 = 'SELECT etunimi, sukunimi FROM opettaja INNER JOIN kurssikysely ON henkilo.henkiloID = kurssikysely.henkiloID':
           ?>
        </body>
