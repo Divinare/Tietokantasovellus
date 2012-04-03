@@ -15,35 +15,31 @@
 </head>
        <body>
 
-         <?php
+              <h1><?php print $htmltitle['kknimi']; ?></h1></br>
 
-              echo "<h1>".$htmltitle['kknimi']."</h1>"."</br>";
-              $kysely = 'SELECT kysymys, kysymysid FROM kysymys WHERE kurssikyselyid ='.$_GET["kysely"];
+             <Form name ='vastaukset' Method ='Post' ACTION ='end.php?kysely= <?php print $_GET["kysely"] ?>'>
 
-              print "<Form name ='vastaukset' Method ='Post' ACTION ='end.php?kysely=".$_GET["kysely"]."'>";
-
+       <?php
                  $kysely = 'SELECT kysymys, kysymysid FROM kysymys WHERE kurssikyselyid ='.$_GET["kysely"];
                  $indeksi = 0;
                  foreach ($yhteys->query($kysely) as $tulos) {
+       ?>
+                    <h3> <?php print $tulos['kysymys']; ?> </h3>
 
-                     print "<h3>".$tulos['kysymys']."</h3>";
-
-                      print "<Input type = 'Radio' Name ='arvosana[".$indeksi."]' value= '1'>1";
-                      print "<Input type = 'Radio' Name ='arvosana[".$indeksi."]' value= '2'>2";
-                      print "<Input type = 'Radio' Name ='arvosana[".$indeksi."]' value= '3'>3";
-                      print "<Input type = 'Radio' Name ='arvosana[".$indeksi."]' value= '4'>4";
-                      print "<Input type = 'Radio' Name ='arvosana[".$indeksi."]' value= '5'>5";
-                      print "</br></br>";
+                    <Input type = 'Radio' Name ='arvosana[<?php print $indeksi; ?>]' value= '1'>1
+                    <Input type = 'Radio' Name ='arvosana[<?php print $indeksi; ?>]' value= '2'>2
+                    <Input type = 'Radio' Name ='arvosana[<?php print $indeksi; ?>]' value= '3'>3
+                    <Input type = 'Radio' Name ='arvosana[<?php print $indeksi; ?>]' value= '4'>4
+                    <Input type = 'Radio' Name ='arvosana[<?php print $indeksi; ?>]' value= '5'>5
+                    </br></br>
 
 
-                      print 'Kommentti (max. 300 merkkiä)'."</br>";
-                      print "<textarea Name= 'kommentti[".$indeksi."]' rows='4' cols='30'></textarea>"."</br></br>";
+                    <p>Kommentti (max. 300 merkkiä)</p>
+                    <textarea Name= 'kommentti[<?php print $indeksi; ?>]' rows='4' cols='30'></textarea></br></br>
+                    <input type='hidden' name='kysymysidt[<?php print $indeksi; ?>]' value='<?php print $tulos['kysymysid'];?>'>
 
-                      print "<input type='hidden' name='kysymysidt[".$indeksi."]' value='".$tulos['kysymysid']."'>";
+                    <?php $indeksi++; }?>
 
-                      $indeksi++;
-                }
-             print "<Input type = 'Submit' Name = 'submit' Value = 'Lähetä'>";
-             print "</form>";
-          ?>
+             <Input type = 'Submit' Name = 'submit' Value = 'Lähetä'>
+             </form>
        </body>

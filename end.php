@@ -16,8 +16,9 @@
         $kyselytitle = $yhteys->prepare($sql);
         $kyselytitle->execute(array($_GET["kysely"]));
         $htmltitle = $kyselytitle->fetch();
-        echo "<title>".$htmltitle['kknimi']."</title>";
-      ?>
+        ?>
+        <title><?php print $htmltitle['kknimi'] ?></title>
+
   </head>
   <body>
       <?php
