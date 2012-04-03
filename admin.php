@@ -7,10 +7,16 @@
        <body>
           <?php
           $yhteys = db::getDB();
-          $sql = 'SELECT etunimi, sukunimi FROM henkilo WHERE henkiloid ='.$_GET["admin"];
+          $sql = 'SELECT etunimi, sukunimi FROM henkilo WHERE henkiloid =?';
           $kyselyadmin = $yhteys->prepare($sql);
-          $kyselyadmin->execute();
+          $kyselyadmin->execute(array($_GET["admin"]));
           $nimi = $kyselyadmin->fetch();
           echo "<h1>Admin - $nimi[0] $nimi[1]</h1>";
-          ?>
+
+
+
+	  ?>
+	  <FORM METHOD="LINK" ACTION="admin.php?admin=2/olisays.php">
+	  <INPUT TYPE="submit" VALUE="Clickable Button">
+	  </FORM>
        </body>
