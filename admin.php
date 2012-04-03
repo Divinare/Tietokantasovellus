@@ -16,7 +16,7 @@
 
 
 	  ?>
-	  <FORM METHOD="LINK" ACTION="admin.php?admin=2/olisays.php">
-	  <INPUT TYPE="submit" VALUE="Clickable Button">
+	  <FORM METHOD="LINK" ACTION="hlisays.php">
+	  <INPUT TYPE="submit" VALUE="Henkilön lisäys järjestelmään">
 	  </FORM>
        </body>
