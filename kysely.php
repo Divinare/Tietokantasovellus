@@ -22,6 +22,7 @@
 
               print "<Form name ='vastaukset' Method ='Post' ACTION ='end.php?kysely=".$_GET["kysely"]."'>";
 
+                 $kysely = 'SELECT kysymys, kysymysid FROM kysymys WHERE kurssikyselyid ='.$_GET["kysely"];
                  $indeksi = 0;
                  foreach ($yhteys->query($kysely) as $tulos) {
 
