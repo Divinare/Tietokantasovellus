@@ -15,19 +15,19 @@
 
 
           print "<h3>Omat kyselyt</h3>";
-          $sql2 = 'SELECT kknimi FROM kurssikysely WHERE henkiloID = ?';
+          $sql2 = 'SELECT DISTINCT kknimi FROM kurssikysely WHERE henkiloID = ?';
           $kkyselyt = $yhteys->prepare($sql2);
-          $kkyselyt->execute(array($_GET["opettaja"]));
-          $kyselyt = $kkyselyt->fetchAll();
+	  $kkyselyt->execute(array($_GET["opettaja"]));
+	  $kyselyt = $kkyselyt->fetch();
+
+          for ($k = 0, size = sizeof($kommentit); $k < $ksize; ++$k)
+	  for ($i = 0, size = sizeof($kyselyt); $i<size; ++$i) {
+		print $kysely[$i]."</br>";
+	  }
 
 
-          foreach ($kyselyt as $k) {
-             print $k['kknimi']."</br>";
-
-            
-          }
-
-
+          ?>
+       </body>
 
 
 // henkiloid | etunimi | sukunimi |          email          |    salasana    |  rooli
@@ -43,5 +43,4 @@
 //          10000 |      123 | OhPe-kysely |        21
 //          10001 |      124 | OhJa-kysely |        21
 //          10002 |      125 | JFO-kysely  |        20
-?>
-</body>
+
