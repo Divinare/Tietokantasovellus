@@ -23,29 +23,13 @@
   <body>
       <?php
 
-	 // Vastausten lisääminen Kommentti-tauluun
-
-        // Lasketaan Vastaus-taulussa olevien vastausten lkm
-        $sql1 = 'SELECT COUNT(vastausid) FROM vastaus';
-        $vastaustenlkm = $yhteys->prepare($sql1);
-        $vastaustenlkm->execute();
-        $maarataulu = $vastaustenlkm->fetch();
-        $maara = $maarataulu[0]; // <--- Nykyinen vastausten määrä, uudet ID:t sen perusteella (ID on vastauksen järjestysnumero...)!
-
-        // Lasketaan Kommentti-taulussa olevien kommenttien määrä
-        $sql2 = 'SELECT count(kommenttiid) FROM kommentti';
-        $kommlkm = $yhteys->prepare($sql2);
-        $kommlkm->execute();
-        $kmaarataulu = $kommlkm->fetch();
-        $kmaara = $kmaarataulu[0]; // <--- Nykyinen kommenttimäärä!
-
         // Arvosanat tauluun
         for ($i = 0, $size = sizeof($arvosanat); $i < $size; ++$i) {
 
            $maara++;
-           $sql3 = 'INSERT INTO vastaus VALUES  (?, ?, ?)';
+           $sql3 = 'INSERT INTO vastaus VALUES  (?, ?)';
            $insertti = $yhteys->prepare($sql3);
-           $insertti->execute(array($maara, $kysymysidt[$i], $arvosanat[$i]));
+           $insertti->execute(array($kysymysidt[$i], $arvosanat[$i]));
         }
 
         // Kommentit tauluun
@@ -53,9 +37,9 @@
 
           if (!$kommentit[$k] == "") {
            $kmaara++;
-           $sql4 = 'INSERT INTO kommentti VALUES (?, ?, ?)';
+           $sql4 = 'INSERT INTO kommentti VALUES (?, ?)';
            $kinsertti = $yhteys->prepare($sql4);
-           $kinsertti->execute(array($kmaara, $kommentit[$k], $kysymysidt[$k]));
+           $kinsertti->execute(array($kommentit[$k], $kysymysidt[$k]));
           }
         }
 
@@ -64,7 +48,8 @@
         $kurssi = $yhteys->prepare($sqlkurssi);
         $kurssi->execute();
         $kurssinnimi = $kurssi->fetch();
-        print 'Kiitos vastaamisestasi kurssin '.$kurssinnimi['nimi'].' kurssikyselyyn!';
       ?>
+       </br></br> <p>Kiitos vastaamisestasi kurssin <?php print $kurssinnimi['nimi']; ?> kurssikyselyyn!</p>
+
   </body>
 

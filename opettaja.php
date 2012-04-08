@@ -5,7 +5,7 @@
    <meta charset="utf-8">
 </head>
        <body>
-          <?php
+         <?php
           $yhteys = db::getDB();
           $sql = 'SELECT etunimi, sukunimi FROM henkilo WHERE henkiloid = ?';
           $kyselyopettaja = $yhteys->prepare($sql);
@@ -15,16 +15,45 @@
 
 
           print "<h3>Omat kyselyt</h3>";
-          $sql2 = 'SELECT kknimi FROM kurssikysely WHERE henkiloID = ?';
+          $sql2 = 'SELECT kknimi, esilla FROM kurssikysely WHERE henkiloID = ?';
           $kkyselyt = $yhteys->prepare($sql2);
           $kkyselyt->execute(array($_GET["opettaja"]));
           $kyselyt = $kkyselyt->fetchAll();
+         ?>
 
+          <table border="0">
+            <tr>
+                  <th align = left>Nimi</th>
+                  <th align = left>Tila</th>
+            </tr>
+            <tr>
+
+        <?php
 
           foreach ($kyselyt as $k) {
-             print $k['kknimi']."</br>";
 
-            
+             if ($k['esilla']) {
+                $tila = 'Julkaistu';
+             }
+             else {
+                $tila = 'Piilossa';
+             }
+
+        ?>
+
+          <td><?php print $k['kknimi'];?></td>
+          <td><?php print $tila;?></td>
+
+          </tr>
+
+       <?php
+
+
+// tila
+// julkaise
+// sulje
+// uusi
+
           }
 
 
