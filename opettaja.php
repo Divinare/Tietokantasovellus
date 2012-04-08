@@ -21,7 +21,7 @@
           $kyselyt = $kkyselyt->fetchAll();
          ?>
 
-          <table border="0">
+          <table border="0" cellpadding="3">
             <tr>
                   <th align = left>Nimi</th>
                   <th align = left>Tila</th>
