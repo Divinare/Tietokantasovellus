@@ -11,20 +11,22 @@
           $kyselyopettaja = $yhteys->prepare($sql);
           $kyselyopettaja->execute(array($_GET["opettaja"]));
           $nimi = $kyselyopettaja->fetch();
-          print "<h1>Opettaja - $nimi[0] $nimi[1]</h1>";
+         ?>
+         <h1>Opettaja - <?php print $nimi[0]." ".$nimi[1];?></h1>
 
-
-          print "<h3>Omat kyselyt</h3>";
-          $sql2 = 'SELECT kknimi, esilla FROM kurssikysely WHERE henkiloID = ?';
+         <?php
+          $sql2 = 'SELECT kknimi, esilla, kurssikyselyID FROM kurssikysely WHERE henkiloID = ?';
           $kkyselyt = $yhteys->prepare($sql2);
           $kkyselyt->execute(array($_GET["opettaja"]));
           $kyselyt = $kkyselyt->fetchAll();
          ?>
 
+          <h3>Omat kyselyt</h3>
           <table border="0" cellpadding="3">
             <tr>
                   <th align = left>Nimi</th>
                   <th align = left>Tila</th>
+                  <th>  </th>
             </tr>
             <tr>
 
@@ -41,10 +43,16 @@
 
         ?>
 
-          <td><?php print $k['kknimi'];?></td>
-          <td><?php print $tila;?></td>
+        <td><?php print $k['kknimi'];?></td>
+        <td><?php print $tila;?></td>
+        <td><a href=muokkaa.php?kysely=<?php print $k['kurssikyselyid']; ?>>Muokkaa</a>
 
-          </tr>
+        </tr>  
+
+        <?php } ?>
+
+        </table>
+        <p> <a href=uusi.php>Luo uusi kysely</a></p>
 
        <?php
 
@@ -54,7 +62,6 @@
 // sulje
 // uusi
 
-          }
 
 
 
