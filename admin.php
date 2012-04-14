@@ -19,7 +19,7 @@
 	  <FORM METHOD="LINK" ACTION="hlisays.php">
 	  <INPUT TYPE="submit" VALUE="Henkilön lisäys järjestelmään">
 	  </FORM>
-          <FORM METHOD="LINK" ACTION="hlista.php?hlista=<?php print $_GET['admin'];?>">
+          <FORM action="hlista.php?hlista=<?php print $_GET['admin'];?>" method="post">
           <INPUT TYPE="submit" VALUE="Käyttäjälista">
           </FORM>
    </body>
