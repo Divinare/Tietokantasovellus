@@ -10,32 +10,35 @@
    <?php
        $yhteys = db::getDB();
 
-       $ukysymykset = $_POST["ukysymykset"];
+       //Kysymyksen poisto
+       $sql = 'DELETE FROM Temp WHERE uusiID = ?';
+       $poisto = $yhteys->prepare($sql);
+       $poisto->execute(array($_GET["remv"]));
 
-          $sql0 = 'INSERT INTO Temp VALUES (?, ?)';
-          $lisays = $yhteys->prepare($sql0);
-          $lisays->execute(array($ukysymykset['uusikysymys'], $_GET["opettaja"]));
+       // Uuden kysymyksen lisääminen tietokantaan
+       $ukysymys = $_POST["ukysymys"];
+       $sql0 = 'INSERT INTO Temp VALUES (?, ?)';
+       $lisays = $yhteys->prepare($sql0);
+       $lisays->execute(array($ukysymys, $_GET["opettaja"]));
 
-
-       $sql1 = 'SELECT uusiID, uusikysymys FROM temp WHERE henkiloID = ?';
+       // Uuden kyselyn jo olemassa olevien kysymysten haku
+       $sql1 = 'SELECT uusikysymys, uusiID FROM Temp WHERE opeID = ?';
        $uusi = $yhteys->prepare($sql1);
        $uusi->execute(array($_GET["opettaja"]));
        $uudet = $uusi->fetchAll();
+
    ?>
-    <h2>Uusi kysely</h2>
+   <h2>Uusi kysely</h2>
 
-
-    <table border="0" cellpadding="3">
+   <table border="0" cellpadding="3">
 
         <tr>
         <?php
-
-          foreach ($uudet as $u) {
-
+          for ($i = 0, $size = sizeof($uudet); $i < $size; ++$i) {
         ?>
 
-        <td><?php print $u['uusikysymys'];?></td>
-        <td><a href=uusi.php?opettaja=<?php print $_GET["opettaja"];?>?remv=<?php print $u['uusiID'];?>>Poista</a>
+        <td><?php print $uudet[$i]['uusikysymys'];?></td>
+        <td><a href=uusi.php?opettaja=<?php print $_GET["opettaja"];?>&&remv=<?php print $uudet[$i]['uusiid'];?>>Poista</a>
 
         </tr>
 
@@ -47,7 +50,7 @@
 
 
        <FORM action="uusi.php?opettaja=<?php print $_GET['opettaja'];?>" method="post">
-       Uusi kysymys: <input type="text" name="ukysymykset">
+       Uusi kysymys: <input type="text" name="ukysymys">
        <input type="submit" value="Lisää">
        </FORM>
 </body>
