@@ -1,0 +1,15 @@
+<?php require_once 'DB.php'; ?>
+<!DOCTYPE html>
+
+<head>
+   <meta charset="utf-8">
+   <?php
+        $yhteys = db::getDB();
+        $kyselyID = $_GET["kysely"];
+   ?>
+</head>
+
+<body>
+
+   <p>Täällä ole vielä mitään! >:/ Hus, mene pois!</p>
+</body>
