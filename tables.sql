@@ -1,3 +1,4 @@
+DROP TABLE Temp;
 DROP TABLE Kommentti;
 DROP TABLE Vastaus;
 DROP TABLE Kysymys;
@@ -54,11 +55,18 @@ kommenttiID serial NOT NULL,
 PRIMARY KEY (kommenttiID),
 FOREIGN KEY (kysymysID) REFERENCES Kysymys
 );
+CREATE TABLE Temp (
+uusikysymys varchar(200) NOT NULL,
+opeID integer NOT NULL,
+uusiID serial NOT NULL,
+PRIMARY KEY (uusiID),
+FOREIGN KEY (opeID) REFERENCES Henkilo
+);
 INSERT INTO henkilo VALUES ('Jenna', 'Lindh', 'jelindh@cs.helsinki.fi', 'broileri', 'admin');
 INSERT INTO henkilo VALUES ('Joe', 'Niemi', 'joeniemi@cs.helsinki.fi', 'apina', 'admin');
 
 INSERT INTO henkilo VALUES ('Leidi', 'Lol', 'joeniemi@cs.helsinki.fi', 'haha', 'opettaja');
-INSERT INTO henkilo VALUES ('Arto', 'Wikla', 'joeniemi@cs.helsinki.fi', 'roskienkeraaja', 'opettaja');
+INSERT INTO henkilo VALUES ('Arto', 'Wikla', 'wikla', 'roskienkeraaja', 'opettaja');
 
 INSERT INTO kurssi VALUES (4, 'Ohjelmoinnin perusteet', 4, 2012);
 INSERT INTO kurssi VALUES (4, 'Ohjelmoinnin jatkokurssi', 3, 2012);

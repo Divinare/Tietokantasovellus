@@ -52,7 +52,7 @@
         <?php } ?>
 
         </table>
-        <p> <a href=uusi.php>Luo uusi kysely</a></p>
+        <p> <a href=uusi.php?opettaja=<?php print $_GET["opettaja"]; ?>>Luo uusi kysely</a></p>
 
        <?php
 
