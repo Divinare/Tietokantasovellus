@@ -14,12 +14,7 @@
           echo "<h1>Admin - $nimi[0] $nimi[1]</h1>";
           $etu = $nimi[0];
           $suku = $nimi[1];
-
-	  ?>
-	  <FORM METHOD="LINK" ACTION="hlisays.php">
-	  <INPUT TYPE="submit" VALUE="Henkilön lisäys järjestelmään">
-	  </FORM>
-          <FORM action="hlista.php?hlista=<?php print $_GET['admin'];?>" method="post">
-          <INPUT TYPE="submit" VALUE="Käyttäjälista">
-          </FORM>
+          ?>
+          <p> <a href=hlisays.php>Henkilön lisäys järjestelmään</a></p>
+          <p> <a href=hlista.php?hlista=<?php print $_GET["admin"]; ?>>Käyttäjälistat</a></p>
    </body>
