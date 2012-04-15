@@ -17,7 +17,7 @@
 
               <h1><?php print $htmltitle['kknimi']; ?></h1></br>
 
-             <Form name ='vastaukset' Method ='Post' ACTION ='end.php?kysely= <?php print $_GET["kysely"] ?>'>
+             <Form name ='vastaukset' Method ='Post' ACTION ='end.php?kysely= <?php print $_GET["kysely"]; ?>'>
 
        <?php
                  $kysely = 'SELECT kysymys, kysymysid FROM kysymys WHERE kurssikyselyid ='.$_GET["kysely"];

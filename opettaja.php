@@ -45,39 +45,13 @@
 
         <td><?php print $k['kknimi'];?></td>
         <td><?php print $tila;?></td>
-        <td><a href=muokkaa.php?kysely=<?php print $k['kurssikyselyid']; ?>>Muokkaa</a>
+        <td><a href=muokkaa.php?opettaja=<?php print $_GET["opettaja"];?>&kyselyid=<?php print $k['kurssikyselyid']; ?>>Muokkaa</a>
 
-        </tr>  
+        </tr>
 
         <?php } ?>
 
         </table>
-        <p> <a href=uusi.php?opettaja=<?php print $_GET["opettaja"]; ?>>Luo uusi kysely</a></p>
-
-       <?php
-
-
-// tila
-// julkaise
-// sulje
-// uusi
-
-
-
-
-
-// henkiloid | etunimi | sukunimi |          email          |    salasana    |  rooli
-//-----------+---------+----------+-------------------------+----------------+----------
-//         1 | Jenna   | Lindh    | jelindh@cs.helsinki.fi  | broileri       | admin
-//         2 | Joe     | Niemi    | joeniemi@cs.helsinki.fi | apina          | admin
-//        20 | Leidi   | Lol      | joeniemi@cs.helsinki.fi | haha           | opettaja
-//        21 | Arto    | Wikla    | joeniemi@cs.helsinki.fi | roskienkeraaja | opettaja
-
-
-// kurssikyselyid | kurssiid |   kknimi    | henkiloid
-//----------------+----------+-------------+-----------
-//          10000 |      123 | OhPe-kysely |        21
-//          10001 |      124 | OhJa-kysely |        21
-//          10002 |      125 | JFO-kysely  |        20
-?>
+        <p> <a href=valitse_kurssi.php?opettaja=<?php print $_GET["opettaja"]; ?>>Luo uusi kysely</a></p>
 </body>
+
