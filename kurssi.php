@@ -19,7 +19,7 @@
         <input type="text" name="knimi" size="50"></br>
 
         <p><b>Periodi: </b></p>
-        <Input type = 'Radio' Name ='periodi' value= '1'>1
+        <Input type = 'Radio' Name ='periodi' value= '1' checked>1
         <Input type = 'Radio' Name ='periodi' value= '2'>2
         <Input type = 'Radio' Name ='periodi' value= '3'>3
         <Input type = 'Radio' Name ='periodi' value= '4'>4
