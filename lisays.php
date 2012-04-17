@@ -59,13 +59,4 @@
    <FORM METHOD="LINK" ACTION="hlisays.php">
    <INPUT TYPE="submit" VALUE="Takaisin">
    </FORM>
-
-
-   <?php
-   // Lisätään tiedot tietokantaan:
-   //$sql = 'INSERT INTO Henkilo values (?, ?, ?, ?, ?)';
-   //$laita = $yhteys->prepare($sql);
-   //$laita->execute(array($_POST['etu'], $_POST['suku'], $_POST['sposti'], $_POST['passu'], $_POST['rooli']));
-   ?>
-
 </body>

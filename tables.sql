@@ -62,8 +62,8 @@ INSERT INTO henkilo VALUES ('Leidi', 'Lol', 'joeniemi@cs.helsinki.fi', 'haha', '
 INSERT INTO henkilo VALUES ('Arto', 'Wikla', 'wikla', 'roskienkeraaja', 'opettaja');
 INSERT INTO henkilo VALUES ('testihenkilö2', 'testaaja2', '2', '2', 'opettaja');
 
-INSERT INTO henkilo VALUES ('Jorma', 'Uotinen', 'luukku', 'lol', 'laitosva');
-INSERT INTO henkilo VALUES ('testihenkilö3', 'testaaja3', '3', '3', 'laitosva');
+INSERT INTO henkilo VALUES ('Jorma', 'Uotinen', 'luukku', 'lol', 'vastuuhenkilö');
+INSERT INTO henkilo VALUES ('testihenkilö3', 'testaaja3', '3', '3', 'vastuuhenkilö');
 
 INSERT INTO kurssi VALUES (4, 'Ohjelmoinnin perusteet', 4, 2012);
 INSERT INTO kurssi VALUES (4, 'Ohjelmoinnin jatkokurssi', 3, 2012);

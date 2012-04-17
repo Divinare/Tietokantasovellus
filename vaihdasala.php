@@ -26,7 +26,12 @@
 
           <Input type = 'Submit' Name = 'submit' Value = 'Vaihda salasanaa'>
           </form>
-
-          <p> <a href=admin.php?admin=<?php print $_GET['vaihdasala']; ?>>Takaisin</a></p>
+	  <?php
+          $sql = 'SELECT rooli FROM henkilo WHERE henkiloid = ?';
+          $kyselyrooli = $yhteys->prepare($sql);
+          $kyselyrooli->execute(array($_GET["vaihdasala"]));
+          $rooli = $kyselyrooli->fetch();
+          ?>
+          <p> <a href=<?php print $rooli[0]; ?>.php?<?php print $rooli[0]; ?>=<?php print $_GET['vaihdasala']; ?>>Takaisin</a></p>
 
        </body>

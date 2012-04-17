@@ -23,7 +23,7 @@
           $kyselyadmin->execute(array(opettaja));
           $Opettajat = $kyselyadmin->fetchAll();
 
-          $kyselyadmin->execute(array(laitosva));
+          $kyselyadmin->execute(array(vastuuhenkilö));
           $Vastuuhenkilöt = $kyselyadmin->fetchAll();
 
           $nimiT = $Adminit;

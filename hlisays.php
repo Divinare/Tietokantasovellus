@@ -26,7 +26,7 @@
    <p>Rooli:<p>
    <input type="radio" name="rooli" value="opettaja" checked> Opettaja </br>
    <input type="radio" name="rooli" value="admin"> Admin </br>
-   <input type="radio" name="rooli" value="laitoksen vastuuhenkilö"> Laitoksen Vastuuhenkilö </br>
+   <input type="radio" name="rooli" value="vastuuhenkilö"> Laitoksen Vastuuhenkilö </br>
 
    <Input type = 'Submit' Name = 'submit' Value = 'Lähetä'>
 

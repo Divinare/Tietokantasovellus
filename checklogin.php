@@ -40,9 +40,9 @@
 	    if ($b == 0) {
             header("Location: opettaja.php?opettaja=".$taulu[0][0]);
             }
-	    $c = strcmp($rooli[0][0], "laitosva");
+	    $c = strcmp($rooli[0][0], "vastuuhenkilö");
 	    if ($c == 0) {
-	    header("Location: laitosva.php?laitosva=".$taulu[0][0]);
+	    header("Location: vastuuhenkilö.php?vastuuhenkilö=".$taulu[0][0]);
 	    }
         }
         else {

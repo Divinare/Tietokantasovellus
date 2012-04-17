@@ -41,8 +41,16 @@
    $sqlsala = 'UPDATE Henkilo SET salasana = ? WHERE henkiloID = ?';
    $sqlsala2 = $yhteys->prepare($sqlsala);
    $sqlsala2->execute(array($_POST['uusi'], $_GET['svaihto']));
+
+
+   $sql = 'SELECT rooli FROM henkilo WHERE henkiloid = ?';
+   $kyselyrooli = $yhteys->prepare($sql);
+   $kyselyrooli->execute(array($_GET["svaihto"]));
+   $rooli = $kyselyrooli->fetch();
    ?>
 
-    <p> <a href=admin.php?admin=<?php print $_GET['svaihto']; ?>>Takaisin</a></p>
+
+
+    <p> <a href=<?php print $rooli[0]; ?>.php?<?php print $rooli[0]; ?>=<?php print $_GET['svaihto']; ?>>Takaisin</a></p>
 
    </body>
