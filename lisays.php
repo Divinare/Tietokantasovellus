@@ -13,31 +13,33 @@
    $yhteys = db::getDB();
    // Tarkistetaan ensin onko kentät täytetty oikein:
    if (empty($_POST['etu'])) {
-   header('Location: lomakesivu.php?viesti=Etunimi%puuttui'); die();
+   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=etupuuttui"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
    }
    if (strlen($_POST['etu']) > 30) {
-   header('Location: lomakesivu.php?viesti=Etunimi%liian%pitkä'); die();
+   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=etupitkä"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
    }
 
    if (empty($_POST['suku'])) {
-   header('Location: lomakesivu.php?viesti=Sukunimi%puuttui'); die();
+   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=sukupuuttui"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
    }
    if (strlen($_POST['suku']) > 30) {
-   header('Location: lomakesivu.php?viesti=Sukunimi%liian%pitkä'); die();
+   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=sukupitkä"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
    }
 
    if (empty($_POST['sposti'])) {
-   header('Location: lomakesivu.php?viesti=Sähköposti%puuttui'); die();
+   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=sähköpuuttui"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
    }
    if (strlen($_POST['sposti']) > 30) {
-   header('Location: lomakesivu.php?viesti=Sähköposti%liian%pitkä'); die();
+   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=sähköpitkä"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
    }
-
    if (empty($_POST['passu'])) {
-   header('Location: lomakesivu.php?viesti=Salasana%puuttui'); die();
+   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=salapuuttui"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
    }
    if (strlen($_POST['passu']) > 30) {
-   header('Location: lomakesivu.php?viesti=Salasana%liian%pitkä'); die();
+   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=salapitkä"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
+   }
+   if ($_POST['passu'] != $_POST['passu2']) {
+   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=salateitäsmää"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
    }
    ?>
    <h2>Vahvista alla olevat tiedot:</h2>

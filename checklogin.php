@@ -13,9 +13,9 @@
 
 	//heataan henkilöID
         $yhteys = db::getDB();
-        $sql = "SELECT henkiloid FROM henkilo WHERE email = '".$email."' and salasana = '".$salasana."'";
+        $sql = "SELECT henkiloid FROM henkilo WHERE email =? and salasana =?";
        	$kysely = $yhteys->prepare($sql);
-        $kysely->execute();
+        $kysely->execute(array($email, $salasana));
         $taulu = $kysely->fetchall();
 
 	//haetaan henkilön rooli:
@@ -47,7 +47,7 @@
         }
         else {
             //echo 'Wrong Username or Password';
-            header('Location: http://joeniemi.users.cs.helsinki.fi/');
+            header("Location: index.php");
 	    //$kirjautuminen = False;
 	    }
         ?>
