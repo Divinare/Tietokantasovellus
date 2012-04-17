@@ -19,11 +19,14 @@
           <input type='text' name='vanha'><p></br>
 
           <p>Uusi salasana:</p>
-          <input type='text' name='uusi'></br></br>
+          <input type='password' name='uusi'></br></br>
 
           <p>Vahvista salasana:</p>
-          <input type='text' name='uusi2'></br></br>
+          <input type='password' name='uusi2'></br></br>
 
           <Input type = 'Submit' Name = 'submit' Value = 'Vaihda salasanaa'>
           </form>
+
+          <p> <a href=admin.php?admin=<?php print $_GET['vaihdasala']; ?>>Takaisin</a></p>
+
        </body>

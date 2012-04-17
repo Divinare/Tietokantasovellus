@@ -30,5 +30,7 @@
 
    <Input type = 'Submit' Name = 'submit' Value = 'Lähetä'>
 
+    <p> <a href=admin.php?admin=<?php print $_GET['hlisays']; ?>>Takaisin</a></p>
+
    </form>
    <body>

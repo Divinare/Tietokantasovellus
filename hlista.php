@@ -64,5 +64,6 @@
 	  }
           ?>
 
+        <p> <a href=admin.php?admin=<?php print $_GET['hlista']; ?>>Takaisin</a></p>
 
        </body>

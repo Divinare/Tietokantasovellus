@@ -36,9 +36,13 @@
    }
    ?>
    <h2>Salasanan vaihto onnistui!</h2>
+
    <?php
-   //print $vsala;
-   //print $vsala[0];
-   //print $vsala[0][0];
+   $sqlsala = 'UPDATE Henkilo SET salasana = ? WHERE henkiloID = ?';
+   $sqlsala2 = $yhteys->prepare($sqlsala);
+   $sqlsala2->execute(array($_POST['uusi'], $_GET['svaihto']));
    ?>
+
+    <p> <a href=admin.php?admin=<?php print $_GET['svaihto']; ?>>Takaisin</a></p>
+
    </body>
