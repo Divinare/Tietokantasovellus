@@ -10,11 +10,6 @@
    <?php
        $yhteys = db::getDB();
 
-       // Otsikon uudelleennimeäminen
-       $sqlnimi = 'UPDATE Kurssikysely SET kknimi = ? WHERE kurssikyselyID = ?';
-       $unimi = $yhteys->prepare($sqlnimi);
-       $unimi->execute(array($_POST["kknimi"], $_GET["kyselyid"]));
-
        // Kyselyn otsikko/nimi
        $sqlo = 'SELECT kknimi FROM Kurssikysely WHERE kurssikyselyID = ?';
        $otsikko = $yhteys->prepare($sqlo);
@@ -31,7 +26,17 @@
    <!-- Otsikon säätämistä -->
    <h2><?php print $otsikkov[0]; ?></h2>
 
-   <form action="uusi.php?opettaja=<?php print $_GET['opettaja'];?>&&kyselyid=<?php print $_GET['kyselyid'];?>" method="post">
+   <?php
+         $viesti = $_GET["viestiots"];
+         if ($viesti == "OK!") {
+            print "OK!";
+         }
+         else if ($viesti == "yhyy") {
+            print "<font color='red'>Otsikon sallittu pituus 1-50 merkkiä - antamasi pituus oli ".$_GET["p"].".";
+         }
+   ?>
+   <font color='black'>
+   <form action="uusi_nimi.php?opettaja=<?php print $_GET['opettaja'];?>&&kyselyid=<?php print $_GET['kyselyid'];?>&mista=u" method="post">
    <input type="text" name="kknimi">
    <input type="submit" value = "Muuta nimeä">
        </form>

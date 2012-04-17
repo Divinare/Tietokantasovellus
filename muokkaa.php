@@ -10,11 +10,6 @@
    <?php
        $yhteys = db::getDB();
 
-       // Otsikon uudelleennimeäminen
-       $sqlnimi = 'UPDATE Kurssikysely SET kknimi = ? WHERE kurssikyselyID = ?';
-       $unimi = $yhteys->prepare($sqlnimi);
-       $unimi->execute(array($_POST["kknimi"], $_GET["kyselyid"]));
-
        // Kyselyn nimi ja tila
        $sqlo = 'SELECT kknimi, esilla FROM Kurssikysely WHERE kurssikyselyID = ?';
        $otsikko = $yhteys->prepare($sqlo);
@@ -39,7 +34,17 @@
    <h2>Kurssin <?php print $kntulos['nimi'];?> (<?php print $kntulos['periodi'];?>/<?php print $kntulos['vuosi'];?>) kurssikysely</h2>
    <p><b><?php print $otsikkov['kknimi']; ?></b></p>
 
-   <form action="muokkaa.php?opettaja=<?php print $_GET['opettaja'];?>&kyselyid=<?php print $_GET['kyselyid'];?>" method="post">
+    <?php
+         $viesti = $_GET["viestiots"];
+         if ($viesti == "OK!") {
+            print "OK!";
+         }
+         else if ($viesti == "yhyy") {
+            print "<font color='red'>Otsikon sallittu pituus 1-50 merkkiä - antamasi pituus oli ".$_GET["p"].".";
+         }
+    ?>
+   <font color='black'>
+   <form action="uusi_nimi.php?opettaja=<?php print $_GET['opettaja'];?>&kyselyid=<?php print $_GET['kyselyid'];?>&mista=m" method="post">
    <input type="text" name="kknimi">
    <input type="submit" value = "Muuta nimeä">
    </form>  </br></br>
