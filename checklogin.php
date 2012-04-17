@@ -47,7 +47,7 @@
         }
         else {
             //echo 'Wrong Username or Password';
-            header('Location: http://joeniemi.users.cs.helsinki.fi/');
+            header("Location: index.php");
 	    //$kirjautuminen = False;
 	    }
         ?>
