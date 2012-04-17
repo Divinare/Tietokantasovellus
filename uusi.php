@@ -21,17 +21,6 @@
        $otsikko->execute(array($_GET["kyselyid"]));
        $otsikkov = $otsikko->fetch();
 
-       //Kysymyksen poisto
-       $sql = 'DELETE FROM Kysymys WHERE kysymysID = ?';
-       $poisto = $yhteys->prepare($sql);
-       $poisto->execute(array($_GET["remv"]));
-
-       // Uuden kysymyksen lisääminen tietokantaan
-       $ukysymys = $_POST["ukysymys"];
-       $sql0 = 'INSERT INTO Kysymys VALUES (?, ?)';
-       $lisays = $yhteys->prepare($sql0);
-       $lisays->execute(array($ukysymys, $_GET["kyselyid"]));
-
        // Uuden kyselyn jo olemassa olevien kysymysten haku
        $sql1 = 'SELECT kysymys, kysymysID FROM Kysymys WHERE kurssikyselyID = ?';
        $uusi = $yhteys->prepare($sql1);
@@ -39,6 +28,7 @@
        $uudet = $uusi->fetchAll();
    ?>
 
+   <!-- Otsikon säätämistä -->
    <h2><?php print $otsikkov[0]; ?></h2>
 
    <form action="uusi.php?opettaja=<?php print $_GET['opettaja'];?>&&kyselyid=<?php print $_GET['kyselyid'];?>" method="post">
@@ -47,6 +37,7 @@
        </form>
        </br></br>
 
+   <!-- Kysymystaulu -->
    <table border="0" cellpadding="3">
    <th align="left">Tallennetut kysymykset</th>
         <tr>
@@ -55,16 +46,35 @@
         ?>
 
               <td><?php print $uudet[$i]['kysymys'];?></td>
-              <td><a href=uusi.php?opettaja=<?php print $_GET["opettaja"];?>&&remv=<?php print $uudet[$i]['kysymysid'];?>&&kyselyid=<?php print $_GET["kyselyid"];?>>Poista</a>
+
+   <!-- Kysymyksen poisto -->
+              <td><a href=kpoisto.php?opettaja=<?php print $_GET["opettaja"];?>&&remv=<?php print $uudet[$i]['kysymysid'];?>&&kyselyid=<?php print $_GET["kyselyid"];?>&mista=u>Poista</a>
               </tr>
        <?php } ?>
        </table>
        </br></br>
 
-       <FORM action="uusi.php?opettaja=<?php print $_GET['opettaja'];?>&&kyselyid=<?php print $_GET['kyselyid'];?>" method="post">
+  <!-- Uuden kysymyksen lisääminen -->
+
+       <?php
+          if ($_GET["viesti"] == "OK!") {
+              print "OK!";
+          }
+
+          else if ($_GET["viesti"] == "yhyy") {
+              print "<font color='red'>Kysymyksen sallittu pituus 1-300 merkkiä - antamasi pituus oli ".$_GET["p"].".";?>
+              <font color='black'>
+       <?php
+          }
+       ?>
+
+       <FORM action="lisaa_kysymys.php?opettaja=<?php print $_GET['opettaja'];?>&kyselyid=<?php print $_GET['kyselyid'];?>&mista=u" method="post">
        <input type="text" name="ukysymys">
        <input type="submit" value="Lisää kysymys">
        </FORM>
-   </br></br>
+       </br></br>
+
+
+  <!-- POIS! -->
    <a href=opettaja.php?opettaja=<?php print $_GET["opettaja"];?>>Takaisin</a>
 </body>

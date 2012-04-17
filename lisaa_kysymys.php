@@ -2,7 +2,14 @@
 
        $yhteys = db::getDB();
 
-       if (strlen($_POST["ukysymys"]) > 1) {
+       if ($_GET["mista"] == "u") {
+          $minne = "uusi.php";
+       }
+       else {
+          $minne = "muokkaa.php";
+       }
+       $syote = $_POST["ukysymys"];
+       if (strlen($syote) > 0 && strlen($syote) < 301) {
 
           // Uuden kysymyksen lisääminen tietokantaan
           $ukysymys = $_POST["ukysymys"];
@@ -10,12 +17,13 @@
           $lisays = $yhteys->prepare($sql0);
           $lisays->execute(array($ukysymys, $_GET["kyselyid"]));
 
-          header("Location: muokkaa.php?opettaja=".$_GET["opettaja"]."&kyselyid=".$_GET['kyselyid']."&viesti=OK!"); die();
+          header("Location: ".$minne."?opettaja=".$_GET["opettaja"]."&kyselyid=".$_GET['kyselyid']."&viesti=OK!"); die();
 
        }
        else {
 
-          header("Location: muokkaa.php?opettaja=".$_GET["opettaja"]."&kyselyid=".$_GET['kyselyid']."&viesti=yhyy"); die();
+          $p = strlen($syote);
+          header("Location: ".$minne."?opettaja=".$_GET["opettaja"]."&kyselyid=".$_GET['kyselyid']."&viesti=yhyy&p=".$p); die();
 
        }
    ?>

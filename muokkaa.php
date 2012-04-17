@@ -10,50 +10,16 @@
    <?php
        $yhteys = db::getDB();
 
-///// HUOM!!!! Lisättävä tyhjä kenttä -tarkastukset
-
-       // Boolean stringiksi, koska booleanit ovat hölmöjä
-       function boolToStr($var) {
-           if($var)
-               return "TRUE";
-           else
-               return "FALSE";
-         }
-
        // Otsikon uudelleennimeäminen
        $sqlnimi = 'UPDATE Kurssikysely SET kknimi = ? WHERE kurssikyselyID = ?';
        $unimi = $yhteys->prepare($sqlnimi);
        $unimi->execute(array($_POST["kknimi"], $_GET["kyselyid"]));
-
-       // Kyselyn tilan muokkaaminen
-       if ($_POST["tila"]) {
-        $b = TRUE;
-       }
-       else {
-        $b = FALSE;
-       }
-       $sqltila = 'UPDATE Kurssikysely SET esilla = ? WHERE kurssikyselyID = ?';
-       $tilaa = $yhteys->prepare($sqltila);
-       $tilaa->execute(array(boolToStr($b), $_GET["kyselyid"]));
 
        // Kyselyn nimi ja tila
        $sqlo = 'SELECT kknimi, esilla FROM Kurssikysely WHERE kurssikyselyID = ?';
        $otsikko = $yhteys->prepare($sqlo);
        $otsikko->execute(array($_GET["kyselyid"]));
        $otsikkov = $otsikko->fetch();
-
-       //Kysymyksen poisto
-       $sql = 'DELETE FROM Kommentti WHERE kysymysID = ?';
-       $poisto = $yhteys->prepare($sql);
-       $poisto->execute(array($_GET["remv"]));
-
-       $sqlv = 'DELETE FROM Vastaus WHERE kysymysID = ?';
-       $poistov = $yhteys->prepare($sqlv);
-       $poistov->execute(array($_GET["remv"]));
-
-       $sqlk = 'DELETE FROM Kysymys WHERE kysymysID = ?';
-       $poistok = $yhteys->prepare($sqlk);
-       $poistok->execute(array($_GET["remv"]));
 
        // Uuden kyselyn jo olemassa olevien kysymysten haku
        $sql1 = 'SELECT kysymys, kysymysID FROM Kysymys WHERE kurssikyselyID = ?';
@@ -70,7 +36,7 @@
    ?>
 
    <!-- Otsikko ja sen muuttaminen -->
-   <h2>Kurssin <?php print $kntulos['nimi'];?>, <?php print $kntulos['periodi'];?>/<?php print $kntulos['vuosi'];?></h2>
+   <h2>Kurssin <?php print $kntulos['nimi'];?> (<?php print $kntulos['periodi'];?>/<?php print $kntulos['vuosi'];?>) kurssikysely</h2>
    <p><b><?php print $otsikkov['kknimi']; ?></b></p>
 
    <form action="muokkaa.php?opettaja=<?php print $_GET['opettaja'];?>&kyselyid=<?php print $_GET['kyselyid'];?>" method="post">
@@ -88,7 +54,7 @@
            ?>
 
               <td><?php print $uudet[$i]['kysymys'];?></td>
-              <td><a href=muokkaa.php?opettaja=<?php print $_GET["opettaja"];?>&&remv=<?php print $uudet[$i]['kysymysid'];?>&&kyselyid=<?php print $_GET["kyselyid"];?>>Poista</a>
+              <td><a href=kpoisto.php?opettaja=<?php print $_GET["opettaja"];?>&&remv=<?php print $uudet[$i]['kysymysid'];?>&&kyselyid=<?php print $_GET["kyselyid"];?>&mista=m>Poista</a>
         </tr>
            <?php } ?>
        </table>
@@ -98,13 +64,16 @@
           if ($_GET["viesti"] == "OK!") {
               print "OK!";
           }
+
           else if ($_GET["viesti"] == "yhyy") {
-              print "<font color='red'>Kysymyksen tallentaminen ei onnistunut.<font color='black'>";
+              print "<font color='red'>Kysymyksen sallittu pituus 1-300 merkkiä - antamasi pituus oli ".$_GET["p"].".";?>
+              <font color='black'>
+   <?php
           }
 
    ?>
    <!-- Uuden kysymyksen lisääminen -->
-   <FORM action="lisaa_kysymys.php?opettaja=<?php print $_GET['opettaja'];?>&kyselyid=<?php print $_GET['kyselyid'];?>" method="post">
+   <FORM action="lisaa_kysymys.php?opettaja=<?php print $_GET['opettaja'];?>&kyselyid=<?php print $_GET['kyselyid'];?>&mista=m" method="post">
       <input type="text" name="ukysymys">
       <input type="submit" value="Lisää kysymys">
    </FORM>  </br></br>
@@ -121,7 +90,7 @@
          }
    ?>
    <p><b>Kyselyn tila: </b><?php print $tila;?></p>
-   <FORM action="muokkaa.php?opettaja=<?php print $_GET['opettaja'];?>&kyselyid=<?php print $_GET['kyselyid'];?>" method="post">
+   <FORM action="muuta_tila.php?opettaja=<?php print $_GET['opettaja'];?>&kyselyid=<?php print $_GET['kyselyid'];?>" method="post">
         <input type="hidden" name="tila" value="<?php print $bo;?>">
         <input type="submit" value="Muuta">
    </FORM>
