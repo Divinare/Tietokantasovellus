@@ -11,10 +11,8 @@
        $yhteys = db::getDB();
 
 ///// HUOM!!!! Lisättävä tyhjä kenttä -tarkastukset
-///// JA korjattava tilaa - aina muokkaa.php:hen tultaessa sivu väittää kyselyjen tilaksi "Piilossa"
 
-
-       // Boolean stringiksi
+       // Boolean stringiksi, koska booleanit ovat hölmöjä
        function boolToStr($var) {
            if($var)
                return "TRUE";
@@ -111,7 +109,7 @@
    <!-- Kyselyn tila (näkyvyys) -->
    <?php
          if ($otsikkov['esilla']) {
-            $tila = "Julkinen";
+            $tila = "Julkaistu";
             $bo = FALSE;
          }
          else {

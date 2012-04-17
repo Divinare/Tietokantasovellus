@@ -36,17 +36,21 @@
 
              if ($k['esilla']) {
                 $tila = 'Julkaistu';
+                $bo = TRUE;
              }
              else {
                 $tila = 'Piilossa';
+                $bo = FALSE;
              }
 
         ?>
 
         <td><?php print $k['kknimi'];?></td>
         <td><?php print $tila;?></td>
-        <td><a href=muokkaa.php?opettaja=<?php print $_GET["opettaja"];?>&kyselyid=<?php print $k['kurssikyselyid']; ?>>Muokkaa</a>
-
+        <td><FORM action="muokkaa.php?opettaja=<?php print $_GET['opettaja'];?>&kyselyid=<?php print $k['kurssikyselyid'];?>" method="post">
+            <input type="hidden" name="tila" value="<?php print $bo;?>">
+            <input type="submit" value="Muokkaa">
+            </FORM>
         </tr>
 
         <?php } ?>
