@@ -35,7 +35,7 @@
                         <tr>
                             <td>Salasana</td>
                             <td>:</td>
-                            <td><input name="salasana" type="text" id="salasana"></td>
+                            <td><input name="salasana" type="password" id="salasana"></td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
