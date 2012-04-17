@@ -55,11 +55,11 @@
        $poistok = $yhteys->prepare($sqlk);
        $poistok->execute(array($_GET["remv"]));
 
-       // Uuden kysymyksen lisääminen tietokantaan
-       $ukysymys = $_POST["ukysymys"];
-       $sql0 = 'INSERT INTO Kysymys VALUES (?, ?)';
-       $lisays = $yhteys->prepare($sql0);
-       $lisays->execute(array($ukysymys, $_GET["kyselyid"]));
+//       // Uuden kysymyksen lisääminen tietokantaan
+//       $ukysymys = $_POST["ukysymys"];
+//       $sql0 = 'INSERT INTO Kysymys VALUES (?, ?)';
+//       $lisays = $yhteys->prepare($sql0);
+//       $lisays->execute(array($ukysymys, $_GET["kyselyid"]));
 
        // Uuden kyselyn jo olemassa olevien kysymysten haku
        $sql1 = 'SELECT kysymys, kysymysID FROM Kysymys WHERE kurssikyselyID = ?';
@@ -101,7 +101,7 @@
        </br>
 
    <!-- Uuden kysymyksen lisääminen -->
-   <FORM action="muokkaa.php?opettaja=<?php print $_GET['opettaja'];?>&kyselyid=<?php print $_GET['kyselyid'];?>" method="post">
+   <FORM action="lisaa_kysymys.php?opettaja=<?php print $_GET['opettaja'];?>&kyselyid=<?php print $_GET['kyselyid'];?>" method="post">
       <input type="text" name="ukysymys">
       <input type="submit" value="Lisää kysymys">
    </FORM>  </br></br>
