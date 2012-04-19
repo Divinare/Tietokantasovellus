@@ -1,9 +1,9 @@
 <?php require_once 'DB.php'; ?>
 <!DOCTYPE html>
 
-  <head>
+<head>
       <meta charset="utf-8">
-      <?php
+    <?php
         $yhteys = db::getDB();
 
        // Äskeiseltä sivulta lähetetyt
@@ -16,12 +16,12 @@
         $kyselytitle = $yhteys->prepare($sql);
         $kyselytitle->execute(array($_GET["kysely"]));
         $htmltitle = $kyselytitle->fetch();
-        ?>
+    ?>
         <title><?php print $htmltitle['kknimi'] ?></title>
 
-  </head>
-  <body>
-      <?php
+</head>
+<body>
+    <?php
 
         // Arvosanat tauluun
         for ($i = 0, $size = sizeof($arvosanat); $i < $size; ++$i) {
@@ -48,8 +48,8 @@
         $kurssi = $yhteys->prepare($sqlkurssi);
         $kurssi->execute();
         $kurssinnimi = $kurssi->fetch();
-      ?>
-       </br></br> <p>Kiitos vastaamisestasi kurssin <?php print $kurssinnimi['nimi']; ?> kurssikyselyyn!</p>
+    ?>
+    </br></br> <p>Kiitos vastaamisestasi kurssin <?php print $kurssinnimi['nimi']; ?> kurssikyselyyn!</p>
 
-  </body>
+</body>
 
