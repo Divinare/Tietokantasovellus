@@ -11,7 +11,12 @@
 <?php
 
    $yhteys = db::getDB();
-   // Tarkistetaan ensin onko kentät täytetty oikein:
+   // Koitetaan hakea sähköposti tietokannasta (kahta samaa sähköpostia ei saa olla)
+   $sql = "SELECT email FROM henkilo WHERE email = ?";
+   $kysely = $yhteys->prepare($sql);
+   $kysely->execute(array($_POST['sposti']));
+   $taulu = $kysely->fetch();
+   // Tarkistetaan onko kentät täytetty oikein
    if (empty($_POST['etu'])) {
    header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=etupuuttui"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
    }
@@ -27,10 +32,13 @@
    }
 
    if (empty($_POST['sposti'])) {
-   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=sähköpuuttui"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
+   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=emailpuuttui"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
    }
    if (strlen($_POST['sposti']) > 30) {
-   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=sähköpitkä"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
+   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=emailpitkä"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
+   }
+   if (strlen($taulu[0][0] > 0)) {
+   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=emailkäytössä"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
    }
    if (empty($_POST['passu'])) {
    header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=salapuuttui"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
@@ -49,7 +57,7 @@
    <b>SALASANA:</b>    <?php echo $_POST['passu']; ?> </br>
    <b>ROOLI:</b>       <?php echo $_POST['rooli']; ?> </br>
 
-   <Form name ='tiedot' Method ='Post' ACTION ='lomakelahetys.php'>
+   <Form name ='tiedot' Method ='Post' ACTION ='lomakelahetys.php?lomakelahetys=<?php print $_GET['lisays']; ?>'>
    <input type='hidden' name='etu' value='<?php print $_POST['etu']; ?>'>
    <input type='hidden' name='suku' value='<?php print $_POST['suku']; ?>'>
    <input type='hidden' name='sposti' value='<?php print $_POST['sposti']; ?>'>
@@ -58,7 +66,6 @@
    <Input type = 'Submit' Name = 'submit' Value = 'Vahvista tiedot'>
    </form>
 
-   <FORM METHOD="LINK" ACTION="hlisays.php">
-   <INPUT TYPE="submit" VALUE="Takaisin">
+   <p><a href=admin.php?admin=<?php print $_GET['lisays']; ?>>Takaisin</a></p>
    </FORM>
 </body>

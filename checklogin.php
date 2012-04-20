@@ -30,8 +30,7 @@
             //session_register("myusername");
             //session_register("mypassword");
             //header("location:login_success.php");
-	    //if ($taulu[0][0] >= 1 && $taulu[0][0] <= 9) {
-	    //if ($rooli[0][0] == "admin") {
+
 	    $a = strcmp($rooli[0][0], "admin");
 	    if ($a == 0) {
 	    header("Location: admin.php?admin=".$taulu[0][0]);

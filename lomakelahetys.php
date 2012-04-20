@@ -10,8 +10,7 @@
 
    <h3>Henkilön lisäys onnistui!</h3>
 
-   <Form name='form1' Method='Post' action='checklogin.php'>
-   <Input type = 'Submit' Name = 'submit' Value = 'Takaisin'>
+   <p><a href=admin.php?admin=<?php print $_GET['lomakelahetys']; ?>>Takaisin</a></p>
 
    <?php
 

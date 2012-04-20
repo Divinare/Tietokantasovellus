@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 <head>
-   <title>Opettajan Lisäys</title>
+   <title>Henkilön Lisäys</title>
    <meta charset="utf-8">
 </head>
 
@@ -36,11 +36,14 @@
    <p>Sähköposti:</p>
     <input type='text' name='sposti' value='<?php print $_GET["sähkö"] ?>'>
    <?php
-   if ($_GET["viesti"] == "sähköpuuttui") {
+   if ($_GET["viesti"] == "emailpuuttui") {
    print "<font color='red'>Et antanut sähköpostia.<font color='black'>";
    }
-   if ($_GET["viesti"] == "sähköpitkä") {
+   if ($_GET["viesti"] == "emailpitkä") {
    print "<font color='red'>Sähköposti oli liian pitkä - sallittu pituus 1-80 merkkiä.<font color='black'>";
+   }
+   if ($_GET["viesti"] == "emailkäytössä") {
+   print "<font color='red'>Sähköposti on jo käytössä.<font color='black'>";
    }
    ?>
 

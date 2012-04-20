@@ -7,11 +7,11 @@
        <body>
           <?php
           $yhteys = db::getDB();
-          $sql = 'SELECT etunimi, sukunimi FROM henkilo WHERE henkiloid =?';
+          $sql = 'SELECT etunimi, sukunimi, rooli FROM henkilo WHERE henkiloid =?';
           $admin = $yhteys->prepare($sql);
           $admin->execute(array($_GET['vaihdasala']));
 	  $nimi = $admin->fetch();
-          echo "<h1>Admin - $nimi[0] $nimi[1]</h1>";
+          echo "<h1>$nimi[2] - $nimi[0] $nimi[1]</h1>";
 	  ?>
           <Form name ='salasanat' Method ='Post' ACTION ='svaihto.php?svaihto=<?php print $_GET['vaihdasala']; ?>'>
 
