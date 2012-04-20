@@ -47,17 +47,6 @@
            }
       ?>
 
-      <p>Sähköposti:</p>
-      <input type='text' name='sposti' value='<?php print $_GET["sähkö"] ?>'>
-      <?php
-           if ($_GET["viesti"] == "sähköpuuttui") {
-                print "<font color='red'>Et antanut sähköpostia.<font color='black'>";
-           }
-           if ($_GET["viesti"] == "sähköpitkä") {
-                print "<font color='red'>Sähköposti oli liian pitkä - sallittu pituus 1-80 merkkiä.<font color='black'>";
-           }
-      ?>
-
       <p>Salasana:</p>
       <input type='password' name='passu'>
       <?php
@@ -78,7 +67,7 @@
       <p>Rooli:</p>
       <input type="radio" name="rooli" value="opettaja" checked> Opettaja </br>
       <input type="radio" name="rooli" value="admin"> Admin </br>
-      <input type="radio" name="rooli" value="vastuuhenkilö"> Laitoksen Vastuuhenkilö </br>
+      <input type="radio" name="rooli" value="vastuuhenkilö"> Laitoksen vastuuhenkilö </br>
 
       <Input type = 'Submit' Name = 'submit' Value = 'Lähetä'>
 

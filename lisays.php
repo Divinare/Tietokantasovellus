@@ -51,11 +51,11 @@
    }
    ?>
    <h2>Vahvista alla olevat tiedot:</h2>
-   <b>ETUNIMI:</b>     <?php echo $_POST['etu']; ?> </br>
-   <b>SUKUNIMI:</b>    <?php echo $_POST['suku']; ?> </br>
-   <b>SÄHKÖPOSTI:</b>  <?php echo $_POST['sposti']; ?> </br>
-   <b>SALASANA:</b>    <?php echo $_POST['passu']; ?> </br>
-   <b>ROOLI:</b>       <?php echo $_POST['rooli']; ?> </br>
+   <b>ETUNIMI:</b>     <?php print $_POST['etu']; ?> </br>
+   <b>SUKUNIMI:</b>    <?php print $_POST['suku']; ?> </br>
+   <b>SÄHKÖPOSTI:</b>  <?php print $_POST['sposti']; ?> </br>
+   <b>SALASANA:</b>    <?php for ($i = 1; $i <= strlen($_POST['passu']); $i++) { print '*'; } ?> </br>
+   <b>ROOLI:</b>       <?php print $_POST['rooli']; ?> </br>
 
    <Form name ='tiedot' Method ='Post' ACTION ='lomakelahetys.php?lomakelahetys=<?php print $_GET['lisays']; ?>'>
    <input type='hidden' name='etu' value='<?php print $_POST['etu']; ?>'>
