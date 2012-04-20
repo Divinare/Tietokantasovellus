@@ -5,21 +5,18 @@
    <title> Kurssikysely </title>
    <meta charset="utf-8">
 </head>
-        <body>
-
-          <?php
+   <h1>Käynnissä olevat kurssikyselyt</h1></br>
+       <?php
              $yhteys = db::getDB();
-             echo "<h1>Käynnissä olevat kurssikyselyt</h1></br>";
-
 
              $kysely = 'SELECT kurssikyselyid, kknimi FROM Kurssikysely ORDER BY kknimi';
              foreach ($yhteys->query($kysely) as $tulos) {
                 print "<a href=kysely.php?kysely=".$tulos['kurssikyselyid'].">".$tulos['kknimi']."</a>"."</br>";
              }
 
-          ?>
-        <br>
-        <table width="300" border="0" align="left" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
+       ?>
+       <br><br>
+       <table width="300" border="0" align="left" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
             <tr>
             <form name="form1" method="post" action="checklogin.php">
                 <td>
@@ -47,10 +44,7 @@
                 </form>
             </tr>
         </table>
-        <br></br>
-	<br></br>
-	<br></br>
-	<br></br>
+        </br></br></br></br></br></br></br></br></br></br></br>
         <?php
 	// kokeiluja:
 	//$kirjautuminenn = True;
