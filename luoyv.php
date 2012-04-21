@@ -23,7 +23,7 @@
         $kokok = sizeof($kysymykset);
 
         for ($i = 0; $i < $kokok; $i++) {
-	   echo $kysymykset[$i][0];
+	   echo $kysymykset[$i][0]."<br>";
 	   // Vastausten haku
 	   $sqlv = 'SELECT vastausarvo FROM vastaus WHERE kysymysid = ?';
 	   $sqlv2 = $yhteys->prepare($sqlv);
@@ -44,13 +44,13 @@
 	     if ($vastaukset[$j][0] == 2) {
 	        $b++;
              }
-             if ($vastaukset[$j][0] == 2) {
+             if ($vastaukset[$j][0] == 3) {
                 $c++;
              }
-             if ($vastaukset[$j][0] == 2) {
+             if ($vastaukset[$j][0] == 4) {
                 $d++;
              }
-             if ($vastaukset[$j][0] == 2) {
+             if ($vastaukset[$j][0] == 5) {
                 $e++;
              }
            }
@@ -61,10 +61,33 @@
            $maara4 = ($d/$kokov)*100;
            $maara5 = ($e/$kokov)*100;
            echo "5: ";
-           for($ee = 0; $ee < $e; $ee++) {
+           for ($ee = 0; $ee < $maara5/2; $ee++) {
                echo "•";
            }
+	   // intval muuttaa doublen intiksi
+	   echo " (".intval((($e/$kokov)*100))."%)"."<br>";
+	   echo "4: ";
+	   for ($dd = 0; $dd < $maara4/2; $dd++) {
+               echo "•";
+           }
+	   echo " (".intval((($d/$kokov)*100))."%)"."<br>";
+	   echo "3: ";
+	   for ($cc = 0; $cc < $maara3/2; $cc++) {
+	       echo "•";
+	   }
+	   echo " (".intval((($c/$kokov)*100))."%)"."<br>";
+	   echo "2: ";
+           for ($bb = 0; $bb < $maara2/2; $bb++) {
+               echo "•";
+           }
+	   echo " (".intval((($b/$kokov)*100))."%)"."<br>";
+	   echo "1: ";
+           for ($aa = 0; $aa < $maara1/2; $aa++) {
+               echo "•";
+           }
+	   echo " (".intval((($a/$kokov)*100))."%)"."<br>";
+	   echo "Vastauksia yhteensä: ".$kokov."<br><br>";
         }
-
-     ?>
+      ?>
+     <p><a href=yhteenveto.php?yhteenveto=<?php print $_GET['henkiloid']; ?>>Takaisin</a></p>
 </body>
