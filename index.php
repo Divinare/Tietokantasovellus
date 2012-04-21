@@ -15,6 +15,7 @@
              }
 
        ?>
+<body>
        <br><br>
        <table width="300" border="0" align="left" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
             <tr>
@@ -44,13 +45,10 @@
                 </form>
             </tr>
         </table>
-        </br></br></br></br></br></br></br></br></br></br></br>
+        </br></br></br></br></br></br></br></br>
         <?php
-	// kokeiluja:
-	//$kirjautuminenn = True;
-	//$kirjautuminen = $_POST['kirjautuminen'];
-	//if ($kirjautuminen == False) {
-        //echo $email;
-	//}
+             if ($_GET["m"] == "kurjuus") {
+                print "<font color='red'><p>Antamasi käyttäjätunnus ja salasana eivät täsmää.</p>";
+             }
         ?>
-        </body>
+</body>
