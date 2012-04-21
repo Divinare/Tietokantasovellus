@@ -1,7 +1,7 @@
 <?php require_once 'DB.php'; ?>
 <!DOCTYPE html>
 <head>
-   <title>Admin - Greippikysely</title>
+   <title>Vastuuhenkilö - Greippikysely</title>
    <meta charset="utf-8">
 </head>
        <body>
@@ -14,4 +14,8 @@
           echo "<h1>Laitoksen vastuuhenkilö - $nimi[0] $nimi[1]</h1>";
           ?>
           <p> <a href=vaihdasala.php?vaihdasala=<?php print $_GET["vastuuhenkilö"]; ?>>Salasanan vaihto</a></p>
+
+          <p> <a href=yhteenveto.php?yhteenveto=<?php print $_GET["vastuuhenkilö"]; ?>>Yhteenveto</a></p>
+
+
        </body>
