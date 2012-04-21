@@ -54,11 +54,11 @@ kommenttiID serial NOT NULL,
 PRIMARY KEY (kommenttiID),
 FOREIGN KEY (kysymysID) REFERENCES Kysymys
 );
-INSERT INTO henkilo VALUES ('Jenna', 'Lindh', 'jelindh@cs.helsinki.fi', 'broileri', 'admin');
-INSERT INTO henkilo VALUES ('Joe', 'Niemi', 'joeniemi@cs.helsinki.fi', 'apina', 'admin');
+INSERT INTO henkilo VALUES ('Jenna', 'Lindh', 'jippii', 'broileri', 'admin');
+INSERT INTO henkilo VALUES ('Joe', 'Niemi', 'jihuu', 'apina', 'admin');
 INSERT INTO henkilo VALUES ('testihenkilö', 'testaaja', '1', '1', 'admin');
 
-INSERT INTO henkilo VALUES ('Leidi', 'Lol', 'joeniemi@cs.helsinki.fi', 'haha', 'opettaja');
+INSERT INTO henkilo VALUES ('Leidi', 'Lol', 'roflmao', 'haha', 'opettaja');
 INSERT INTO henkilo VALUES ('Arto', 'Wikla', 'wikla', 'roskienkeraaja', 'opettaja');
 INSERT INTO henkilo VALUES ('testihenkilö2', 'testaaja2', '2', '2', 'opettaja');
 
