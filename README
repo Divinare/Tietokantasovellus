@@ -2,3 +2,17 @@ Tämä on Tietokantasovellus-kurssin harjoitustyö. Aiheena kurssikysely.
 Linkit:
 http://joeniemi.users.cs.helsinki.fi/
 http://jelindh.users.cs.helsinki.fi/
+
+
+
+TO DO
+- salasanan pituuden tarkastaminen
+- palkkiotsikoiden läpikäynti
+- koodin siistiminen ja sisennykset
+- koodin yhdenmukaisuus
+- ulkoasu
+- uloskirjautuminen
+- salasananvaihtovirheilmoitus
+- henkilön poisto
+- henkilötietojen muuttaminen
+- Back-linkkien tai -nappuloiden lisäily
