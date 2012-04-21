@@ -1,4 +1,7 @@
-<?php require_once 'DB.php'; ?>
+<?php
+    require_once 'DB.php';
+    session_start();
+?>
 <!DOCTYPE html>
 
 <head>
@@ -7,6 +10,12 @@
 </head>
 
 <body>
+
+   <?php
+    // Istuntotarkastus
+    if ($_SESSION["ihminen"] == $_GET["hlisays"]) {
+   ?>
+
    <h1>Henkilön Lisäys</h1>
 
    <Form name ='henkilotiedot' Method ='Post' ACTION ='lisays.php?lisays=<?php print $_GET['hlisays']; ?>'>
@@ -74,4 +83,15 @@
       <p><a href=admin.php?admin=<?php print $_GET['hlisays']; ?>>Takaisin</a></p>
 
    </form>
+
+   <?php
+
+    }
+
+   // Istuntotarkastus failaa
+   else {
+      header("Location: access_denied.php"); die();
+    }
+?>
+
 </body>

@@ -1,4 +1,7 @@
-<?php require_once 'DB.php'; ?>
+<?php
+    require_once 'DB.php';
+    session_start();
+ ?>
 <!DOCTYPE html>
 
 <head>
@@ -11,46 +14,52 @@
 <?php
 
    $yhteys = db::getDB();
-   // Koitetaan hakea sähköposti tietokannasta (kahta samaa sähköpostia ei saa olla)
-   $sql = "SELECT email FROM henkilo WHERE email = ?";
-   $kysely = $yhteys->prepare($sql);
-   $kysely->execute(array($_POST['sposti']));
-   $taulu = $kysely->fetch();
-   // Tarkistetaan onko kentät täytetty oikein
-   if (empty($_POST['etu'])) {
-   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=etupuuttui"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
-   }
-   if (strlen($_POST['etu']) > 30) {
-   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=etupitkä"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
-   }
 
-   if (empty($_POST['suku'])) {
-   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=sukupuuttui"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
-   }
-   if (strlen($_POST['suku']) > 30) {
-   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=sukupitkä"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
-   }
+   if ($_SESSION["ihminen"] == $_GET["lisays"]) {
 
-   if (empty($_POST['sposti'])) {
-   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=emailpuuttui"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
-   }
-   if (strlen($_POST['sposti']) > 30) {
-   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=emailpitkä"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
-   }
-   if (strlen($taulu[0][0] > 0)) {
-   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=emailkäytössä"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
-   }
-   if (empty($_POST['passu'])) {
-   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=salapuuttui"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
-   }
-   if (strlen($_POST['passu']) > 30) {
-   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=salapitkä"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
-   }
-   if ($_POST['passu'] != $_POST['passu2']) {
-   header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=salateitäsmää"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
-   }
-   ?>
-   <h2>Vahvista alla olevat tiedot:</h2>
+
+     // Koetetaan hakea sähköposti tietokannasta (kahta samaa sähköpostia ei saa olla)
+     $sql = "SELECT email FROM henkilo WHERE email = ?";
+     $kysely = $yhteys->prepare($sql);
+     $kysely->execute(array($_POST['sposti']));
+     $taulu = $kysely->fetch();
+
+     // Tarkistetaan onko kentät täytetty oikein
+     if (empty($_POST['etu'])) {
+        header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=etupuuttui"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
+     }
+     if (strlen($_POST['etu']) > 30) {
+        header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=etupitkä"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
+     }
+
+     if (empty($_POST['suku'])) {
+        header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=sukupuuttui"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
+     }
+     if (strlen($_POST['suku']) > 30) {
+        header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=sukupitkä"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
+     }
+
+     if (empty($_POST['sposti'])) {
+        header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=emailpuuttui"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
+     }
+     if (strlen($_POST['sposti']) > 30) {
+        header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=emailpitkä"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
+     }
+     if (strlen($taulu[0][0] > 0)) {
+        header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=emailkäytössä"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
+     }
+     if (empty($_POST['passu'])) {
+        header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=salapuuttui"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
+     }
+     if (strlen($_POST['passu']) > 30) {
+        header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=salapitkä"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
+     }
+     if ($_POST['passu'] != $_POST['passu2']) {
+        header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=salateitäsmää"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
+     }
+?>
+<body>
+   <h2>Vahvista alla olevat tiedot</h2>
    <b>ETUNIMI:</b>     <?php print $_POST['etu']; ?> </br>
    <b>SUKUNIMI:</b>    <?php print $_POST['suku']; ?> </br>
    <b>SÄHKÖPOSTI:</b>  <?php print $_POST['sposti']; ?> </br>
@@ -69,3 +78,9 @@
    <p><a href=admin.php?admin=<?php print $_GET['lisays']; ?>>Takaisin</a></p>
    </FORM>
 </body>
+<?php
+   }
+   else {
+      header("Location: access_denied.php"); die();
+   }
+?>

@@ -1,11 +1,17 @@
-<?php require_once 'DB.php'; ?>
+<?php
+    require_once 'DB.php';
+    session_start();
+?>
 <!DOCTYPE html>
 <head>
    <title>Opettaja - Greippikysely</title>
    <meta charset="utf-8">
 </head>
-       <body>
-         <?php
+  <body>
+    <?php
+       // Istuntotarkastus
+       if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
+
           $yhteys = db::getDB();
           $sql = 'SELECT etunimi, sukunimi FROM henkilo WHERE henkiloid = ?';
           $kyselyopettaja = $yhteys->prepare($sql);
@@ -59,5 +65,13 @@
         <p> <a href=valitse_kurssi.php?opettaja=<?php print $_GET["opettaja"]; ?>>Luo uusi kysely</a></p>
 
         <p> <a href=vaihdasala.php?vaihdasala=<?php print $_GET["opettaja"]; ?>>Salasanan vaihto</a></p>
-</body>
 
+        <?php
+          }
+          // Istuntotarkastus failaa
+          else {
+              header("Location: access_denied.php"); die();
+          }
+        ?>
+
+</body>

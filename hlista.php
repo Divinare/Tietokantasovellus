@@ -1,4 +1,7 @@
-<?php require_once 'DB.php'; ?>
+<?php
+     require_once 'DB.php';
+     session_start();
+?>
 <!DOCTYPE html>
 <head>
    <title>Admin - Greippikysely</title>
@@ -6,6 +9,9 @@
 </head>
 <body>
     <?php
+
+          if ($_SESSION["ihminen"] == $_GET["hlista"]) {
+
           $yhteys = db::getDB();
 
           // Haetaan käyttäjän nimi otsikkoon
@@ -75,5 +81,13 @@
     ?>
 
     <p> <a href=admin.php?admin=<?php print $_GET["hlista"]; ?>>Takaisin</a></p>
+    <?php
+
+      }
+      // Istuntotarkastus failaa
+      else {
+         header("Location: access_denied.php"); die();
+      }
+    ?>
 
 </body>

@@ -29,11 +29,7 @@
 
    }
     else {
-  ?>
-
-  <p>Istunto ei voimassa - <a href=index.php>kirjaudu sisään</a>.</p>
-
-  <?php
-   }
+      header("Location: access_denied.php"); die();
+    }
   ?>
 </body>

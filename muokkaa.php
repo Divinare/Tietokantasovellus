@@ -59,7 +59,7 @@
            ?>
 
               <td><?php print $uudet[$i]['kysymys'];?></td>
-              <td><a href=kpoisto.php?opettaja=<?php print $_GET["opettaja"];?>&&remv=<?php print $uudet[$i]['kysymysid'];?>&&kyselyid=<?php print $_GET["kyselyid"];?>&mista=m>Poista</a>
+              <td><a href=kpoisto.php?opettaja=<?php print $_GET["opettaja"];?>&remv=<?php print $uudet[$i]['kysymysid'];?>&kyselyid=<?php print $_GET["kyselyid"];?>&mista=m>Poista</a>
         </tr>
            <?php } ?>
        </table>
