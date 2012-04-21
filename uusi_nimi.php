@@ -1,6 +1,11 @@
-<?php require_once 'DB.php';
+<?php
 
-       $yhteys = db::getDB();
+    require_once 'DB.php';
+    session_start();
+    $yhteys = db::getDB();
+
+    if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
+
        $pituus = strlen($_POST["kknimi"]);
 
        if ($_GET["mista"] == u) {
@@ -23,6 +28,10 @@
       else {
 
           header("Location: ".$minne."?opettaja=".$_GET["opettaja"]."&kyselyid=".$_GET['kyselyid']."&viestiots=yhyy&p=".$pituus); die();
-     }
-   ?>
+      }
+   }
+   else {
+      header("Location: access_denied.php"); die();
+   }
+?>
 

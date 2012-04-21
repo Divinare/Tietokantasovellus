@@ -1,37 +1,56 @@
-<?php require_once 'DB.php'; ?>
+<?php
+    require_once 'DB.php';
+    session_start();
+?>
 <!DOCTYPE html>
 <head>
    <title>Admin - Greippikysely</title>
    <meta charset="utf-8">
 </head>
-       <body>
-          <?php
+<body>
+
+     <?php
+
           $yhteys = db::getDB();
-          $sql = 'SELECT etunimi, sukunimi, rooli FROM henkilo WHERE henkiloid =?';
-          $admin = $yhteys->prepare($sql);
-          $admin->execute(array($_GET['vaihdasala']));
-	  $nimi = $admin->fetch();
-          echo "<h1>$nimi[2] - $nimi[0] $nimi[1]</h1>";
-	  ?>
-          <Form name ='salasanat' Method ='Post' ACTION ='svaihto.php?svaihto=<?php print $_GET['vaihdasala']; ?>'>
 
-          <p>Vanha salasana:</p>
-          <input type='text' name='vanha'><p></br>
+          // Istuntotarkastus
+          if ($_SESSION["ihminen"] == $_GET["vaihdasala"]) {
 
-          <p>Uusi salasana:</p>
-          <input type='password' name='uusi'></br></br>
+             $sql = 'SELECT etunimi, sukunimi, rooli FROM henkilo WHERE henkiloid = ?';
+             $admin = $yhteys->prepare($sql);
+             $admin->execute(array($_GET['vaihdasala']));
+             $nimi = $admin->fetch();
+             echo "<h1>$nimi[2] - $nimi[0] $nimi[1]</h1>";
+     ?>
 
-          <p>Vahvista salasana:</p>
-          <input type='password' name='uusi2'></br></br>
+     <Form name ='salasanat' Method ='Post' ACTION ='svaihto.php?svaihto=<?php print $_GET['vaihdasala']; ?>'>
 
-          <Input type = 'Submit' Name = 'submit' Value = 'Vaihda salasanaa'>
-          </form>
-	  <?php
+     <p>Vanha salasana:</p>
+     <input type='text' name='vanha'><p></br>
+
+     <p>Uusi salasana:</p>
+     <input type='password' name='uusi'></br></br>
+
+     <p>Vahvista salasana:</p>
+     <input type='password' name='uusi2'></br></br>
+
+     <Input type = 'Submit' Name = 'submit' Value = 'Vaihda salasanaa'>
+     </form>
+     <?php
           $sql = 'SELECT rooli FROM henkilo WHERE henkiloid = ?';
           $kyselyrooli = $yhteys->prepare($sql);
           $kyselyrooli->execute(array($_GET["vaihdasala"]));
           $rooli = $kyselyrooli->fetch();
-          ?>
-          <p> <a href=<?php print $rooli[0]; ?>.php?<?php print $rooli[0]; ?>=<?php print $_GET['vaihdasala']; ?>>Takaisin</a></p>
+     ?>
 
-       </body>
+     <p> <a href=<?php print $rooli[0]; ?>.php?<?php print $rooli[0]; ?>=<?php print $_GET['vaihdasala']; ?>>Takaisin</a></p>
+
+     <?php
+
+          }
+          // Istuntotarkastus failaa
+          else {
+             header("Location: access_denied.php"); die();
+          }
+     ?>
+</body>

@@ -1,4 +1,7 @@
-<?php require_once 'DB.php'; ?>
+<?php
+     require_once 'DB.php';
+     session_start();
+?>
 <!DOCTYPE html>
 <head>
    <title>Uusi kysely - Kurssi</title>
@@ -10,10 +13,13 @@
 
     <?php
           $yhteys = db::getDB();
-          $sql = 'SELECT nimi, vuosi, periodi, kurssiID FROM kurssi WHERE henkiloID = ?';
-          $kurssi = $yhteys->prepare($sql);
-          $kurssi->execute(array($_GET["opettaja"]));
-          $kurssit = $kurssi->fetchAll();
+
+          if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
+
+              $sql = 'SELECT nimi, vuosi, periodi, kurssiID FROM kurssi WHERE henkiloID = ?';
+              $kurssi = $yhteys->prepare($sql);
+              $kurssi->execute(array($_GET["opettaja"]));
+              $kurssit = $kurssi->fetchAll();
     ?>
 
     <table border="0" cellpadding="3">
@@ -45,4 +51,11 @@
        </br></br>
        <a href=kurssi.php?opettaja=<?php print $_GET["opettaja"]?>>Lisää uusi kurssi</a>
 
+      <?php
+
+          }
+          else {
+             header("Location: access_denied.php"); die();
+          }
+      ?>
 </body>

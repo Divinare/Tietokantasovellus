@@ -1,4 +1,7 @@
-<?php require_once 'DB.php'; ?>
+<?php
+    require_once 'DB.php';
+    session_start();
+?>
 <!DOCTYPE html>
 
 <head>
@@ -8,25 +11,27 @@
 <body>
 
    <?php
+
        $yhteys = db::getDB();
+       if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
-       // Kyselyn nimi ja tila
-       $sqlo = 'SELECT kknimi, esilla FROM Kurssikysely WHERE kurssikyselyID = ?';
-       $otsikko = $yhteys->prepare($sqlo);
-       $otsikko->execute(array($_GET["kyselyid"]));
-       $otsikkov = $otsikko->fetch();
+          // Kyselyn nimi ja tila
+          $sqlo = 'SELECT kknimi, esilla FROM Kurssikysely WHERE kurssikyselyID = ?';
+          $otsikko = $yhteys->prepare($sqlo);
+          $otsikko->execute(array($_GET["kyselyid"]));
+          $otsikkov = $otsikko->fetch();
 
-       // Uuden kyselyn jo olemassa olevien kysymysten haku
-       $sql1 = 'SELECT kysymys, kysymysID FROM Kysymys WHERE kurssikyselyID = ?';
-       $uusi = $yhteys->prepare($sql1);
-       $uusi->execute(array($_GET["kyselyid"]));
-       $uudet = $uusi->fetchAll();
+          // Uuden kyselyn jo olemassa olevien kysymysten haku
+          $sql1 = 'SELECT kysymys, kysymysID FROM Kysymys WHERE kurssikyselyID = ?';
+          $uusi = $yhteys->prepare($sql1);
+          $uusi->execute(array($_GET["kyselyid"]));
+          $uudet = $uusi->fetchAll();
 
-       //  Mihin kurssiin kysely liittyy
-       $sqlkurssi = 'SELECT nimi, vuosi, periodi FROM Kurssi INNER JOIN Kurssikysely ON Kurssikysely.kurssiID = Kurssi.kurssiID WHERE kurssikyselyID = ?';
-       $kurssinimi = $yhteys->prepare($sqlkurssi);
-       $kurssinimi->execute(array($_GET["kyselyid"]));
-       $kntulos = $kurssinimi->fetch();
+          //  Mihin kurssiin kysely liittyy
+          $sqlkurssi = 'SELECT nimi, vuosi, periodi FROM Kurssi INNER JOIN Kurssikysely ON Kurssikysely.kurssiID = Kurssi.kurssiID WHERE kurssikyselyID = ?';
+          $kurssinimi = $yhteys->prepare($sqlkurssi);
+          $kurssinimi->execute(array($_GET["kyselyid"]));
+          $kntulos = $kurssinimi->fetch();
 
    ?>
 
@@ -109,5 +114,12 @@
 
    <!-- Paluulinkki -->
    <a href=opettaja.php?opettaja=<?php print $_GET["opettaja"];?>>Takaisin</a>
+
+   <?php
+      }
+      else {
+          header("Location: access_denied.php"); die();
+     }
+   ?>
 
 </body>

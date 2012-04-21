@@ -1,4 +1,7 @@
-<?php require_once 'DB.php'; ?>
+<?php
+    require_once 'DB.php';
+    session_start();
+?>
 <!DOCTYPE html>
 
 <head>
@@ -10,30 +13,32 @@
    <?php
        $yhteys = db::getDB();
 
-       // Kyselyn otsikko/nimi
-       $sqlo = 'SELECT kknimi FROM Kurssikysely WHERE kurssikyselyID = ?';
-       $otsikko = $yhteys->prepare($sqlo);
-       $otsikko->execute(array($_GET["kyselyid"]));
-       $otsikkov = $otsikko->fetch();
+       if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
-       // Uuden kyselyn jo olemassa olevien kysymysten haku
-       $sql1 = 'SELECT kysymys, kysymysID FROM Kysymys WHERE kurssikyselyID = ?';
-       $uusi = $yhteys->prepare($sql1);
-       $uusi->execute(array($_GET["kyselyid"]));
-       $uudet = $uusi->fetchAll();
+          // Kyselyn otsikko/nimi
+          $sqlo = 'SELECT kknimi FROM Kurssikysely WHERE kurssikyselyID = ?';
+          $otsikko = $yhteys->prepare($sqlo);
+          $otsikko->execute(array($_GET["kyselyid"]));
+          $otsikkov = $otsikko->fetch();
+
+          // Uuden kyselyn jo olemassa olevien kysymysten haku
+          $sql1 = 'SELECT kysymys, kysymysID FROM Kysymys WHERE kurssikyselyID = ?';
+          $uusi = $yhteys->prepare($sql1);
+          $uusi->execute(array($_GET["kyselyid"]));
+          $uudet = $uusi->fetchAll();
    ?>
 
    <!-- Otsikon säätämistä -->
    <h2><?php print $otsikkov[0]; ?></h2>
 
    <?php
-         $viesti = $_GET["viestiots"];
-         if ($viesti == "OK!") {
-            print "OK!";
-         }
-         else if ($viesti == "yhyy") {
-            print "<font color='red'>Otsikon sallittu pituus 1-50 merkkiä - antamasi pituus oli ".$_GET["p"].".";
-         }
+          $viesti = $_GET["viestiots"];
+          if ($viesti == "OK!") {
+             print "OK!";
+          }
+          else if ($viesti == "yhyy") {
+             print "<font color='red'>Otsikon sallittu pituus 1-50 merkkiä - antamasi pituus oli ".$_GET["p"].".";
+          }
    ?>
    <font color='black'>
    <form action="uusi_nimi.php?opettaja=<?php print $_GET['opettaja'];?>&&kyselyid=<?php print $_GET['kyselyid'];?>&mista=u" method="post">
@@ -81,5 +86,14 @@
 
 
   <!-- POIS! -->
-   <a href=opettaja.php?opettaja=<?php print $_GET["opettaja"];?>>Takaisin</a>
+  <a href=opettaja.php?opettaja=<?php print $_GET["opettaja"];?>>Takaisin</a>
+
+  <?php
+
+    }
+    else {
+        header("Location: access_denied.php"); die();
+     }
+  ?>
+
 </body>
