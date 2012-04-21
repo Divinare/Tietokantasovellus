@@ -64,6 +64,8 @@
         </table>
         <p> <a href=valitse_kurssi.php?opettaja=<?php print $_GET["opettaja"]; ?>>Luo uusi kysely</a></p>
 
+	<p> <a href=yhteenveto.php?yhteenveto=<?php print $_GET["opettaja"]; ?>>Kurssikyselyiden tulokset</a></p>
+
         <p> <a href=vaihdasala.php?vaihdasala=<?php print $_GET["opettaja"]; ?>>Salasanan vaihto</a></p>
 
         <?php

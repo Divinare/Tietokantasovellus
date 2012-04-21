@@ -22,7 +22,11 @@
 
        <h1>Admin - <?php print $etu." ".$suku;?></h1>
           <p> <a href=hlisays.php?hlisays=<?php print $_GET["admin"]; ?>>Henkilön lisäys järjestelmään</a></p>
+
           <p> <a href=hlista.php?hlista=<?php print $_GET["admin"]; ?>>Käyttäjälistat</a></p>
+
+          <p> <a href=yhteenveto.php?yhteenveto=<?php print $_GET["admin"]; ?>>Kurssikyselyiden tulokset</a></p>
+
           <p> <a href=vaihdasala.php?vaihdasala=<?php print $_GET["admin"]; ?>>Salasanan vaihto</a></p>
 
   <?php
