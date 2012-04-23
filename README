@@ -16,7 +16,6 @@ TO DO
 - henkilön poisto
 - henkilötietojen muuttaminen
 - Back-linkkien tai -nappuloiden lisäily
-- Opettajalle "ei kyselyitä" -teksti jos ei kyselyitä
 - Jokaisen tiedoston alkuun kommenteilla mitä se tekee (ellei itsestään selvää)
 - Unohdetaan greippikysely xD
 - Kysymyksiin liittyvien kommenttien käsittely
@@ -25,4 +24,3 @@ TO DO
 - salasanojen kryptaus
 - se joku raportti, jonka opettaja tms. henkilö saa :D
 - yhteenvetoon jokaiseen kysymykseen vastausten keskiarvo, jos ei jo ole
-- Etusivulta mentyihin kyselyihin takaisin nappi ja vastaamisen jälkeen kans takasin nappi

@@ -21,10 +21,13 @@
          <h1>Opettaja - <?php print $nimi[0]." ".$nimi[1];?></h1>
 
          <?php
+          // Valitaan opettajan luomat kyselyt
           $sql2 = 'SELECT kknimi, esilla, kurssikyselyID FROM kurssikysely WHERE henkiloID = ?';
           $kkyselyt = $yhteys->prepare($sql2);
           $kkyselyt->execute(array($_GET["opettaja"]));
           $kyselyt = $kkyselyt->fetchAll();
+
+          if (sizeof($kyselyt) > 0) {
          ?>
 
           <h3>Omat kyselyt</h3>
@@ -62,6 +65,22 @@
         <?php } ?>
 
         </table>
+
+        <?php
+        }
+        else {
+        ?>
+
+        <h3>Omat kyselyt</h3>
+          <table border="0" cellpadding="3">
+            <tr>
+                  <td>(tyhjä)</td>
+            </tr>
+          </table>
+        <?php
+        }
+        ?>
+
         <p> <a href=valitse_kurssi.php?opettaja=<?php print $_GET["opettaja"]; ?>>Luo uusi kysely</a></p>
 
 	<p> <a href=yhteenveto.php?yhteenveto=<?php print $_GET["opettaja"]; ?>>Kurssikyselyiden tulokset</a></p>

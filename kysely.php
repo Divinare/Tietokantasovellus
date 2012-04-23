@@ -13,7 +13,7 @@
    ?>
      <meta charset="utf-8">
 </head>
-       <body>
+<body>
 
               <h1><?php print $htmltitle['kknimi']; ?></h1></br>
 
@@ -42,4 +42,5 @@
 
              <Input type = 'Submit' Name = 'submit' Value = 'Lähetä'>
              </form>
-       </body>
+             <p><a href="index.php">Takaisin</a></p>
+</body>

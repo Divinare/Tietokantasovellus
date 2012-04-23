@@ -49,7 +49,13 @@
         $kurssi->execute();
         $kurssinnimi = $kurssi->fetch();
     ?>
-    </br></br> <p>Kiitos vastaamisestasi kurssin <?php print $kurssinnimi['nimi']; ?> kurssikyselyyn!</p>
+    </br>
+    <h2>Kiitos vastauksistasi kurssin <?php print $kurssinnimi['nimi']; ?> kurssikyselyyn!</h2>
+    </br>
+    <img src="KIITOS.png" width="614" height="568" alt=":)">
+    </br>
+    </p><a href="index.php">Etusivulle</a></p>
+
 
 </body>
 
