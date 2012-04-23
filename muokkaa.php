@@ -13,6 +13,7 @@ session_start();
     <?php
     $yhteys = db::getDB();
 
+    // Istuntotarkastus
     if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
         // Kyselyn nimi ja tila
@@ -39,76 +40,77 @@ session_start();
         <p><b><?php print $otsikkov['kknimi']; ?></b></p>
 
         <?php
-////asdfoolo
- if (! $otsikkov["ollutesilla"]) {
+        // Jos kysely on jo ollut esillä...
+        if (!$otsikkov["ollutesilla"]) {
 
 
-        $viesti = $_GET["viestiots"];
-        if ($viesti == "OK!") {
-            print "OK!";
-        } else if ($viesti == "yhyy") {
-            print "<font color='red'>Otsikon sallittu pituus 1-50 merkkiä - antamasi pituus oli " . $_GET["p"] . ".";
-        }
-        ?>
-        <font color='black'>
-        <form action="uusi_nimi.php?opettaja=<?php print $_GET['opettaja']; ?>&kyselyid=<?php print $_GET['kyselyid']; ?>&mista=m" method="post">
-            <input type="text" name="kknimi">
-            <input type="submit" value = "Muuta nimeä">
-        </form> </br></br>
-
-
-
-
-        <!-- Kyselyssä olevat kysymykset ja niiden poistolinkki-->
-        <table border="0" cellpadding="3">
-            <th align="left">Tallennetut kysymykset</th>
-            <tr>
-                <?php
-                for ($i = 0, $size = sizeof($uudet); $i < $size; ++$i) {
-                    ?>
-
-                    <td><?php print $uudet[$i]['kysymys']; ?></td>
-                    <td><a href=kpoisto.php?opettaja=<?php print $_GET["opettaja"]; ?>&remv=<?php print $uudet[$i]['kysymysid']; ?>&kyselyid=<?php print $_GET["kyselyid"]; ?>&mista=m>Poista</a>
-                </tr>
-            <?php } ?>
-        </table>
-        </br>
-
-        <?php
-        if ($_GET["viesti"] == "OK!") {
-            print "OK!";
-        } else if ($_GET["viesti"] == "yhyy") {
-            print "<font color='red'>Kysymyksen sallittu pituus 1-300 merkkiä - antamasi pituus oli " . $_GET["p"] . ".";
+            $viesti = $_GET["viestiots"];
+            if ($viesti == "OK!") {
+                print "OK!";
+            } else if ($viesti == "yhyy") {
+                print "<font color='red'>Otsikon sallittu pituus 1-50 merkkiä - antamasi pituus oli " . $_GET["p"] . ".";
+            }
             ?>
             <font color='black'>
+            <form action="uusi_nimi.php?opettaja=<?php print $_GET['opettaja']; ?>&kyselyid=<?php print $_GET['kyselyid']; ?>&mista=m" method="post">
+                <input type="text" name="kknimi">
+                <input type="submit" value = "Muuta nimeä">
+            </form> </br></br>
+
+
+            <!-- Kyselyssä olevat kysymykset ja niiden poistolinkki-->
+            <table border="0" cellpadding="3">
+                <th align="left">Tallennetut kysymykset</th>
+                <tr>
+                    <?php
+                    for ($i = 0, $size = sizeof($uudet); $i < $size; ++$i) {
+                        ?>
+
+                        <td><?php print $uudet[$i]['kysymys']; ?></td>
+                        <td><a href=kpoisto.php?opettaja=<?php print $_GET["opettaja"]; ?>&remv=<?php print $uudet[$i]['kysymysid']; ?>&kyselyid=<?php print $_GET["kyselyid"]; ?>&mista=m>Poista</a>
+                    </tr>
+                <?php } ?>
+            </table>
+            </br>
+
+            <?php
+            if ($_GET["viesti"] == "OK!") {
+                print "OK!";
+            } else if ($_GET["viesti"] == "yhyy") {
+                print "<font color='red'>Kysymyksen sallittu pituus 1-300 merkkiä - antamasi pituus oli " . $_GET["p"] . ".";
+                ?>
+                <font color='black'>
+                <?php
+            }
+            ?>
+            <!-- Uuden kysymyksen lisääminen -->
+            <FORM action="lisaa_kysymys.php?opettaja=<?php print $_GET['opettaja']; ?>&kyselyid=<?php print $_GET['kyselyid']; ?>&mista=m" method="post">
+                <input type="text" name="ukysymys">
+                <input type="submit" value="Lisää kysymys">
+            </FORM> </br></br>
+            
+            
+            <?php
+          // Jos kysely ei vielä ole ollut esillä...    
+        } else {
+            ?>
+            <!-- Kyselyssä olevat kysymykset-->
+            <table border="0" cellpadding="3">
+                <th align="left">Tallennetut kysymykset</th>
+                <tr>
+                    <?php
+                    for ($i = 0, $size = sizeof($uudet); $i < $size; ++$i) {
+                        ?>
+
+                        <td><?php print $uudet[$i]['kysymys']; ?></td>
+                    </tr>
+                <?php } ?>
+            </table>
+            </br>
+
             <?php
         }
         ?>
-        <!-- Uuden kysymyksen lisääminen -->
-        <FORM action="lisaa_kysymys.php?opettaja=<?php print $_GET['opettaja']; ?>&kyselyid=<?php print $_GET['kyselyid']; ?>&mista=m" method="post">
-            <input type="text" name="ukysymys">
-            <input type="submit" value="Lisää kysymys">
-        </FORM> </br></br>
-<?php
-}
-else { ?>
- <!-- Kyselyssä olevat kysymykset-->
-        <table border="0" cellpadding="3">
-            <th align="left">Tallennetut kysymykset</th>
-            <tr>
-                <?php
-                for ($i = 0, $size = sizeof($uudet); $i < $size; ++$i) {
-                    ?>
-
-                    <td><?php print $uudet[$i]['kysymys']; ?></td>
-                </tr>
-            <?php } ?>
-        </table>
-        </br>
-
-<?php
-}
-?>
 
         <!-- Kyselyn tila (näkyvyys) ja sen muuttaminen-->
         <?php
@@ -132,7 +134,7 @@ else { ?>
         <input type="hidden" name="poisto" value="<?php print $_GET['kyselyid']; ?>">
         <input type="submit" value="Poista">
         </FORM> </br></br>
-
+        
         <!-- Paluulinkki -->
         <a href=opettaja.php?opettaja=<?php print $_GET["opettaja"]; ?>>Takaisin</a>
 
