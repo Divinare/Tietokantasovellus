@@ -23,13 +23,13 @@
           // Haetaan tietokannasta kaikki adminit, opettajat ja laitosvastuuhenkilöt taulukoihin
           $kysely = 'SELECT etunimi, sukunimi, email, rooli, henkiloID FROM henkilo WHERE rooli = ?';
           $kyselyadmin = $yhteys->prepare($kysely);
-// Admin
+          // Admin
           $kyselyadmin->execute(array(admin));
           $nimiT = $kyselyadmin->fetchAll();
-// Ope
+           // Ope
           $kyselyadmin->execute(array(opettaja));
           $Opettajat = $kyselyadmin->fetchAll();
-// V-hlö
+          // V-hlö
           $kyselyadmin->execute(array(vastuuhenkilö));
           $Vastuuhenkilöt = $kyselyadmin->fetchAll();
 
@@ -44,13 +44,14 @@
        for ($rooli = 1; $rooli < 4; $rooli++) {
    ?>
           <h3>Käyttäjälista <?php print $nimi ?></h3>
-          <table border="5" cellpadding="5">
+          <table border="2" cellpadding="1">
              <tr>
                 <th align = left>Etunimi</th>
    	        <th align = left>Sukunimi</h>
                 <th align = left>Sähköposti</th>
     	        <th align = left>Rooli</th>
     	        <th align = left>HenkilöID</th>
+	        <th  </th>
              </tr>
              <tr>
     <?php
@@ -61,6 +62,9 @@
 	           <td><?php print $nimiT[$i][2];?></td>
                    <td><?php print $nimi2;?></td>
                    <td><?php print $nimiT[$i][4];?></td>
+                   <td><FORM action="muokkaah.php?admin=<?php print $_GET['hlista'];?>&henkiloid=<?php print $nimiT[$i][4];?>" method="post">
+                       <input type="submit" value="Muokkaa">
+                       </FORM></td>
              </tr>
     <?php
                 }
