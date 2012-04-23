@@ -9,7 +9,7 @@ CREATE TABLE Henkilo (
 etunimi varchar(30) NOT NULL,
 sukunimi varchar(30) NOT NULL,
 email varchar(80) NOT NULL,
-salasana varchar(15) NOT NULL,
+salasana varchar(60) NOT NULL,
 rooli varchar(30) NOT NULL,
 henkiloID serial NOT NULL,
 PRIMARY KEY (henkiloID)
@@ -55,16 +55,16 @@ kommenttiID serial NOT NULL,
 PRIMARY KEY (kommenttiID),
 FOREIGN KEY (kysymysID) REFERENCES Kysymys
 );
-INSERT INTO henkilo VALUES ('Jenna', 'Lindh', 'jippii', 'broileri', 'admin');
-INSERT INTO henkilo VALUES ('Joe', 'Niemi', 'jihuu', 'apina', 'admin');
-INSERT INTO henkilo VALUES ('testihenkilö', 'testaaja', '1', '1', 'admin');
+INSERT INTO henkilo VALUES ('Jenna', 'Lindh', 'jippii', '221c0a20e7a30c2835c1b3fcaa432e7a', 'admin');
+INSERT INTO henkilo VALUES ('Joe', 'Niemi', 'jihuu', '48ece95de0e6393b476eaac1bbeb1390', 'admin');
+INSERT INTO henkilo VALUES ('testihenkilö', 'testaaja', '1', 'cf749c3d7f3e6251e1eed022c2c88a5a', 'admin');
 
-INSERT INTO henkilo VALUES ('Leidi', 'Lol', 'roflmao', 'haha', 'opettaja');
-INSERT INTO henkilo VALUES ('Arto', 'Wikla', 'wikla', 'roskienkeraaja', 'opettaja');
-INSERT INTO henkilo VALUES ('testihenkilö2', 'testaaja2', '2', '2', 'opettaja');
+INSERT INTO henkilo VALUES ('Leidi', 'Lol', 'roflmao', '1fc1f6ee27300e5533aa172e727c4e33', 'opettaja');
+INSERT INTO henkilo VALUES ('Arto', 'Wikla', 'wikla', '56f5f303e29b42dd212a56dd60bd2521', 'opettaja');
+INSERT INTO henkilo VALUES ('testihenkilö2', 'testaaja2', '2', '29623418a18355aad1fd430208110931', 'opettaja');
 
-INSERT INTO henkilo VALUES ('Jorma', 'Uotinen', 'luukku', 'lol', 'vastuuhenkilö');
-INSERT INTO henkilo VALUES ('testihenkilö3', 'testaaja3', '3', '3', 'vastuuhenkilö');
+INSERT INTO henkilo VALUES ('Jorma', 'Uotinen', 'luukku', 'bb0672262584c582751df3358c795445', 'vastuuhenkilö');
+INSERT INTO henkilo VALUES ('testihenkilö3', 'testaaja3', '3', 'fc9f7a3782985cf2998bc25e27f24c2e', 'vastuuhenkilö');
 
 INSERT INTO kurssi VALUES (4, 'Ohjelmoinnin perusteet', 4, 2012);
 INSERT INTO kurssi VALUES (4, 'Ohjelmoinnin jatkokurssi', 3, 2012);

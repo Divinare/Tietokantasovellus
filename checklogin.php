@@ -10,15 +10,19 @@
 </head>
 <?php
 
-        $email = $_POST["email"];
-        $salasana = $_POST["salasana"];
 
 	// Haetaan henkiloID
         $yhteys = db::getDB();
+
+        $salasana = $_POST["salasana"];
+        $tiiviste = md5(md5($salasana."greippejäomnomnom")."lisääsitruksia");
+
+
         $sql = "SELECT henkiloid FROM henkilo WHERE email = ? AND salasana = ?";
        	$kysely = $yhteys->prepare($sql);
-        $kysely->execute(array($email, $salasana));
+        $kysely->execute(array($_POST["email"], $tiiviste));
         $taulu = $kysely->fetch();
+
 
 	// Haetaan henkilön rooli
 	$roolisql = "SELECT rooli FROM henkilo WHERE henkiloid = ?";

@@ -21,10 +21,12 @@
         <p><a href=admin.php?admin=<?php print $_GET['lomakelahetys']; ?>>Takaisin</a></p>
 
    <?php
+        $salasana = $_POST["passu"];
+        $tiiviste = md5(md5($salasana . "greippejäomnomnom")."lisääsitruksia");
 
         $sql = 'INSERT INTO Henkilo values (?, ?, ?, ?, ?)';
         $laita = $yhteys->prepare($sql);
-        $laita->execute(array($_POST['etu'], $_POST['suku'], $_POST['sposti'], $_POST['passu'], $_POST['rooli']));
+        $laita->execute(array($_POST["etu"], $_POST["suku"], $_POST["sposti"], $tiiviste, $_POST["rooli"]));
      }
      else {
           header("Location: access_denied.php"); die();

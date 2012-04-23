@@ -16,22 +16,25 @@
      $yhteys = db::getDB();
 
      if ($_SESSION["ihminen"] == $_GET["svaihto"]) {
-        // Haetaan henkilön vanha salasana tietokannasta
-        $sql = 'SELECT salasana FROM henkilo WHERE henkiloid =?';
-        $sala = $yhteys->prepare($sql);
-        $sala->execute(array($_GET['svaihto']));
-        $vsala = $sala->fetchAll();
 
-        if ($_POST['vanha'] != $vsala[0][0]) {
+        // Haetaan henkilön vanha salasana tietokannasta
+        $sql = 'SELECT salasana FROM henkilo WHERE henkiloid = ?';
+        $sala = $yhteys->prepare($sql);
+        $sala->execute(array($_GET["svaihto"]));
+        $vsala = $sala->fetch();
+
+        $tiiviste = md5(md5($_POST["vanha"]."greippejäomnomnom")."lisääsitruksia");
+
+        if ($tiiviste != $vsala["salasana"]) {
             header("Location: vaihdasala.php?vaihdasala=".$_GET["svaihto"]."&viesti=vanhavaara"); die();
         }
-        if (strlen($_POST['uusi']) > 15) {
+        if (strlen($_POST["uusi"]) > 15) {
             header("Location: vaihdasala.php?vaihdasala=".$_GET["svaihto"]."&viesti=salapitkä"); die();
         }
-        if (strlen($_POST['uusi']) < 8) {
+        if (strlen($_POST["uusi"]) < 8) {
             header("Location: vaihdasala.php?vaihdasala=".$_GET["svaihto"]."&viesti=salalyhyt"); die();
         }
-        if ($_POST['uusi'] != $_POST['uusi2']) {
+        if ($_POST["uusi2"] != $_POST["uusi2"]) {
             header("Location: vaihdasala.php?vaihdasala=".$_GET["svaihto"]."&viesti=salateitäsmää"); die();
         }
    ?>
@@ -39,9 +42,13 @@
 
    <?php
 
+      $salasana = $_POST["uusi"];
+      $tiiviste = md5(md5($salasana . "greippejäomnomnom")."lisääsitruksia");
+
+
       $sqlsala = 'UPDATE Henkilo SET salasana = ? WHERE henkiloID = ?';
       $sqlsala2 = $yhteys->prepare($sqlsala);
-      $sqlsala2->execute(array($_POST['uusi'], $_GET['svaihto']));
+      $sqlsala2->execute(array($tiiviste, $_GET["svaihto"]));
 
 
       $sql = 'SELECT rooli FROM henkilo WHERE henkiloid = ?';
@@ -51,7 +58,7 @@
 
    ?>
 
-   <p> <a href=<?php print $rooli[0]; ?>.php?<?php print $rooli[0]; ?>=<?php print $_GET['svaihto']; ?>>Takaisin</a></p>
+   <p> <a href=<?php print $rooli[0]; ?>.php?<?php print $rooli[0]; ?>=<?php print $_GET["svaihto"]; ?>>Takaisin</a></p>
 
    <?php
 
