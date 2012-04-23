@@ -9,7 +9,7 @@
        <?php
              $yhteys = db::getDB();
 
-             $kysely = 'SELECT kurssikyselyid, kknimi FROM Kurssikysely ORDER BY kknimi';
+             $kysely = 'SELECT kurssikyselyid, kknimi FROM Kurssikysely WHERE esilla = TRUE ORDER BY kknimi';
              foreach ($yhteys->query($kysely) as $tulos) {
                 print "<a href=kysely.php?kysely=".$tulos['kurssikyselyid'].">".$tulos['kknimi']."</a>"."</br>";
              }

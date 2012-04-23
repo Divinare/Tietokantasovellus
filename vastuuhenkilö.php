@@ -1,11 +1,17 @@
-<?php require_once 'DB.php'; ?>
+<?php
+require_once 'DB.php';
+session_start();
+?>
 <!DOCTYPE html>
 <head>
    <title>Vastuuhenkilö</title>
    <meta charset="utf-8">
 </head>
-       <body>
-          <?php
+<body>
+       <?php
+       if ($_SESSION["ihminen"] == $_GET["vastuuhenkilö"]) {
+
+
           $yhteys = db::getDB();
           $sql = 'SELECT etunimi, sukunimi FROM henkilo WHERE henkiloid =?';
           $kyselyadmin = $yhteys->prepare($sql);
@@ -20,4 +26,11 @@
 
           <p> <a href=kulos.php>Kirjaudu ulos</a></p>
 
-      </body>
+       <?php
+       }
+
+       else {
+          header("Location: access_denied.php"); die();
+       }
+       ?>
+</body>
