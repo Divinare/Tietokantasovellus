@@ -26,13 +26,27 @@
      <Form name ='salasanat' Method ='Post' ACTION ='svaihto.php?svaihto=<?php print $_GET['vaihdasala']; ?>'>
 
      <p>Vanha salasana:</p>
-     <input type='text' name='vanha'><p></br>
-
+     <input type='password' name='vanha'>
+     <?php
+     if ($_GET["viesti"] == vanhavaara) {
+         print "<font color='red'>Vanha salasana ei täsmännyt.<font color='black'>";
+	 }
+     ?>
      <p>Uusi salasana:</p>
-     <input type='password' name='uusi'></br></br>
-
+     <input type='password' name='uusi'>
+     <?php
+     if ($_GET["viesti"] == salalyhyt) {
+        print "<font color='red'>Salasanan oltava vähintään 8 merkkiä.<font color='black'>";
+     }
+     if ($_GET["viesti"] == salapitkä) {
+        print "<font color='red'>Salasanan oltava enintään 15 merkkiä.<font color='black'>";
+     }
+     if ($_GET["viesti"] == salateitäsmää) {
+        print "<font color='red'>Salasanat eivät täsmänneet.<font color='black'>";
+     }
+     ?>
      <p>Vahvista salasana:</p>
-     <input type='password' name='uusi2'></br></br>
+     <input type='password' name='uusi2'><br><br>
 
      <Input type = 'Submit' Name = 'submit' Value = 'Vaihda salasanaa'>
      </form>

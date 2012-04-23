@@ -45,7 +45,7 @@
                 </form>
             </tr>
         </table>
-        </br></br></br></br></br></br></br></br>
+        </br></br></br></br></br></br>
         <?php
              if ($_GET["m"] == "kurjuus") {
                 print "<font color='red'><p>Antamasi käyttäjätunnus ja salasana eivät täsmää.</p>";

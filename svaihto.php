@@ -22,23 +22,17 @@
         $sala->execute(array($_GET['svaihto']));
         $vsala = $sala->fetchAll();
 
-        if (empty($_POST['vanha'])) {
-            header('Location: lomakesivu.php?viesti=Vanha%salasana%tyhjä'); die();
-        }
-        if (empty($_POST['uusi'])) {
-            header('Location: lomakesivu.php?viesti=Ensimmäinen%salasana%puuttui'); die();
-        }
-        if (empty($_POST['uusi2'])) {
-            header('Location: lomakesivu.php?viesti=Toinen%salasana%puuttui'); die();
-        }
-        if (strlen($_POST['uusi']) > 30) {
-            header('Location: lomakesivu.php?viesti=uusi%salasana%liian%pitkä'); die();
-        }
         if ($_POST['vanha'] != $vsala[0][0]) {
-            header('Location: lomakesivu.php?viesti=vanha%salasana%oli%väärä'); die();
+            header("Location: vaihdasala.php?vaihdasala=".$_GET["svaihto"]."&viesti=vanhavaara"); die();
+        }
+        if (strlen($_POST['uusi']) > 15) {
+            header("Location: vaihdasala.php?vaihdasala=".$_GET["svaihto"]."&viesti=salapitkä"); die();
+        }
+        if (strlen($_POST['uusi']) < 8) {
+            header("Location: vaihdasala.php?vaihdasala=".$_GET["svaihto"]."&viesti=salalyhyt"); die();
         }
         if ($_POST['uusi'] != $_POST['uusi2']) {
-            header('Location: lomakesivu.php?viesti=uudet%salasanat%eivät%olleet%samoja'); die();
+            header("Location: vaihdasala.php?vaihdasala=".$_GET["svaihto"]."&viesti=salateitäsmää"); die();
         }
    ?>
    <h2>Salasanan vaihto onnistui!</h2>
