@@ -28,6 +28,7 @@ kurssiID integer NOT NULL,
 kknimi varchar(50) NOT NULL,
 henkiloID integer NOT NULL,
 esilla boolean NOT NULL,
+ollutEsilla boolean NOT NULL,
 kurssikyselyID serial NOT NULL,
 PRIMARY KEY (kurssikyselyID),
 FOREIGN KEY (henkiloID) REFERENCES Henkilo,
@@ -69,9 +70,9 @@ INSERT INTO kurssi VALUES (4, 'Ohjelmoinnin perusteet', 4, 2012);
 INSERT INTO kurssi VALUES (4, 'Ohjelmoinnin jatkokurssi', 3, 2012);
 INSERT INTO kurssi VALUES (3, 'Johdatus funktionaaliseen ohjelmointiin', 1, 2011);
 
-INSERT INTO kurssikysely VALUES (1, 'OhPe-kysely', 4, TRUE);
-INSERT INTO kurssikysely VALUES (2, 'OhJa-kysely', 4, TRUE);
-INSERT INTO kurssikysely VALUES (3, 'JFO-kysely', 3, TRUE);
+INSERT INTO kurssikysely VALUES (1, 'OhPe-kysely', 4, TRUE, TRUE);
+INSERT INTO kurssikysely VALUES (2, 'OhJa-kysely', 4, TRUE, TRUE);
+INSERT INTO kurssikysely VALUES (3, 'JFO-kysely', 3, TRUE, TRUE);
 
 INSERT INTO kysymys VALUES ('Oliko kurssi mukava?', 1);
 INSERT INTO kysymys VALUES ('Olivatko tehtävät sopivia?', 1);

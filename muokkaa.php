@@ -16,7 +16,7 @@ session_start();
     if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
         // Kyselyn nimi ja tila
-        $sqlo = 'SELECT kknimi, esilla FROM Kurssikysely WHERE kurssikyselyID = ?';
+        $sqlo = 'SELECT kknimi, esilla, ollutEsilla FROM Kurssikysely WHERE kurssikyselyID = ?';
         $otsikko = $yhteys->prepare($sqlo);
         $otsikko->execute(array($_GET["kyselyid"]));
         $otsikkov = $otsikko->fetch();
@@ -39,6 +39,10 @@ session_start();
         <p><b><?php print $otsikkov['kknimi']; ?></b></p>
 
         <?php
+////asdfoolo
+ if (! $otsikkov["ollutesilla"]) {
+
+
         $viesti = $_GET["viestiots"];
         if ($viesti == "OK!") {
             print "OK!";
@@ -51,6 +55,8 @@ session_start();
             <input type="text" name="kknimi">
             <input type="submit" value = "Muuta nimeä">
         </form> </br></br>
+
+
 
 
         <!-- Kyselyssä olevat kysymykset ja niiden poistolinkki-->
@@ -83,8 +89,28 @@ session_start();
             <input type="text" name="ukysymys">
             <input type="submit" value="Lisää kysymys">
         </FORM> </br></br>
+<?php
+}
+else { ?>
+ <!-- Kyselyssä olevat kysymykset-->
+        <table border="0" cellpadding="3">
+            <th align="left">Tallennetut kysymykset</th>
+            <tr>
+                <?php
+                for ($i = 0, $size = sizeof($uudet); $i < $size; ++$i) {
+                    ?>
 
-        <!-- Kyselyn tila (näkyvyys) -->
+                    <td><?php print $uudet[$i]['kysymys']; ?></td>
+                </tr>
+            <?php } ?>
+        </table>
+        </br>
+
+<?php
+}
+?>
+
+        <!-- Kyselyn tila (näkyvyys) ja sen muuttaminen-->
         <?php
         if ($otsikkov['esilla']) {
             $tila = "Julkaistu";
@@ -97,7 +123,7 @@ session_start();
         <p><b>Kyselyn tila: </b><?php print $tila; ?></p>
         <FORM action="muuta_tila.php?opettaja=<?php print $_GET['opettaja']; ?>&kyselyid=<?php print $_GET['kyselyid']; ?>" method="post">
             <input type="hidden" name="tila" value="<?php print $bo; ?>">
-            <input type="submit" value="Muuta">
+            <input type="submit" value="Muuta"><font color="Red"> Huomaa, että kyselyä ei voi muokata sen jälkeen, kun se on kerran julkaistu.<font color="Black">
         </FORM>
 
         <!-- Kyselyn poistaminen --!>

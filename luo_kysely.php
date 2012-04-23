@@ -39,12 +39,12 @@
           $idtulos = $id->fetch();
 
           // Uuden kurssikyselyn luonti
-          $sql3 = "INSERT INTO Kurssikysely VALUES (?, '(oletus)', ?, False) RETURNING kurssikyselyID";
+          $sql3 = "INSERT INTO Kurssikysely VALUES (?, '(oletus)', ?, False, False) RETURNING kurssikyselyID";
           $lisays2 = $yhteys->prepare($sql3);
           $lisays2->execute(array($idtulos[0], $_GET["opettaja"]));
           $kkid = $lisays2->fetch();
 
-          header("Location: uusi.php?opettaja=".$_GET["opettaja"]."&&kyselyid=".$kkid[0]); die();
+          header("Location: uusi.php?opettaja=".$_GET["opettaja"]."&kyselyid=".$kkid[0]); die();
        }
        else {
           header("Location: access_denied.php"); die();

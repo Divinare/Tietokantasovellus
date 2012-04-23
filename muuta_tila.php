@@ -21,7 +21,7 @@
           else {
            $b = FALSE;
           }
-          $sqltila = 'UPDATE Kurssikysely SET esilla = ? WHERE kurssikyselyID = ?';
+          $sqltila = 'UPDATE Kurssikysely SET esilla = ?, ollutEsilla = True WHERE kurssikyselyID = ?';
           $tilaa = $yhteys->prepare($sqltila);
           $tilaa->execute(array(boolToStr($b), $_GET["kyselyid"]));
 
