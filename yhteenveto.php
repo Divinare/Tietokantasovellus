@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 <head>
-   <title>Yhteenveto - Greippikysely</title>
+   <title>Yhteenveto</title>
    <meta charset="utf-8">
 </head>
 
