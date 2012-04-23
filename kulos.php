@@ -1,13 +1,11 @@
 <?php
     require_once 'DB.php';
     session_start();
-    unset($_SESSION["luku"]);
+    unset($_SESSION["ihminen"]);
 ?>
 <!DOCTYPE html>
 
 <head>
-<title>Henkilön Lisäys</title>
-<meta charset="utf-8">
 </head>
 
 <body>

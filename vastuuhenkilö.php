@@ -18,4 +18,6 @@
 
 	  <p> <a href=vaihdasala.php?vaihdasala=<?php print $_GET["vastuuhenkilö"]; ?>>Salasanan vaihto</a></p>
 
-       </body>
+          <p> <a href=kulos.php>Kirjaudu ulos</a></p>
+
+      </body>

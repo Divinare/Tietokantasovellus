@@ -6,16 +6,12 @@ http://jelindh.users.cs.helsinki.fi/
 
 
 TO DO
-- salasanan pituuden tarkastaminen
 - palkkiotsikoiden läpikäynti
 - koodin siistiminen ja sisennykset
 - koodin yhdenmukaisuus
 - ulkoasu
-- uloskirjautuminen
-- salasananvaihtovirheilmoitus
 - henkilön poisto
 - henkilötietojen muuttaminen
-- Back-linkkien tai -nappuloiden lisäily
 - Jokaisen tiedoston alkuun kommenteilla mitä se tekee (ellei itsestään selvää)
 - Unohdetaan greippikysely xD
 - Kysymyksiin liittyvien kommenttien käsittely
