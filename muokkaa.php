@@ -37,7 +37,7 @@ session_start();
 
         <!-- Otsikko ja sen muuttaminen -->
         <h2>Kurssin <?php print $kntulos['nimi']; ?> (<?php print $kntulos['periodi']; ?>/<?php print $kntulos['vuosi']; ?>) kurssikysely</h2>
-        <p><b><?php print $otsikkov['kknimi']; ?></b></p>
+        <p>Kyselyn nimi:   <b><?php print $otsikkov['kknimi']; ?></b></p>
 
         <?php
         // Jos kysely on jo ollut esillä...
@@ -59,26 +59,44 @@ session_start();
 
 
             <!-- Kyselyssä olevat kysymykset ja niiden poistolinkki-->
-            <table border="0" cellpadding="3">
-                <th align="left">Tallennetut kysymykset</th>
-                <tr>
-                    <?php
-                    for ($i = 0, $size = sizeof($uudet); $i < $size; ++$i) {
-                        ?>
+            <?php
+            // Jos kyselyssä on jo kysymyksiä, ne tulostetaan.
+            if (sizeof($uudet) > 0) { ?>
+                <table border="0" cellpadding="3">
+                    <th align="left">Tallennetut kysymykset</th>
+                    <tr>
+                        <?php
+                        for ($i = 0, $size = sizeof($uudet); $i < $size; ++$i) {
+                            ?>
 
-                        <td><?php print $uudet[$i]['kysymys']; ?></td>
-                        <td><a href=kpoisto.php?opettaja=<?php print $_GET["opettaja"]; ?>&remv=<?php print $uudet[$i]['kysymysid']; ?>&kyselyid=<?php print $_GET["kyselyid"]; ?>&mista=m>Poista</a>
+                            <td><?php print $uudet[$i]['kysymys']; ?></td>
+                            <td><a href=kpoisto.php?opettaja=<?php print $_GET["opettaja"]; ?>&remv=<?php print $uudet[$i]['kysymysid']; ?>&kyselyid=<?php print $_GET["kyselyid"]; ?>&mista=m>Poista</a>
+                        </tr>
+                    <?php } ?>
+                </table>
+                <?php
+            // Jos kysymyksiä ei vielä ole, siitä ilmoitetaan.
+            } else {
+            ?>
+
+             <table border="0" cellpadding="3">
+                    <th align="left">Tallennetut kysymykset</th>
+                    <tr>
+                        <td>(tyhjä)</td>
                     </tr>
-                <?php } ?>
-            </table>
+             </table>
+            <?php
+            }
+            ?>
             </br>
 
-            <?php
-            if ($_GET["viesti"] == "OK!") {
-                print "OK!";
-            } else if ($_GET["viesti"] == "yhyy") {
-                print "<font color='red'>Kysymyksen sallittu pituus 1-300 merkkiä - antamasi pituus oli " . $_GET["p"] . ".";
-                ?>
+
+        <?php
+        if ($_GET["viesti"] == "OK!") {
+            print "OK!";
+        } else if ($_GET["viesti"] == "yhyy") {
+            print "<font color='red'>Kysymyksen sallittu pituus 1-300 merkkiä - antamasi pituus oli " . $_GET["p"] . ".";
+            ?>
                 <font color='black'>
                 <?php
             }
@@ -88,45 +106,46 @@ session_start();
                 <input type="text" name="ukysymys">
                 <input type="submit" value="Lisää kysymys">
             </FORM> </br></br>
-            
-            
-            <?php
-          // Jos kysely ei vielä ole ollut esillä...    
-        } else {
-            ?>
+
+
+        <?php
+        // Jos kysely ei vielä ole ollut esillä...    
+    } else {
+        ?>
             <!-- Kyselyssä olevat kysymykset-->
             <table border="0" cellpadding="3">
                 <th align="left">Tallennetut kysymykset</th>
                 <tr>
-                    <?php
-                    for ($i = 0, $size = sizeof($uudet); $i < $size; ++$i) {
-                        ?>
+        <?php
+        for ($i = 0, $size = sizeof($uudet); $i < $size; ++$i) {
+            ?>
 
                         <td><?php print $uudet[$i]['kysymys']; ?></td>
                     </tr>
-                <?php } ?>
+        <?php } ?>
             </table>
             </br>
 
-            <?php
-        }
-        ?>
+        <?php
+    }
+    ?>
 
         <!-- Kyselyn tila (näkyvyys) ja sen muuttaminen-->
-        <?php
-        if ($otsikkov['esilla']) {
-            $tila = "Julkaistu";
-            $bo = FALSE;
-        } else {
-            $tila = "Piilossa";
-            $bo = TRUE;
-        }
-        ?>
+    <?php
+    if ($otsikkov['esilla']) {
+        $tila = "Julkaistu";
+        $bo = FALSE;
+    } else {
+        $tila = "Piilossa";
+        $bo = TRUE;
+    }
+    ?>
         <p><b>Kyselyn tila: </b><?php print $tila; ?></p>
         <FORM action="muuta_tila.php?opettaja=<?php print $_GET['opettaja']; ?>&kyselyid=<?php print $_GET['kyselyid']; ?>" method="post">
             <input type="hidden" name="tila" value="<?php print $bo; ?>">
-            <input type="submit" value="Muuta"><font color="Red"> Huomaa, että kyselyä ei voi muokata sen jälkeen, kun se on kerran julkaistu.<font color="Black">
+            <input type="submit" value="Muuta"><font color="Red">
         </FORM>
+        <p><font color="Red" font size="2"> Huomaathan, että kyselyä ei voi muokata sen jälkeen, kun se on kerran julkaistu.<font color="Black" font size="3"></p>
 
         <!-- Kyselyn poistaminen --!>
         <p><b>Kyselyn poisto<b></p>
@@ -138,11 +157,11 @@ session_start();
         <!-- Paluulinkki -->
         <a href=opettaja.php?opettaja=<?php print $_GET["opettaja"]; ?>>Takaisin</a>
 
-        <?php
-    } else {
-        header("Location: access_denied.php");
-        die();
-    }
-    ?>
+    <?php
+} else {
+    header("Location: access_denied.php");
+    die();
+}
+?>
 
 </body>
