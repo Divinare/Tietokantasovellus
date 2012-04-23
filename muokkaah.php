@@ -1,6 +1,6 @@
 <?php
 require_once 'DB.php';
-//session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 
@@ -14,21 +14,21 @@ require_once 'DB.php';
     $yhteys = db::getDB();
 
     // Istuntotarkastus
-    //if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
+    if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
 
 
 
    ?>
 
-
+    <p> <a href=admin.php?admin=<?php print $_GET["muokkaah"]; ?>>Takaisin</a></p>
 
 
 
    <?php
-   //} else {
-   //    header("Location: access_denied.php");
-   //    die();
-   //}
+   } else {
+       header("Location: access_denied.php");
+       die();
+   }
    ?>
 </body>

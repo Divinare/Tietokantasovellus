@@ -57,14 +57,14 @@ FOREIGN KEY (kysymysID) REFERENCES Kysymys
 );
 INSERT INTO henkilo VALUES ('Jenna', 'Lindh', 'jippii', '221c0a20e7a30c2835c1b3fcaa432e7a', 'admin');
 INSERT INTO henkilo VALUES ('Joe', 'Niemi', 'jihuu', '48ece95de0e6393b476eaac1bbeb1390', 'admin');
-INSERT INTO henkilo VALUES ('testihenkilö', 'testaaja', '1', 'cf749c3d7f3e6251e1eed022c2c88a5a', 'admin');
+INSERT INTO henkilo VALUES ('Terho', 'Pellervo', '1', 'cf749c3d7f3e6251e1eed022c2c88a5a', 'admin');
 
 INSERT INTO henkilo VALUES ('Leidi', 'Lol', 'roflmao', '1fc1f6ee27300e5533aa172e727c4e33', 'opettaja');
 INSERT INTO henkilo VALUES ('Arto', 'Wikla', 'wikla', '56f5f303e29b42dd212a56dd60bd2521', 'opettaja');
-INSERT INTO henkilo VALUES ('testihenkilö2', 'testaaja2', '2', '29623418a18355aad1fd430208110931', 'opettaja');
+INSERT INTO henkilo VALUES ('Risto', 'Räkä', '2', '29623418a18355aad1fd430208110931', 'opettaja');
 
 INSERT INTO henkilo VALUES ('Jorma', 'Uotinen', 'luukku', 'bb0672262584c582751df3358c795445', 'vastuuhenkilö');
-INSERT INTO henkilo VALUES ('testihenkilö3', 'testaaja3', '3', 'fc9f7a3782985cf2998bc25e27f24c2e', 'vastuuhenkilö');
+INSERT INTO henkilo VALUES ('Laiska', 'Mato', '3', 'fc9f7a3782985cf2998bc25e27f24c2e', 'vastuuhenkilö');
 
 INSERT INTO kurssi VALUES (4, 'Ohjelmoinnin perusteet', 4, 2012);
 INSERT INTO kurssi VALUES (4, 'Ohjelmoinnin jatkokurssi', 3, 2012);
@@ -77,17 +77,22 @@ INSERT INTO kurssikysely VALUES (3, 'JFO-kysely', 3, TRUE, TRUE);
 INSERT INTO kysymys VALUES ('Oliko kurssi mukava?', 1);
 INSERT INTO kysymys VALUES ('Olivatko tehtävät sopivia?', 1);
 INSERT INTO kysymys VALUES ('Oliko luennoitsijalla hieno paita?', 1);
-INSERT INTO kysymys VALUES ('Oliks tylsää luennoil?', 2);
+INSERT INTO kysymys VALUES ('Minkä arvosanan annat kurssista?', 1);
+INSERT INTO kysymys VALUES ('Oliks tylsää luennoilla?', 2);
 INSERT INTO kysymys VALUES ('Opitko mitään koko kurssista?', 2);
 INSERT INTO kysymys VALUES ('Kävitkö edes luennoilla? 0 = et kertaakaan, 5 = aina', 2);
+INSERT INTO kysymys VALUES ('Minkä arvosanan annat kurssista?', 2);
 INSERT INTO kysymys VALUES ('Oliko tehtävät haasteellisia?', 3);
-INSERT INTO kysymys VALUES ('Onko nyt hyvä mieli?', 3);
+INSERT INTO kysymys VALUES ('Mitkä fiilikset? 0 = huonot, 5 = mahtavat', 3);
+INSERT INTO kysymys VALUES ('Osaatko nyt ohjelmoida funktionaalisesti? 0 = et :(, 5 = täydellisesti', 3);
+INSERT INTO kysymys VALUES ('Minkä arvosanan annat kurssista?', 3);
 
 INSERT INTO vastaus VALUES (1, 5);
 INSERT INTO vastaus VALUES (1, 5);
 INSERT INTO vastaus VALUES (1, 4);
 INSERT INTO vastaus VALUES (1, 4);
 INSERT INTO vastaus VALUES (1, 3);
+INSERT INTO vastaus VALUES (1, 1);
 INSERT INTO vastaus VALUES (1, 1);
 INSERT INTO vastaus VALUES (1, 1);
 INSERT INTO vastaus VALUES (2, 5);
@@ -99,6 +104,8 @@ INSERT INTO vastaus VALUES (2, 1);
 INSERT INTO vastaus VALUES (2, 1);
 INSERT INTO vastaus VALUES (3, 5);
 INSERT INTO vastaus VALUES (3, 2);
+INSERT INTO vastaus VALUES (3, 3);
+INSERT INTO vastaus VALUES (4, 1);
 INSERT INTO vastaus VALUES (4, 1);
 INSERT INTO vastaus VALUES (5, 2);
 INSERT INTO vastaus VALUES (6, 3);
