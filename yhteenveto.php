@@ -7,7 +7,7 @@
 </head>
 
 <body>
-       <h2>Käynnissä olevat kurssikyselyt</h2></br>
+       <h2>Yhteenveto</h2></br>
        <?php
              $yhteys = db::getDB();
 
