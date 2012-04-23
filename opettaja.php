@@ -3,6 +3,8 @@
     session_start();
 ?>
 <!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="tyylit.css" />
+
 <head>
    <title>Opettaja - Greippikysely</title>
    <meta charset="utf-8">

@@ -3,6 +3,7 @@ require_once 'DB.php';
 session_start();
 ?>
 <!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="tyylit.css" />
 
 <head>
     <title>Kyselyn muokkaus</title>

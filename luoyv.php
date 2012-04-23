@@ -1,6 +1,6 @@
 <?php require_once 'DB.php'; ?>
 <!DOCTYPE html>
-
+<link rel="stylesheet" type="text/css" href="tyylit.css" />
 <head>
    <title>Yhteenveto - Greippikysely</title>
    <meta charset="utf-8">

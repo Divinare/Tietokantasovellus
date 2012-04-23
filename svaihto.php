@@ -3,6 +3,7 @@
     session_start();
 ?>
 <!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="tyylit.css" />
 
 <head>
    <title>Henkilön lisäys</title>

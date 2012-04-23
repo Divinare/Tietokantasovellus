@@ -4,6 +4,7 @@
    $yhteys = db::getDB();
 ?>
 <!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="tyylit.css" />
 
 <head>
    <title>Vahvistus</title>
