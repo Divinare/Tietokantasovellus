@@ -29,6 +29,7 @@
 
           <p> <a href=vaihdasala.php?vaihdasala=<?php print $_GET["admin"]; ?>>Salasanan vaihto</a></p>
 
+          <p> <a href=kulos.php>Kirjaudu ulos</a></p>
   <?php
 
    }
