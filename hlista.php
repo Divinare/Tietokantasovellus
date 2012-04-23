@@ -4,7 +4,7 @@
 ?>
 <!DOCTYPE html>
 <head>
-   <title>Admin - Greippikysely</title>
+   <title>Admin</title>
    <meta charset="utf-8">
 </head>
 <body>

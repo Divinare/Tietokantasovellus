@@ -86,6 +86,8 @@
                echo "•";
            }
 	   echo " (".intval((($a/$kokov)*100))."%)"."<br>";
+	   // Lasketaan keskiarvo, (float) sprintf("%1.2f" x) muuttaa luvun x 2-desimaaliseksi luvuksi
+           echo "Keskiarvo: ".(float) sprintf("%1.2f", ((($a*1)+($b*2)+($c*3)+($d*4)+($e*5))/$kokov))."<br>";
 	   echo "Vastauksia yhteensä: ".$kokov."<br><br>";
         }
       ?>

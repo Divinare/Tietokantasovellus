@@ -6,21 +6,20 @@ http://jelindh.users.cs.helsinki.fi/
 
 
 TO DO
-- salasanan pituuden tarkastaminen
-- palkkiotsikoiden läpikäynti
+- lisää kurssi pitäisi checkata onko vuosi väliltä 2000 - 2050 (ja onko se int kai?)
+- lisää kurssissa myös check et nimi on vähintää vaik 5 merkkii jne
+- kysymyksien lisäykses kans check et ne on vähintää 5 merkkiä per kysyms vaik
+- luo uusi kurssi ja lisää kysely molempiin takaisin nappulat
+- opettajan etusivulle kursseille myös periodi ja vuosi
+- palkkiotsikoiden läpikäynti opettajasta (admin ja laitosvastaava katottu)
 - koodin siistiminen ja sisennykset
 - koodin yhdenmukaisuus
 - ulkoasu
-- uloskirjautuminen
-- salasananvaihtovirheilmoitus
 - henkilön poisto
 - henkilötietojen muuttaminen
-- Back-linkkien tai -nappuloiden lisäily
 - Jokaisen tiedoston alkuun kommenteilla mitä se tekee (ellei itsestään selvää)
-- Unohdetaan greippikysely xD
 - Kysymyksiin liittyvien kommenttien käsittely
 - Kommenttien näkyminen opettajalle (vain omat), vastuuhenkilölle (kaikki)
 - sessionien lisäys yhteenvetoon ja vastuuhenkilöön
 - salasanojen kryptaus
 - se joku raportti, jonka opettaja tms. henkilö saa :D
-- yhteenvetoon jokaiseen kysymykseen vastausten keskiarvo, jos ei jo ole
