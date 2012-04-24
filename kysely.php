@@ -5,7 +5,7 @@
    <?php
      $yhteys = db::getDB();
 
-     $sql = 'SELECT kknimi FROM kurssikysely WHERE kurssikyselyid = ?';
+     $sql = 'SELECT kknimi, etunimi, sukunimi FROM kurssikysely INNER JOIN henkilo ON kurssikysely.henkiloid = henkilo.henkiloid WHERE kurssikyselyid = ?';
      $kyselytitle = $yhteys->prepare($sql);
      $kyselytitle->execute(array($_GET["kysely"]));
      $htmltitle = $kyselytitle->fetch();
@@ -14,8 +14,7 @@
      <meta charset="utf-8">
 </head>
 <body>
-
-              <h1><?php print $htmltitle['kknimi']; ?></h1></br>
+              <h1><?php print $htmltitle['kknimi']; ?><br><font size = "3"><?php print $htmltitle['etunimi']."  ".$htmltitle['sukunimi'];?></h1></br>
 
              <Form name ='vastaukset' Method ='Post' ACTION ='end.php?kysely= <?php print $_GET["kysely"]; ?>'>
 
