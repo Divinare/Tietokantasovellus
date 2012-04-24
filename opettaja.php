@@ -23,8 +23,8 @@
          <h1>Opettaja - <?php print $nimi[0]." ".$nimi[1];?></h1>
 
          <?php
-          // Valitaan opettajan luomat kyselyt
-          $sql2 = 'SELECT kknimi, esilla, kurssikyselyID FROM kurssikysely WHERE henkiloID = ?';
+          // Valitaan opettajan luomat kyselyt ja niiden kurssien tiedot
+          $sql2 = 'SELECT kknimi, esilla, kurssikyselyID, nimi, periodi, vuosi FROM kurssikysely INNER JOIN kurssi ON kurssikysely.kurssiid = kurssi.kurssiid AND kurssi.henkiloid = kurssikysely.henkiloid WHERE kurssi.henkiloID = ? ORDER BY vuosi DESC, kknimi DESC;';
           $kkyselyt = $yhteys->prepare($sql2);
           $kkyselyt->execute(array($_GET["opettaja"]));
           $kyselyt = $kkyselyt->fetchAll();
@@ -37,6 +37,7 @@
             <tr>
                   <th align = left>Nimi</th>
                   <th align = left>Tila</th>
+                  <th align = left>Kurssi</th>
                   <th>  </th>
             </tr>
             <tr>
@@ -58,6 +59,7 @@
 
         <td><?php print $k['kknimi'];?></td>
         <td><?php print $tila;?></td>
+        <td><?php print $k['nimi']." ".$k['periodi']."/".$k['vuosi'];?></td>
         <td><FORM action="muokkaa.php?opettaja=<?php print $_GET['opettaja'];?>&kyselyid=<?php print $k['kurssikyselyid'];?>" method="post">
             <input type="hidden" name="tila" value="<?php print $bo;?>">
             <input type="submit" value="Muokkaa">
