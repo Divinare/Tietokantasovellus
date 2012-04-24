@@ -24,7 +24,7 @@
 
          <?php
           // Valitaan opettajan luomat kyselyt ja niiden kurssien tiedot
-          $sql2 = 'SELECT kknimi, esilla, kurssikyselyID, nimi, periodi, vuosi FROM kurssikysely INNER JOIN kurssi ON kurssikysely.kurssiid = kurssi.kurssiid AND kurssi.henkiloid = kurssikysely.henkiloid WHERE kurssi.henkiloID = ? ORDER BY vuosi DESC, kknimi DESC;';
+          $sql2 = 'SELECT kknimi, esilla, kurssikyselyID, nimi, periodi, vuosi FROM kurssikysely INNER JOIN kurssi ON kurssikysely.kurssiid = kurssi.kurssiid AND kurssi.henkiloid = kurssikysely.henkiloid WHERE kurssi.henkiloID = ? ORDER BY vuosi DESC, kknimi;';
           $kkyselyt = $yhteys->prepare($sql2);
           $kkyselyt->execute(array($_GET["opettaja"]));
           $kyselyt = $kkyselyt->fetchAll();
