@@ -15,7 +15,7 @@ session_start();
     $yhteys = db::getDB();
 
     // Istuntotarkastus
-    if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
+    if ($_SESSION["ihminen"] == $_GET["admin"]) {
 
 
 
