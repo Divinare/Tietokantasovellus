@@ -1,4 +1,7 @@
-<?php require_once 'DB.php'; ?>
+<?php
+// Tämä tiedosto tulostaa nettisivulle kurssikyselyn, johon käyttäjä voi vastata
+require_once 'DB.php';
+?>
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="tyylit.css" />
 <head>

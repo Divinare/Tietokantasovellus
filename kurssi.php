@@ -1,4 +1,5 @@
 <?php
+     // Tiedosto lähettää tarkasta_ktiedot.php:lle tiedot uudesta kantaan lisättävästä kurssista  <--- tosin ei tämä vielä lähetä niitä sinne :P
      require_once 'DB.php';
      session_start();
      $yhteys = db::getDB();

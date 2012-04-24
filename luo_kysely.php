@@ -1,4 +1,5 @@
 <?php
+   // Tämä tiedosto lisää kantaan uuden kurssin, hakee sen tiedot uutta kurssikyselyä varten ja luo kurssikyselyn
    require_once 'DB.php';
    session_start();
 ?>
