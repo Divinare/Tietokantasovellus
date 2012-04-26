@@ -88,7 +88,7 @@
 
 
   <!-- POIS! -->
-  <a href=opettaja.php?opettaja=<?php print $_GET["opettaja"];?>>Takaisin</a>
+   <p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"]?>"><img src="nuoli.png" border="0" /></a></p>
 
   <?php
 

@@ -48,10 +48,10 @@
                  print "<p><font color='Red'>Antamasi vuosiluku sisälsi kiellettyjä merkkejä - sallittuja merkkejä ovat numerot 0-9</p>";
           }
 
-
          }
          else {
             header("Location: access_denied.php"); die();
          }
     ?>
+    <p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"]?>"><img src="nuoli.png" border="0" /></a></p>
 </body>

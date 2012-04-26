@@ -153,10 +153,10 @@ session_start();
         <FORM action="poisto.php?opettaja=<?php print $_GET['opettaja']; ?>" method="post">
         <input type="hidden" name="poisto" value="<?php print $_GET['kyselyid']; ?>">
         <input type="submit" value="Poista">
-        </FORM> </br></br>
+        </FORM> </br>
         
         <!-- Paluulinkki -->
-        <a href=opettaja.php?opettaja=<?php print $_GET["opettaja"]; ?>>Takaisin</a>
+        <p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"]?>"><img src="nuoli.png" border="0" /></a></p>
 
     <?php
 } else {

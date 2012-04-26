@@ -22,6 +22,6 @@
       $sqlrooli2->execute(array($_GET["yhteenveto"]));
       $rooli = $sqlrooli2->fetch();
       ?>
-     <p><a href=<?php print $rooli[0]; ?>.php?<?php print $rooli[0]; ?>=<?php print $_GET['yhteenveto']; ?>>Takaisin</a></p>
+     <p><a href=<?php print $rooli[0]; ?>.php?<?php print $rooli[0]; ?>=<?php print $_GET['yhteenveto']; ?>><img src="nuoli.png" border="0" /></a></p>
 
 </body>

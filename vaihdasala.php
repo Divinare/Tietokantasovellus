@@ -58,7 +58,7 @@
           $rooli = $kyselyrooli->fetch();
      ?>
 
-     <p> <a href=<?php print $rooli[0]; ?>.php?<?php print $rooli[0]; ?>=<?php print $_GET['vaihdasala']; ?>>Takaisin</a></p>
+     <p> <a href=<?php print $rooli[0]; ?>.php?<?php print $rooli[0]; ?>=<?php print $_GET['vaihdasala']; ?>><img src="nuoli.png" border="0" /></a></p>
 
      <?php
 

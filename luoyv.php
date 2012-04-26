@@ -91,5 +91,5 @@
 	   echo "Vastauksia yhteensä: ".$kokov."<br><br>";
         }
       ?>
-     <p><a href=yhteenveto.php?yhteenveto=<?php print $_GET['henkiloid']; ?>>Takaisin</a></p>
+     <p><a href=yhteenveto.php?yhteenveto=<?php print $_GET['henkiloid']; ?>><img src="nuoli.png" border="0" /></a></p>
 </body>

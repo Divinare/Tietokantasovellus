@@ -44,5 +44,5 @@ require_once 'DB.php';
 
              <Input type = 'Submit' Name = 'submit' Value = 'Lähetä'>
              </form>
-             <p><a href="index.php">Takaisin</a></p>
+             <p><a href="index.php"><img src="nuoli.png" border="0" /></a></p>
 </body>

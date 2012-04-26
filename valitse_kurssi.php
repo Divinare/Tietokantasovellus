@@ -71,8 +71,7 @@
        ?>
        </br>
        <p><a href=kurssi.php?opettaja=<?php print $_GET["opettaja"]?>>Lisää uusi kurssi</a></p>
-       <p><a href=opettaja.php?opettaja=<?php print $_GET["opettaja"]?>>Takaisin</a></p>
-
+       <p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"]?>"><img src="nuoli.png" border="0" /></a></p>
       <?php
 
           }
