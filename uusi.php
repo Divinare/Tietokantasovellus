@@ -30,7 +30,8 @@
    ?>
 
    <!-- Otsikon säätämistä -->
-   <h2><?php print $otsikkov[0]; ?></h2>
+   <h1>Uusi kysely</h1>
+   <p>Kyselyn nimi: <b><?php print $otsikkov[0]; ?></b></p>
 
    <?php
           $viesti = $_GET["viestiots"];

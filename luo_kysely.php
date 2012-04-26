@@ -16,9 +16,13 @@
        if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
           $yhteys = db::getDB();
-          $knimi = $_POST["knimi"];
-          $peri = $_POST["periodi"];
-          $vuosi = $_POST["vuosi"];
+          $knimi = $_SESSION["knimi"];
+          unset($_SESSION["knimi"]);
+          $peri = $_SESSION["periodi"];
+          unset($_SESSION["periodi"]);
+          $vuosi = $_SESSION["vuosi"];
+          unset($_SESSION["vuosi"]);
+
 
           // Tarkastetaan, onko kurssi jo olemassa
           $sql1 = 'SELECT kurssiID FROM Kurssi WHERE nimi = ? AND periodi = ? AND vuosi = ? AND henkiloID = ?';
