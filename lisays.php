@@ -76,7 +76,7 @@
    <Input type = 'Submit' Name = 'submit' Value = 'Vahvista tiedot'>
    </form>
 
-   <p><a href=admin.php?admin=<?php print $_GET['lisays']; ?>>Takaisin</a></p>
+   <p><a href=admin.php?admin=<?php print $_GET['lisays']; ?>><img src="nuoli.png" border="0" /></a></p>
    </FORM>
 </body>
 <?php

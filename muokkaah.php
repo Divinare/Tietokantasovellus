@@ -36,9 +36,14 @@ session_start();
        <tr>
           <td><p>Etunimi:</p></td>
           <td><p><b><?php print $sqlt[0][0]; ?></b></p></td>
-          <td><form action="muutah.php?muutah=<?php print $_GET['admin']; ?>&viesti=etunimi" method="post">
+          <td><form action="muutah.php?muutah=<?php print $_GET['admin']; ?>&henkiloid=<?php print $_GET['henkiloid']; ?>&viesti=etunimi" method="post">
                 <input type="text" name="etu">
                 <input type="submit" value = "Muuta">
+                <?php
+                if ($_GET["viesti"] == etufail) {
+                 print "<font color='red'>Etunimen on oltava 1-30 merkkiä pitkä.<font color='black'>";
+                 }
+                 ?>
          </form>
 	 </td>
        </tr>
@@ -71,7 +76,7 @@ session_start();
        </tr>
     </table>
 
-     <p> <a href=admin.php?admin=<?php print $_GET["admin"]; ?>>Takaisin</a></p>
+     <p> <a href=admin.php?admin=<?php print $_GET["admin"]; ?>><img src="nuoli.png" border="0" /></a></p>
 
    <?php
    } else {

@@ -19,7 +19,7 @@
 
         <h3>Henkilön lisäys onnistui!</h3>
 
-        <p><a href=admin.php?admin=<?php print $_GET['lomakelahetys']; ?>>Takaisin</a></p>
+        <p><a href=admin.php?admin=<?php print $_GET['lomakelahetys']; ?>><img src="nuoli.png" border="0" /></a></p>
 
    <?php
         $salasana = $_POST["passu"];

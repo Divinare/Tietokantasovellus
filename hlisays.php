@@ -81,7 +81,7 @@
 
       <Input type = 'Submit' Name = 'submit' Value = 'Lähetä'>
 
-      <p><a href=admin.php?admin=<?php print $_GET['hlisays']; ?>>Takaisin</a></p>
+      <p><a href=admin.php?admin=<?php print $_GET['hlisays']; ?>><img src="nuoli.png" border="0" /></a></p>
 
    </form>
 

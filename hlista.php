@@ -85,7 +85,7 @@
         }
     ?>
 
-    <p> <a href=admin.php?admin=<?php print $_GET["hlista"]; ?>>Takaisin</a></p>
+    <p> <a href=admin.php?admin=<?php print $_GET["hlista"]; ?>><img src="nuoli.png" border="0" /></a></p>
     <?php
 
       }
