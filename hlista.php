@@ -52,7 +52,7 @@
                 <th align = left>Sähköposti</th>
     	        <th align = left>Rooli</th>
     	        <th align = left>HenkilöID</th>
-	        <th  </th>
+	        <th </th>
              </tr>
              <tr>
     <?php
