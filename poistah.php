@@ -1,10 +1,12 @@
 <?php
 
     require_once 'DB.php';
- //   session_start();
+    session_start();
     $yhteys = db::getDB();
 
     if ($_SESSION["ihminen"] == $_GET["admin"]) {
+
+          print "olen täällä";
           //salasanan tsekkaus:
           $sqls = 'SELECT salasana FROM henkilo WHERE henkiloid = ?';
           $sqls2 = $yhteys->prepare($sqls);
@@ -23,6 +25,6 @@
 
    }
    else {
-   header("Location: access_denied.php"); die();
+//   header("Location: access_denied.php"); die();
    }
 ?>
