@@ -105,17 +105,16 @@ session_start();
        }
        ?>
        </form>
-
-       <p>Poista henkilö: </p>
-       <form action="muutah.php?muutah=<?php print $_GET['admin']; ?>&henkiloid=<?php print $_GET['henkiloid']; ?>&viesti=poista" method="post">
-                <input type="password" name="poista">
-                <input type="submit" value = "Poista henkilö">
-                <?php
-                if ($_GET["viesti"] == salafail) {
-                print "<font color='red'>Toiminto vaatii salasanasi.<font color='black'>";
-                }
-                ?>
+       <br>
+       <form action="poistah.php?poistah=<?php print $_GET['admin']; ?>&henkiloid=<?php print $_GET['henkiloid']; ?>" method="post">
+                <input type="password" name="poista"> <input type="submit" value = "Poista henkilö">(syötä salasanasi)
+       <?php
+       if ($_GET["viesti"] == salafail) {
+       print "<font color='red'>Toiminto vaatii salasanasi.<font color='black'>";
+       }
+       ?>
        </form>
+
      <p> <a href=admin.php?admin=<?php print $_GET["admin"]; ?>><img src="nuoli.png" border="0" /></a></p>
 
    <?php
