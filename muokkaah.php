@@ -106,7 +106,7 @@ session_start();
        ?>
        </form>
        <br>
-       <form action="poistah.php?poistah=<?php print $_GET['admin']; ?>&henkiloid=<?php print $_GET['henkiloid']; ?>" method="post">
+       <form action="poistah.php?admin=<?php print $_GET['admin']; ?>&henkiloid=<?php print $_GET['henkiloid']; ?>" method="post">
                 <input type="password" name="poista"> <input type="submit" value = "Poista henkilö">(syötä salasanasi)
        <?php
        if ($_GET["viesti"] == salafail) {
