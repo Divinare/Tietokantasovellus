@@ -53,6 +53,12 @@ session_start();
           <td><form action="muutah.php?muutah=<?php print $_GET['admin']; ?>&viesti=sukunimi" method="post">
                 <input type="text" name="suku">
                 <input type="submit" value = "Muuta">
+                <?php
+                if ($_GET["viesti"] == sukufail) {
+                 print "<font color='red'>Sukunimen on oltava 1-30 merkkiä pitkä.<font color='black'>";
+                 }
+                 ?>
+
          </form>
          </td>
        </tr>

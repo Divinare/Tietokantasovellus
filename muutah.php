@@ -12,7 +12,7 @@
 		echo "lol";
                 $sql = 'UPDATE henkilo SET etunimi = ? WHERE henkiloid = ?';
                 $sqlv = $yhteys->prepare($sql);
-                $sqlv2->execute(array($_POST["etu"], $_GET["henkiloid"]));
+                $sqlv->execute(array($_POST["etu"], $_GET["henkiloid"]));
                 header("Location: muokkaah.php?admin=".$_GET["muutah"]."&henkiloid=".$_GET["henkiloid"]."&viesti=ok"); die();
                 }
             else {
