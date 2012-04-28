@@ -6,7 +6,7 @@ session_start();
 <link rel="stylesheet" type="text/css" href="tyylit.css" />
 
 <head>
-<title>Kyselyn muokkaus</title>
+<title>Käyttäjän muokkaus</title>
 <meta charset="utf-8">
 </head>
 <body>

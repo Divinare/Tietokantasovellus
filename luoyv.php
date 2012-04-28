@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="tyylit.css" />
 <head>
-   <title>Yhteenveto - Greippikysely</title>
+   <title>Yhteenveto</title>
    <meta charset="utf-8">
 </head>
 
@@ -62,30 +62,30 @@
            $maara5 = ($e/$kokov)*100;
            echo "5: ";
            for ($ee = 0; $ee < $maara5/2; $ee++) {
-               echo "•";
+               echo "<font size='5'>•</font>";
            }
 	   // intval muuttaa doublen intiksi
-	   echo " (".intval((($e/$kokov)*100))."%)"."<br>";
+	   echo "<font size='2'> (".intval((($e/$kokov)*100))."%)</font>"."<br>";
 	   echo "4: ";
 	   for ($dd = 0; $dd < $maara4/2; $dd++) {
-               echo "•";
+               echo "<font size='5'>•</font>";
            }
-	   echo " (".intval((($d/$kokov)*100))."%)"."<br>";
+	   echo "<font size='2'> (".intval((($d/$kokov)*100))."%)</font>"."<br>";
 	   echo "3: ";
 	   for ($cc = 0; $cc < $maara3/2; $cc++) {
-	       echo "•";
+	       echo "<font size='5'>•</font>";
 	   }
-	   echo " (".intval((($c/$kokov)*100))."%)"."<br>";
+	   echo "<font size='2'> (".intval((($c/$kokov)*100))."%)</font>"."<br>";
 	   echo "2: ";
            for ($bb = 0; $bb < $maara2/2; $bb++) {
-               echo "•";
+               echo "<font size='5'>•</font>";
            }
-	   echo " (".intval((($b/$kokov)*100))."%)"."<br>";
+	   echo "<font size='2'> (".intval((($b/$kokov)*100))."%)</font>"."<br>";
 	   echo "1: ";
            for ($aa = 0; $aa < $maara1/2; $aa++) {
-               echo "•";
+               echo "<font size='5'>•</font>";
            }
-	   echo " (".intval((($a/$kokov)*100))."%)"."<br>";
+           echo "<font size='2'> (".intval((($a/$kokov)*100))."%)</font>"."<br>";
 	   // Lasketaan keskiarvo, (float) sprintf("%1.2f" x) muuttaa luvun x 2-desimaaliseksi luvuksi
            echo "Keskiarvo: ".(float) sprintf("%1.2f", ((($a*1)+($b*2)+($c*3)+($d*4)+($e*5))/$kokov))."<br>";
 	   echo "Vastauksia yhteensä: ".$kokov."<br><br>";

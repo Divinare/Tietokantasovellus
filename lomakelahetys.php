@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="tyylit.css" />
 
 <head>
-   <title>Vahvistus</title>
+   <title>Henkilö lisätty</title>
    <meta charset="utf-8">
 </head>
 

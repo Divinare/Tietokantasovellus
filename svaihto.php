@@ -59,7 +59,7 @@
 
    ?>
 
-   <p> <a href=<?php print $rooli[0]; ?>.php?<?php print $rooli[0]; ?>=<?php print $_GET["svaihto"]; ?>>Takaisin</a></p>
+   <p> <a href=<?php print $rooli[0]; ?>.php?<?php print $rooli[0]; ?>=<?php print $_GET["svaihto"]; ?>><img src="nuoli.png" border="0" /></a></p>
 
    <?php
 
