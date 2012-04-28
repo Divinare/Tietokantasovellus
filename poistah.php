@@ -6,25 +6,28 @@
 
     if ($_SESSION["ihminen"] == $_GET["admin"]) {
 
-          print "olen täällä";
-          //salasanan tsekkaus:
+          //Haetaan adminin kryptattu salasana:
           $sqls = 'SELECT salasana FROM henkilo WHERE henkiloid = ?';
           $sqls2 = $yhteys->prepare($sqls);
-          $sqls2->execute(array($_GET["henkiloid"]));
+          $sqls2->execute(array($_GET["admin"]));
           $taulus = $sqls2->fetch();
-          echo $taulus[0];
-          //if ($_GET["poista"] == $taulus[0]) {
-          //    header("Location: muokkaah.php?admin=".$_GET["muutah"]."&henkiloid=".$_GET["henkiloid"]."&viesti=ok"); die();
-          // }
-          //else {
-          //header("Location: muokkaah.php?admin=".$_GET["muutah"]."&henkiloid=".$_GET["henkiloid"]."&viesti=salafail"); die();
-          // }
-
-
-
+          $kryptattupw = md5(md5($_POST["poista"]."greippejäomnomnom")."lisääsitruksia");
+          // Onko salasana oikein
+          if ($kryptattupw == $taulus[0]) {
+              //"Koitetaanko itse poistaa itseään"
+              if ($_GET["admin"] == $_GET["henkiloid"]) {
+              header("Location: muokkaah.php?admin=".$_GET["admin"]."&henkiloid=".$_GET["henkiloid"]."&viesti=itsefail"); die();
+              }
+              else {
+              header("Location: poistah_onnistui.php?admin=".$_GET["admin"]."&henkiloid=".$_GET["henkiloid"]); die();
+              }
+           }
+          else {
+          header("Location: muokkaah.php?admin=".$_GET["admin"]."&henkiloid=".$_GET["henkiloid"]."&viesti=salafail"); die();
+           }
 
    }
    else {
-//   header("Location: access_denied.php"); die();
+   header("Location: access_denied.php"); die();
    }
 ?>

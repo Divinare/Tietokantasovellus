@@ -63,7 +63,7 @@
 	           <td><?php print $nimiT[$i][2];?></td>
                    <td><?php print $nimi2;?></td>
                    <td><?php print $nimiT[$i][4];?></td>
-                   <td><FORM action="muokkaah.php?admin=<?php print $_GET['hlista'];?>&henkiloid=<?php print $nimiT[$i][4];?>" method="post">
+                   <td><FORM action="muokkaah.php?admin=<?php print $_GET['hlista'];?>&henkiloid=<?php print $nimiT[$i][4];?>&viesti=tyhja" method="post">
                        <input type="submit" value="Muokkaa">
                        </FORM></td>
              </tr>
