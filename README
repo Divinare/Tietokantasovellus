@@ -8,10 +8,15 @@ http://jelindh.users.cs.helsinki.fi/
 (")_(")
 
 TO DO
-- dokumentointi (pikku juttu!)
+- dokumentointi (pikku juttu!) _____NOT!_____
+
+
 - kun menet opettajasta -> "luo uusi kysely" -> valitset kurssin niin "muuta nimeä" 
 eikä "lisää kysymys" nappulat tee mitään.. vaikuttaa oudolta (johtuukohan siitä et oon
-poistellu/vaihdellu henkilöiden rooleja kenties? en viitti ite koskee tohon nyt)
+poistellu/vaihdellu henkilöiden rooleja kenties? en viitti ite koskee tohon nyt) <--- kokeilin
+sun sivulla ja toimii ihan hyvin...?
+
+
 - lisää_kyselyyn takaisin-nappula
 - palkkiotsikoiden läpikäynti opettajasta (admin ja laitosvastaava katottu)
 - Kysymyksiin liittyvien kommenttien käsittely
@@ -23,6 +28,7 @@ poistellu/vaihdellu henkilöiden rooleja kenties? en viitti ite koskee tohon nyt
 - uuden kyselyn luontiin (tyhjä), jos ei tallennettuja kysymyksiä
 
 Viimeistely:
+- sessionit varmasti kaikissa tarvittavissa filuissa?
 - koodin yhdenmukaisuus
 - ulkoasu
 - koodin siistiminen ja sisennykset
