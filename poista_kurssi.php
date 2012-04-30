@@ -8,6 +8,13 @@
      // Istuntotarkastus
      if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
+        if ($_GET["mista"] == "h") {
+           $minne = "hkursseja.php";
+        }
+        else if ($_GET["mista"] == "l") {
+           $minne = "valitse_kurssi.php";
+        }
+
         $sql = "SELECT kurssikyselyid FROM kurssikysely WHERE kurssiid = ?";
         $tarkaste = $yhteys->prepare($sql);
         $tarkaste->execute(array($_POST["kurssiid"]));
@@ -20,13 +27,13 @@
            $poisto = $yhteys->prepare($pois);
            $poisto->execute(array($_POST["kurssiid"]));
 
-           header("Location: valitse_kurssi.php?opettaja=".$_GET["opettaja"]."&viesti=OK!");
+           header("Location: ".$minne."?opettaja=".$_GET["opettaja"]."&viesti=OK!");
 
         }
         // Kurssiin liittyy kyselyitä, eikä sitä voida poistaa
         else {
 
-           header("Location: valitse_kurssi.php?opettaja=".$_GET["opettaja"]."&viesti=v");
+           header("Location: ".$minne."?opettaja=".$_GET["opettaja"]."&viesti=v");
 
         }
 

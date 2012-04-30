@@ -8,6 +8,17 @@ $yhteys = db::getDB();
 // Istuntotarkastus
 if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
+    // Valitaan kohdesivu sen mukaan, mistä tänne on tultu
+    if ($_GET["mista"] == "h") {
+       $_SESSION["minne"] = "hkursseja.php";
+    }
+    else if ($_GET["mista"] == "l") {
+       $_SESSION["minne"] = "luo_kysely.php";
+    }
+    else {
+        header("Location: access_denied.php"); die();
+    }
+
     $pituus = strlen($_POST["knimi"]);
 
     // Jos nimen pituus sopiva...
@@ -26,26 +37,25 @@ if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
                 $_SESSION["knimi"] = $_POST["knimi"];
 
                 // Kaikki testit läpi, siirrytään eteenpäin seuraavalle sivulle
-                header("Location: luo_kysely.php?opettaja=" . $_GET["opettaja"]);
+                header("Location: lisaa_kurssi.php?opettaja=" . $_GET["opettaja"]); die();
             }
             // Vuosiluvussa kirjaimia tai muuta turhaa
             else {
 
-                header("Location: kurssi.php?opettaja=" . $_GET["opettaja"] . "&virhe=vk");
+                header("Location: kurssi.php?opettaja=" . $_GET["opettaja"] . "&virhe=vk"); die();
             }
         }
         // Vuosiluku liian pitkä/lyhyt
         else {
-            header("Location: kurssi.php?opettaja=" . $_GET["opettaja"] . "&virhe=vp");
+            header("Location: kurssi.php?opettaja=" . $_GET["opettaja"] . "&virhe=vp");  die();
         }
     }
     // Nimen liian pitkä/lyhyt
     else {
-        header("Location: kurssi.php?opettaja=" . $_GET["opettaja"] . "&virhe=n");
+        header("Location: kurssi.php?opettaja=" . $_GET["opettaja"] . "&virhe=n");  die();
     }
     // Istunto-ongelma
 } else {
-    header("Location: access_denied.php");
-    die();
+    header("Location: access_denied.php");  die();
 }
 ?>

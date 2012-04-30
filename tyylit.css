@@ -4,7 +4,7 @@
 
    body {
    font-family: Helvetica, Arial, sans-serif;
-   margin-left: 40px;
+   padding-left: 12em;
    height: 100%;
 
    /* IE10 */
@@ -29,15 +29,89 @@
    background-image: linear-gradient(left, #D6FFDD 0%, #86B7EF 100%);
 }
 
-   div.fullscreen{
-    display:block;
+ul.box{
+  border-style: solid;
+  border-width: 3px;
+  border-left-width: 10px;
+  border-right-width: 10px;
+  border-color: gray;
+  background: white;
+  padding: 2em;
+  link-color: black;
+}
 
-    /*set the div in the top-left corner of the screen*/
-    position:absolute;
-    top:0;
-    left:0;
-    
-    /*set the width and height to 100% of the screen*/
-    width:100%;
-    height:100%;
-  }
+ul.navbar {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 73px;
+  left: 1em;
+  width: 9em 
+}
+
+ul.navbar li {
+  background: #86B7EF;
+  margin: 0.5em 0;
+  padding: 0.3em;
+  border-right: 1em solid black; 
+  font-weight: 500;
+}
+
+ul.navbar a {
+  text-decoration: none;
+}
+
+a:link {
+  color: white; 
+}
+
+a:visited {
+  color: white; 
+}
+
+a.kysely:link {
+  color: black;
+}
+
+a.kysely:visited {
+  color: black;
+}
+
+label {
+width: 3em;
+float: left;
+text-align: left;
+margin-right: 0.5em;
+display: block
+}
+
+input {
+color: black;
+background: #fee3ad;
+border: 1px solid gray
+}
+
+.submit input {
+color: white;
+background: #86B7EF;
+border: 2px outset #d7b9c9
+}
+
+fieldset {
+background-color: white;
+border: 1px solid gray;
+width: 9em
+}
+
+legend {
+color: white;
+background: #86B7EF;
+border: 1px solid gray;
+padding: 2px 6px
+}
+
+
+
+
+

@@ -15,7 +15,7 @@
    <?php
         if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
    ?>
-           <Form name ='uusikurssi' Method ='Post' ACTION ='tarkasta_ktiedot.php?opettaja=<?php print $_GET["opettaja"]; ?>'>
+           <Form name ='uusikurssi' Method ='Post' ACTION ='tarkasta_ktiedot.php?opettaja=<?php print $_GET["opettaja"]; ?>&mista=<?php print $_GET["mista"]; ?>'>
 
                <h1>Lisää kurssi </h1>
 

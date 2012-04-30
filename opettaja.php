@@ -32,7 +32,7 @@ session_start();
 
         if (sizeof($kyselyt) > 0) {
             ?>
-
+<ul class="box">
             <h3>Omat kyselyt</h3>
             <table border="0" cellpadding="3">
                 <tr>
@@ -67,28 +67,33 @@ session_start();
                 <?php } ?>
 
             </table>
-
+</ul>
             <?php
         } else {
             ?>
-
+<ul class="box">
             <h3>Omat kyselyt</h3>
             <table border="0" cellpadding="3">
                 <tr>
                     <td>(tyhjä)</td>
                 </tr>
             </table>
+</ul>
             <?php
         }
         ?>
+<ul class="navbar">
 
-        <p> <a href=valitse_kurssi.php?opettaja=<?php print $_GET["opettaja"]; ?>>Luo uusi kysely</a></p>
+        <li><p> <a href=valitse_kurssi.php?opettaja=<?php print $_GET["opettaja"]; ?>>Luo uusi kysely</a></p>
 
-        <p> <a href=yhteenveto.php?yhteenveto=<?php print $_GET["opettaja"]; ?>>Kurssikyselyiden tulokset</a></p>
+        <li><p> <a href=yhteenveto.php?yhteenveto=<?php print $_GET["opettaja"]; ?>>Kurssikyselyiden tulokset</a></p>
 
-        <p> <a href=vaihdasala.php?vaihdasala=<?php print $_GET["opettaja"]; ?>>Salasanan vaihto</a></p>
+        <li><p> <a href=vaihdasala.php?vaihdasala=<?php print $_GET["opettaja"]; ?>>Salasanan vaihto</a></p>
 
-        <p> <a href=kulos.php>Kirjaudu ulos</a></p>
+        <li><p> <a href=hkursseja.php?opettaja=<?php print $_GET["opettaja"]; ?>>Hallinnoi kursseja</a></p>
+
+        <li><p> <a href=kulos.php>Kirjaudu ulos</a></p>
+</ul>
 
         <?php
     }

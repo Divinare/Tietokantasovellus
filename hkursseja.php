@@ -11,7 +11,7 @@ $yhteys = db::getDB();
 </head>
 <body>
 
-    <h1>Valitse kurssi</h1>
+    <h1>Omat kurssit</h1>
 
     <?php
     // Istuntotarkastus
@@ -21,7 +21,9 @@ $yhteys = db::getDB();
         $kurssi = $yhteys->prepare($sql);
         $kurssi->execute(array($_GET["opettaja"]));
         $kurssit = $kurssi->fetchAll();
-
+    ?>
+    <ul class="box">
+    <?php
         // Jos kannassa on tallennettuja kursseja, ne tulostetaan
         if (sizeof($kurssit) > 0) {
             ?>
@@ -32,7 +34,6 @@ $yhteys = db::getDB();
                     <th align = left>Periodi</th>
                     <th align = left>Vuosi </th>
                     <th> </th>
-                    <th> </th>
                 </tr>
                 <tr>
 
@@ -42,14 +43,7 @@ $yhteys = db::getDB();
                         <td><?php print $k['nimi']; ?></td>
                         <td><?php print $k['periodi']; ?></td>
                         <td><?php print $k['vuosi']; ?></td>
-                        <td><Form action="luo_kysely.php?opettaja=<?php print $_GET['opettaja']; ?>" method="post">
-                                <input type="hidden" name="knimi" value="<?php print $k['nimi']; ?>">
-                                <input type="hidden" name="periodi" value="<?php print $k['periodi']; ?>">
-                                <input type="hidden" name="vuosi" value="<?php print $k['vuosi']; ?>">
-                                <input type="submit" value="Valitse">
-                            </Form>
-                        </td>
-                        <td><Form action="poista_kurssi.php?opettaja=<?php print $_GET['opettaja']; ?>&mista=l" method="post">
+                        <td><Form action="poista_kurssi.php?opettaja=<?php print $_GET['opettaja']; ?>&mista=h" method="post">
                                 <input type="hidden" name="kurssiid" value="<?php print $k['kurssiid']; ?>">
                                 <input type="submit" value="Poista">
                             </Form>
@@ -82,7 +76,9 @@ $yhteys = db::getDB();
 
             <?php
         }
-
+        ?>
+        </ul>
+        <?php
         // Kurssinpoistoilmoitukset
         if ($_GET["viesti"] == "OK!") {
             print "<p><font color='Red'> Poisto onnistui!</p>";
@@ -92,8 +88,10 @@ $yhteys = db::getDB();
         ?>
         </br>
         <!-- Muut toiminnot linkkeinä -->
-        <p><a href=kurssi.php?opettaja=<?php print $_GET["opettaja"] ?>&mista=l>Lisää uusi kurssi</a></p>
-        <p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"] ?>"><img src="nuoli.png" border="0" /></a></p>
+        <ul class="navbar">
+           <li><p><a href=kurssi.php?opettaja=<?php print $_GET["opettaja"] ?>&mista=h>Lisää uusi kurssi</a></p>
+           <li><p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"] ?>">Oma sivu</a></p>
+        </ul>
         <?php
         // Istuntotarkastus failaa
     } else {
