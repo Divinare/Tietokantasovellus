@@ -51,10 +51,11 @@ ul.navbar {
 }
 
 ul.navbar li {
-  background: #86B7EF;
+  background:  #fee3ad;
   margin: 0.5em 0;
   padding: 0.3em;
-  border-right: 1em solid black; 
+  border: 0.3em solid gray;
+  border-right: 10px solid gray; 
   font-weight: 500;
 }
 
@@ -63,11 +64,11 @@ ul.navbar a {
 }
 
 a:link {
-  color: white; 
+  color: black; 
 }
 
 a:visited {
-  color: white; 
+  color: black; 
 }
 
 a.kysely:link {
