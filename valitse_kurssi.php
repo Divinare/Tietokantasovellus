@@ -46,6 +46,7 @@ $yhteys = db::getDB();
                                 <input type="hidden" name="knimi" value="<?php print $k['nimi']; ?>">
                                 <input type="hidden" name="periodi" value="<?php print $k['periodi']; ?>">
                                 <input type="hidden" name="vuosi" value="<?php print $k['vuosi']; ?>">
+                                <input type="hidden" name="kurssiid" value="<?php print $k['kurssiid']; ?>">
                                 <input type="submit" value="Valitse">
                             </Form>
                         </td>

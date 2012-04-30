@@ -12,15 +12,14 @@
 
           $yhteys = db::getDB();
 
-          // Valitaan opettajan luomat kyselyt
-          $sql2 = 'SELECT kknimi, esilla, kurssikyselyID, nimi FROM kurssikysely INNER JOIN kurssi ON kurssi.kurssiid = kurssikysely.kurssiid WHERE henkiloID = 6';
-          $kkyselyt = $yhteys->prepare($sql2);
-          $kkyselyt->execute(array());
-          $kyselyt = $kkyselyt->fetchAll();
+
+          $kyselysql = 'SELECT kurssikyselyid, kknimi, esilla, henkiloid FROM Kurssikysely WHERE esilla = TRUE and henkiloid = 3 ORDER BY kknimi';
+          $kyselysql2 = $yhteys->prepare($kyselysql);
+          $kyselysql2->execute(array());
+          $taulu = $kyselysql2->fetch();
+          print $taulu;
 
 
-print "Koko ".sizeof($kyselyt)."<br>";
-print "kknimi ".$kyselyt[0]["kknimi"];
 
 
 ?>

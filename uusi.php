@@ -42,8 +42,8 @@ session_start();
         }
         ?>
         <font color='black'>
-        <form action="uusi_nimi.php?opettaja=<?php print $_GET['opettaja']; ?>&&kyselyid=<?php print $_GET['kyselyid']; ?>&mista=u" method="post">
-            <input type="text" name="kknimi">
+        <form action="uusi_nimi.php?opettaja=<?php print $_GET['opettaja']; ?>&kyselyid=<?php print $_GET['kyselyid']; ?>&mista=u" method="post">
+            <input type="text" name="kknimi" id="kknimi">
             <input type="submit" value = "Muuta nimeä">
         </form>
         </br></br>

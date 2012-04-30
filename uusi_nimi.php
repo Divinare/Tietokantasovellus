@@ -9,7 +9,7 @@
        $pituus = strlen($_POST["kknimi"]);
 
 
-       if ($_GET["mista"] == u) {
+       if ($_GET["mista"] == "u") {
          $minne = "uusi.php";
        }
        else {
@@ -23,7 +23,6 @@
           $sqlnimi = 'UPDATE Kurssikysely SET kknimi = ? WHERE kurssikyselyID = ?';
           $unimi = $yhteys->prepare($sqlnimi);
           $unimi->execute(array($_POST["kknimi"], $_GET["kyselyid"]));
-
 
           header("Location: ".$minne."?opettaja=".$_GET["opettaja"]."&kyselyid=".$_GET['kyselyid']."&viestiots=OK!"); die();
       }
