@@ -21,9 +21,19 @@
              $admin = $yhteys->prepare($sql);
              $admin->execute(array($_GET['vaihdasala']));
              $nimi = $admin->fetch();
-             echo "<h1>$nimi[2] - $nimi[0] $nimi[1]</h1>";
-     ?>
 
+             if ($nimi[2] == "opettaja") {
+                $rooli = "Opettaja";
+             }
+             else if ($nimi[2] == "admin") {
+                $rooli = "Admin";
+             }
+             else {
+                $rooli = "Vastuuhenkilö";
+             }
+             print "<h1>$rooli - $nimi[0] $nimi[1]</h1>";
+     ?>
+<ul class="box">
      <Form name ='salasanat' Method ='Post' ACTION ='svaihto.php?svaihto=<?php print $_GET['vaihdasala']; ?>'>
 
      <p>Vanha salasana:</p>
@@ -51,15 +61,16 @@
 
      <Input type = 'Submit' Name = 'submit' Value = 'Vaihda salasanaa'>
      </form>
+</ul>
      <?php
           $sql = 'SELECT rooli FROM henkilo WHERE henkiloid = ?';
           $kyselyrooli = $yhteys->prepare($sql);
           $kyselyrooli->execute(array($_GET["vaihdasala"]));
           $rooli = $kyselyrooli->fetch();
      ?>
-
-     <p> <a href=<?php print $rooli[0]; ?>.php?<?php print $rooli[0]; ?>=<?php print $_GET['vaihdasala']; ?>><img src="nuoli.png" border="0" /></a></p>
-
+<ul class="navbar">
+     <li><p> <a href=<?php print $rooli[0]; ?>.php?<?php print $rooli[0]; ?>=<?php print $_GET['vaihdasala']; ?>>Oma sivu</a></p>
+</ul>
      <?php
 
           }

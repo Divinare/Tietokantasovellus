@@ -38,6 +38,7 @@ session_start();
 
         <!-- Otsikko ja sen muuttaminen -->
         <h2>Kurssin <?php print $kntulos['nimi']; ?> (<?php print $kntulos['periodi']; ?>/<?php print $kntulos['vuosi']; ?>) kurssikysely</h2>
+   <ul class="box">
         <p>Kyselyn nimi:   <b><?php print $otsikkov['kknimi']; ?></b></p>
 
         <?php
@@ -154,9 +155,12 @@ session_start();
         <input type="hidden" name="poisto" value="<?php print $_GET['kyselyid']; ?>">
         <input type="submit" value="Poista">
         </FORM> </br>
-        
+
+</ul>
         <!-- Paluulinkki -->
-        <p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"]?>"><img src="nuoli.png" border="0" /></a></p>
+      <ul class="navbar">
+         <li><p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"]?>">Oma sivu</a></p>
+      </ul>
 
     <?php
 } else {

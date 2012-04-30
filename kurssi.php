@@ -18,7 +18,7 @@
            <Form name ='uusikurssi' Method ='Post' ACTION ='tarkasta_ktiedot.php?opettaja=<?php print $_GET["opettaja"]; ?>&mista=<?php print $_GET["mista"]; ?>'>
 
                <h1>Lisää kurssi </h1>
-
+            <ul class="box">
                <p><b>Kurssin nimi: </b></p>
                <input type="text" name="knimi" size="40"></br>
 
@@ -33,7 +33,7 @@
 
                <Input type = 'Submit' Name = 'submit' Value = 'Lähetä'>
            </form>
-
+          </ul>
     <?php
 
           if ($_GET["virhe"] == "n") {
@@ -53,5 +53,7 @@
             header("Location: access_denied.php"); die();
          }
     ?>
-    <p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"]?>"><img src="nuoli.png" border="0" /></a></p>
+    <ul class="navbar">
+       <li><p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"]?>">Oma sivu</a></p>
+    </ul>
 </body>

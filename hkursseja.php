@@ -89,8 +89,9 @@ $yhteys = db::getDB();
         </br>
         <!-- Muut toiminnot linkkeinä -->
         <ul class="navbar">
-           <li><p><a href=kurssi.php?opettaja=<?php print $_GET["opettaja"] ?>&mista=h>Lisää uusi kurssi</a></p>
            <li><p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"] ?>">Oma sivu</a></p>
+           <li><p><a href=kurssi.php?opettaja=<?php print $_GET["opettaja"] ?>&mista=h>Lisää uusi kurssi</a></p>
+
         </ul>
         <?php
         // Istuntotarkastus failaa

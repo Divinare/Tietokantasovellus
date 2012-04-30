@@ -31,6 +31,8 @@ session_start();
 
         <!-- Otsikon säätämistä -->
         <h1>Uusi kysely</h1>
+
+        <ul class="box">
         <p>Kyselyn nimi: <b><?php print $otsikkov[0]; ?></b></p>
 
         <?php
@@ -102,7 +104,10 @@ session_start();
         </br></br>
 
         <!-- POIS! -->
-        <p><a href="opettaja.php?opettaja=<?php print $_GET['opettaja']; ?>"><img src="nuoli.png" border="0" /></a></p>
+
+      <ul class="navbar">
+        <li><p><a href="opettaja.php?opettaja=<?php print $_GET['opettaja']; ?>">Oma sivu</a></p>
+      </ul>
 
         <?php
     } else {

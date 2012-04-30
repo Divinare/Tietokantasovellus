@@ -25,7 +25,7 @@ $yhteys = db::getDB();
         // Jos kannassa on tallennettuja kursseja, ne tulostetaan
         if (sizeof($kurssit) > 0) {
             ?>
-
+<ul class="box">
             <table border="0" cellpadding="3">
                 <tr>
                     <th align = left>Nimi</th>
@@ -61,6 +61,8 @@ $yhteys = db::getDB();
                 ?>
             </table>
             </br>
+            <p><a href=kurssi.php?opettaja=<?php print $_GET["opettaja"] ?>&mista=l>Lisää uusi kurssi</a></p>
+
             <?php
             // Jos kannassa ei ole kursseja, siitä ilmoitetaan
         } else {
@@ -79,7 +81,9 @@ $yhteys = db::getDB();
                 </tr>
             </table>
             </br>
+            <p><a href=kurssi.php?opettaja=<?php print $_GET["opettaja"] ?>&mista=l>Lisää uusi kurssi</a></p>
 
+</ul>
 
             <?php
         }
@@ -93,8 +97,9 @@ $yhteys = db::getDB();
         ?>
         </br>
         <!-- Muut toiminnot linkkeinä -->
-        <p><a href=kurssi.php?opettaja=<?php print $_GET["opettaja"] ?>&mista=l>Lisää uusi kurssi</a></p>
-        <p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"] ?>"><img src="nuoli.png" border="0" /></a></p>
+        <ul class="navbar">
+           <li><p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"] ?>">Oma sivu</a></p>
+        </ul>
         <?php
         // Istuntotarkastus failaa
     } else {
