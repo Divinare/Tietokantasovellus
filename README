@@ -9,16 +9,12 @@ http://jelindh.users.cs.helsinki.fi/
 
 TO DO
 - dokumentointi (pikku juttu!) _____NOT!_____
-- kun menet opettajasta -> "luo uusi kysely" -> valitset kurssin niin "muuta nimeä" 
-  eikä "lisää kysymys" nappulat tee mitään.. <--- KORJATTU EHKÄ :D (kokeile)
-- lisää_kyselyyn takaisin-nappula
 - palkkiotsikoiden läpikäynti opettajasta (admin ja laitosvastaava katottu)
 - Kysymyksiin liittyvien kommenttien käsittely
 - Kommenttien näkyminen opettajalle (vain omat), vastuuhenkilölle (kaikki)
 - sessionien lisäys yhteenvetoon ja luoyvhen
 - se joku raportti, jonka opettaja tms. henkilö saa :D
 - ehkä kurssien poisto vielä erikseen opettajan etusivulle?
-- uuden kyselyn luontiin (tyhjä), jos ei tallennettuja kysymyksiä
 
 Viimeistely:
 - sessionit varmasti kaikissa tarvittavissa filuissa?

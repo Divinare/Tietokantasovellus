@@ -21,6 +21,10 @@
               $kurssi = $yhteys->prepare($sql);
               $kurssi->execute(array($_GET["opettaja"]));
               $kurssit = $kurssi->fetchAll();
+
+     // Jos kannassa on tallennettuja kursseja, ne tulostetaan
+     if (sizeof($kurssit) > 0) {
+
     ?>
 
     <table border="0" cellpadding="3">
@@ -60,6 +64,31 @@
        </table>
        </br>
        <?php
+
+         }
+         else {
+
+         ?>
+       <table border="0" cellpadding="3">
+       <tr>
+       <th align = left>Nimi</th>
+       <th align = left>Periodi</th>
+       <th align = left>Vuosi  </th>
+       <th>                 </th>
+       <th>                 </th>
+
+       </tr>
+       <tr>
+           <td>(tyhjä)</td>
+       </tr>
+       </table>
+       </br>
+
+
+        <?php
+            }
+
+
 
           if ($_GET["viesti"] == "OK!") {
              print "<p><font color='Red'>    Poisto onnistui!</p>";
