@@ -1,111 +1,104 @@
 <?php
-     require_once 'DB.php';
-     session_start();
-     $yhteys = db::getDB();
+require_once 'DB.php';
+session_start();
+$yhteys = db::getDB();
 ?>
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="tyylit.css" />
 <head>
-   <title>Uusi kysely - Kurssi</title>
-   <meta charset="utf-8">
+    <title>Uusi kysely - Kurssi</title>
+    <meta charset="utf-8">
 </head>
 <body>
 
-     <h1>Valitse kurssi</h1>
+    <h1>Valitse kurssi</h1>
 
     <?php
-          // Istuntotarkastus
-          if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
+    // Istuntotarkastus
+    if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
-              $sql = 'SELECT nimi, vuosi, periodi, kurssiID FROM kurssi WHERE henkiloID = ?';
-              $kurssi = $yhteys->prepare($sql);
-              $kurssi->execute(array($_GET["opettaja"]));
-              $kurssit = $kurssi->fetchAll();
+        $sql = 'SELECT nimi, vuosi, periodi, kurssiID FROM kurssi WHERE henkiloID = ?';
+        $kurssi = $yhteys->prepare($sql);
+        $kurssi->execute(array($_GET["opettaja"]));
+        $kurssit = $kurssi->fetchAll();
 
-     // Jos kannassa on tallennettuja kursseja, ne tulostetaan
-     if (sizeof($kurssit) > 0) {
+        // Jos kannassa on tallennettuja kursseja, ne tulostetaan
+        if (sizeof($kurssit) > 0) {
+            ?>
 
-    ?>
+            <table border="0" cellpadding="3">
+                <tr>
+                    <th align = left>Nimi</th>
+                    <th align = left>Periodi</th>
+                    <th align = left>Vuosi </th>
+                    <th> </th>
+                    <th> </th>
+                </tr>
+                <tr>
 
-    <table border="0" cellpadding="3">
-       <tr>
-       <th align = left>Nimi</th>
-       <th align = left>Periodi</th>
-       <th align = left>Vuosi  </th>
-       <th>                 </th>
-       <th>                 </th>
-       </tr>
-       <tr>
+                    <?php
+                    foreach ($kurssit as $k) {
+                        ?>
+                        <td><?php print $k['nimi']; ?></td>
+                        <td><?php print $k['periodi']; ?></td>
+                        <td><?php print $k['vuosi']; ?></td>
+                        <td><Form action="luo_kysely.php?opettaja=<?php print $_GET['opettaja']; ?>" method="post">
+                                <input type="hidden" name="knimi" value="<?php print $k['nimi']; ?>">
+                                <input type="hidden" name="periodi" value="<?php print $k['periodi']; ?>">
+                                <input type="hidden" name="vuosi" value="<?php print $k['vuosi']; ?>">
+                                <input type="submit" value="Valitse">
+                            </Form>
+                        </td>
+                        <td><Form action="poista_kurssi.php?opettaja=<?php print $_GET['opettaja']; ?>" method="post">
+                                <input type="hidden" name="kurssiid" value="<?php print $k['kurssiid']; ?>">
+                                <input type="submit" value="Poista">
+                            </Form>
+                        </td>
+                    </tr>
+                    <?php
+                }
+                ?>
+            </table>
+            </br>
+            <?php
+            // Jos kannassa ei ole kursseja, siitä ilmoitetaan
+        } else {
+            ?>
+            <table border="0" cellpadding="3">
+                <tr>
+                    <th align = left>Nimi</th>
+                    <th align = left>Periodi</th>
+                    <th align = left>Vuosi </th>
+                    <th> </th>
+                    <th> </th>
 
-       <?php
+                </tr>
+                <tr>
+                    <td>(tyhjä)</td>
+                </tr>
+            </table>
+            </br>
 
-           foreach ($kurssit as $k) {
 
+            <?php
+        }
+
+        // Kurssinpoistoilmoitukset
+        if ($_GET["viesti"] == "OK!") {
+            print "<p><font color='Red'> Poisto onnistui!</p>";
+        } else if ($_GET["viesti"] == "v") {
+            print "<p><font color='Red'> Kurssiin, jonka yritit poistaa, liittyy kurssikyselyitä. Poista ensin kurssiin liittyvät kurssikyselyt ja yritä sitten uudelleen.</p>";
+        }
         ?>
-              <td><?php print $k['nimi'];?></td>
-              <td><?php print $k['periodi'];?></td>
-              <td><?php print $k['vuosi'];?></td>
-              <td><Form  action="luo_kysely.php?opettaja=<?php print $_GET['opettaja'];?>" method="post">
-                  <input type="hidden" name="knimi" value="<?php print $k['nimi'];?>">
-                  <input type="hidden" name="periodi" value="<?php print $k['periodi'];?>">
-                  <input type="hidden" name="vuosi" value="<?php print $k['vuosi'];?>">
-                  <input type="submit" value="Valitse">
-                  </Form>
-              </td>
-              <td><Form  action="poista_kurssi.php?opettaja=<?php print $_GET['opettaja'];?>" method="post">
-                  <input type="hidden" name="kurssiid" value="<?php print $k['kurssiid'];?>">
-                  <input type="submit" value="Poista">
-                  </Form>
-              </td>
-              </tr>
-       <?php
-          }
-        ?>
-       </table>
-       </br>
-       <?php
-
-         }
-         else {
-
-         ?>
-       <table border="0" cellpadding="3">
-       <tr>
-       <th align = left>Nimi</th>
-       <th align = left>Periodi</th>
-       <th align = left>Vuosi  </th>
-       <th>                 </th>
-       <th>                 </th>
-
-       </tr>
-       <tr>
-           <td>(tyhjä)</td>
-       </tr>
-       </table>
-       </br>
-
-
+        </br>
+        <!-- Muut toiminnot linkkeinä -->
+        <p><a href=kurssi.php?opettaja=<?php print $_GET["opettaja"] ?>>Lisää uusi kurssi</a></p>
+        <p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"] ?>"><img src="nuoli.png" border="0" /></a></p>
         <?php
-            }
-
-
-
-          if ($_GET["viesti"] == "OK!") {
-             print "<p><font color='Red'>    Poisto onnistui!</p>";
-          }
-          else if ($_GET["viesti"] == "v") {
-             print "<p><font color='Red'>    Kurssiin, jonka yritit poistaa, liittyy kurssikyselyitä. Poista ensin kurssiin liittyvät kurssikyselyt ja yritä sitten uudelleen.</p>";
-          }
-
-       ?>
-       </br>
-       <p><a href=kurssi.php?opettaja=<?php print $_GET["opettaja"]?>>Lisää uusi kurssi</a></p>
-       <p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"]?>"><img src="nuoli.png" border="0" /></a></p>
-      <?php
-
-          }
-          else {
-             header("Location: access_denied.php"); die();
-          }
-      ?>
+        // Istuntotarkastus failaa
+    } else {
+        header("Location: access_denied.php");
+        die();
+    }
+    ?>
 </body>
