@@ -8,9 +8,10 @@ http://jelindh.users.cs.helsinki.fi/
 (")_(")
 
 TO DO
-- dokumentointi (pikku juttu!) _____NOT!_____
+- dokumentointi (pikku juttu!) NOT
 - kun menet opettajasta -> "luo uusi kysely" -> valitset kurssin niin "muuta nimeä" 
-  eikä "lisää kysymys" nappulat tee mitään.. <--- KORJATTU EHKÄ :D (kokeile)
+eikä "lisää kysymys" nappulat tee mitään.. vaikuttaa oudolta (johtuukohan siitä et oon
+poistellu/vaihdellu henkilöiden rooleja kenties? en viitti ite koskee tohon nyt)
 - lisää_kyselyyn takaisin-nappula
 - palkkiotsikoiden läpikäynti opettajasta (admin ja laitosvastaava katottu)
 - Kysymyksiin liittyvien kommenttien käsittely
@@ -18,12 +19,12 @@ TO DO
 - sessionien lisäys yhteenvetoon ja luoyvhen
 - se joku raportti, jonka opettaja tms. henkilö saa :D
 - ehkä kurssien poisto vielä erikseen opettajan etusivulle?
+- kurssin valitsemiseen (tyhjä), jos ei tallennettuja kursseja
 - uuden kyselyn luontiin (tyhjä), jos ei tallennettuja kysymyksiä
 
 Viimeistely:
-- sessionit varmasti kaikissa tarvittavissa filuissa?
 - koodin yhdenmukaisuus
 - ulkoasu
 - koodin siistiminen ja sisennykset
-- jokaisen tiedoston alkuun kommenteilla mitä se tekee (ellei itsestään selvää) + kommentointia koodin sisään
+- jokaisen tiedoston alkuun kommenteilla mitä se tekee (ellei itsestään selvää)
 

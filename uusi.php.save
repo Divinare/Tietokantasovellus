@@ -14,6 +14,7 @@ session_start();
     <?php
     $yhteys = db::getDB();
 
+    // Istuntotarkastus
     if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
         // Kyselyn otsikko/nimi
@@ -49,38 +50,35 @@ session_start();
         </br></br>
 
         <!-- Kysymystaulu -->
+        <table border="0" cellpadding="3">
 
         <?php
-        if (sizeof($uudet) > 0) {
-            ?>    
-            <table border="0" cellpadding="3">
-                <th align="left">Tallennetut kysymykset</th>
-                <tr>
-                    <?php
-                    for ($i = 0, $size = sizeof($uudet); $i < $size; ++$i) {
-                        ?>
-
-                        <td><?php print $uudet[$i]['kysymys']; ?></td>
-
-                        <!-- Kysymyksen poisto -->
-                        <td><a href=kpoisto.php?opettaja=<?php print $_GET["opettaja"]; ?>&&remv=<?php print $uudet[$i]['kysymysid']; ?>&&kyselyid=<?php print $_GET["kyselyid"]; ?>&mista=u>Poista</a>
-                    </tr>
-                <?php } ?>
-            </table>
-            <?php
-        } else {
-            ?>
-
-            <table border = "0" cellpadding = "3">
-                <th align = "left">Tallennetut kysymykset</th>
-                <tr>
-                    <td>(tyhjä)</td>
-                </tr>
-            </table>
-
-            <?php
-        }
+             // Jos kysymyksiä on jo tallennettu, ne tulostetaan tauluun
+             if (sizeof($uudet) > 0 {
         ?>
+            <th align="left">Tallennetut kysymykset</th>
+            <tr>
+                <?php
+                for ($i = 0, $size = sizeof($uudet); $i < $size; ++$i) {
+                    ?>
+
+                    <td><?php print $uudet[$i]['kysymys']; ?></td>
+
+                    <!-- Kysymyksen poisto -->
+                    <td><a href=kpoisto.php?opettaja=<?php print $_GET["opettaja"]; ?>&&remv=<?php print $uudet[$i]['kysymysid']; ?>&&kyselyid=<?php print $_GET["kyselyid"]; ?>&mista=u>Poista</a>
+                </tr>
+         <?php
+              }
+              else {
+         ?>
+              <th align="left">Tallennetut kysymykset</th>
+              <tr>
+                  <td>(tyhjä)</td>
+              </tr>
+
+
+            <?php } ?>
+        </table>
         </br></br>
 
         <!-- Uuden kysymyksen lisääminen -->
@@ -101,14 +99,16 @@ session_start();
         </FORM>
         </br></br>
 
-        <!-- POIS! -->
-        <p><a href="opettaja.php?opettaja=<?php print $_GET['opettaja']; ?>"><img src="nuoli.png" border="0" /></a></p>
 
-        <?php
-    } else {
-        header("Location: access_denied.php");
-        die();
-    }
-    ?>
+        <!-- POIS! -->
+        <p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"] ?>"><img src="nuoli.png" border="0" /></a></p>
+
+    <?php
+    // Istuntotarkastus failaa
+} else {
+    header("Location: access_denied.php");
+    die();
+}
+?>
 
 </body>

@@ -16,30 +16,12 @@
        if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
           $yhteys = db::getDB();
-
-          if (isset($_SESSION["knimi"])) {
-             $knimi = $_SESSION["knimi"];
-             unset($_SESSION["knimi"]);
-          }
-          else {
-             $knimi = $_POST["knimi"];
-          }
-
-          if (isset($_SESSION["periodi"])) {
-             $peri = $_SESSION["periodi"];
-             unset($_SESSION["periodi"]);
-          }
-          else {
-             $peri = $_POST["periodi"];
-          }
-
-          if (isset($_SESSION["vuosi"])) {
-             $vuosi = $_SESSION["vuosi"];
-             unset($_SESSION["vuosi"]);
-          }
-          else {
-             $vuosi = $_POST["vuosi"];
-          }
+          $knimi = $_SESSION["knimi"];
+          unset($_SESSION["knimi"]);
+          $peri = $_SESSION["periodi"];
+          unset($_SESSION["periodi"]);
+          $vuosi = $_SESSION["vuosi"];
+          unset($_SESSION["vuosi"]);
 
 
           // Tarkastetaan, onko kurssi jo olemassa
@@ -48,11 +30,10 @@
           $onko->execute(array($knimi, $peri, $vuosi, $_GET["opettaja"]));
           $tulos = $onko->fetchAll();
 
-
           // Jos ei, niin lisätään
           if (sizeof($tulos)<1) {
 
-             $sql = 'INSERT INTO Kurssi VALUES (?, ?, ?, ?)';
+             $sql = 'INSERT INTO Kurssi VALUES (?, ?, ?, ?) RETURNING kurssiID';
              $lisays = $yhteys->prepare($sql);
              $lisays->execute(array($_GET["opettaja"], $knimi, $peri, $vuosi));
           }
@@ -68,14 +49,14 @@
           $lisays2 = $yhteys->prepare($sql3);
           $lisays2->execute(array($idtulos[0], $_GET["opettaja"]));
 
-          // Kurssikyselyn ID:n hakeminen
-          $sql4 = "SELECT LASTVAL()";
-          $kkid = $yhteys->prepare($sql4);
-          $kkid->execute();
-          $kkidd = $kkid->fetch();
+          // Kurssikyselyn id
+          $sql4 = "SELECT kurssikyselyid FROM Kurssikysely WHERE kurssiid = ? AND ";
+          $kkid = $lisays2->fetch();
 
-          header("Location: uusi.php?opettaja=".$_GET["opettaja"]."&kyselyid=".$kkidd[0]); die();
 
+
+print "testi ".$kkid.$kkid[0].$kkid["kurssikyselyid"].$lol;
+//          header("Location: uusi.php?opettaja=".$_GET["opettaja"]."&kyselyid=".$kkid["kurssikyselyid"]); die();
        }
        else {
           header("Location: access_denied.php"); die();

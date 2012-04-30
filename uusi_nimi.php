@@ -8,6 +8,7 @@
 
        $pituus = strlen($_POST["kknimi"]);
 
+
        if ($_GET["mista"] == u) {
          $minne = "uusi.php";
        }
@@ -17,10 +18,12 @@
 
        if ($pituus > 0 && $pituus < 51) {
 
+
           // Otsikon uudelleennimeäminen
           $sqlnimi = 'UPDATE Kurssikysely SET kknimi = ? WHERE kurssikyselyID = ?';
           $unimi = $yhteys->prepare($sqlnimi);
           $unimi->execute(array($_POST["kknimi"], $_GET["kyselyid"]));
+
 
           header("Location: ".$minne."?opettaja=".$_GET["opettaja"]."&kyselyid=".$_GET['kyselyid']."&viestiots=OK!"); die();
       }
