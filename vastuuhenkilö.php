@@ -21,11 +21,15 @@ session_start();
           echo "<h1>Laitoksen vastuuhenkilö - $nimi[0] $nimi[1]</h1>";
           ?>
 
-          <p> <a href=yhteenveto.php?yhteenveto=<?php print $_GET["vastuuhenkilö"]; ?>>Kurssikyselyiden tulokset</a></p>
+       <ul class="navbar">
 
-	  <p> <a href=vaihdasala.php?vaihdasala=<?php print $_GET["vastuuhenkilö"]; ?>>Salasanan vaihto</a></p>
+          <li><p><a href=yhteenveto.php?yhteenveto=<?php print $_GET["vastuuhenkilö"]; ?>>Kurssikyselyiden tulokset</a></p>
 
-          <p> <a href=kulos.php>Kirjaudu ulos</a></p>
+	  <li><p><a href=vaihdasala.php?vaihdasala=<?php print $_GET["vastuuhenkilö"]; ?>>Salasanan vaihto</a></p>
+
+          <li><p><a href=kulos.php>Kirjaudu ulos</a></p>
+
+      </ul>
 
        <?php
        }

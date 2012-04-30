@@ -22,15 +22,20 @@
        ?>
 
        <h1>Admin - <?php print $etu." ".$suku;?></h1>
-          <p> <a href=hlisays.php?hlisays=<?php print $_GET["admin"]; ?>>Henkilön lisäys järjestelmään</a></p>
 
-          <p> <a href=hlista.php?hlista=<?php print $_GET["admin"]; ?>>Käyttäjälistat</a></p>
+       <ul class="navbar">
 
-          <p> <a href=yhteenveto.php?yhteenveto=<?php print $_GET["admin"]; ?>>Kurssikyselyiden tulokset</a></p>
+          <li><p><a href=hlisays.php?hlisays=<?php print $_GET["admin"]; ?>>Henkilön lisäys järjestelmään</a></p>
 
-          <p> <a href=vaihdasala.php?vaihdasala=<?php print $_GET["admin"]; ?>>Salasanan vaihto</a></p>
+          <li><p><a href=hlista.php?hlista=<?php print $_GET["admin"]; ?>>Käyttäjälistat</a></p>
 
-          <p> <a href=kulos.php>Kirjaudu ulos</a></p>
+          <li><p><a href=yhteenveto.php?yhteenveto=<?php print $_GET["admin"]; ?>>Kurssikyselyiden tulokset</a></p>
+
+          <li><p><a href=vaihdasala.php?vaihdasala=<?php print $_GET["admin"]; ?>>Salasanan vaihto</a></p>
+
+          <li><p><a href=kulos.php>Kirjaudu ulos</a></p>
+
+       </ul>
   <?php
 
    }
