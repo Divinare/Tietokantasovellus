@@ -88,8 +88,11 @@
            echo "<font size='2'> (".intval((($a/$kokov)*100))."%)</font>"."<br>";
 	   // Lasketaan keskiarvo, (float) sprintf("%1.2f" x) muuttaa luvun x 2-desimaaliseksi luvuksi
            echo "Keskiarvo: ".(float) sprintf("%1.2f", ((($a*1)+($b*2)+($c*3)+($d*4)+($e*5))/$kokov))."<br>";
-	   echo "Vastauksia yhteensä: ".$kokov."<br><br>";
-        }
+	   echo "Vastauksia yhteensä: ".$kokov."<br>";
+           ?>
+           <a href=kommentit.php?henkiloid=<?php print $_GET['henkiloid']; ?>&kysymysid=<?php print $kysymykset[$i][1]; ?>>Tarkastele kommentteja</a><br><br>
+       <?php
+       }
       ?>
      <p><a href=yhteenveto.php?yhteenveto=<?php print $_GET['henkiloid']; ?>><img src="nuoli.png" border="0" /></a></p>
 </body>
