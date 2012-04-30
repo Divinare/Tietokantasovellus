@@ -19,20 +19,36 @@
 
         if ($rooli[0] == vastuuhenkilö) {
              print "Käynnissä olevat kurssikyselyt:<br>";
-             $kysely = 'SELECT kurssikyselyid, kknimi, esilla FROM Kurssikysely WHERE esilla = TRUE ORDER BY kknimi';
+             $kysely = 'SELECT kurssikyselyid, kknimi FROM Kurssikysely WHERE esilla = TRUE ORDER BY kknimi';
              foreach ($yhteys->query($kysely) as $tulos) {
                 print "<a href=luoyv.php?luoyv=".$tulos['kurssikyselyid']."&henkiloid=".$_GET['yhteenveto'].">".$tulos['kknimi']."</a>"."<br>";
              }
-             print "<br><br>"
+             print "<br><br>";
              print "Päättyneet kurssikyselyt:<br>";
-             $kysely2 = 'SELECT kurssikyselyid, kknimi, esilla, ollutEsilla FROM Kurssikysely WHERE esilla = FALSE and ollutEsilla = FALSE ORDER BY kknimi';
+             $kysely2 = 'SELECT kurssikyselyid, kknimi FROM Kurssikysely WHERE esilla = FALSE and ollutEsilla = TRUE ORDER BY kknimi';
              foreach ($yhteys->query($kysely2) as $tulos) {
                 print "<a href=luoyv.php?luoyv=".$tulos['kurssikyselyid']."&henkiloid=".$_GET['yhteenveto'].">".$tulos['kknimi']."</a>"."<br>";
              }
         }
 
         if ($rooli[0] == opettaja) {
-
+             print "Käynnissä olevat omat kurssikyselyt:<br>";
+             $kyselysql = 'SELECT kurssikyselyid, kknimi FROM Kurssikysely WHERE esilla = TRUE and henkiloid = ? ORDER BY kknimi';
+             $kyselysql2 = $yhteys->prepare($kyselysql);
+             $kyselysql2->execute(array($_GET["yhteenveto"]));
+             $taulu = $kyselysql2->fetchAll();
+             foreach ($taulu as $tulos) {
+                print "<a href=luoyv.php?luoyv=".$tulos['kurssikyselyid']."&henkiloid=".$_GET['yhteenveto'].">".$tulos['kknimi']."</a>"."<br>";
+             }
+             print "<br><br>";
+             print "Päättyneet omat kurssikyselyt:<br>";
+             $sqlk = 'SELECT kurssikyselyid, kknimi FROM Kurssikysely WHERE esilla = FALSE and ollutEsilla = TRUE and henkiloid = ? ORDER BY kknimi';
+             $sqlk2 = $yhteys->prepare($sqlk);
+             $sqlk2->execute(array($_GET["yhteenveto"]));
+             $tauluk = $sqlk2->fetchAll();
+             foreach ($tauluk as $tulos) {
+                print "<a href=luoyv.php?luoyv=".$tulos['kurssikyselyid']."&henkiloid=".$_GET['yhteenveto'].">".$tulos['kknimi']."</a>"."<br>";
+             }
         }
 
       ?>
