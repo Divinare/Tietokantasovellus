@@ -29,8 +29,6 @@
 
           <li><p><a href=hlista.php?hlista=<?php print $_GET["admin"]; ?>>Käyttäjälistat</a></p>
 
-          <li><p><a href=yhteenveto.php?yhteenveto=<?php print $_GET["admin"]; ?>>Kurssikyselyiden tulokset</a></p>
-
           <li><p><a href=vaihdasala.php?vaihdasala=<?php print $_GET["admin"]; ?>>Salasanan vaihto</a></p>
 
           <li><p><a href=kulos.php>Kirjaudu ulos</a></p>

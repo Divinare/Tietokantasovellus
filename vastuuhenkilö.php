@@ -23,7 +23,7 @@ session_start();
 
        <ul class="navbar">
 
-          <li><p><a href=yhteenveto.php?yhteenveto=<?php print $_GET["vastuuhenkilö"]; ?>>Kurssikyselyiden tulokset</a></p>
+          <li><p><a href=yhteenveto.php?yhteenveto=<?php print $_GET["vastuuhenkilö"]; ?>>Kaikkien kurssikyselyiden tulokset</a></p>
 
 	  <li><p><a href=vaihdasala.php?vaihdasala=<?php print $_GET["vastuuhenkilö"]; ?>>Salasanan vaihto</a></p>
 

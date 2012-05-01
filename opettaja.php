@@ -86,7 +86,7 @@ session_start();
 
         <li><p> <a href=valitse_kurssi.php?opettaja=<?php print $_GET["opettaja"]; ?>>Luo uusi kysely</a></p>
 
-        <li><p> <a href=yhteenveto.php?yhteenveto=<?php print $_GET["opettaja"]; ?>>Kurssikyselyiden tulokset</a></p>
+        <li><p> <a href=yhteenveto.php?yhteenveto=<?php print $_GET["opettaja"]; ?>>Omien kurssikyselyiden tulokset</a></p>
 
         <li><p> <a href=vaihdasala.php?vaihdasala=<?php print $_GET["opettaja"]; ?>>Salasanan vaihto</a></p>
 
