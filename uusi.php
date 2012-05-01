@@ -33,87 +33,87 @@ session_start();
         <h1>Uusi kysely</h1>
 
         <ul class="box">
-        <p>Kyselyn nimi: <b><?php print $otsikkov[0]; ?></b></p>
-
-        <?php
-        $viesti = $_GET["viestiots"];
-        if ($viesti == "OK!") {
-            print "OK!";
-        } else if ($viesti == "yhyy") {
-            print "<font color='red'>Otsikon sallittu pituus 1-50 merkkiä - antamasi pituus oli " . $_GET["p"] . ".";
-        }
-        ?>
-        <font color='black'>
-        <form action="uusi_nimi.php?opettaja=<?php print $_GET['opettaja']; ?>&kyselyid=<?php print $_GET['kyselyid']; ?>&mista=u" method="post">
-            <input type="text" name="kknimi" id="kknimi">
-            <input type="submit" value = "Muuta nimeä">
-        </form>
-        </br></br>
-
-        <!-- Kysymystaulu -->
-
-        <?php
-        if (sizeof($uudet) > 0) {
-            ?>    
-            <table border="0" cellpadding="3">
-                <th align="left">Tallennetut kysymykset</th>
-                <tr>
-                    <?php
-                    for ($i = 0, $size = sizeof($uudet); $i < $size; ++$i) {
-                        ?>
-
-                        <td><?php print $uudet[$i]['kysymys']; ?></td>
-
-                        <!-- Kysymyksen poisto -->
-                        <td><a href=kpoisto.php?opettaja=<?php print $_GET["opettaja"]; ?>&&remv=<?php print $uudet[$i]['kysymysid']; ?>&&kyselyid=<?php print $_GET["kyselyid"]; ?>&mista=u>Poista</a>
-                    </tr>
-                <?php } ?>
-            </table>
-            <?php
-        } else {
-            ?>
-
-            <table border = "0" cellpadding = "3">
-                <th align = "left">Tallennetut kysymykset</th>
-                <tr>
-                    <td>(tyhjä)</td>
-                </tr>
-            </table>
+            <p>Kyselyn nimi: <b><?php print $otsikkov[0]; ?></b></p>
 
             <?php
-        }
-        ?>
-        </br></br>
-
-        <!-- Uuden kysymyksen lisääminen -->
-        <?php
-        if ($_GET["viesti"] == "OK!") {
-            print "OK!";
-        } else if ($_GET["viesti"] == "yhyy") {
-            print "<font color='red'>Kysymyksen sallittu pituus 1-300 merkkiä - antamasi pituus oli " . $_GET["p"] . ".";
+            $viesti = $_GET["viestiots"];
+            if ($viesti == "OK!") {
+                print "OK!";
+            } else if ($viesti == "yhyy") {
+                print "<font color='red'>Otsikon sallittu pituus 1-50 merkkiä - antamasi pituus oli " . $_GET["p"] . ".";
+            }
             ?>
             <font color='black'>
+            <form action="uusi_nimi.php?opettaja=<?php print $_GET['opettaja']; ?>&kyselyid=<?php print $_GET['kyselyid']; ?>&mista=u" method="post">
+                <input type="text" name="kknimi" id="kknimi">
+                <input type="submit" value = "Muuta nimeä">
+            </form>
+            </br></br>
+
+            <!-- Kysymystaulu -->
+
             <?php
+            if (sizeof($uudet) > 0) {
+                ?>
+                <table border="0" cellpadding="3">
+                    <th align="left">Tallennetut kysymykset</th>
+                    <tr>
+                        <?php
+                        for ($i = 0, $size = sizeof($uudet); $i < $size; ++$i) {
+                            ?>
+
+                            <td><?php print $uudet[$i]['kysymys']; ?></td>
+
+                            <!-- Kysymyksen poisto -->
+                            <td><a href=kpoisto.php?opettaja=<?php print $_GET["opettaja"]; ?>&&remv=<?php print $uudet[$i]['kysymysid']; ?>&&kyselyid=<?php print $_GET["kyselyid"]; ?>&mista=u>Poista</a>
+                        </tr>
+                    <?php } ?>
+                </table>
+                <?php
+            } else {
+                ?>
+
+                <table border = "0" cellpadding = "3">
+                    <th align = "left">Tallennetut kysymykset</th>
+                    <tr>
+                        <td>(tyhjä)</td>
+                    </tr>
+                </table>
+
+                <?php
+            }
+            ?>
+            </br></br>
+
+            <!-- Uuden kysymyksen lisääminen -->
+            <?php
+            if ($_GET["viesti"] == "OK!") {
+                print "OK!";
+            } else if ($_GET["viesti"] == "yhyy") {
+                print "<font color='red'>Kysymyksen sallittu pituus 1-300 merkkiä - antamasi pituus oli " . $_GET["p"] . ".";
+                ?>
+                <font color='black'>
+                <?php
+            }
+            ?>
+
+            <FORM action="lisaa_kysymys.php?opettaja=<?php print $_GET['opettaja']; ?>&kyselyid=<?php print $_GET['kyselyid']; ?>&mista=u" method="post">
+                <input type="text" name="ukysymys">
+                <input type="submit" value="Lisää kysymys">
+            </FORM>
+            </br></br>
+
+            <!-- POIS! -->
+
+            <ul class="navbar">
+                <li><p><a href="opettaja.php?opettaja=<?php print $_GET['opettaja']; ?>">Oma sivu</a></p>
+            </ul>
+
+            <?php
+        } else {
+            header("Location: access_denied.php");
+            die();
         }
         ?>
-
-        <FORM action="lisaa_kysymys.php?opettaja=<?php print $_GET['opettaja']; ?>&kyselyid=<?php print $_GET['kyselyid']; ?>&mista=u" method="post">
-            <input type="text" name="ukysymys">
-            <input type="submit" value="Lisää kysymys">
-        </FORM>
-        </br></br>
-
-        <!-- POIS! -->
-
-      <ul class="navbar">
-        <li><p><a href="opettaja.php?opettaja=<?php print $_GET['opettaja']; ?>">Oma sivu</a></p>
-      </ul>
-
-        <?php
-    } else {
-        header("Location: access_denied.php");
-        die();
-    }
-    ?>
 
 </body>

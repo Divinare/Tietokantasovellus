@@ -1,15 +1,17 @@
-<?php require_once 'DB.php'; ?>
+<?php
+// Luodaan opettajalle ja vastuuhenkilölle linkit käynnissä oleviin ja päättyneisiin kurssikyselyiden tuloksiin
+require_once 'DB.php'; ?>
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="tyylit.css" />
 
 <head>
-   <title>Yhteenveto</title>
-   <meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="tyylit.css" />
+<title>Yhteenveto</title>
+<meta charset="utf-8">
 </head>
 
 <body>
-       <h2>Yhteenveto</h2></br>
-       <?php
+<h2>Yhteenveto</h2></br>
+<?php
         $yhteys = db::getDB();
 
         $sqlrooli = 'SELECT rooli FROM henkilo WHERE henkiloid = ?';
@@ -17,6 +19,7 @@
         $sqlrooli2->execute(array($_GET["yhteenveto"]));
         $rooli = $sqlrooli2->fetch();
 
+        // Vastuuhenkilö näkee kaikki kurssikyselyiden tulokset
         if ($rooli[0] == vastuuhenkilö) {
              print "Käynnissä olevat kurssikyselyt:<br>";
              $kysely = 'SELECT kurssikyselyid, kknimi FROM Kurssikysely WHERE esilla = TRUE ORDER BY kknimi';
@@ -31,6 +34,7 @@
              }
         }
 
+        // Opettaja näkee vain omien kurssikyselyiden tulokset
         if ($rooli[0] == opettaja) {
              print "Käynnissä olevat omat kurssikyselyt:<br>";
              $kyselysql = 'SELECT kurssikyselyid, kknimi FROM Kurssikysely WHERE esilla = TRUE and henkiloid = ? ORDER BY kknimi';
@@ -52,6 +56,6 @@
         }
 
       ?>
-     <p><a href=<?php print $rooli[0]; ?>.php?<?php print $rooli[0]; ?>=<?php print $_GET['yhteenveto']; ?>><img src="nuoli.png" border="0" /></a></p>
+<p><a href=<?php print $rooli[0]; ?>.php?<?php print $rooli[0]; ?>=<?php print $_GET['yhteenveto']; ?>><img src="nuoli.png" border="0" /></a></p>
 
 </body>

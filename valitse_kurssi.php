@@ -25,65 +25,65 @@ $yhteys = db::getDB();
         // Jos kannassa on tallennettuja kursseja, ne tulostetaan
         if (sizeof($kurssit) > 0) {
             ?>
-<ul class="box">
-            <table border="0" cellpadding="3">
-                <tr>
-                    <th align = left>Nimi</th>
-                    <th align = left>Periodi</th>
-                    <th align = left>Vuosi </th>
-                    <th> </th>
-                    <th> </th>
-                </tr>
-                <tr>
-
-                    <?php
-                    foreach ($kurssit as $k) {
-                        ?>
-                        <td><?php print $k['nimi']; ?></td>
-                        <td><?php print $k['periodi']; ?></td>
-                        <td><?php print $k['vuosi']; ?></td>
-                        <td><Form action="luo_kysely.php?opettaja=<?php print $_GET['opettaja']; ?>" method="post">
-                                <input type="hidden" name="knimi" value="<?php print $k['nimi']; ?>">
-                                <input type="hidden" name="periodi" value="<?php print $k['periodi']; ?>">
-                                <input type="hidden" name="vuosi" value="<?php print $k['vuosi']; ?>">
-                                <input type="hidden" name="kurssiid" value="<?php print $k['kurssiid']; ?>">
-                                <input type="submit" value="Valitse">
-                            </Form>
-                        </td>
-                        <td><Form action="poista_kurssi.php?opettaja=<?php print $_GET['opettaja']; ?>&mista=l" method="post">
-                                <input type="hidden" name="kurssiid" value="<?php print $k['kurssiid']; ?>">
-                                <input type="submit" value="Poista">
-                            </Form>
-                        </td>
+            <ul class="box">
+                <table border="0" cellpadding="3">
+                    <tr>
+                        <th align = left>Nimi</th>
+                        <th align = left>Periodi</th>
+                        <th align = left>Vuosi </th>
+                        <th> </th>
+                        <th> </th>
                     </tr>
-                    <?php
-                }
+                    <tr>
+
+                        <?php
+                        foreach ($kurssit as $k) {
+                            ?>
+                            <td><?php print $k['nimi']; ?></td>
+                            <td><?php print $k['periodi']; ?></td>
+                            <td><?php print $k['vuosi']; ?></td>
+                            <td><Form action="luo_kysely.php?opettaja=<?php print $_GET['opettaja']; ?>" method="post">
+                                    <input type="hidden" name="knimi" value="<?php print $k['nimi']; ?>">
+                                    <input type="hidden" name="periodi" value="<?php print $k['periodi']; ?>">
+                                    <input type="hidden" name="vuosi" value="<?php print $k['vuosi']; ?>">
+                                    <input type="hidden" name="kurssiid" value="<?php print $k['kurssiid']; ?>">
+                                    <input type="submit" value="Valitse">
+                                </Form>
+                            </td>
+                            <td><Form action="poista_kurssi.php?opettaja=<?php print $_GET['opettaja']; ?>&mista=l" method="post">
+                                    <input type="hidden" name="kurssiid" value="<?php print $k['kurssiid']; ?>">
+                                    <input type="submit" value="Poista">
+                                </Form>
+                            </td>
+                        </tr>
+                        <?php
+                    }
+                    ?>
+                </table>
+                </br>
+                <p><a href=kurssi.php?opettaja=<?php print $_GET["opettaja"] ?>&mista=l>Lisää uusi kurssi</a></p>
+
+                <?php
+                // Jos kannassa ei ole kursseja, siitä ilmoitetaan
+            } else {
                 ?>
-            </table>
-            </br>
-            <p><a href=kurssi.php?opettaja=<?php print $_GET["opettaja"] ?>&mista=l>Lisää uusi kurssi</a></p>
+                <table border="0" cellpadding="3">
+                    <tr>
+                        <th align = left>Nimi</th>
+                        <th align = left>Periodi</th>
+                        <th align = left>Vuosi </th>
+                        <th> </th>
+                        <th> </th>
 
-            <?php
-            // Jos kannassa ei ole kursseja, siitä ilmoitetaan
-        } else {
-            ?>
-            <table border="0" cellpadding="3">
-                <tr>
-                    <th align = left>Nimi</th>
-                    <th align = left>Periodi</th>
-                    <th align = left>Vuosi </th>
-                    <th> </th>
-                    <th> </th>
+                    </tr>
+                    <tr>
+                        <td>(tyhjä)</td>
+                    </tr>
+                </table>
+                </br>
+                <p><a href=kurssi.php?opettaja=<?php print $_GET["opettaja"] ?>&mista=l>Lisää uusi kurssi</a></p>
 
-                </tr>
-                <tr>
-                    <td>(tyhjä)</td>
-                </tr>
-            </table>
-            </br>
-            <p><a href=kurssi.php?opettaja=<?php print $_GET["opettaja"] ?>&mista=l>Lisää uusi kurssi</a></p>
-
-</ul>
+            </ul>
 
             <?php
         }
@@ -98,7 +98,7 @@ $yhteys = db::getDB();
         </br>
         <!-- Muut toiminnot linkkeinä -->
         <ul class="navbar">
-           <li><p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"] ?>">Oma sivu</a></p>
+            <li><p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"] ?>">Oma sivu</a></p>
         </ul>
         <?php
         // Istuntotarkastus failaa
