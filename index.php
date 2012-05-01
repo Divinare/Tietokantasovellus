@@ -1,9 +1,14 @@
-<?php require_once 'DB.php'; ?>
+<?php
+   require_once 'DB.php';
+   session_start();
+   if (isset($_SESSION["ihminen"])) {
+       unset($_SESSION["ihminen"]);
+   }
+ ?>
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="tyylit.css" />
-
 <!-- Tämä on etusivu, jolla listataan avoimet kurssikyselyt ja jolla on sisäänkirjautuminen -->
 <head>
+    <link rel="stylesheet" type="text/css" href="tyylit.css" />
     <title> Kurssikysely </title>
     <meta charset="utf-8">
 </head>
@@ -13,15 +18,30 @@
 <?php
 $yhteys = db::getDB();
 
-// Haetaan avointen kyselyjen nimet tiedot
-$kysely = 'SELECT kurssikyselyid, kknimi FROM Kurssikysely WHERE esilla = TRUE ORDER BY kknimi';
-
 print "<ul class='box'>";
 
+// Haetaan avointen kyselyjen nimet tiedot
+$kysely = 'SELECT kurssikyselyid, kknimi FROM Kurssikysely WHERE esilla = TRUE ORDER BY kknimi';
+?>
+<table border="0" cellpadding="3">
+  <tr>
+     <th>      </th>
+     <th>      </th>
+  </tr>
+  <tr>
+<?php
 foreach ($yhteys->query($kysely) as $tulos) {
-    print "<a href=kysely.php?kysely=" . $tulos['kurssikyselyid'] . " class ='kysely'>" . $tulos['kknimi'] . "</a>" . "</br>";
+?>
+    <form action="kysely.php" method="post">
+    <input type="hidden" name="kyselyid" value="<?php print $tulos['kurssikyselyid']; ?>">
+    <td><?php print $tulos['kknimi']; ?></td>
+    <td><input type="submit" value="Valitse"></td>
+    </form>
+  </tr>
+<?php
 }
 ?>
+</table>
 </ul>
 
 <ul class = "navbar">

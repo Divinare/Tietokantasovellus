@@ -1,9 +1,7 @@
-<?php require_once 'DB.php'; ?>
-<!DOCTYPE html>
+<?php
+       require_once 'DB.php';
+       session_start();
 
-<head>
-      <meta charset="utf-8">
-    <?php
         $yhteys = db::getDB();
 
        // Äskeiseltä sivulta lähetetyt
@@ -14,14 +12,8 @@
         // Palkkiotsikko
         $sql = 'SELECT kknimi FROM kurssikysely WHERE kurssikyselyid = ?';
         $kyselytitle = $yhteys->prepare($sql);
-        $kyselytitle->execute(array($_GET["kysely"]));
+        $kyselytitle->execute(array($_SESSION["kyselyid"]));
         $htmltitle = $kyselytitle->fetch();
-    ?>
-        <title><?php print $htmltitle['kknimi'] ?></title>
-
-</head>
-<body>
-    <?php
 
         // Arvosanat tauluun
         for ($i = 0, $size = sizeof($arvosanat); $i < $size; ++$i) {
@@ -44,16 +36,26 @@
         }
 
         // Kiittelyteksti
-        $sqlkurssi = 'SELECT nimi FROM kurssi INNER JOIN kurssikysely ON kurssikysely.kurssiid = kurssi.kurssiid WHERE kurssikysely.kurssikyselyid ='.$_GET["kysely"];
+        $sqlkurssi = 'SELECT nimi FROM kurssi INNER JOIN kurssikysely ON kurssikysely.kurssiid = kurssi.kurssiid WHERE kurssikysely.kurssikyselyid ='.$_SESSION["kyselyid"];
         $kurssi = $yhteys->prepare($sqlkurssi);
         $kurssi->execute();
         $kurssinnimi = $kurssi->fetch();
-    ?>
+
+?>
+<!DOCTYPE html>
+<head>
+      <meta charset="utf-8">
+      <title><?php print $htmltitle['kknimi'] ?></title>
+</head>
+
+<body>
+
     </br>
     <h2>Kiitos vastauksistasi kurssin <?php print $kurssinnimi['nimi']; ?> kurssikyselyyn!</h2>
     </br>
     <img src="KIITOS.png" width="614" height="568" alt=":)">
     </br>
+    <a href="luoyv.php">Katso yhteenveto kyselyn tuloksista</a>
     </p><a href="index.php">Etusivulle</a></p>
 
 
