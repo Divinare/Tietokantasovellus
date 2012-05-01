@@ -4,15 +4,15 @@ session_start();
 $yhteys = db::getDB();
 ?>
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="tyylit.css" />
 <head>
+    <link rel="stylesheet" type="text/css" href="tyylit.css" />
     <title>Uusi kysely - Kurssi</title>
     <meta charset="utf-8">
 </head>
 <body>
 
     <h1>Valitse kurssi</h1>
-
+    <ul class="box">
     <?php
     // Istuntotarkastus
     if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
@@ -25,7 +25,6 @@ $yhteys = db::getDB();
         // Jos kannassa on tallennettuja kursseja, ne tulostetaan
         if (sizeof($kurssit) > 0) {
             ?>
-            <ul class="box">
                 <table border="0" cellpadding="3">
                     <tr>
                         <th align = left>Nimi</th>
