@@ -56,7 +56,7 @@ if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
           $_SESSION["idtulos"] = $idtulos[0];
 
-          header("Location: ".$minne."?opettaja=".$_GET["opettaja"]);
+          header("Location: ".$minne."?opettaja=".$_GET["opettaja"]."&mista=".$_GET["mista"]);
 }
 else {
           header("Location: access_denied.php");
