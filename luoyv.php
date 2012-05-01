@@ -90,7 +90,7 @@
            echo "Keskiarvo: ".(float) sprintf("%1.2f", ((($a*1)+($b*2)+($c*3)+($d*4)+($e*5))/$kokov))."<br>";
 	   echo "Vastauksia yhteensä: ".$kokov."<br>";
            ?>
-           <a href=kommentit.php?henkiloid=<?php print $_GET['henkiloid']; ?>&kysymysid=<?php print $kysymykset[$i][1]; ?>>Tarkastele kommentteja</a>
+           <a href=kommentit.php?henkiloid=<?php print $_GET['henkiloid']; ?>&kysymysid=<?php print $kysymykset[$i][1]; ?>&kurssikyselyid=<?php print $_GET['luoyv']; ?>>Tarkastele kommentteja</a>
            <?php
            // Haetaan kommenttien lukumäärä
            $sql = 'SELECT kommentti FROM Kommentti WHERE kysymysid = ?';

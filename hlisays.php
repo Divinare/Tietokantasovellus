@@ -69,6 +69,9 @@
            if ($_GET["viesti"] == "salateitäsmää") {
                 print "<font color='red'>Salasanat eivät täsmänneet.<font color='black'>";
            }
+           if ($_GET["viesti"] == "salalyhyt") {
+                print "<font color='red'>Salasanan oltava vähintään 8 merkkinen.<font color='black'>";
+           }
       ?>
 
       <p>Vahvista salasana:</p>

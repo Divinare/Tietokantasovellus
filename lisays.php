@@ -55,6 +55,9 @@
      if (strlen($_POST['passu']) > 30) {
         header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=salapitkä"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
      }
+     if (strlen($_POST['passu']) < 8) {
+        header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=salalyhyt"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
+     }
      if ($_POST['passu'] != $_POST['passu2']) {
         header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=salateitäsmää"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
      }

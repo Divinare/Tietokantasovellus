@@ -33,7 +33,7 @@ session_start();
     print $sqlk2[$i][0]."<br><br><br>";
     }
     ?>
-    <p><a href=luoyv.php?luoyv=<?php print $_GET['kysymysid']; ?>&henkiloid=<?php print $_GET['henkiloid']; ?>><img src="nuoli.png" border="0" /></a></p>
+    <p><a href=luoyv.php?luoyv=<?php print $_GET['kurssikyselyid']; ?>&henkiloid=<?php print $_GET['henkiloid']; ?>><img src="nuoli.png" border="0" /></a></p>
     <?php
     } else {
        header("Location: access_denied.php");
