@@ -43,19 +43,22 @@ $kurssinnimi = $kurssi->fetch();
 ?>
 <!DOCTYPE html>
 <head>
+    <link rel="stylesheet" type="text/css" href="tyylit.css" />
     <meta charset="utf-8">
     <title><?php print $htmltitle['kknimi'] ?></title>
 </head>
 
 <body>
 
-    </br>
-    <h2>Kiitos vastauksistasi kurssin <?php print $kurssinnimi['nimi']; ?> kurssikyselyyn!</h2>
-    </br>
-    <img src="KIITOS.png" width="614" height="568" alt=":)">
-    </br>
-    <a href="luoyv.php">Katso yhteenveto kyselyn tuloksista</a>
-    </p><a href="index.php">Etusivulle</a></p>
+    <h1>Kiitos vastauksistasi</h1>
+<ul class="box">
+    <h2>Vastauksesi kurssin <?php print $kurssinnimi['nimi']; ?> kurssikyselyyn on tallennettu!</h2>
+    <img src="KIITOS.png" width="307" height="284" alt=":)" align="center">
+</ul>
+<ul class="navbar">
+    <li><a href="luoyv.php">Kyselyn yhteenveto</a>
+    <li><a href="index.php">Etusivulle</a>
+</ul>
 
 
 </body>

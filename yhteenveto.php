@@ -1,6 +1,9 @@
 <?php
 // Luodaan opettajalle ja vastuuhenkilölle linkit käynnissä oleviin ja päättyneisiin kurssikyselyiden tuloksiin
-require_once 'DB.php'; ?>
+require_once 'DB.php';
+session_start();
+$yhteys = db::getDB();
+?>
 <!DOCTYPE html>
 
 <head>
@@ -10,9 +13,11 @@ require_once 'DB.php'; ?>
 </head>
 
 <body>
-<h2>Yhteenveto</h2></br>
+<h1>Yhteenveto</h1>
+<ul class="box">
 <?php
-        $yhteys = db::getDB();
+       // Istuntotarkastus
+        if ($_SESSION["ihminen"] == $_GET["yhteenveto"]) {
 
         $sqlrooli = 'SELECT rooli FROM henkilo WHERE henkiloid = ?';
         $sqlrooli2 = $yhteys->prepare($sqlrooli);
@@ -34,7 +39,7 @@ require_once 'DB.php'; ?>
              }
         }
 
-        // Opettaja näkee vain omien kurssikyselyiden tulokset
+        // Opettaja näkee vain omien kurssikyselyidensä tulokset
         if ($rooli[0] == opettaja) {
              print "Käynnissä olevat omat kurssikyselyt:<br>";
              $kyselysql = 'SELECT kurssikyselyid, kknimi FROM Kurssikysely WHERE esilla = TRUE and henkiloid = ? ORDER BY kknimi';
@@ -56,6 +61,15 @@ require_once 'DB.php'; ?>
         }
 
       ?>
-<p><a href=<?php print $rooli[0]; ?>.php?<?php print $rooli[0]; ?>=<?php print $_GET['yhteenveto']; ?>><img src="nuoli.png" border="0" /></a></p>
-
+</ul>
+<ul class="navbar">
+<li><p><a href=<?php print $rooli[0]; ?>.php?<?php print $rooli[0]; ?>=<?php print $_GET['yhteenveto']; ?>>Oma sivu</a></p>
+</ul>
+<?php
+}
+// Istuntotarkastus failaa
+else {
+header("Location: access_denied.php");
+}
+?>
 </body>

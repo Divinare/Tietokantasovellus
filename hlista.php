@@ -1,10 +1,11 @@
 <?php
      require_once 'DB.php';
      session_start();
+     $yhteys = db::getDB();
 ?>
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="tyylit.css" />
 <head>
+   <link rel="stylesheet" type="text/css" href="tyylit.css" />
    <title>Käyttäjälista</title>
    <meta charset="utf-8">
 </head>
@@ -13,7 +14,6 @@
 
           if ($_SESSION["ihminen"] == $_GET["hlista"]) {
 
-          $yhteys = db::getDB();
 
           // Haetaan käyttäjän nimi otsikkoon
           $sql = 'SELECT etunimi, sukunimi FROM henkilo WHERE henkiloid = ?';
@@ -37,7 +37,7 @@
    ?>
 
    <h1>Admin - <?php print $otsikko["etunimi"]." ".$otsikko["sukunimi"];?></h1>
-
+   <ul class="box">
    <?php
        $nimi = "adminit";
        $nimi2 = "admin";
@@ -84,8 +84,10 @@
           }
         }
     ?>
-
-    <p> <a href=admin.php?admin=<?php print $_GET["hlista"]; ?>><img src="nuoli.png" border="0" /></a></p>
+</ul>
+<ul class="navbar">
+    <li><p><a href=admin.php?admin=<?php print $_GET["hlista"]; ?>>Oma sivu</a></p>
+</ul>
     <?php
 
       }

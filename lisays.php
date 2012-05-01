@@ -1,20 +1,18 @@
 <?php
     require_once 'DB.php';
     session_start();
+    $yhteys = db::getDB();
  ?>
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="tyylit.css" />
 
 <head>
+   <link rel="stylesheet" type="text/css" href="tyylit.css" />
    <title>Vahvistus</title>
    <meta charset="utf-8">
 </head>
 
 <body>
-
 <?php
-
-   $yhteys = db::getDB();
 
    if ($_SESSION["ihminen"] == $_GET["lisays"]) {
 
@@ -62,14 +60,32 @@
         header("Location: hlisays.php?hlisays=".$_GET["lisays"]."&viesti=salateitäsmää"."&etu=".$_POST['etu']."&suku=".$_POST['suku']."&sähkö=".$_POST['sposti']); die();
      }
 ?>
-<body>
-   <h2>Vahvista alla olevat tiedot</h2>
-   <b>ETUNIMI:</b>     <?php print $_POST['etu']; ?> </br>
-   <b>SUKUNIMI:</b>    <?php print $_POST['suku']; ?> </br>
-   <b>SÄHKÖPOSTI:</b>  <?php print $_POST['sposti']; ?> </br>
-   <b>SALASANA:</b>    <?php for ($i = 1; $i <= strlen($_POST['passu']); $i++) { print '*'; } ?> </br>
-   <b>ROOLI:</b>       <?php print $_POST['rooli']; ?> </br>
 
+   <h2>Vahvista alla olevat tiedot</h2>
+   <ul class="box">
+   <table border="1" cellpadding="3">
+   <tr>
+       <td><b>ETUNIMI</b></td>
+       <td><?php print $_POST['etu']; ?> </td>
+   </tr>
+   <tr>
+       <td><b>SUKUNIMI</b></td>
+       <td><?php print $_POST['suku']; ?> </td>
+   </tr>
+   <tr>
+      <td><b>E-MAIL</b></td>
+      <td><?php print $_POST['sposti']; ?></td>
+   </tr>
+   <tr>
+      <td><b>SALASANA</b></td>
+      <td><?php for ($i = 1; $i <= strlen($_POST['passu']); $i++) { print '*'; } ?> </td>
+   </tr>
+   <tr>
+      <td><b>ROOLI</b></td>
+      <td><?php print $_POST['rooli']; ?></td>
+   </tr>
+</table>
+</br>
    <Form name ='tiedot' Method ='Post' ACTION ='lomakelahetys.php?lomakelahetys=<?php print $_GET['lisays']; ?>'>
    <input type='hidden' name='etu' value='<?php print $_POST['etu']; ?>'>
    <input type='hidden' name='suku' value='<?php print $_POST['suku']; ?>'>
@@ -78,9 +94,10 @@
    <input type='hidden' name='rooli' value='<?php print $_POST['rooli']; ?>'>
    <Input type = 'Submit' Name = 'submit' Value = 'Vahvista tiedot'>
    </form>
-
-   <p><a href=admin.php?admin=<?php print $_GET['lisays']; ?>><img src="nuoli.png" border="0" /></a></p>
-   </FORM>
+</ul>
+<ul class="navbar">
+   <li><p><a href=admin.php?admin=<?php print $_GET['lisays']; ?>>Oma sivu</a></p>
+</ul>
 </body>
 <?php
    }

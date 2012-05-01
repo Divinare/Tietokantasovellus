@@ -18,7 +18,7 @@
    ?>
 
    <h1>Henkilön Lisäys</h1>
-
+   <ul class="box">
    <Form name ='henkilotiedot' Method ='Post' ACTION ='lisays.php?lisays=<?php print $_GET['hlisays']; ?>'>
 
       <p>Etunimi:</p>
@@ -83,10 +83,11 @@
       <input type="radio" name="rooli" value="vastuuhenkilö"> Laitoksen vastuuhenkilö </br>
 
       <Input type = 'Submit' Name = 'submit' Value = 'Lähetä'>
-
-      <p><a href=admin.php?admin=<?php print $_GET['hlisays']; ?>><img src="nuoli.png" border="0" /></a></p>
-
-   </form>
+</form>
+</ul>
+<ul class="navbar">
+      <li><p><a href=admin.php?admin=<?php print $_GET['hlisays']; ?>>Oma sivu</a></p>
+</ul>
 
    <?php
 

@@ -4,22 +4,25 @@
    $yhteys = db::getDB();
 ?>
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="tyylit.css" />
 
 <head>
+   <link rel="stylesheet" type="text/css" href="tyylit.css" />
    <title>Henkilö lisätty</title>
    <meta charset="utf-8">
 </head>
 
 <body>
-
+<h1>Henkilön lisäys</h1>
+<ul class="box">
    <?php
       if ($_SESSION["ihminen"] == $_GET["lomakelahetys"]) {
    ?>
 
-        <h3>Henkilön lisäys onnistui!</h3>
-
-        <p><a href=admin.php?admin=<?php print $_GET['lomakelahetys']; ?>><img src="nuoli.png" border="0" /></a></p>
+        <h3>Onnistui!</h3>
+</ul>
+<ul class="navbar">
+        <li><p><a href=admin.php?admin=<?php print $_GET['lomakelahetys']; ?>>Oma sivu</a></p>
+</ul>
 
    <?php
         $salasana = $_POST["passu"];

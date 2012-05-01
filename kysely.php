@@ -26,8 +26,9 @@
      <meta charset="utf-8">
 </head>
 <body>
-              <h1><?php print $htmltitle['kknimi']; ?><br><font size = "3"><?php print $htmltitle['etunimi']."  ".$htmltitle['sukunimi'];?></h1></br>
+              <h1><?php print $htmltitle['kknimi']; ?> <font size = "3"> - <?php print $htmltitle['etunimi']."  ".$htmltitle['sukunimi'];?></h1>
 
+<ul class="box">
              <Form name ='vastaukset' Method ='Post' ACTION ='end.php'>
 
        <?php
@@ -53,5 +54,8 @@
 
              <Input type = 'Submit' Name = 'submit' Value = 'Lähetä'>
              </form>
-             <p><a href="index.php"><img src="nuoli.png" border="0" /></a></p>
+</ul>
+<ul class="navbar">
+             <li><p><a href="index.php">Etusivu</a></p>
+</ul>
 </body>

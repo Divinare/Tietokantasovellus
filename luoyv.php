@@ -11,6 +11,7 @@ session_start();
 
 <body>
     <?php
+    // Istuntotarkastus
     if (isset($_SESSION["ihminen"])) {
 
         if (isset($_SESSION["kyselyid"])) {
@@ -25,8 +26,10 @@ session_start();
         $kyselynimi = $yhteys->prepare($sql);
         $kyselynimi->execute(array($kyselyid));
         $knimi = $kyselynimi->fetch();
-        echo "<h1>" . $knimi['kknimi'] . "</h1>";
-
+?>
+     <h1><?php print $knimi['kknimi']; ?></h1>
+     <ul class="box">
+<?php
         // Haetaan kaikki kysymykset taulukkoon $kysymykset
         $sqlk = 'SELECT kysymys, kysymysID FROM kysymys WHERE kurssikyselyid = ?';
         $sqlk2 = $yhteys->prepare($sqlk);
@@ -117,24 +120,29 @@ session_start();
             }
         }
 
-
+ ?>
+</ul>
+<ul class="navbar">
+<?php
         // Peruskäyttäjä pääsee julkiselle etusivulle
         if ($_SESSION["ihminen"] == "tavis") {
             ?>
-            <p><a href=index.php>Etusivulle</a></p>
+               <li><p><a href=index.php>Etusivulle</a></p>
 
             <?php
             // Opettaja ja vastuuhenkilö pääsevät omalle etusivulleen
         } else if (isset($_SESSION["ihminen"])) {
             ?>
-            <p><a href=yhteenveto.php?yhteenveto=<?php print $_GET['henkiloid']; ?>><img src="nuoli.png" border="0" /></a></p>
+            <li><p><a href=yhteenveto.php?yhteenveto=<?php print $_GET['henkiloid']; ?>>Takaisin</a></p>
                 <?php
             }
+        // Istuntotarkastus failaa
         } else {
 
             header("Location: access_denied.php");
         }
         ?>
+</ul>
 </body>
 
 
