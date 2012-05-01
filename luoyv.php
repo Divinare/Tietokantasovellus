@@ -90,6 +90,8 @@
            echo "Keskiarvo: ".(float) sprintf("%1.2f", ((($a*1)+($b*2)+($c*3)+($d*4)+($e*5))/$kokov))."<br>";
 	   echo "Vastauksia yhteensä: ".$kokov."<br>";
            ?>
+           // Haetaan rooli, koska kommentit saa nähdä vain opettaja tai laitosvastaava
+           //$sqlr = 'SELECT rooli FROM Henkilo WHERE henkiloid = ?
            <a href=kommentit.php?henkiloid=<?php print $_GET['henkiloid']; ?>&kysymysid=<?php print $kysymykset[$i][1]; ?>&kurssikyselyid=<?php print $_GET['luoyv']; ?>>Tarkastele kommentteja</a>
            <?php
            // Haetaan kommenttien lukumäärä
