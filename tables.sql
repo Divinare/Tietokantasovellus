@@ -130,6 +130,15 @@ INSERT INTO vastaus VALUES (10, 5);
 INSERT INTO vastaus VALUES (11, 1);
 INSERT INTO vastaus VALUES (11, 4);
 INSERT INTO vastaus VALUES (11, 5);
+INSERT INTO vastaus VALUES (12, 3);
+INSERT INTO vastaus VALUES (13, 4);
+INSERT INTO vastaus VALUES (13, 4);
+INSERT INTO vastaus VALUES (13, 4);
+INSERT INTO vastaus VALUES (14, 1);
+INSERT INTO vastaus VALUES (14, 5);
+INSERT INTO vastaus VALUES (15, 2);
+INSERT INTO vastaus VALUES (15, 2);
+INSERT INTO vastaus VALUES (15, 3);
 
 INSERT INTO kommentti VALUES ('Kurssi oli ihan jees', 1);
 INSERT INTO kommentti VALUES ('Liian työläs, ei ollu', 1);
