@@ -114,3 +114,7 @@ INSERT INTO vastaus VALUES (8, 1);
 INSERT INTO vastaus VALUES (8, 1);
 INSERT INTO vastaus VALUES (8, 2);
 INSERT INTO vastaus VALUES (8, 2);
+
+INSERT INTO kommentti VALUES ('Kurssi oli ihan jees', 1);
+INSERT INTO kommentti VALUES ('Liian työläs, ei ollu', 1);
+INSERT INTO kommentti VALUES ('Ei', 2);
