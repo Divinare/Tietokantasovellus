@@ -6,7 +6,7 @@ $yhteys = db::getDB();
 <!DOCTYPE html>
 <head>
    <link rel="stylesheet" type="text/css" href="tyylit.css" />
-   <title>Käyttäjän muokkaus</title>
+   <title>Kommentit</title>
    <meta charset="utf-8">
 </head>
 <body>

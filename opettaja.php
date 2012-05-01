@@ -6,7 +6,7 @@ session_start();
 <link rel="stylesheet" type="text/css" href="tyylit.css" />
 
 <head>
-    <title>Opettaja - Greippikysely</title>
+    <title>Opettaja</title>
     <meta charset="utf-8">
 </head>
 <body>

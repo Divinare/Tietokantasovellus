@@ -7,7 +7,7 @@ session_start();
 <link rel="stylesheet" type="text/css" href="tyylit.css" />
 
 <head>
-<title>Kyselyn muokkaus</title>
+<title>Henkilö poistettiin</title>
 <meta charset="utf-8">
 </head>
 <body>
