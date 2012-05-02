@@ -24,7 +24,7 @@ $yhteys = db::getDB();
         $kurssi->execute(array($_GET["opettaja"]));
         $kurssit = $kurssi->fetchAll();
         ?>
-        <div class="box">
+        <ul class="box">
             <?php
             // Jos kannassa on tallennettuja kursseja, ne tulostetaan
             if (sizeof($kurssit) > 0) {
@@ -78,7 +78,7 @@ $yhteys = db::getDB();
                 <?php
             }
             ?>
-        </div>
+        </ul>
         <?php
         // Kurssinpoistoilmoitukset
         if ($_GET["viesti"] == "OK!") {

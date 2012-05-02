@@ -1,12 +1,15 @@
 <?php
-   require_once 'DB.php';
-   session_start();
-   if (isset($_SESSION["ihminen"])) {
-       unset($_SESSION["ihminen"]);
-   }
- ?>
+// Kyselysivuston julkinen etusivu
+require_once 'DB.php';
+session_start();
+$yhteys = db::getDB();
+
+// Jos jokin istunto on voimassa, se poistetaan
+if (isset($_SESSION["ihminen"])) {
+    unset($_SESSION["ihminen"]);
+}
+?>
 <!DOCTYPE html>
-<!-- Tämä on etusivu, jolla listataan avoimet kurssikyselyt ja jolla on sisäänkirjautuminen -->
 <head>
     <link rel="stylesheet" type="text/css" href="tyylit.css" />
     <title> Kurssikysely </title>
@@ -15,35 +18,33 @@
 
 <h1>Käynnissä olevat kurssikyselyt</h1>
 
-<?php
-$yhteys = db::getDB();
-
-print "<ul class='box'>";
-
+<ul class='box'>
+    <?php
 // Haetaan avointen kyselyjen nimet tiedot
-$kysely = 'SELECT kurssikyselyid, kknimi FROM Kurssikysely WHERE esilla = TRUE ORDER BY kknimi';
-?>
-<table border="0" cellpadding="3">
-  <tr>
-     <th>      </th>
-     <th>      </th>
-  </tr>
-  <tr>
-<?php
-foreach ($yhteys->query($kysely) as $tulos) {
-?>
-    <form action="kysely.php" method="post">
-    <input type="hidden" name="kyselyid" value="<?php print $tulos['kurssikyselyid']; ?>">
-    <td><?php print $tulos['kknimi']; ?></td>
-    <td><input type="submit" value="Valitse"></td>
-    </form>
-  </tr>
-<?php
-}
-?>
-</table>
+    $kysely = 'SELECT kurssikyselyid, kknimi FROM Kurssikysely WHERE esilla = TRUE ORDER BY kknimi';
+    ?>
+    <table border="0" cellpadding="3">
+        <tr>
+            <th> </th>
+            <th> </th>
+        </tr>
+        <tr>
+            <?php
+            // Tulostetaan kyselyt ja niiden valintanapit
+            foreach ($yhteys->query($kysely) as $tulos) {
+                ?>
+            <form action="kysely.php" method="post">
+                <input type="hidden" name="kyselyid" value="<?php print $tulos['kurssikyselyid']; ?>">
+                <td><?php print $tulos['kknimi']; ?></td>
+                <td><input type="submit" value="Valitse"></td>
+            </form>
+            </tr>
+            <?php
+        }
+        ?>
+    </table>
 </ul>
-
+<!-- Kirjautumiskentät -->
 <ul class = "navbar">
     <form name="form1" method="post" action="checklogin.php">
         <fieldset>
@@ -55,14 +56,11 @@ foreach ($yhteys->query($kysely) as $tulos) {
             <p class="submit"><input type="submit" name="Submit" value="Kirjaudu"></p>
         </fieldset>
     </form>
-</ul>
-
-
-</br></br></br></br>
+   <br>
 <?php
 if ($_GET["m"] == "kurjuus") {
-    print "<font color='red'><p>Antamasi käyttäjätunnus ja salasana eivät täsmää.</p>";
+    print "<font color='red' size='2'><p>    Antamasi käyttäjätunnus ja salasana eivät täsmää.</font></p>";
 }
 ?>
+</ul>
 </body>
-

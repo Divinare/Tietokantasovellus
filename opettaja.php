@@ -61,7 +61,7 @@ $yhteys = db::getDB();
                             <td><?php print $k['nimi'] . " " . $k['periodi'] . "/" . $k['vuosi']; ?></td>
                             <td><FORM action="muokkaa.php?opettaja=<?php print $_GET['opettaja']; ?>&kyselyid=<?php print $k['kurssikyselyid']; ?>" method='post'>
                                     <input type="hidden" name="tila" value="<?php print $bo; ?>">
-                                    <input type="submit" value="Muokkaa">
+                                    <input type="submit" value="Muokkaa">   
                                 </FORM>
                             </td>
 
@@ -108,3 +108,6 @@ $yhteys = db::getDB();
     ?>
 
 </body>
+
+
+
