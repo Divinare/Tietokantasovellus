@@ -1,4 +1,5 @@
 <?php
+// Luodaan yhteenvetosivu kurssikyselystä
 require_once 'DB.php';
 session_start();
 ?>
@@ -37,6 +38,7 @@ session_start();
         $kysymykset = $sqlk2->fetchAll();
         $kokok = sizeof($kysymykset);
 
+        // Käydään kaikki kysymykset läpi
         for ($i = 0; $i < $kokok; $i++) {
             echo "<h2>" . $kysymykset[$i][0] . "</h2>";
             // Vastausten haku
@@ -50,9 +52,8 @@ session_start();
             $c = 0;
             $d = 0;
             $e = 0;
+            // Käydään kaikki vastaukset läpi
             for ($j = 0; $j < $kokov; $j++) {
-
-
                 // Lasketaan vastausten määrät
                 if ($vastaukset[$j][0] == 1) {
                     $a++;
@@ -119,7 +120,6 @@ session_start();
                 print " (" . sizeof($sqlk2) . ")</p><br><br>";
             }
         }
-
  ?>
 </ul>
 <ul class="navbar">

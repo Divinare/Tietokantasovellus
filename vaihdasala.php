@@ -4,8 +4,9 @@ require_once 'DB.php';
 session_start();
 ?>
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="tyylit.css" />
+
 <head>
+    <link rel="stylesheet" type="text/css" href="tyylit.css" />
     <title>Salasanan vaihto</title>
     <meta charset="utf-8">
 </head>

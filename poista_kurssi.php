@@ -1,45 +1,41 @@
 <?php
-     // Tiedosto poistaa valitun kurssin
 
-     require_once 'DB.php';
-     session_start();
-     $yhteys = db::getDB();
+// Tiedosto poistaa valitun kurssin
 
-     // Istuntotarkastus
-     if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
+require_once 'DB.php';
+session_start();
+$yhteys = db::getDB();
 
-        if ($_GET["mista"] == "h") {
-           $minne = "hkursseja.php";
-        }
-        else if ($_GET["mista"] == "l") {
-           $minne = "valitse_kurssi.php";
-        }
+// Istuntotarkastus
+if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
-        $sql = "SELECT kurssikyselyid FROM kurssikysely WHERE kurssiid = ?";
-        $tarkaste = $yhteys->prepare($sql);
-        $tarkaste->execute(array($_POST["kurssiid"]));
-        $tar = $tarkaste->fetchAll();
+    if ($_GET["mista"] == "h") {
+        $minne = "hkursseja.php";
+    } else if ($_GET["mista"] == "l") {
+        $minne = "valitse_kurssi.php";
+    }
 
-        // Poistettavaan kurssiin ei liity kurssikyselyitä ja se poistetaan
-        if (sizeof($tar) == 0) {
+    $sql = "SELECT kurssikyselyid FROM kurssikysely WHERE kurssiid = ?";
+    $tarkaste = $yhteys->prepare($sql);
+    $tarkaste->execute(array($_POST["kurssiid"]));
+    $tar = $tarkaste->fetchAll();
 
-           $pois = "DELETE FROM kurssi WHERE kurssiid = ?";
-           $poisto = $yhteys->prepare($pois);
-           $poisto->execute(array($_POST["kurssiid"]));
+    // Poistettavaan kurssiin ei liity kurssikyselyitä ja se poistetaan
+    if (sizeof($tar) == 0) {
 
-           header("Location: ".$minne."?opettaja=".$_GET["opettaja"]."&viesti=OK!");
+        $pois = "DELETE FROM kurssi WHERE kurssiid = ?";
+        $poisto = $yhteys->prepare($pois);
+        $poisto->execute(array($_POST["kurssiid"]));
 
-        }
-        // Kurssiin liittyy kyselyitä, eikä sitä voida poistaa
-        else {
+        header("Location: " . $minne . "?opettaja=" . $_GET["opettaja"] . "&viesti=OK!");
+    }
+    // Kurssiin liittyy kyselyitä, eikä sitä voida poistaa
+    else {
 
-           header("Location: ".$minne."?opettaja=".$_GET["opettaja"]."&viesti=v");
-
-        }
-
-     }
-     else {
-       header("Location: access_denied.php");
-       die();
-     }
+        header("Location: " . $minne . "?opettaja=" . $_GET["opettaja"] . "&viesti=v");
+    }
+} else {
+    header("Location: access_denied.php");
+    die();
+}
 ?>

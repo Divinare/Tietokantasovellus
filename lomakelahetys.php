@@ -1,39 +1,44 @@
 <?php
-   require_once 'DB.php';
-   session_start();
-   $yhteys = db::getDB();
+// Lisää henkilön tietokantaan, jonka tiedot saadaan lisays.php:stä.
+require_once 'DB.php';
+session_start();
+$yhteys = db::getDB();
 ?>
 <!DOCTYPE html>
 
 <head>
-   <link rel="stylesheet" type="text/css" href="tyylit.css" />
-   <title>Henkilö lisätty</title>
-   <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="tyylit.css" />
+    <title>Henkilö lisätty</title>
+    <meta charset="utf-8">
 </head>
 
 <body>
-<h1>Henkilön lisäys</h1>
-<ul class="box">
-   <?php
-      if ($_SESSION["ihminen"] == $_GET["lomakelahetys"]) {
-   ?>
+    <h1>Henkilön lisäys</h1>
+    <ul class="box">
+        <?php
+        // Istuntotarkastus
+        if ($_SESSION["ihminen"] == $_GET["lomakelahetys"]) {
+            ?>
 
-        <h3>Onnistui!</h3>
-</ul>
-<ul class="navbar">
-        <li><p><a href=admin.php?admin=<?php print $_GET['lomakelahetys']; ?>>Oma sivu</a></p>
-</ul>
+            <h3>Onnistui!</h3>
+        </ul>
+        <ul class="navbar">
+            <li><p><a href=admin.php?admin=<?php print $_GET['lomakelahetys']; ?>>Oma sivu</a></p>
+        </ul>
 
-   <?php
+        <?php
         $salasana = $_POST["passu"];
-        $tiiviste = md5(md5($salasana . "greippejäomnomnom")."lisääsitruksia");
+        // Kryptataan lisättävän henkilön salasana
+        $tiiviste = md5(md5($salasana . "greippejäomnomnom") . "lisääsitruksia");
 
         $sql = 'INSERT INTO Henkilo values (?, ?, ?, ?, ?)';
         $laita = $yhteys->prepare($sql);
         $laita->execute(array($_POST["etu"], $_POST["suku"], $_POST["sposti"], $tiiviste, $_POST["rooli"]));
-     }
-     else {
-          header("Location: access_denied.php"); die();
-     }
-   ?>
+
+    // Jos istuntotarkastus failaa
+    } else {
+        header("Location: access_denied.php");
+        die();
+    }
+    ?>
 </body>

@@ -1,11 +1,12 @@
 <?php
+// Tarkistetaan että salasananvaihdon kentät on kunnossa
 require_once 'DB.php';
 session_start();
 ?>
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="tyylit.css" />
 
 <head>
+    <link rel="stylesheet" type="text/css" href="tyylit.css" />
     <title>Salasanan vaihto</title>
     <meta charset="utf-8">
 </head>
@@ -23,6 +24,7 @@ session_start();
         $sala->execute(array($_GET["svaihto"]));
         $vsala = $sala->fetch();
 
+        // Kryptataan annettu vanha salasana jotta sitä voidaan verrata tietokannan kryptattuun salasanaan
         $tiiviste = md5(md5($_POST["vanha"] . "greippejäomnomnom") . "lisääsitruksia");
 
         if ($tiiviste != $vsala["salasana"]) {
@@ -42,6 +44,7 @@ session_start();
             die();
         }
         ?>
+        <!-- Jos kaikki oli kunnossa niin vaihdetaan salasanaa -->
         <h2>Salasanan vaihto onnistui!</h2>
 
         <?php
