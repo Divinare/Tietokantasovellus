@@ -19,18 +19,18 @@ $htmltitle = $kyselytitle->fetch();
 // Arvosanat tauluun
 for ($i = 0, $size = sizeof($arvosanat); $i < $size; ++$i) {
 
-    $sql3 = 'INSERT INTO vastaus VALUES (?, ?)';
+    $sql3 = 'INSERT INTO vastaus VALUES (?, ?, ?)';
     $insertti = $yhteys->prepare($sql3);
-    $insertti->execute(array($kysymysidt[$i], $arvosanat[$i]));
+    $insertti->execute(array($kysymysidt[$i], $arvosanat[$i], $_SESSION["kyselyid"]));
 }
 
 // Kommentit tauluun
 for ($k = 0, $ksize = sizeof($kommentit); $k < $ksize; ++$k) {
 
     if (!$kommentit[$k] == "") {
-        $sql4 = 'INSERT INTO kommentti VALUES (?, ?)';
+        $sql4 = 'INSERT INTO kommentti VALUES (?, ?, ?)';
         $kinsertti = $yhteys->prepare($sql4);
-        $kinsertti->execute(array($kommentit[$k], $kysymysidt[$k]));
+        $kinsertti->execute(array($kommentit[$k], $kysymysidt[$k], $_SESSION["kyselyid"]));
     }
 }
 
