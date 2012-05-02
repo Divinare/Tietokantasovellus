@@ -9,13 +9,9 @@ http://jelindh.users.cs.helsinki.fi/
 
 TO DO
 - dokumentointi (pikku juttu!) _____NOT!_____
-- palkkiotsikoiden läpikäynti opettajasta (admin ja laitosvastaava katottu)
-- sessionien lisäys laitosvastaavaan
 
 Viimeistely:
-- sessionit varmasti kaikissa tarvittavissa filuissa?
 - koodin yhdenmukaisuus
 - ulkoasu
 - koodin siistiminen ja sisennykset
 - jokaisen tiedoston alkuun kommenteilla mitä se tekee (ellei itsestään selvää) + kommentointia koodin sisään
-

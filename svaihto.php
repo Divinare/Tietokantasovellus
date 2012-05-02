@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="tyylit.css" />
 
 <head>
-   <title>Henkilön lisäys</title>
+   <title>Salasanan vaihto</title>
    <meta charset="utf-8">
 </head>
 

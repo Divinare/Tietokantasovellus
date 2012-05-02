@@ -8,7 +8,7 @@ $yhteys = db::getDB();
 
 <head>
 <link rel="stylesheet" type="text/css" href="tyylit.css" />
-<title>Kyselyn muokkaus</title>
+<title>Henkilö poistettiin</title>
 <meta charset="utf-8">
 </head>
 <body>
