@@ -29,52 +29,37 @@ $yhteys = db::getDB();
                 print "Käynnissä olevat kurssikyselyt:<br>";
                 $kysely = 'SELECT kurssikyselyid, kknimi FROM Kurssikysely WHERE esilla = TRUE ORDER BY kknimi';
                 foreach ($yhteys->query($kysely) as $tulos) {
-                    // Haetaan kurssikyselyyn liittyvä henkiloid ja kurssiid
-                    $sqltk = 'SELECT henkiloid, kurssiid FROM kurssikysely WHERE kurssikyselyid = ?';
+                    // Haetaan kurssikyselyyn liittyvä henkiloid
+                    $sqltk = 'SELECT henkiloid FROM kurssikysely WHERE kurssikyselyid = ?';
                     $sqltk2 = $yhteys->prepare($sqltk);
                     $sqltk2->execute(array($tulos['kurssikyselyid']));
-	            $sqltk3 = $sqltk2->fetchAll();
-                    // Haetaan henkilön nimi henkiloID:n avulla (joka siis saadaan $sqltk3[0][0])
-                    $sqln = 'SELECT etunimi, sukunimi FROM henkilo WHERE henkiloid = ?';
-                    $sqln2 = $yhteys->prepare($sqln);
-                    $sqln2->execute(array($sqltk3[0][0]));
-                    $sqln3 = $sqln2->fetchAll();
-                    // Haetaan kurssin nimi, vuosi ja periodi kurssiID:n avulla (joka saadaan $sqltk3[0][1])
-                    $sqlnpv = 'SELECT nimi, vuosi, periodi FROM kurssi WHERE kurssiid = ?';
-                    $sqlnpv2 = $yhteys->prepare($sqlnpv);
-                    $sqlnpv2->execute(array($sqltk3[0][1]));
-                    $sqlnpv3 = $sqlnpv2->fetchAll();
-                    // jos ei haluta copypaste koodia niin tämä:
-                    //if ($_GET['kohta'] == 1) {
-                    //header ("Location: haetiedot.php?henkiloid=".$_GET['yhteenveto']."&kurssikyselyid=".$tulos['kurssikyselyid'."&kohta=1"]);
-                    //}
+	            $sqltk3 = $sqltk2->fetch();
+                    // Haetaan henkilön etunimi, sukunimi, kurssinnimi, vuosi ja periodi henkiloid:n avulla
+                    $sqltiedot = 'SELECT etunimi, sukunimi, nimi, vuosi, periodi FROM Henkilo INNER JOIN Kurssi ON kurssi.henkiloid = henkilo.henkiloid WHERE kurssi.henkiloid = ?';
+                    $sqltiedot2 = $yhteys->prepare($sqltiedot);
+                    $sqltiedot2->execute(array($sqltk3[0]));
+                    $sqltiedot3 = $sqltiedot2->fetchAll();
                     print "<a href=luoyv.php?luoyv=" . $tulos['kurssikyselyid'] . "&henkiloid=" . $_GET['yhteenveto'] . ">" . $tulos['kknimi'] . "</a>" .
-                    " (".$sqln3[0][0] . " " . $sqln3[0][1] . " - " . $sqlnpv3[0][0] . " - Vuosi: " .$sqlnpv3[0][1] . " Periodi: " .$sqlnpv3[0][2] . ")" . "<br>";
+                    " (".$sqltiedot3[0][0] . " " . $sqltiedot3[0][1] . " - " . $sqltiedot3[0][2] . " - Vuosi: " .$sqltiedot3[0][3] . " Periodi: " .$sqltiedot3[0][4] . ")" . "<br>";
                 }
                 print "<br><br>";
                 print "Päättyneet kurssikyselyt:<br>";
                 $kysely2 = 'SELECT kurssikyselyid, kknimi FROM Kurssikysely WHERE esilla = FALSE and ollutEsilla = TRUE ORDER BY kknimi';
-                    // Haetaan kurssikyselyyn liittyvä henkiloid ja kurssiid
-                    $sqltk = 'SELECT henkiloid, kurssiid FROM kurssikysely WHERE kurssikyselyid = ?';
+                    foreach ($yhteys->query($kysely2) as $tulos) {
+                    // Haetaan kurssikyselyyn liittyvä henkiloid
+                    $sqltk = 'SELECT henkiloid FROM kurssikysely WHERE kurssikyselyid = ?';
                     $sqltk2 = $yhteys->prepare($sqltk);
                     $sqltk2->execute(array($tulos['kurssikyselyid']));
-                    $sqltk3 = $sqltk2->fetchAll();
-                    // Haetaan henkilön nimi henkiloID:n avulla (joka siis saadaan $sqltk3[0][0])
-                    $sqln = 'SELECT etunimi, sukunimi FROM henkilo WHERE henkiloid = ?';
-                    $sqln2 = $yhteys->prepare($sqln);
-                    $sqln2->execute(array($sqltk3[0][0]));
-                    $sqln3 = $sqln2->fetchAll();
-                    // Haetaan kurssin nimi, vuosi ja periodi kurssiID:n avulla (joka saadaan $sqltk3[0][1])
-                    $sqlnpv = 'SELECT nimi, vuosi, periodi FROM kurssi WHERE kurssiid = ?';
-                    $sqlnpv2 = $yhteys->prepare($sqlnpv);
-                    $sqlnpv2->execute(array($sqltk3[0][1]));
-                    $sqlnpv3 = $sqlnpv2->fetchAll();
-                    foreach ($yhteys->query($kysely2) as $tulos) {
+                    $sqltk3 = $sqltk2->fetch();
+                    // Haetaan henkilön etunimi, sukunimi, kurssinnimi, vuosi ja periodi henkiloid:n avulla
+                    $sqltiedot = 'SELECT etunimi, sukunimi, nimi, vuosi, periodi FROM Henkilo INNER JOIN Kurssi ON kurssi.henkiloid = henkilo.henkiloid WHERE kurssi.henkiloid = ?';
+                    $sqltiedot2 = $yhteys->prepare($sqltiedot);
+                    $sqltiedot2->execute(array($sqltk3[0]));
+                    $sqltiedot3 = $sqltiedot2->fetchAll();
                     print "<a href=luoyv.php?luoyv=" . $tulos['kurssikyselyid'] . "&henkiloid=" . $_GET['yhteenveto'] . ">" . $tulos['kknimi'] . "</a>" .
-                    " (".$sqln3[0][0] . " " . $sqln3[0][1] . " - " . $sqlnpv3[0][0] . " - Vuosi: " .$sqlnpv3[0][1] . " Periodi: " .$sqlnpv3[0][2] . ")" . "<br>";
-               }
-            }
-            // Opettaja näkee vain omien kurssikyselyidensä tulokset
+                    " (".$sqltiedot3[0][0] . " " . $sqltiedot3[0][1] . " - " . $sqltiedot3[0][2] . " - Vuosi: " .$sqltiedot3[0][3] . " Periodi: " .$sqltiedot3[0][4] . ")" . "<br>";            }
+                    }
+                    // Opettaja näkee vain omien kurssikyselyidensä tulokset
             if ($rooli[0] == opettaja) {
                 print "Käynnissä olevat omat kurssikyselyt:<br>";
                 $kyselysql = 'SELECT kurssikyselyid, kknimi FROM Kurssikysely WHERE esilla = TRUE and henkiloid = ? ORDER BY kknimi';
@@ -82,24 +67,19 @@ $yhteys = db::getDB();
                 $kyselysql2->execute(array($_GET["yhteenveto"]));
                 $taulu = $kyselysql2->fetchAll();
                 foreach ($taulu as $tulos) {
-                    // Haetaan kurssikyselyyn liittyvä henkiloid ja kurssiid
-                    $sqltk = 'SELECT henkiloid, kurssiid FROM kurssikysely WHERE kurssikyselyid = ?';
+                    // Haetaan kurssikyselyyn liittyvä henkiloid
+                    $sqltk = 'SELECT henkiloid FROM kurssikysely WHERE kurssikyselyid = ?';
                     $sqltk2 = $yhteys->prepare($sqltk);
                     $sqltk2->execute(array($tulos['kurssikyselyid']));
-                    $sqltk3 = $sqltk2->fetchAll();
-                    // Haetaan henkilön nimi henkiloID:n avulla (joka siis saadaan $sqltk3[0][0])
-                    $sqln = 'SELECT etunimi, sukunimi FROM henkilo WHERE henkiloid = ?';
-                    $sqln2 = $yhteys->prepare($sqln);
-                    $sqln2->execute(array($sqltk3[0][0]));
-                    $sqln3 = $sqln2->fetchAll();
-                    // Haetaan kurssin nimi, vuosi ja periodi kurssiID:n avulla (joka saadaan $sqltk3[0][1])
-                    $sqlnpv = 'SELECT nimi, vuosi, periodi FROM kurssi WHERE kurssiid = ?';
-                    $sqlnpv2 = $yhteys->prepare($sqlnpv);
-                    $sqlnpv2->execute(array($sqltk3[0][1]));
-                    $sqlnpv3 = $sqlnpv2->fetchAll();
+                    $sqltk3 = $sqltk2->fetch();
+                    // Haetaan henkilön etunimi, sukunimi, kurssinnimi, vuosi ja periodi henkiloid:n avulla
+                    $sqltiedot = 'SELECT etunimi, sukunimi, nimi, vuosi, periodi FROM Henkilo INNER JOIN Kurssi ON kurssi.henkiloid = henkilo.henkiloid WHERE kurssi.henkiloid = ?';
+                    $sqltiedot2 = $yhteys->prepare($sqltiedot);
+                    $sqltiedot2->execute(array($sqltk3[0]));
+                    $sqltiedot3 = $sqltiedot2->fetchAll();
                     print "<a href=luoyv.php?luoyv=" . $tulos['kurssikyselyid'] . "&henkiloid=" . $_GET['yhteenveto'] . ">" . $tulos['kknimi'] . "</a>" .
-                    " (".$sqln3[0][0] . " " . $sqln3[0][1] . " - " . $sqlnpv3[0][0] . " - Vuosi: " .$sqlnpv3[0][1] . " Periodi: " .$sqlnpv3[0][2] . ")" . "<br>";
-                }
+                    " (".$sqltiedot3[0][0] . " " . $sqltiedot3[0][1] . " - " . $sqltiedot3[0][2] . " - Vuosi: " .$sqltiedot3[0][3] . " Periodi: " .$sqltiedot3[0][4] . ")" . "<br>";
+                    }
                 print "<br><br>";
                 print "Päättyneet omat kurssikyselyt:<br>";
                 $sqlk = 'SELECT kurssikyselyid, kknimi FROM Kurssikysely WHERE esilla = FALSE and ollutEsilla = TRUE and henkiloid = ? ORDER BY kknimi';
@@ -107,24 +87,19 @@ $yhteys = db::getDB();
                 $sqlk2->execute(array($_GET["yhteenveto"]));
                 $tauluk = $sqlk2->fetchAll();
                 foreach ($tauluk as $tulos) {
-                    // Haetaan kurssikyselyyn liittyvä henkiloid ja kurssiid
-                    $sqltk = 'SELECT henkiloid, kurssiid FROM kurssikysely WHERE kurssikyselyid = ?';
+                    // Haetaan kurssikyselyyn liittyvä henkiloid
+                    $sqltk = 'SELECT henkiloid FROM kurssikysely WHERE kurssikyselyid = ?';
                     $sqltk2 = $yhteys->prepare($sqltk);
                     $sqltk2->execute(array($tulos['kurssikyselyid']));
-                    $sqltk3 = $sqltk2->fetchAll();
-                    // Haetaan henkilön nimi henkiloID:n avulla (joka siis saadaan $sqltk3[0][0])
-                    $sqln = 'SELECT etunimi, sukunimi FROM henkilo WHERE henkiloid = ?';
-                    $sqln2 = $yhteys->prepare($sqln);
-                    $sqln2->execute(array($sqltk3[0][0]));
-                    $sqln3 = $sqln2->fetchAll();
-                    // Haetaan kurssin nimi, vuosi ja periodi kurssiID:n avulla (joka saadaan $sqltk3[0][1])
-                    $sqlnpv = 'SELECT nimi, vuosi, periodi FROM kurssi WHERE kurssiid = ?';
-                    $sqlnpv2 = $yhteys->prepare($sqlnpv);
-                    $sqlnpv2->execute(array($sqltk3[0][1]));
-                    $sqlnpv3 = $sqlnpv2->fetchAll();
+                    $sqltk3 = $sqltk2->fetch();
+                    // Haetaan henkilön etunimi, sukunimi, kurssinnimi, vuosi ja periodi henkiloid:n avulla
+                    $sqltiedot = 'SELECT etunimi, sukunimi, nimi, vuosi, periodi FROM Henkilo INNER JOIN Kurssi ON kurssi.henkiloid = henkilo.henkiloid WHERE kurssi.henkiloid = ?';
+                    $sqltiedot2 = $yhteys->prepare($sqltiedot);
+                    $sqltiedot2->execute(array($sqltk3[0]));
+                    $sqltiedot3 = $sqltiedot2->fetchAll();
                     print "<a href=luoyv.php?luoyv=" . $tulos['kurssikyselyid'] . "&henkiloid=" . $_GET['yhteenveto'] . ">" . $tulos['kknimi'] . "</a>" .
-                    " (".$sqln3[0][0] . " " . $sqln3[0][1] . " - " . $sqlnpv3[0][0] . " - Vuosi: " .$sqlnpv3[0][1] . " Periodi: " .$sqlnpv3[0][2] . ")" . "<br>";
-                }
+                    " (".$sqltiedot3[0][0] . " " . $sqltiedot3[0][1] . " - " . $sqltiedot3[0][2] . " - Vuosi: " .$sqltiedot3[0][3] . " Periodi: " .$sqltiedot3[0][4] . ")" . "<br>";
+                    }
             }
             ?>
         </ul>
