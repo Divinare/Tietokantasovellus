@@ -10,13 +10,12 @@ if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
     // Valitaan kohdesivu sen mukaan, mistä tänne on tultu
     if ($_GET["mista"] == "h") {
-       $_SESSION["minne"] = "hkursseja.php";
-    }
-    else if ($_GET["mista"] == "l") {
-       $_SESSION["minne"] = "luo_kysely.php";
-    }
-    else {
-        header("Location: access_denied.php"); die();
+        $_SESSION["minne"] = "hkursseja.php";
+    } else if ($_GET["mista"] == "l") {
+        $_SESSION["minne"] = "luo_kysely.php";
+    } else {
+        header("Location: access_denied.php");
+        die();
     }
 
     $pituus = strlen($_POST["knimi"]);
@@ -37,25 +36,30 @@ if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
                 $_SESSION["knimi"] = $_POST["knimi"];
 
                 // Kaikki testit läpi, siirrytään eteenpäin seuraavalle sivulle
-                header("Location: lisaa_kurssi.php?opettaja=" . $_GET["opettaja"] . "&mista=" . $_GET["mista"]); die();
+                header("Location: lisaa_kurssi.php?opettaja=" . $_GET["opettaja"] . "&mista=" . $_GET["mista"]);
+                die();
             }
             // Vuosiluvussa kirjaimia tai muuta turhaa
             else {
 
-                header("Location: kurssi.php?opettaja=" . $_GET["opettaja"] . "&virhe=vk&mista=" . $_GET["mista"]); die();
+                header("Location: kurssi.php?opettaja=" . $_GET["opettaja"] . "&virhe=vk&mista=" . $_GET["mista"]);
+                die();
             }
         }
         // Vuosiluku liian pitkä/lyhyt
         else {
-            header("Location: kurssi.php?opettaja=" . $_GET["opettaja"] . "&virhe=vp&mista=" . $_GET["mista"]);  die();
+            header("Location: kurssi.php?opettaja=" . $_GET["opettaja"] . "&virhe=vp&mista=" . $_GET["mista"]);
+            die();
         }
     }
     // Nimen liian pitkä/lyhyt
     else {
-        header("Location: kurssi.php?opettaja=" . $_GET["opettaja"] . "&virhe=n&mista=" . $_GET["mista"]);  die();
+        header("Location: kurssi.php?opettaja=" . $_GET["opettaja"] . "&virhe=n&mista=" . $_GET["mista"]);
+        die();
     }
     // Istunto-ongelma
 } else {
-    header("Location: access_denied.php");  die();
+    header("Location: access_denied.php");
+    die();
 }
 ?>

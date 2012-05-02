@@ -1,4 +1,5 @@
 <?php
+// Vaihtaa henkilön salasanan
 require_once 'DB.php';
 session_start();
 ?>
@@ -21,6 +22,7 @@ session_start();
         $admin->execute(array($_GET['vaihdasala']));
         $nimi = $admin->fetch();
 
+        // Tallennetaan henkilön rooli (alkamaan isolla kirjaimella) muuttujaan $rooli
         if ($nimi[2] == "opettaja") {
             $rooli = "Opettaja";
         } else if ($nimi[2] == "admin") {
@@ -43,6 +45,7 @@ session_start();
                 <p>Uusi salasana:</p>
                 <input type='password' name='uusi'>
                 <?php
+                // Ilmoitetaan jos salasana on vääränlainen
                 if ($_GET["viesti"] == salalyhyt) {
                     print "<font color='red'>Salasanan oltava vähintään 8 merkkiä.<font color='black'>";
                 }
@@ -59,14 +62,9 @@ session_start();
                 <Input type = 'Submit' Name = 'submit' Value = 'Vaihda salasanaa'>
             </form>
         </ul>
-        <?php
-        $sql = 'SELECT rooli FROM henkilo WHERE henkiloid = ?';
-        $kyselyrooli = $yhteys->prepare($sql);
-        $kyselyrooli->execute(array($_GET["vaihdasala"]));
-        $rooli = $kyselyrooli->fetch();
-        ?>
+        <! -- Linkki takaisin omalle sivulle -->
         <ul class="navbar">
-            <li><p> <a href=<?php print $rooli[0]; ?>.php?<?php print $rooli[0]; ?>=<?php print $_GET['vaihdasala']; ?>>Oma sivu</a></p>
+            <li><p> <a href=<?php print $nimi[2]; ?>.php?<?php print $nimi[2]; ?>=<?php print $_GET['vaihdasala']; ?>>Oma sivu</a></p>
         </ul>
         <?php
     }
