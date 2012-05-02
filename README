@@ -13,7 +13,7 @@ TO DO
 Viimeistely:
 - koodin yhdenmukaisuus (varmaan se on jo ihan yhdenmukaista - onko sulla btw mitään käsitystä, mitä on spagettikoodi, kun sellaista ei saa olla? :P)
 - taulukoihin css:llä align left (Voin tehdä itse :D)
-- yhteenveto ja haetiedot: koodin sisennys, siistiminen, kommentointi ja tyylit
+- yhteenveto: koodin sisennys, siistiminen, kommentointi ja tyylit
 - htmlspecialchars -juttu lomakkeisiin
 - taustaväri ei toimi IE:llä, siihen jokin korjaus
 - poistah_onnistui-filuun deletet kuntoon!!! (Poista henkilö, kurssikyselyt, kurssit, kysymykset, kommentit ja vastaukset...)
