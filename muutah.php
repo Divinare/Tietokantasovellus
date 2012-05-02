@@ -54,6 +54,7 @@
                 header("Location: muokkaah.php?admin=".$_GET["muutah"]."&henkiloid=".$_GET["henkiloid"]."&viesti=emailfail"); die();
             }
         }
+
         //Omaa roolia ei voida muokata
         if ($_GET["henkiloid"] != $_GET["muutah"]) {
            if (!empty($_POST["rooli"])) {
@@ -63,6 +64,12 @@
            $sqlr2->execute(array($rooli, $_GET["henkiloid"]));
            header("Location: muokkaah.php?admin=".$_GET["muutah"]."&henkiloid=".$_GET["henkiloid"]."&viesti=ok"); die();
            }
+
+        else {
+          header("Location: muokkaah.php?admin=".$_GET["muutah"]."&henkiloid=".$_GET["henkiloid"]."&viesti=emptyradiofail");
+        }
+
+
         }
         else {
           header("Location: muokkaah.php?admin=".$_GET["muutah"]."&henkiloid=".$_GET["henkiloid"]."&viesti=omafail"); die();

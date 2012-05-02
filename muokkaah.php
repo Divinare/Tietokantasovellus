@@ -103,6 +103,9 @@ session_start();
        if ($_GET["viesti"] == omafail) {
        print "<font color='red'>Et voi muokata omaa rooliasi.<font color='black'>";
        }
+       if ($_GET["viesti"] == "emptyradiofail") {
+        print "<font color='red'>Et valinnut roolia.<font color='black'>";
+       }
        ?>
        </form>
        <br>
