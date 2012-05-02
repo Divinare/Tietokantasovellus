@@ -1,6 +1,5 @@
 <?php
-
-// periodi, knimi, vuosi
+// Uuden kantaan lisättävän kurssin tietojen tarkastaminen
 require_once 'DB.php';
 session_start();
 $yhteys = db::getDB();

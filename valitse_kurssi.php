@@ -1,4 +1,5 @@
 <?php
+// Kurssinvalintasivu uuden kyselyn luonnissa
 require_once 'DB.php';
 session_start();
 $yhteys = db::getDB();
@@ -12,11 +13,13 @@ $yhteys = db::getDB();
 <body>
 
     <h1>Valitse kurssi</h1>
-    <ul class="box">
+    <div class="box">
+
         <?php
         // Istuntotarkastus
         if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
+            // Haetaan kurssin tiedot
             $sql = 'SELECT nimi, vuosi, periodi, kurssiID FROM kurssi WHERE henkiloID = ?';
             $kurssi = $yhteys->prepare($sql);
             $kurssi->execute(array($_GET["opettaja"]));
@@ -59,14 +62,14 @@ $yhteys = db::getDB();
                     }
                     ?>
                 </table>
-                </br>
+                <br>
                 <p><a href=kurssi.php?opettaja=<?php print $_GET["opettaja"] ?>&mista=l>Lisää uusi kurssi</a></p>
 
                 <?php
                 // Jos kannassa ei ole kursseja, siitä ilmoitetaan
             } else {
                 ?>
-                <table border="0" cellpadding="3">
+                <table>
                     <tr>
                         <th align = left>Nimi</th>
                         <th align = left>Periodi</th>
@@ -79,10 +82,10 @@ $yhteys = db::getDB();
                         <td>(tyhjä)</td>
                     </tr>
                 </table>
-                </br>
+                <br>
                 <p><a href=kurssi.php?opettaja=<?php print $_GET["opettaja"] ?>&mista=l>Lisää uusi kurssi</a></p>
 
-            </ul>
+            </div>
 
             <?php
         }
@@ -94,14 +97,15 @@ $yhteys = db::getDB();
             print "<p><font color='Red'> Kurssiin, jonka yritit poistaa, liittyy kurssikyselyitä. Poista ensin kurssiin liittyvät kurssikyselyt ja yritä sitten uudelleen.</p>";
         }
         ?>
-        </br>
+        <br>
         <!-- Muut toiminnot linkkeinä -->
         <ul class="navbar">
-            <li><p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"] ?>">Oma sivu</a></p>
+            <li><p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"] ?>">Oma sivu</a></p></li>
         </ul>
         <?php
-        // Istuntotarkastus failaa
-    } else {
+    }
+    // Istuntotarkastus failaa
+    else {
         header("Location: access_denied.php");
         die();
     }

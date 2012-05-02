@@ -1,7 +1,8 @@
 <?php
-// Tarkistetaan että salasananvaihdon kentät on kunnossa
+// Tarkastetaan että salasananvaihdon kentät ovat kunnossa
 require_once 'DB.php';
 session_start();
+$yhteys = db::getDB();
 ?>
 <!DOCTYPE html>
 
@@ -14,8 +15,7 @@ session_start();
 <body>
 
     <?php
-    $yhteys = db::getDB();
-
+    // Istuntotarkastus
     if ($_SESSION["ihminen"] == $_GET["svaihto"]) {
 
         // Haetaan henkilön vanha salasana tietokannasta
@@ -27,6 +27,7 @@ session_start();
         // Kryptataan annettu vanha salasana jotta sitä voidaan verrata tietokannan kryptattuun salasanaan
         $tiiviste = md5(md5($_POST["vanha"] . "greippejäomnomnom") . "lisääsitruksia");
 
+        // Salasanantarkastukset
         if ($tiiviste != $vsala["salasana"]) {
             header("Location: vaihdasala.php?vaihdasala=" . $_GET["svaihto"] . "&viesti=vanhavaara");
             die();
@@ -43,33 +44,39 @@ session_start();
             header("Location: vaihdasala.php?vaihdasala=" . $_GET["svaihto"] . "&viesti=salateitäsmää");
             die();
         }
-        ?>
-        <!-- Jos kaikki oli kunnossa niin vaihdetaan salasanaa -->
-        <h2>Salasanan vaihto onnistui!</h2>
 
-        <?php
+        // Tarkastukset ok!
+        // Uuden salasanan kryptaaminen
         $salasana = $_POST["uusi"];
         $tiiviste = md5(md5($salasana . "greippejäomnomnom") . "lisääsitruksia");
 
-
+        // Salasanan päivittäminen kantaan
         $sqlsala = 'UPDATE Henkilo SET salasana = ? WHERE henkiloID = ?';
         $sqlsala2 = $yhteys->prepare($sqlsala);
         $sqlsala2->execute(array($tiiviste, $_GET["svaihto"]));
 
-
+        // Roolin hakeminen takaisin-linkkiä varten
         $sql = 'SELECT rooli FROM henkilo WHERE henkiloid = ?';
         $kyselyrooli = $yhteys->prepare($sql);
         $kyselyrooli->execute(array($_GET["svaihto"]));
         $rooli = $kyselyrooli->fetch();
         ?>
+        <h1>Salasanan vaihto</h1>
+        <div class="box">
 
-        <p> <a href=<?php print $rooli[0]; ?>.php?<?php print $rooli[0]; ?>=<?php print $_GET["svaihto"]; ?>><img src="nuoli.png" border="0" /></a></p>
+            <p>Onnistui!</p>
 
-        <?php
-    } else {
-        header("Location: access_denied.php");
-        die();
-    }
-    ?>
+        </div>
+        <ul class="navbar">
+            <li><p> <a href=<?php print $rooli[0]; ?>.php?<?php print $rooli[0]; ?>=<?php print $_GET["svaihto"]; ?>>Oma sivu</a></p></li>
+        </ul>
+    <?php
+}
+// Istuntotarkastus failaa
+else {
+    header("Location: access_denied.php");
+    die();
+}
+?>
 
 </body>

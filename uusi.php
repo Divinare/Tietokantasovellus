@@ -1,19 +1,20 @@
 <?php
+// Uuden kyselyn luonti
 require_once 'DB.php';
 session_start();
+$yhteys = db::getDB();
 ?>
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="tyylit.css" />
 
 <head>
+    <link rel="stylesheet" type="text/css" href="tyylit.css" />
     <title> Uusi kysely </title>
     <meta charset="utf-8">
 </head>
 <body>
 
     <?php
-    $yhteys = db::getDB();
-
+    // Istuntotarkastus
     if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
         // Kyselyn otsikko/nimi
@@ -29,34 +30,34 @@ session_start();
         $uudet = $uusi->fetchAll();
         ?>
 
-        <!-- Otsikon säätämistä -->
         <h1>Uusi kysely</h1>
 
-        <ul class="box">
+        <div class="box">
             <p>Kyselyn nimi: <b><?php print $otsikkov[0]; ?></b></p>
 
             <?php
+            // Otsikon vaihtamisen virhe- tai onnistumisilmoitus ja sen käsittely
             $viesti = $_GET["viestiots"];
             if ($viesti == "OK!") {
                 print "OK!";
             } else if ($viesti == "yhyy") {
-                print "<font color='red'>Otsikon sallittu pituus 1-50 merkkiä - antamasi pituus oli " . $_GET["p"] . ".";
+                print "<font color='red'>Otsikon sallittu pituus 1-50 merkkiä - antamasi pituus oli " . $_GET["p"] . ".</font>";
             }
-            ?>
-            <font color='black'>
+            ?>            
             <form action="uusi_nimi.php?opettaja=<?php print $_GET['opettaja']; ?>&kyselyid=<?php print $_GET['kyselyid']; ?>&mista=u" method="post">
                 <input type="text" name="kknimi" id="kknimi">
                 <input type="submit" value = "Muuta nimeä">
             </form>
-            </br></br>
+            <br><br>
 
             <!-- Kysymystaulu -->
 
             <?php
             if (sizeof($uudet) > 0) {
                 ?>
-                <table border="0" cellpadding="3">
+                <table>
                     <th align="left">Tallennetut kysymykset</th>
+                    <th>     </th>
                     <tr>
                         <?php
                         for ($i = 0, $size = sizeof($uudet); $i < $size; ++$i) {
@@ -73,7 +74,7 @@ session_start();
             } else {
                 ?>
 
-                <table border = "0" cellpadding = "3">
+                <table>
                     <th align = "left">Tallennetut kysymykset</th>
                     <tr>
                         <td>(tyhjä)</td>
@@ -83,17 +84,15 @@ session_start();
                 <?php
             }
             ?>
-            </br></br>
+            <br><br>
 
             <!-- Uuden kysymyksen lisääminen -->
             <?php
+            // Kysymyken lisäämisen virhe- tai onnistumisilmoitus ja sen käsittely
             if ($_GET["viesti"] == "OK!") {
                 print "OK!";
             } else if ($_GET["viesti"] == "yhyy") {
-                print "<font color='red'>Kysymyksen sallittu pituus 1-300 merkkiä - antamasi pituus oli " . $_GET["p"] . ".";
-                ?>
-                <font color='black'>
-                <?php
+                print "<font color='red'>Kysymyksen sallittu pituus 1-300 merkkiä - antamasi pituus oli " . $_GET["p"] . ".</font>";
             }
             ?>
 
@@ -101,19 +100,21 @@ session_start();
                 <input type="text" name="ukysymys">
                 <input type="submit" value="Lisää kysymys">
             </FORM>
-            </br></br>
+            <br><br>
 
-            <!-- POIS! -->
+        </div>
 
-            <ul class="navbar">
-                <li><p><a href="opettaja.php?opettaja=<?php print $_GET['opettaja']; ?>">Oma sivu</a></p>
-            </ul>
+        <ul class="navbar">
+            <li><p><a href="opettaja.php?opettaja=<?php print $_GET['opettaja']; ?>">Oma sivu</a></p>
+        </ul>
 
-            <?php
-        } else {
-            header("Location: access_denied.php");
-            die();
-        }
-        ?>
+    <?php
+} 
+// Istuntotarkastus failaa
+else {
+    header("Location: access_denied.php");
+    die();
+}
+?>
 
 </body>
