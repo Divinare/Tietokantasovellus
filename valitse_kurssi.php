@@ -13,18 +13,18 @@ $yhteys = db::getDB();
 
     <h1>Valitse kurssi</h1>
     <ul class="box">
-    <?php
-    // Istuntotarkastus
-    if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
+        <?php
+        // Istuntotarkastus
+        if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
-        $sql = 'SELECT nimi, vuosi, periodi, kurssiID FROM kurssi WHERE henkiloID = ?';
-        $kurssi = $yhteys->prepare($sql);
-        $kurssi->execute(array($_GET["opettaja"]));
-        $kurssit = $kurssi->fetchAll();
+            $sql = 'SELECT nimi, vuosi, periodi, kurssiID FROM kurssi WHERE henkiloID = ?';
+            $kurssi = $yhteys->prepare($sql);
+            $kurssi->execute(array($_GET["opettaja"]));
+            $kurssit = $kurssi->fetchAll();
 
-        // Jos kannassa on tallennettuja kursseja, ne tulostetaan
-        if (sizeof($kurssit) > 0) {
-            ?>
+            // Jos kannassa on tallennettuja kursseja, ne tulostetaan
+            if (sizeof($kurssit) > 0) {
+                ?>
                 <table border="0" cellpadding="3">
                     <tr>
                         <th align = left>Nimi</th>
