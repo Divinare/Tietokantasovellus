@@ -1,6 +1,7 @@
 <?php
-// Tarkistetaan voidaanko henkilön tietoja muuttaa. Jos voidaan niin muutetaan, laitetaan viestiksi "ok" ja palataan takaisin.
-// Jos ei niin laitetaan viestiksi virheilmo ja palataan takaisin.
+
+// Tarkastetaan voidaanko henkilön tietoja muuttaa. Jos voidaan niin muutetaan, laitetaan viestiksi "ok" ja palataan takaisin.
+// Jos ei, niin laitetaan viestiksi virheilmo ja palataan takaisin.
 // Urlissa pidetään mukana myös jo annettuja tietoja ettei niitä tarvitse uudelleen täyttää.
 require_once 'DB.php';
 session_start();

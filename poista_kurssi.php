@@ -1,7 +1,6 @@
 <?php
 
 // Tiedosto poistaa valitun kurssin
-
 require_once 'DB.php';
 session_start();
 $yhteys = db::getDB();
@@ -9,12 +8,14 @@ $yhteys = db::getDB();
 // Istuntotarkastus
 if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
+    // Selvitetään, minne sivu ohjautuu
     if ($_GET["mista"] == "h") {
         $minne = "hkursseja.php";
     } else if ($_GET["mista"] == "l") {
         $minne = "valitse_kurssi.php";
     }
 
+    // Haetaan kurssiin liittyvät kyselyt
     $sql = "SELECT kurssikyselyid FROM kurssikysely WHERE kurssiid = ?";
     $tarkaste = $yhteys->prepare($sql);
     $tarkaste->execute(array($_POST["kurssiid"]));
@@ -34,8 +35,13 @@ if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
         header("Location: " . $minne . "?opettaja=" . $_GET["opettaja"] . "&viesti=v");
     }
-} else {
+}
+// Istuntotarkastus failaa
+else {
     header("Location: access_denied.php");
     die();
 }
 ?>
+
+
+

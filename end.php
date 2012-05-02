@@ -50,10 +50,10 @@ $kurssinnimi = $kurssi->fetch();
 <body>
 
     <h1>Kiitos vastauksistasi</h1>
-    <ul class="box">
+    <div class="box">
         <h2>Vastauksesi kurssin <?php print $kurssinnimi['nimi']; ?> kurssikyselyyn on tallennettu!</h2>
         <img src="KIITOS.png" width="307" height="284" alt=":)" align="center">
-    </ul>
+    </div>
     <ul class="navbar">
         <li><a href="luoyv.php">Kyselyn yhteenveto</a>
         <li><a href="index.php">Etusivulle</a>

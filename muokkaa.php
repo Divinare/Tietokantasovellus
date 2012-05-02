@@ -37,7 +37,7 @@ $yhteys = db::getDB();
         ?>
 
         <h2>Kurssin <?php print $kntulos['nimi']; ?> (<?php print $kntulos['periodi']; ?>/<?php print $kntulos['vuosi']; ?>) kurssikysely</h2>
-        <ul class="box">
+        <div class="box">
 
             <p>Kyselyn nimi: <b><?php print $otsikkov['kknimi']; ?></b></p>
 
@@ -65,7 +65,7 @@ $yhteys = db::getDB();
                 // Jos kyselyssä on jo kysymyksiä, ne tulostetaan.
                 if (sizeof($uudet) > 0) {
                     ?>
-                    <table border="0" cellpadding="3">
+                    <table>
                         <th align="left">Tallennetut kysymykset</th>
                         <tr>
                             <?php
@@ -81,7 +81,7 @@ $yhteys = db::getDB();
                     // Jos tallennettuja kysymyksiä ei vielä ole, siitä ilmoitetaan.
                 } else {
                     ?>
-                    <table border="0" cellpadding="3">
+                    <table>
                         <th align="left">Tallennetut kysymykset</th>
                         <tr>
                             <td>(tyhjä)</td>
@@ -114,7 +114,7 @@ $yhteys = db::getDB();
             } else {
                 ?>
                 <!-- Kyselyssä olevat kysymykset-->
-                <table border="0" cellpadding="3">
+                <table>
                     <th align="left">Tallennetut kysymykset</th>
                     <tr>
                         <?php
@@ -146,19 +146,19 @@ $yhteys = db::getDB();
                 <input type="hidden" name="tila" value="<?php print $bo; ?>">
                 <input type="submit" value="Muuta"><font color="Red">
             </FORM>
-            <p><font color="Red" font size="2"> Huomaathan, että kyselyä ei voi muokata sen jälkeen, kun se on kerran julkaistu.<font color="Black" font size="3"></p>
-
+            <p><font color="Red" font size="2"> Huomaathan, että kyselyä ei voi muokata sen jälkeen, kun se on kerran julkaistu.</font></p>
+            <br>
             <!-- Kyselyn poistaminen -->
-            <p><b>Kyselyn poisto<b></p>
+            <p><font color="black"><b>Kyselyn poisto<b></font></p>
             <FORM action="poisto.php?opettaja=<?php print $_GET['opettaja']; ?>" method="post">
                 <input type="hidden" name="poisto" value="<?php print $_GET['kyselyid']; ?>">
                 <input type="submit" value="Poista">
             </FORM> 
             <br>            
-         </ul>
+         </div>
             <!-- Paluulinkki -->
          <ul class="navbar">
-            <li><p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"] ?>">Oma sivu</a></p>
+            <li><p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"] ?>">Oma sivu</a></p></li>
          </ul>
          <?php         
     }

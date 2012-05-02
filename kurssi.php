@@ -17,7 +17,7 @@ session_start();
         ?>
         <!-- Kurssinlisäyslomake -->
         <h1>Lisää kurssi </h1>
-        <ul class="box">
+        <div class="box">
 
             <Form name ='uusikurssi' Method ='Post' ACTION ='tarkasta_ktiedot.php?opettaja=<?php print $_GET["opettaja"]; ?>&mista=<?php print $_GET["mista"]; ?>'>
 
@@ -35,7 +35,7 @@ session_start();
 
                 <Input type = 'Submit' Name = 'submit' Value = 'Lähetä'>
             </form>
-        </ul>
+        </div>
         <?php
         // Virheilmoitukset ja niiden käsittely
         if ($_GET["virhe"] == "n") {
@@ -52,6 +52,6 @@ session_start();
     }
     ?>
     <ul class="navbar">
-        <li><p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"] ?>">Oma sivu</a></p>
+        <li><p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"] ?>">Oma sivu</a></p></li>
     </ul>
 </body>

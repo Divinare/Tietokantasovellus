@@ -1,5 +1,5 @@
 <?php
-// Tulostetaan johonkin kysymykseen liittyvät kommentit
+// Tulostetaan valittuun kysymykseen liittyvät kommentit
 require_once 'DB.php';
 session_start();
 $yhteys = db::getDB();
@@ -15,29 +15,23 @@ $yhteys = db::getDB();
     // Istuntotarkastus
     if ($_SESSION["ihminen"] == $_GET["henkiloid"]) {
 
-        // Haetaan kysymys (muotoa string) taulusta kysymys
-        $sqlx = 'SELECT kysymys FROM Kysymys WHERE kysymysid = ?';
-        $sqly = $yhteys->prepare($sqlx);
-        $sqly->execute(array($_GET["kysymysid"]));
-        $sqlz = $sqly->fetch();
-
-        print "<h2><b>" . $sqlz[0] . "</b> -kysymyksen kommentit</h2>";
-
-        // Haetaan kaikki kommentit yhteen kysymykseen liittyen
-        $sql = 'SELECT kommentti FROM Kommentti WHERE kysymysid = ?';
+        // Haetaan kysymys ja kaikki siihen liittyvät kommentit
+        $sql = "SELECT kysymys, kommentti FROM Kysymys INNER JOIN Kommentti ON kommentti.kysymysID = kysymys.kysymysID WHERE kysymys.kysymysID = ?";
         $sqlk = $yhteys->prepare($sql);
         $sqlk->execute(array($_GET["kysymysid"]));
-        $sqlk2 = $sqlk->fetchAll();
+        $tulos = $sqlk->fetchAll();
         ?>
-        <ul class="box">
+
+        <h1><b><?php print $tulos[0]["kysymys"]; ?></b> -kysymyksen kommentit</h1>
+        <div class="box">
             <?php
-            for ($i = 0; $i < sizeof($sqlk2); $i++) {
-                print $sqlk2[$i][0] . "<br><br><br>";
+            for ($i = 0; $i < sizeof($tulos); $i++) {
+                print "<p>" . $tulos[$i]["kommentti"] . "</p><br>";
             }
             ?>
-        </ul>
+        </div>
         <ul class="navbar">
-            <li><p><a href=luoyv.php?luoyv=<?php print $_GET['kurssikyselyid']; ?>&henkiloid=<?php print $_GET['henkiloid']; ?>>Takaisin</a></p>
+            <li><p><a href=luoyv.php?luoyv=<?php print $_GET['kurssikyselyid']; ?>&henkiloid=<?php print $_GET['henkiloid']; ?>>Takaisin</a></p></li>
         </ul>
         <?php
         // Istuntotarkastus failaa

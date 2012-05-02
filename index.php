@@ -18,7 +18,7 @@ if (isset($_SESSION["ihminen"])) {
 
 <h1>Käynnissä olevat kurssikyselyt</h1>
 
-<ul class='box'>
+<div class='box'>
     <?php
 // Haetaan avointen kyselyjen nimet tiedot
     $kysely = 'SELECT kurssikyselyid, kknimi FROM Kurssikysely WHERE esilla = TRUE ORDER BY kknimi';
@@ -33,17 +33,17 @@ if (isset($_SESSION["ihminen"])) {
             // Tulostetaan kyselyt ja niiden valintanapit
             foreach ($yhteys->query($kysely) as $tulos) {
                 ?>
-            <form action="kysely.php" method="post">
-                <input type="hidden" name="kyselyid" value="<?php print $tulos['kurssikyselyid']; ?>">
-                <td><?php print $tulos['kknimi']; ?></td>
-                <td><input type="submit" value="Valitse"></td>
-            </form>
+                <td><form action="kysely.php" method="post">
+                        <input type="hidden" name="kyselyid" value="<?php print $tulos['kurssikyselyid']; ?>">
+                        <?php print $tulos['kknimi']; ?></td>
+                        <td><input type="submit" value="Valitse">
+                    </form></td>
             </tr>
             <?php
         }
         ?>
     </table>
-</ul>
+</div>
 <!-- Kirjautumiskentät -->
 <ul class = "navbar">
     <form name="form1" method="post" action="checklogin.php">
@@ -56,11 +56,11 @@ if (isset($_SESSION["ihminen"])) {
             <p class="submit"><input type="submit" name="Submit" value="Kirjaudu"></p>
         </fieldset>
     </form>
-   <br>
-<?php
-if ($_GET["m"] == "kurjuus") {
-    print "<font color='red' size='2'><p>    Antamasi käyttäjätunnus ja salasana eivät täsmää.</font></p>";
-}
-?>
+    <br>
+    <?php
+    if ($_GET["m"] == "kurjuus") {
+        print "<font color='red' size='2'><p> Antamasi käyttäjätunnus ja salasana eivät täsmää.</font></p>";
+    }
+    ?>
 </ul>
 </body>

@@ -1,11 +1,13 @@
 <?php
 
+// Kurssikyselyn sekä siihen liittyvien kysymysten ja vastausten poisto
 require_once 'DB.php';
 session_start();
 
 $yhteys = db::getDB();
 $poistettavaid = $_POST["poisto"];
 
+// Istuntotarkastus
 if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
     // Poistetaan
@@ -27,7 +29,9 @@ if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
     header("Location: opettaja.php?opettaja=" . $_GET["opettaja"]);
     die();
-} else {
+}
+// Istuntotarkastus feilaa
+else {
     header("Location: access_denied.php");
     die();
 }

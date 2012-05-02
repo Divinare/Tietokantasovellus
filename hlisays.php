@@ -19,17 +19,17 @@ session_start();
         ?>
 
         <h1>Henkilön Lisäys</h1>
-        <ul class="box">
+        <div class="box">
             <Form name ='henkilotiedot' Method ='Post' ACTION ='lisays.php?lisays=<?php print $_GET['hlisays']; ?>'>
 
                 <p>Etunimi:</p>
                 <input type='text' name='etu' value='<?php print $_GET["etu"] ?>'>
                 <?php
                 if ($_GET["viesti"] == "etupuuttui") {
-                    print "<font color='red'>Et antanut etunimeä.<font color='black'>";
+                    print "<font color='red'>Et antanut etunimeä.</font>";
                 }
                 if ($_GET["viesti"] == "etupitkä") {
-                    print "<font color='red'>Etunimi liian pitkä - sallittu pituus 1-30 merkkiä.<font color='black'>";
+                    print "<font color='red'>Etunimi liian pitkä - sallittu pituus 1-30 merkkiä.</font>";
                 }
                 ?>
 
@@ -37,10 +37,10 @@ session_start();
                 <input type='text' name='suku' value='<?php print $_GET["suku"] ?>'>
                 <?php
                 if ($_GET["viesti"] == "sukupuuttui") {
-                    print "<font color='red'>Et antanut sukunimeä.<font color='black'>";
+                    print "<font color='red'>Et antanut sukunimeä.</font>";
                 }
                 if ($_GET["viesti"] == "sukupitkä") {
-                    print "<font color='red'>Sukunimi liian pitkä - sallittu pituus 1-30 merkkiä.<font color='black'>";
+                    print "<font color='red'>Sukunimi liian pitkä - sallittu pituus 1-30 merkkiä.</font>";
                 }
                 ?>
 
@@ -48,13 +48,13 @@ session_start();
                 <input type='text' name='sposti' value='<?php print $_GET["sähkö"] ?>'>
                 <?php
                 if ($_GET["viesti"] == "emailpuuttui") {
-                    print "<font color='red'>Et antanut sähköpostia.<font color='black'>";
+                    print "<font color='red'>Et antanut sähköpostia.</font>";
                 }
                 if ($_GET["viesti"] == "emailpitkä") {
-                    print "<font color='red'>Sähköposti oli liian pitkä - sallittu pituus 1-80 merkkiä.<font color='black'>";
+                    print "<font color='red'>Sähköposti oli liian pitkä - sallittu pituus 1-80 merkkiä.</font>";
                 }
                 if ($_GET["viesti"] == "emailkäytössä") {
-                    print "<font color='red'>Sähköposti on jo käytössä.<font color='black'>";
+                    print "<font color='red'>Sähköposti on jo käytössä.</font>";
                 }
                 ?>
 
@@ -62,16 +62,16 @@ session_start();
                 <input type='password' name='passu'>
                 <?php
                 if ($_GET["viesti"] == "salapuuttui") {
-                    print "<font color='red'>Et antanut salasanaa.<font color='black'>";
+                    print "<font color='red'>Et antanut salasanaa.</font>";
                 }
                 if ($_GET["viesti"] == "salapitkä") {
-                    print "<font color='red'>Salasana liian pitkä - sallittu pituus 1-15 merkkiä.<font color='black'>";
+                    print "<font color='red'>Salasana liian pitkä - sallittu pituus 1-15 merkkiä.</font>";
                 }
                 if ($_GET["viesti"] == "salateitäsmää") {
-                    print "<font color='red'>Salasanat eivät täsmänneet.<font color='black'>";
+                    print "<font color='red'>Salasanat eivät täsmänneet.</font>";
                 }
                 if ($_GET["viesti"] == "salalyhyt") {
-                    print "<font color='red'>Salasanan oltava vähintään 8 merkkinen.<font color='black'>";
+                    print "<font color='red'>Salasanan oltava vähintään 8 merkkinen.</font>";
                 }
                 ?>
 
@@ -85,9 +85,9 @@ session_start();
 
                 <Input type = 'Submit' Name = 'submit' Value = 'Lähetä'>
             </form>
-        </ul>
+        </div>
         <ul class="navbar">
-            <li><p><a href=admin.php?admin=<?php print $_GET['hlisays']; ?>>Oma sivu</a></p>
+            <li><p><a href=admin.php?admin=<?php print $_GET['hlisays']; ?>>Oma sivu</a></p></li>
         </ul>
 
         <?php

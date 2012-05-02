@@ -87,15 +87,15 @@ $yhteys = db::getDB();
         ?>
         <ul class="navbar">
 
-            <li><p> <a href=valitse_kurssi.php?opettaja=<?php print $_GET["opettaja"]; ?>>Luo uusi kysely</a></p>
+            <li><p> <a href=valitse_kurssi.php?opettaja=<?php print $_GET["opettaja"]; ?>>Luo uusi kysely</a></p></li>
 
-            <li><p> <a href=yhteenveto.php?yhteenveto=<?php print $_GET["opettaja"]; ?>>Omien kurssikyselyiden tulokset</a></p>
+            <li><p> <a href=yhteenveto.php?yhteenveto=<?php print $_GET["opettaja"]; ?>>Omien kurssikyselyiden tulokset</a></p></li>
 
-            <li><p> <a href=vaihdasala.php?vaihdasala=<?php print $_GET["opettaja"]; ?>>Salasanan vaihto</a></p>
+            <li><p> <a href=vaihdasala.php?vaihdasala=<?php print $_GET["opettaja"]; ?>>Salasanan vaihto</a></p></li>
 
-            <li><p> <a href=hkursseja.php?opettaja=<?php print $_GET["opettaja"]; ?>>Hallinnoi kursseja</a></p>
+            <li><p> <a href=hkursseja.php?opettaja=<?php print $_GET["opettaja"]; ?>>Hallinnoi kursseja</a></p></li>
 
-            <li><p> <a href=kulos.php>Kirjaudu ulos</a></p>
+            <li><p> <a href=kulos.php>Kirjaudu ulos</a></p></li>
         </ul>
 
         <?php

@@ -1,4 +1,5 @@
 <?php
+// Henkilön lisäys
 require_once 'DB.php';
 session_start();
 $yhteys = db::getDB();
@@ -22,7 +23,7 @@ $yhteys = db::getDB();
         $kysely->execute(array($_POST['sposti']));
         $taulu = $kysely->fetch();
 
-        // Tarkistetaan onko kentät täytetty oikein
+        // Tarkastetaan onko kentät täytetty oikein
         if (empty($_POST['etu'])) {
             header("Location: hlisays.php?hlisays=" . $_GET["lisays"] . "&viesti=etupuuttui" . "&etu=" . $_POST['etu'] . "&suku=" . $_POST['suku'] . "&sähkö=" . $_POST['sposti']);
             die();
@@ -36,6 +37,7 @@ $yhteys = db::getDB();
             header("Location: hlisays.php?hlisays=" . $_GET["lisays"] . "&viesti=sukupuuttui" . "&etu=" . $_POST['etu'] . "&suku=" . $_POST['suku'] . "&sähkö=" . $_POST['sposti']);
             die();
         }
+
         if (strlen($_POST['suku']) > 30) {
             header("Location: hlisays.php?hlisays=" . $_GET["lisays"] . "&viesti=sukupitkä" . "&etu=" . $_POST['etu'] . "&suku=" . $_POST['suku'] . "&sähkö=" . $_POST['sposti']);
             die();
@@ -70,10 +72,10 @@ $yhteys = db::getDB();
             die();
         }
         ?>
-        <!-- Jos kaikki kunnossa näytetään vielä tiedot, jotka täytyy vahvistaa -->
+        <!-- Jos kaikki on kunnossa näytetään vielä tiedot, jotka täytyy vahvistaa -->
         <h2>Vahvista alla olevat tiedot</h2>
-        <ul class="box">
-            <table border="1" cellpadding="3">
+        <div class="box">
+            <table>
                 <tr>
                     <td><b>ETUNIMI</b></td>
                     <td><?php print $_POST['etu']; ?> </td>
@@ -89,16 +91,18 @@ $yhteys = db::getDB();
                 <tr>
                     <!-- Printataan salasanan verran tähtiä -->
                     <td><b>SALASANA</b></td>
-                    <td><?php for ($i = 1; $i <= strlen($_POST['passu']); $i++) {
-            print '*';
-        } ?> </td>
+                    <td><?php
+    for ($i = 1; $i <= strlen($_POST['passu']); $i++) {
+        print '*';
+    }
+        ?> </td>
                 </tr>
                 <tr>
                     <td><b>ROOLI</b></td>
                     <td><?php print $_POST['rooli']; ?></td>
                 </tr>
             </table>
-            </br>
+            <br>
             <!-- Nappula, joka lähettää tiedot lomakelahetys.php:lle -->
             <Form name ='tiedot' Method ='Post' ACTION ='lomakelahetys.php?lomakelahetys=<?php print $_GET['lisays']; ?>'>
                 <input type='hidden' name='etu' value='<?php print $_POST['etu']; ?>'>
@@ -108,9 +112,9 @@ $yhteys = db::getDB();
                 <input type='hidden' name='rooli' value='<?php print $_POST['rooli']; ?>'>
                 <Input type = 'Submit' Name = 'submit' Value = 'Vahvista tiedot'>
             </form>
-        </ul>
+        </div>
         <ul class="navbar">
-            <li><p><a href=admin.php?admin=<?php print $_GET['lisays']; ?>>Oma sivu</a></p>
+            <li><p><a href=admin.php?admin=<?php print $_GET['lisays']; ?>>Oma sivu</a></p></li>
         </ul>
     </body>
     <?php

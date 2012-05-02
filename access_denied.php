@@ -6,5 +6,11 @@
     <meta charset="utf-8">
 </head>
 <body>
-    <p>Istuntosi ei ole voimassa. <a href=index.php>Kirjaudu sisään</a>.</p>
+   <h1>Istuntosi ei ole voimassa</h1>
+   <div class="box">
+        <p>Istuntosi on vanhentunut tai yritit siirtyä sivulle, jolle sinulla ei ole oikeuksia.</p>
+   </div>
+   <ul class="navbar">
+        <li><a href=index.php>Etusivulle</a></li>
+   </ul>
 </body>

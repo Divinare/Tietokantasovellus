@@ -1,5 +1,5 @@
 <?php
-// Listaa käyttäjät roolien mukaan kolmeen eri taulukkoon
+// Listaa käyttäjät roolin mukaan kolmeen eri taulukkoon
 require_once 'DB.php';
 session_start();
 $yhteys = db::getDB();
@@ -24,25 +24,29 @@ $yhteys = db::getDB();
         // Haetaan tietokannasta kaikki adminit, opettajat ja laitosvastuuhenkilöt taulukoihin
         $kysely = 'SELECT etunimi, sukunimi, email, rooli, henkiloID FROM henkilo WHERE rooli = ?';
         $kyselyadmin = $yhteys->prepare($kysely);
+
         // Admin
         $kyselyadmin->execute(array(admin));
         $nimiT = $kyselyadmin->fetchAll();
+
         // Ope
         $kyselyadmin->execute(array(opettaja));
         $Opettajat = $kyselyadmin->fetchAll();
-        // V-hlö
+
+        // Vastuuhenkilö
         $kyselyadmin->execute(array(vastuuhenkilö));
         $Vastuuhenkilöt = $kyselyadmin->fetchAll();
         ?>
 
         <h1>Admin - <?php print $otsikko["etunimi"] . " " . $otsikko["sukunimi"]; ?></h1>
-        <ul class="box">
-    <?php
-    $nimi = "adminit";
-    $nimi2 = "admin";
-    // Tulostetaan 3 taulukkoa, kaikille rooleille omat
-    for ($rooli = 1; $rooli < 4; $rooli++) {
-        ?>
+        <div class="box">
+            <?php
+            $nimi = "adminit";
+            $nimi2 = "admin";
+
+            // Tulostetaan 3 taulukkoa, jokaiselle roolille oma
+            for ($rooli = 1; $rooli < 4; $rooli++) {
+                ?>
                 <h3>Käyttäjälista <?php print $nimi ?></h3>
                 <table class="t">
                     <tr>
@@ -51,12 +55,12 @@ $yhteys = db::getDB();
                         <th align = left>Sähköposti</th>
                         <th align = left>Rooli</th>
                         <th align = left>HenkilöID</th>
-                        <th </th>
+                        <th> </th>
                     </tr>
                     <tr>
-        <?php
-        for ($i = 0, $size = sizeof($nimiT); $i < $size; ++$i) {
-            ?>
+                        <?php
+                        for ($i = 0, $size = sizeof($nimiT); $i < $size; ++$i) {
+                            ?>
                             <td><?php print $nimiT[$i][0]; ?></td>
                             <td><?php print $nimiT[$i][1]; ?></td>
                             <td><?php print $nimiT[$i][2]; ?></td>
@@ -66,35 +70,35 @@ $yhteys = db::getDB();
                                     <input type="submit" value="Muokkaa">
                                 </FORM></td>
                         </tr>
-            <?php
-        }
-        ?>
+                        <?php
+                    }
+                    ?>
                 </table>
-                    <?php
-                    // Vaihetaan roolia seuraavaa taulukkoa varten
-                    if ($rooli == 1) {
-                        $nimiT = $Opettajat;
-                        $nimi = "opettajat";
-                        $nimi2 = "opettaja";
-                    }
-                    if ($rooli == 2) {
-                        $nimiT = $Vastuuhenkilöt;
-                        $nimi = "vastuuhenkilöt";
-                        $nimi2 = "vastuuhenkilö";
-                    }
+                <?php
+                // Vaihetaan roolia seuraavaa taulukkoa varten
+                if ($rooli == 1) {
+                    $nimiT = $Opettajat;
+                    $nimi = "opettajat";
+                    $nimi2 = "opettaja";
                 }
-                ?>
-        </ul>
+                if ($rooli == 2) {
+                    $nimiT = $Vastuuhenkilöt;
+                    $nimi = "vastuuhenkilöt";
+                    $nimi2 = "vastuuhenkilö";
+                }
+            }
+            ?>
+        </div>
         <ul class="navbar">
-            <li><p><a href=admin.php?admin=<?php print $_GET["hlista"]; ?>>Oma sivu</a></p>
+            <li><p><a href=admin.php?admin=<?php print $_GET["hlista"]; ?>>Oma sivu</a></p></li>
         </ul>
-    <?php
-}
+        <?php
+    }
 // Istuntotarkastus failaa
-else {
-    header("Location: access_denied.php");
-    die();
-}
-?>
+    else {
+        header("Location: access_denied.php");
+        die();
+    }
+    ?>
 
 </body>
