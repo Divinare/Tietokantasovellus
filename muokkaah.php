@@ -3,9 +3,9 @@ require_once 'DB.php';
 session_start();
 ?>
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="tyylit.css" />
 
 <head>
+<link rel="stylesheet" type="text/css" href="tyylit.css" />
 <title>Käyttäjän muokkaus</title>
 <meta charset="utf-8">
 </head>
@@ -23,9 +23,9 @@ session_start();
     $sqlt2->execute(array($_GET["henkiloid"]));
     $sqlt = $sqlt2->fetchAll();
 
-    //echo $sqlt[0][1];
    ?>
-    <h2>Käyttäjätietojen muokkaus - <?php print $sqlt[0][0]." ".$sqlt[0][1];?></h2>
+    <h1>Käyttäjätietojen muokkaus - <?php print $sqlt[0][0]." ".$sqlt[0][1];?></h1>
+    <ul class="box">
 
     <table border="0" cellpadding="1">
        <tr>
@@ -107,7 +107,7 @@ session_start();
        </form>
        <br>
        <form action="poistah.php?admin=<?php print $_GET['admin']; ?>&henkiloid=<?php print $_GET['henkiloid']; ?>" method="post">
-                <input type="password" name="poista"> <input type="submit" value = "Poista henkilö">(syötä salasanasi)
+                <input type="password" name="poista"> <input type="submit" value = "Poista henkilö">  (syötä salasanasi)
        <?php
        if ($_GET["viesti"] == salafail) {
        print "<font color='red'>Toiminto vaatii salasanasi.<font color='black'>";
@@ -117,9 +117,10 @@ session_start();
        }
        ?>
        </form>
-
-     <p> <a href=admin.php?admin=<?php print $_GET["admin"]; ?>><img src="nuoli.png" border="0" /></a></p>
-
+</ul>
+<ul class="navbar">
+     <li><p><a href=admin.php?admin=<?php print $_GET["admin"]; ?>>Oma sivu</a></p>
+</ul>
    <?php
    } else {
        header("Location: access_denied.php");

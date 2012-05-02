@@ -45,7 +45,7 @@
        for ($rooli = 1; $rooli < 4; $rooli++) {
    ?>
           <h3>Käyttäjälista <?php print $nimi ?></h3>
-          <table border="2" cellpadding="1">
+          <table class="t">
              <tr>
                 <th align = left>Etunimi</th>
    	        <th align = left>Sukunimi</h>

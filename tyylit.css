@@ -29,6 +29,31 @@
    background-image: linear-gradient(left, #D6FFDD 0%, #86B7EF 100%);
 }
 
+table.t {
+	border-width: 1px;
+	border-spacing: 0px;
+	border-style: solid;
+	border-color: gray;
+	border-collapse: separate;
+	background-color: #F0F8FF;
+}
+table.t th {
+	border-width: 1px;
+	padding: 4px;
+	border-style: solid;
+	border-color: gray;
+	background-color: #F0F8FF;
+	-moz-border-radius: ;
+}
+table.t td {
+	border-width: 1px;
+	padding: 4px;
+	border-style: solid;
+	border-color: gray;
+	background-color: #F0F8FF;
+	-moz-border-radius: ;
+}
+
 ul.box{
   border-style: solid;
   border-width: 3px;

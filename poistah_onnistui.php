@@ -1,19 +1,19 @@
 <?php
 require_once 'DB.php';
 session_start();
+$yhteys = db::getDB();
 ?>
 
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="tyylit.css" />
 
 <head>
+<link rel="stylesheet" type="text/css" href="tyylit.css" />
 <title>Kyselyn muokkaus</title>
 <meta charset="utf-8">
 </head>
 <body>
 
 <?php
-    $yhteys = db::getDB();
 
     // Istuntotarkastus
     if ($_SESSION["ihminen"] == $_GET["admin"]) {
@@ -24,9 +24,14 @@ session_start();
        $sqlt2->execute(array($_GET["henkiloid"]));
        $sqlt = $sqlt2->fetchAll();
 ?>
-       <h2>Henkilö <?php print $sqlt[0][0]." ".$sqlt[0][1]; ?> poistettu onnistuneesti!</h2>
+       <h1>Henkilön poisto</h1>
+       <ul class="box">
 
-<p> <a href=admin.php?admin=<?php print $_GET["admin"]; ?>><img src="nuoli.png" border="0" /></a></p>
+       <h2>Henkilö <?php print $sqlt[0][0]." ".$sqlt[0][1]; ?> poistettu onnistuneesti!</h2>
+       </ul>
+<ul class="navbar">
+<li><p><a href=admin.php?admin=<?php print $_GET["admin"]; ?>>Oma sivu</a></p>
+</ul>
        <?php
        $sqldelk = 'DELETE FROM kurssi WHERE henkiloid = ?';
        $sqldelk2 = $yhteys->prepare($sqldelk);
