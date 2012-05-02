@@ -29,6 +29,7 @@
    background-image: linear-gradient(left, #D6FFDD 0%, #86B7EF 100%);
 }
 
+
 table.t {
 	border-width: 1px;
 	border-spacing: 0px;
@@ -54,7 +55,7 @@ table.t td {
 	-moz-border-radius: ;
 }
 
-ul.box{
+div.box{
   border-style: solid;
   border-width: 3px;
   border-left-width: 10px;
@@ -63,7 +64,28 @@ ul.box{
   background: white;
   padding: 2em;
   link-color: black;
+  size: absolute;
 }
+
+
+div.box table {
+        border-width: 0px;
+        border-spacing: 0px;
+        background-color: white;
+}
+div.box th {
+        border-width: 0px;
+        padding: 3px;
+        background-color: white;
+        align: left;
+}
+div.box td {
+        border-width: 0px;
+        padding: 3px;
+        background-color: white;
+        align: left;
+}
+
 
 ul.navbar {
   list-style-type: none;

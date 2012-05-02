@@ -25,7 +25,7 @@ $yhteys = db::getDB();
 
         <?php
         // Haetaan opettajan luomien kyselyjen tiedot
-        $sql2 = 'SELECT kknimi, esilla, kurssikyselyID, nimi, periodi, vuosi FROM kurssikysely INNER JOIN kurssi ON kurssikysely.kurssiid = kurssi.kurssiid AND kurssi.henkiloid = kurssikysely.henkiloid WHERE kurssi.henkiloID = ? ORDER BY vuosi DESC, kknimi;';
+        $sql2 = 'SELECT kknimi, esilla, kurssikyselyID, nimi, periodi, vuosi FROM kurssikysely INNER JOIN kurssi ON kurssikysely.kurssiid = kurssi.kurssiid AND kurssi.henkiloid = kurssikysely.henkiloid WHERE kurssi.henkiloID = ? ORDER BY vuosi DESC, kknimi';
         $kkyselyt = $yhteys->prepare($sql2);
         $kkyselyt->execute(array($_GET["opettaja"]));
         $kyselyt = $kkyselyt->fetchAll();
@@ -33,13 +33,13 @@ $yhteys = db::getDB();
         // Jos opettajalla on omia kyselyjä, ne tulostetaan
         if (sizeof($kyselyt) > 0) {
             ?>
-            <ul class="box">
+            <div class="box">
                 <h3>Omat kyselyt</h3>
-                <table border="0" cellpadding="3">
+                <table>
                     <tr>
-                        <th align = left>Nimi</th>
-                        <th align = left>Tila</th>
-                        <th align = left>Kurssi</th>
+                        <th>Nimi</th>
+                        <th>Tila</th>
+                        <th>Kurssi</th>
                         <th> </th>
                     </tr>
                     <tr>
@@ -59,28 +59,29 @@ $yhteys = db::getDB();
                             <td><?php print $k['kknimi']; ?></td>
                             <td><?php print $tila; ?></td>
                             <td><?php print $k['nimi'] . " " . $k['periodi'] . "/" . $k['vuosi']; ?></td>
-                            <td><FORM action="muokkaa.php?opettaja=<?php print $_GET['opettaja']; ?>&kyselyid=<?php print $k['kurssikyselyid']; ?>" method="post">
+                            <td><FORM action="muokkaa.php?opettaja=<?php print $_GET['opettaja']; ?>&kyselyid=<?php print $k['kurssikyselyid']; ?>" method='post'>
                                     <input type="hidden" name="tila" value="<?php print $bo; ?>">
-                                    <input type="submit" value="Muokkaa">
+                                    <input type="submit" value="Muokkaa">   
                                 </FORM>
-                        </tr>
+                            </td>
 
+                        </tr>
                     <?php } ?>
 
                 </table>
-            </ul>
+            </div>
             <?php
             // Jos opettajalla ei ole kyselyjä, siitä ilmoitetaan
         } else {
             ?>
-            <ul class="box">
+            <div class="box">
                 <h3>Omat kyselyt</h3>
                 <table border="0" cellpadding="3">
                     <tr>
                         <td>(tyhjä)</td>
                     </tr>
                 </table>
-            </ul>
+            </div>
             <?php
         }
         ?>
@@ -107,3 +108,6 @@ $yhteys = db::getDB();
     ?>
 
 </body>
+
+
+
