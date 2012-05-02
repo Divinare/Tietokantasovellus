@@ -3,10 +3,10 @@ INSERT INTO henkilo VALUES ('Sirpa', 'Särpäle', 'sirpa@jihuu.lol', '48ece95de0
 
 INSERT INTO henkilo VALUES ('Heidi', 'Hipsiäinen', 'hipsi@hapsi.lol', '1fc1f6ee27300e5533aa172e727c4e33', 'opettaja');
 INSERT INTO henkilo VALUES ('Waldemar', 'Viiksi', 'vallu@viichet.lol', '56f5f303e29b42dd212a56dd60bd2521', 'opettaja');
-INSERT INTO henkilo VALUES ('Risto', 'Räkä', 'r@risto.lol', '29623418a18355aad1fd430208110931', 'opettaja');
+INSERT INTO henkilo VALUES ('Risto', 'Räkä', '2', '29623418a18355aad1fd430208110931', 'opettaja');
 
 INSERT INTO henkilo VALUES ('Jorma', 'Junttura', 'luukku@posti.lol', 'bb0672262584c582751df3358c795445', 'vastuuhenkilö');
-INSERT INTO henkilo VALUES ('Laiska', 'Mato', 'm@matomail.lol', 'fc9f7a3782985cf2998bc25e27f24c2e', 'vastuuhenkilö');
+INSERT INTO henkilo VALUES ('Laiska', 'Mato', '3', 'fc9f7a3782985cf2998bc25e27f24c2e', 'vastuuhenkilö');
 
 INSERT INTO kurssi VALUES (6, 'Ohjelmoinnin perusteet', 4, 2012);
 INSERT INTO kurssi VALUES (6, 'Ohjelmoinnin jatkokurssi', 3, 2012);
