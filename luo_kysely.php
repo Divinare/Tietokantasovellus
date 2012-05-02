@@ -1,21 +1,20 @@
 <?php
 
-// Tämä tiedosto luo kurssikyselyn
-
+// Kurssikyselynluontioperaatiot
 require_once 'DB.php';
 session_start();
+$yhteys = db::getDB();
 
-
+// Istuntotarkastus
 if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
-    $yhteys = db::getDB();
 
+    // Haetaan kyselyyn liittyvän kurssin ID
     if (isset($_SESSION["idtulos"])) {
-       $idtulos = $_SESSION["idtulos"];
-       unset($_SESSION["idtulos"]);
-    }
-    else {
-       $idtulos = $_POST["kurssiid"];
+        $idtulos = $_SESSION["idtulos"];
+        unset($_SESSION["idtulos"]);
+    } else {
+        $idtulos = $_POST["kurssiid"];
     }
 
     // Uuden kurssikyselyn luonti
@@ -31,7 +30,9 @@ if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
 
     header("Location: uusi.php?opettaja=" . $_GET["opettaja"] . "&kyselyid=" . $kkidd[0]);
     die();
-} else {
+}
+// Istuntotarkastus epäonnistuu
+else {
     header("Location: access_denied.php");
     die();
 }
