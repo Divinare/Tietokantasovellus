@@ -44,6 +44,7 @@ $yhteys = db::getDB();
                     $sqlnpv2 = $yhteys->prepare($sqlnpv);
                     $sqlnpv2->execute(array($sqltk3[0][1]));
                     $sqlnpv3 = $sqlnpv2->fetchAll();
+                    header (
                     print "<a href=luoyv.php?luoyv=" . $tulos['kurssikyselyid'] . "&henkiloid=" . $_GET['yhteenveto'] . ">" . $tulos['kknimi'] . "</a>" .
                     " (".$sqln3[0][0] . " " . $sqln3[0][1] . " - " . $sqlnpv3[0][0] . " - Vuosi: " .$sqlnpv3[0][1] . " Periodi: " .$sqlnpv3[0][2] . ")" . "<br>";
                 }
