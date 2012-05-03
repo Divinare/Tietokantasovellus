@@ -95,7 +95,7 @@ $yhteys = db::getDB();
 
             <li><p> <a href=hkursseja.php?opettaja=<?php print $_GET["opettaja"]; ?>>Hallinnoi kursseja</a></p></li>
 
-            <li><p> <a href=kulos.php>Kirjaudu ulos</a></p></li>
+            <li><p> <a href=index.php>Kirjaudu ulos</a></p></li>
         </ul>
 
         <?php

@@ -69,6 +69,7 @@ $yhteys = db::getDB();
         </div>
         <ul class="navbar">
             <li><p> <a href=<?php print $rooli[0]; ?>.php?<?php print $rooli[0]; ?>=<?php print $_GET["svaihto"]; ?>>Oma sivu</a></p></li>
+            <li><p><a href=index.php>Kirjaudu ulos</a></p></li>
         </ul>
     <?php
 }

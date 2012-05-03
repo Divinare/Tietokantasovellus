@@ -11,15 +11,11 @@ TO DO
 - dokumentointi (pikku juttu!) _____NOT!_____
 
 Viimeistely:
-- koodin yhdenmukaisuus (varmaan se on jo ihan yhdenmukaista - onko sulla btw mitään käsitystä, mitä on spagettikoodi, kun sellaista ei saa olla? :P)
-- taulukoihin css:llä align left (Voin tehdä itse :D)
-- yhteenveto: koodin sisennys, siistiminen, kommentointi ja tyylit
 - htmlspecialchars -juttu lomakkeisiin
 - taustaväri ei toimi IE:llä, siihen jokin korjaus
-- poistah_onnistui-filuun deletet kuntoon!!! (Poista henkilö, kurssikyselyt, kurssit, kysymykset, kommentit ja vastaukset...)
-- adminin käyttäjälistojen css kuntoon
 - kulos.php taitaa olla turha, koska index poistaa automaattisesti sessio[ihmisen]
    - navbariin joka sivulle uloskirjautuminen, jonka osoite on index.php
-
+- demo.sql
+- tarkastele kommentteja bugaa
 
 MELKEIN VALMIS! :)))

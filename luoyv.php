@@ -134,6 +134,7 @@ session_start();
             } else if (isset($_SESSION["ihminen"])) {
                 ?>
                 <li><p><a href=yhteenveto.php?yhteenveto=<?php print $_GET['henkiloid']; ?>>Takaisin</a></p></li>
+                <li><p><a href=index.php>Kirjaudu ulos</a></p></li>
                 <?php
             }
             // Istuntotarkastus failaa

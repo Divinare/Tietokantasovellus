@@ -30,30 +30,6 @@
 }
 
 
-table.t {
-	border-width: 1px;
-	border-spacing: 0px;
-	border-style: solid;
-	border-color: gray;
-	border-collapse: separate;
-	background-color: #F0F8FF;
-}
-table.t th {
-	border-width: 1px;
-	padding: 4px;
-	border-style: solid;
-	border-color: gray;
-	background-color: #F0F8FF;
-	-moz-border-radius: ;
-}
-table.t td {
-	border-width: 1px;
-	padding: 4px;
-	border-style: solid;
-	border-color: gray;
-	background-color: #F0F8FF;
-	-moz-border-radius: ;
-}
 
 div.box{
   border-style: solid;
@@ -72,18 +48,43 @@ div.box table {
         border-width: 0px;
         border-spacing: 0px;
         background-color: white;
+        text-align: left;
 }
 div.box th {
         border-width: 0px;
         padding: 3px;
         background-color: white;
-        align: left;
+        text-align: left;
 }
 div.box td {
         border-width: 0px;
         padding: 3px;
         background-color: white;
-        align: left;
+        text-align: left;
+}
+
+
+div.box table.t {
+ border-width: 1px;
+ border-spacing: 0px;
+ border-style: solid;
+ border-color: gray;
+ border-collapse: separate;
+ background-color: #F0F8FF;
+}
+div.box table.t th {
+ border-width: 1px;
+ padding: 4px;
+ border-style: solid;
+ border-color: gray;
+ background-color: #F0F8FF;
+}
+div.box table.t td {
+ border-width: 1px;
+ padding: 4px;
+ border-style: solid;
+ border-color: gray;
+ background-color: #F0F8FF;
 }
 
 
@@ -96,6 +97,7 @@ ul.navbar {
   left: 1em;
   width: 9em 
 }
+
 
 ul.navbar li {
   background:  #fee3ad;

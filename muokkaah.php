@@ -111,6 +111,7 @@ $yhteys = db::getDB();
     ?>
             </form>
             <br>
+            <!-- Henkilön poisto -->
             <form action="poistah.php?admin=<?php print $_GET['admin']; ?>&henkiloid=<?php print $_GET['henkiloid']; ?>" method="post">
                 <input type="password" name="poista"> <input type="submit" value = "Poista henkilö"> (syötä salasanasi)
     <?php

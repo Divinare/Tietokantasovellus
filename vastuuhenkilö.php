@@ -24,6 +24,10 @@ $yhteys = db::getDB();
         ?>
         <h1>Laitoksen vastuuhenkilö - <?php print $nimi[0] . " " . $nimi[1]; ?> </h1>
 
+        <div class="box">
+           <br><br><br><br><br><br><br><br><br><br>
+        </div>
+
         <ul class="navbar">
 
             <li><p><a href=yhteenveto.php?yhteenveto=<?php print $_GET["vastuuhenkilö"]; ?>>Kaikkien kurssikyselyiden tulokset</a></p></li>

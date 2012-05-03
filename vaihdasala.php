@@ -40,7 +40,7 @@ $yhteys = db::getDB();
                 <input type='password' name='vanha'>
     <?php
     if ($_GET["viesti"] == vanhavaara) {
-        print "<font color='red'>Vanha salasana ei täsmännyt.<font color='black'>";
+        print "<font color='red'>Syötit vanhan salasanasi väärin.</font>";
     }
     ?>
                 <p>Uusi salasana:</p>
@@ -60,12 +60,13 @@ $yhteys = db::getDB();
                 <p>Vahvista salasana:</p>
                 <input type='password' name='uusi2'><br><br>
 
-                <Input type = 'Submit' Name = 'submit' Value = 'Vaihda salasanaa'>
+                <Input type = 'Submit' Name = 'submit' Value = 'Vaihda salasana'>
             </form>
         </div>
         <!-- Linkki takaisin omalle sivulle -->
         <ul class="navbar">
             <li><p><a href=<?php print $nimi[2]; ?>.php?<?php print $nimi[2]; ?>=<?php print $_GET['vaihdasala']; ?>>Oma sivu</a></p></li>
+            <li><p><a href=index.php>Kirjaudu ulos</a></p></li>
         </ul>
     <?php
 }

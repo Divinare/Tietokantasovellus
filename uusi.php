@@ -106,6 +106,7 @@ $yhteys = db::getDB();
 
         <ul class="navbar">
             <li><p><a href="opettaja.php?opettaja=<?php print $_GET['opettaja']; ?>">Oma sivu</a></p>
+            <li><p><a href=index.php>Kirjaudu ulos</a></p></li>
         </ul>
 
     <?php

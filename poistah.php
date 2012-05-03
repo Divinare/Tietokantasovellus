@@ -22,8 +22,10 @@ if ($_SESSION["ihminen"] == $_GET["admin"]) {
         if ($_GET["admin"] == $_GET["henkiloid"]) {
             header("Location: muokkaah.php?admin=" . $_GET["admin"] . "&henkiloid=" . $_GET["henkiloid"] . "&viesti=itsefail");
             die();
-        } else {
-            header("Location: poistah_onnistui.php?admin=" . $_GET["admin"] . "&henkiloid=" . $_GET["henkiloid"]);
+        }
+        // Kaikki ok, siirrytään poistoon
+        else {
+            header("Location: henkilopoisto.php?admin=" . $_GET["admin"] . "&henkiloid=" . $_GET["henkiloid"]);
             die();
         }
     } else {
