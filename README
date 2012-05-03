@@ -13,9 +13,9 @@ TO DO
 Viimeistely:
 - htmlspecialchars -juttu lomakkeisiin
 - taustaväri ei toimi IE:llä, siihen jokin korjaus
-- kulos.php taitaa olla turha, koska index poistaa automaattisesti sessio[ihmisen]
-   - navbariin joka sivulle uloskirjautuminen, jonka osoite on index.php
-- demo.sql
-- tarkastele kommentteja bugaa
+- tarkastele kommentteja bugaa, jos kommentteja ei ole - Jenna korjaa
 - kantaan pystyy lisäämään henkilöitä, joilla samat sähköpostit - EI HYVÄ
+
+- demo.sql:ään voi lisäillä inserttejä vielä, jos haluaa
+
 MELKEIN VALMIS! :)))

@@ -32,6 +32,7 @@ $yhteys = db::getDB();
         </div>
         <ul class="navbar">
             <li><p><a href=luoyv.php?luoyv=<?php print $_GET['kurssikyselyid']; ?>&henkiloid=<?php print $_GET['henkiloid']; ?>>Takaisin</a></p></li>
+            <li><p><a href=index.php>Kirjaudu ulos</a></p></li>
         </ul>
         <?php
         // Istuntotarkastus failaa
