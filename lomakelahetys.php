@@ -20,23 +20,26 @@ $yhteys = db::getDB();
 
         // Istuntotarkastus
         if ($_SESSION["ihminen"] == $_GET["lomakelahetys"]) {
-            ?>
 
-            <h3>Onnistui!</h3>
-        </div>
+           $salasana = $_POST["passu"];
+
+           // Kryptataan lisättävän henkilön salasana
+           $tiiviste = md5(md5($salasana . "greippejäomnomnom") . "lisääsitruksia");
+
+           $sql = 'INSERT INTO Henkilo values (?, ?, ?, ?, ?)';
+           $laita = $yhteys->prepare($sql);
+           $laita->execute(array($_POST["etu"], $_POST["suku"], $_POST["sposti"], $tiiviste, $_POST["rooli"]));
+
+           ?>
+
+        <h3>Onnistui!</h3>
+     </div>
         <ul class="navbar">
             <li><p><a href=admin.php?admin=<?php print $_GET['lomakelahetys']; ?>>Oma sivu</a></p></li>
+            <li><p><a href=index.php>Kirjaudu ulos</a></p></li>
         </ul>
 
         <?php
-        $salasana = $_POST["passu"];
-
-        // Kryptataan lisättävän henkilön salasana
-        $tiiviste = md5(md5($salasana . "greippejäomnomnom") . "lisääsitruksia");
-
-        $sql = 'INSERT INTO Henkilo values (?, ?, ?, ?, ?)';
-        $laita = $yhteys->prepare($sql);
-        $laita->execute(array($_POST["etu"], $_POST["suku"], $_POST["sposti"], $tiiviste, $_POST["rooli"]));
     }
     // Istuntotarkastsus failaa
     else {

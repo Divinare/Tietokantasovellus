@@ -17,5 +17,5 @@ Viimeistely:
    - navbariin joka sivulle uloskirjautuminen, jonka osoite on index.php
 - demo.sql
 - tarkastele kommentteja bugaa
-
+- kantaan pystyy lisäämään henkilöitä, joilla samat sähköpostit - EI HYVÄ
 MELKEIN VALMIS! :)))

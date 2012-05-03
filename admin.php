@@ -39,7 +39,7 @@ $yhteys = db::getDB();
 
             <li><p><a href=vaihdasala.php?vaihdasala=<?php print $_GET["admin"]; ?>>Salasanan vaihto</a></p></li>
 
-            <li><p><a href=kulos.php>Kirjaudu ulos</a></p></li>
+            <li><p><a href=index.php>Kirjaudu ulos</a></p></li>
 
         </ul>
         <?php
