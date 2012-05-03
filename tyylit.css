@@ -29,7 +29,7 @@
    background-image: linear-gradient(left, #D6FFDD 0%, #86B7EF 100%);
   
     /* IE */
-   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#D6FFDD', endColorstr='#86B7EF');
+   background-color: #CCEEFF;
 }
 
 

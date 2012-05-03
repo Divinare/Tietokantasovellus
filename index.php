@@ -15,6 +15,7 @@ if (isset($_SESSION["ihminen"])) {
     <title> Kurssikysely </title>
     <meta charset="utf-8">
 </head>
+<body>
 
 <h1>Käynnissä olevat kurssikyselyt</h1>
 
@@ -49,7 +50,7 @@ if (isset($_SESSION["ihminen"])) {
     <form name="form1" method="post" action="checklogin.php">
         <fieldset>
             <legend>Kirjaudu sisään</legend>
-            <p><label for="name">E-mail:</label><br>
+            <p><label for="name">Sähköposti:</label><br>
                 <input name="email" type="text" id="email"></p>
             <p><label for="e-mail">Salasana:</label><br>
                 <input name="salasana" type="password" id="salasana"><br /></p>
