@@ -50,6 +50,15 @@ if ($_SESSION["ihminen"] == $_GET["muutah"]) {
         }
     }
     if ($_GET["viesti"] == sähköposti) {
+        // Koitetaan hakea sähköposti tietokannasta (kahta samaa sähköpostia ei saa olla)
+        $sqls = 'SELECT email FROM henkilo WHERE email = ?';
+        $kyselys = $yhteys->prepare($sqls);
+        $kyselys->execute(array($_POST["sähkö"]));
+        $taulu = $kyselys->fetch();
+        if (strlen($taulu[0] > 0)) {
+	header("Location: muokkaah.php?admin=" . $_GET["muutah"] . "&henkiloid=" . $_GET["henkiloid"] . "&viesti=emailkaytossa");
+	die();
+	}
         $pituus = strlen($_POST["sähkö"]);
         if ($pituus > 0 && $pituus < 31) {
             $sql = 'UPDATE henkilo SET email = ? WHERE henkiloid = ?';
@@ -57,7 +66,8 @@ if ($_SESSION["ihminen"] == $_GET["muutah"]) {
             $sqlv->execute(array($_POST["sähkö"], $_GET["henkiloid"]));
             header("Location: muokkaah.php?admin=" . $_GET["muutah"] . "&henkiloid=" . $_GET["henkiloid"] . "&viesti=ok");
             die();
-        } else {
+	}
+        else {
             header("Location: muokkaah.php?admin=" . $_GET["muutah"] . "&henkiloid=" . $_GET["henkiloid"] . "&viesti=emailfail");
             die();
         }

@@ -36,7 +36,7 @@ $yhteys = db::getDB();
                 </tr>
                 <tr>
                     <td><p>Etunimi:</p></td>
-                    <td><p><b><?php print $sqlt[0][0]; ?></b></p></td>                    
+                    <td><p><b><?php print $sqlt[0][0]; ?></b></p></td>
                     <td><form action="muutah.php?muutah=<?php print $_GET['admin']; ?>&henkiloid=<?php print $_GET['henkiloid']; ?>&viesti=etunimi" method="post">
                             <input type="text" name="etu">
                             <input type="submit" value = "Muuta">
@@ -50,7 +50,7 @@ $yhteys = db::getDB();
                 </tr>
                 <tr>
                     <td><p>Sukunimi:</p></td>
-                    <td><p><b><?php print $sqlt[0][1]; ?></b></p></td>               
+                    <td><p><b><?php print $sqlt[0][1]; ?></b></p></td>
                     <td><form action="muutah.php?muutah=<?php print $_GET['admin']; ?>&henkiloid=<?php print $_GET['henkiloid']; ?>&viesti=sukunimi" method="post">
                             <input type="text" name="suku">
                             <input type="submit" value = "Muuta">
@@ -65,7 +65,7 @@ $yhteys = db::getDB();
                 </tr>
                 <tr>
                     <td><p>Sähköposti:</p></td>
-                    <td><p><b><?php print $sqlt[0][2]; ?></b></p></td>                    
+                    <td><p><b><?php print $sqlt[0][2]; ?></b></p></td>
                     <td><form action="muutah.php?muutah=<?php print $_GET['admin']; ?>&henkiloid=<?php print $_GET['henkiloid']; ?>&viesti=sähköposti" method="post">
                             <input type="text" name="sähkö">
                             <input type="submit" value = "Muuta">
@@ -73,6 +73,9 @@ $yhteys = db::getDB();
                             if ($_GET["viesti"] == emailfail) {
                                 print "<font color='red'>Sähköpostin on oltava 1-60 merkkiä pitkä.</font>";
                             }
+			    if ($_GET["viesti"] == emailkaytossa) {
+				print "<font color='red'>Sähköposti on jo käytössä.</font>";
+			    }
                             ?>
                         </form>
                     </td>
@@ -94,7 +97,7 @@ $yhteys = db::getDB();
                 $vastuuhenkilö = "<b>Vastuuhenkilö</b>";
             }
             ?>
-            <p>Rooli:</p>            
+            <p>Rooli:</p>
             <Form name ='tiedot' Method ='Post' ACTION ='muutah.php?muutah=<?php print $_GET["admin"]; ?>&henkiloid=<?php print $_GET["henkiloid"]; ?>'>
                 <input type="radio" name="rooli" value="opettaja"> <?php print $opettaja; ?> </br>
                 <input type="radio" name="rooli" value="admin"> <?php print $admin; ?> </br>
