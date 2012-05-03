@@ -12,10 +12,11 @@ TO DO
 
 Viimeistely:
 - htmlspecialchars -juttu lomakkeisiin
-- taustaväri ei toimi IE:llä, siihen jokin korjaus
 - tarkastele kommentteja bugaa, jos kommentteja ei ole - Jenna korjaa
 - kantaan pystyy lisäämään henkilöitä, joilla samat sähköpostit - EI HYVÄ
 
-- demo.sql:ään voi lisäillä inserttejä vielä, jos haluaa
+
+
+(demo.sql:ään voi lisäillä inserttejä vielä, jos haluaa)
 
 MELKEIN VALMIS! :)))
