@@ -36,7 +36,7 @@ if (isset($_SESSION["ihminen"])) {
                 ?>
                 <td><form action="kysely.php" method="post">
                         <input type="hidden" name="kyselyid" value="<?php print $tulos['kurssikyselyid']; ?>">
-                        <?php print $tulos['kknimi']; ?></td>
+                        <?php print htmlspecialchars($tulos['kknimi']); ?></td>
                         <td><input type="submit" value="Valitse">
                     </form></td>
             </tr>

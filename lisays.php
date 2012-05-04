@@ -79,15 +79,15 @@ $yhteys = db::getDB();
             <table>
                 <tr>
                     <td><b>ETUNIMI</b></td>
-                    <td><?php print $_POST['etu']; ?> </td>
+                    <td><?php print htmlspecialchars($_POST['etu']); ?> </td>
                 </tr>
                 <tr>
                     <td><b>SUKUNIMI</b></td>
-                    <td><?php print $_POST['suku']; ?> </td>
+                    <td><?php print htmlspecialchars($_POST['suku']); ?> </td>
                 </tr>
                 <tr>
                     <td><b>E-MAIL</b></td>
-                    <td><?php print $_POST['sposti']; ?></td>
+                    <td><?php print htmlspecialchars($_POST['sposti']); ?></td>
                 </tr>
                 <tr>
                     <!-- Printataan salasanan verran tähtiä -->
@@ -106,11 +106,11 @@ $yhteys = db::getDB();
             <br>
             <!-- Nappula, joka lähettää tiedot lomakelahetys.php:lle -->
             <Form name ='tiedot' Method ='Post' ACTION ='lomakelahetys.php?lomakelahetys=<?php print $_GET['lisays']; ?>'>
-                <input type='hidden' name='etu' value='<?php print $_POST['etu']; ?>'>
-                <input type='hidden' name='suku' value='<?php print $_POST['suku']; ?>'>
-                <input type='hidden' name='sposti' value='<?php print $_POST['sposti']; ?>'>
-                <input type='hidden' name='passu' value='<?php print $_POST['passu']; ?>'>
-                <input type='hidden' name='rooli' value='<?php print $_POST['rooli']; ?>'>
+                <input type='hidden' name='etu' value='<?php print htmlspecialchars($_POST['etu']); ?>'>
+                <input type='hidden' name='suku' value='<?php print htmlspecialchars($_POST['suku']); ?>'>
+                <input type='hidden' name='sposti' value='<?php print htmlspecialchars($_POST['sposti']); ?>'>
+                <input type='hidden' name='passu' value='<?php print htmlspecialchars($_POST['passu']); ?>'>
+                <input type='hidden' name='rooli' value='<?php print htmlspecialchars($_POST['rooli']); ?>'>
                 <Input type = 'Submit' Name = 'submit' Value = 'Vahvista tiedot'>
             </form>
         </div>

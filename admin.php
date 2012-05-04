@@ -24,7 +24,7 @@ $yhteys = db::getDB();
         $suku = $nimi[1];
         ?>
 
-        <h1>Admin - <?php print $etu . " " . $suku; ?></h1>
+        <h1>Admin - <?php print htmlspecialchars($etu) . " " . htmlspecialchars($suku); ?></h1>
 
         <div class="box">
            <br><br><br><br><br><br><br><br><br><br>

@@ -105,7 +105,7 @@ session_start();
                 echo "<font size='2'> (" . intval((($a / $kokov) * 100)) . "%)</font>" . "<br>";
                 // Lasketaan keskiarvo, (float) sprintf("%1.2f" x) muuttaa luvun x 2-desimaaliseksi luvuksi
                 echo "<p>Keskiarvo: <b>" . (float) sprintf("%1.2f", ((($a * 1) + ($b * 2) + ($c * 3) + ($d * 4) + ($e * 5)) / $kokov)) . "</b><br>";
-                echo "Vastauksia yhteensä: <b>" . $kokov . "</b><br>";
+                echo "Vastauksia yhteensä: <b>" . $kokov . "</b><br><br>";
 
                 // Kommentit näkyvät vain opettajille ja vastuuhenkilöille
                 if ($_SESSION["ihminen"] != "tavis") {

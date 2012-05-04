@@ -51,7 +51,7 @@ $kurssinnimi = $kurssi->fetch();
 
     <h1>Kiitos vastauksistasi</h1>
     <div class="box">
-        <h2>Vastauksesi kurssin <?php print $kurssinnimi['nimi']; ?> kurssikyselyyn on tallennettu!</h2>
+        <h2>Vastauksesi kurssin <?php print htmlspecialchars($kurssinnimi['nimi']); ?> kurssikyselyyn on tallennettu!</h2>
         <img src="KIITOS.png" width="307" height="284" alt=":)" align="center">
     </div>
     <ul class="navbar">

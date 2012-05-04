@@ -29,7 +29,7 @@ $tuloss = $tulokset->fetchAll();
 </head>
 <body>
 
-    <h1><?php print $htmltitle['kknimi']; ?> <font size = "3"> - <?php print $htmltitle['etunimi'] . " " . $htmltitle['sukunimi']; ?></font></h1>
+    <h1><?php print htmlspecialchars($htmltitle['kknimi']); ?> <font size = "3"> - <?php print htmlspecialchars($htmltitle['etunimi']) . " " . htmlspecialchars($htmltitle['sukunimi']); ?></font></h1>
 
     <div class="box">
         <Form name ='vastaukset' Method ='Post' ACTION ='end.php'>
@@ -40,7 +40,7 @@ $tuloss = $tulokset->fetchAll();
 
             foreach ($tuloss as $tulos) {
                 ?>
-                <h3> <?php print $tulos['kysymys']; ?> </h3>
+                <h3> <?php print htmlspecialchars($tulos['kysymys']); ?> </h3>
 
                 <Input type = 'Radio' Name ='arvosana[<?php print $indeksi; ?>]' value= '1'>1
                 <Input type = 'Radio' Name ='arvosana[<?php print $indeksi; ?>]' value= '2'>2
