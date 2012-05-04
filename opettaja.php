@@ -25,7 +25,7 @@ $yhteys = db::getDB();
 
         <?php
         // Haetaan opettajan luomien kyselyjen tiedot
-        $sql2 = 'SELECT kknimi, esilla, kurssikyselyID, nimi, periodi, vuosi FROM kurssikysely INNER JOIN kurssi ON kurssikysely.kurssiid = kurssi.kurssiid AND kurssi.henkiloid = kurssikysely.henkiloid WHERE kurssi.henkiloID = ? ORDER BY vuosi DESC, kknimi';
+        $sql2 = 'SELECT kknimi, esilla, ollutEsilla, kurssikyselyID, nimi, periodi, vuosi FROM kurssikysely INNER JOIN kurssi ON kurssikysely.kurssiid = kurssi.kurssiid AND kurssi.henkiloid = kurssikysely.henkiloid WHERE kurssi.henkiloID = ? ORDER BY vuosi DESC, kknimi';
         $kkyselyt = $yhteys->prepare($sql2);
         $kkyselyt->execute(array($_GET["opettaja"]));
         $kyselyt = $kkyselyt->fetchAll();
@@ -38,8 +38,9 @@ $yhteys = db::getDB();
                 <table>
                     <tr>
                         <th>Nimi</th>
-                        <th>Tila</th>
                         <th>Kurssi</th>
+                        <th>Tila</th>
+                        <th>Julkaistu</th>
                         <th> </th>
                     </tr>
                     <tr>
@@ -50,15 +51,25 @@ $yhteys = db::getDB();
                             if ($k['esilla']) {
                                 $tila = 'Julkaistu';
                                 $bo = TRUE;
-                            } else {
+                            }
+                            else {
                                 $tila = 'Piilossa';
                                 $bo = FALSE;
+                            }
+
+
+                            if ($k['ollutesilla']) {
+                                 $esi = 'Kyllä';
+                            }
+                            else {
+                                 $esi = 'Ei';
                             }
                             ?>
 
                             <td><?php print $k['kknimi']; ?></td>
-                            <td><?php print $tila; ?></td>
                             <td><?php print $k['nimi'] . " " . $k['periodi'] . "/" . $k['vuosi']; ?></td>
+                            <td><?php print $tila; ?></td>
+                            <td><?php print $esi; ?> </td>
                             <td><FORM action="muokkaa.php?opettaja=<?php print $_GET['opettaja']; ?>&kyselyid=<?php print $k['kurssikyselyid']; ?>" method='post'>
                                     <input type="hidden" name="tila" value="<?php print $bo; ?>">
                                     <input type="submit" value="Muokkaa">   
