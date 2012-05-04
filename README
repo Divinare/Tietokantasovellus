@@ -12,7 +12,6 @@ TO DO
 
 Viimeistely:
 - htmlspecialchars -juttu lomakkeisiin
-- tarkastele kommentteja bugaa, jos kommentteja ei ole - Jenna korjaa
 
 (demo.sql:ään voi lisäillä inserttejä vielä, jos haluaa)
 

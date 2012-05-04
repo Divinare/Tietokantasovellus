@@ -16,13 +16,18 @@ $yhteys = db::getDB();
     if ($_SESSION["ihminen"] == $_GET["henkiloid"]) {
 
         // Haetaan kysymys ja kaikki siihen liittyvät kommentit
-        $sql = "SELECT kysymys, kommentti FROM Kysymys INNER JOIN Kommentti ON kommentti.kysymysID = kysymys.kysymysID WHERE kysymys.kysymysID = ?";
+        $sql = "SELECT kysymys FROM Kysymys WHERE kysymysID = ?";
+        $op = $yhteys->prepare($sql);
+        $op->execute(array($_GET["kysymysid"]));
+        $nimi = $op->fetch();
+
+        $sql = "SELECT kommentti FROM Kommentti WHERE kysymysID = ?";
         $sqlk = $yhteys->prepare($sql);
         $sqlk->execute(array($_GET["kysymysid"]));
         $tulos = $sqlk->fetchAll();
         ?>
 
-        <h1><b><?php print $tulos[0]["kysymys"]; ?></b> -kysymyksen kommentit</h1>
+        <h1><b><?php print $nimi["kysymys"]; ?></b> -kysymyksen kommentit</h1>
         <div class="box">
             <?php
             for ($i = 0; $i < sizeof($tulos); $i++) {
