@@ -28,7 +28,7 @@ session_start();
         $kyselynimi->execute(array($kyselyid));
         $knimi = $kyselynimi->fetch();
         ?>
-        <h1><?php print $knimi['kknimi']; ?></h1>
+        <h1><?php print htmlspecialchars($knimi['kknimi']); ?></h1>
         <div class="box">
             <?php
             // Haetaan kaikki kysymykset taulukkoon $kysymykset
@@ -40,7 +40,7 @@ session_start();
 
             // Käydään kaikki kysymykset läpi
             for ($i = 0; $i < $kokok; $i++) {
-                echo "<h2>" . $kysymykset[$i][0] . "</h2>";
+                echo "<h2>" . htmlspecialchars($kysymykset[$i][0]) . "</h2>";
                 // Vastausten haku
                 $sqlv = 'SELECT vastausarvo FROM vastaus WHERE kysymysid = ?';
                 $sqlv2 = $yhteys->prepare($sqlv);

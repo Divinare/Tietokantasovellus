@@ -39,7 +39,7 @@ $yhteys = db::getDB();
         <h2>Kurssin <?php print $kntulos['nimi']; ?> (<?php print $kntulos['periodi']; ?>/<?php print $kntulos['vuosi']; ?>) kurssikysely</h2>
         <div class="box">
 
-            <p>Kyselyn nimi: <b><?php print $otsikkov['kknimi']; ?></b></p>
+            <p>Kyselyn nimi: <b><?php print htmlspecialchars($otsikkov['kknimi']); ?></b></p>
 
             <?php
             // Jos kyselyä ei ole kertaakaan julkaistu, sen nimeä ja kysymyksiä voi muokata
@@ -72,7 +72,7 @@ $yhteys = db::getDB();
                             for ($i = 0, $size = sizeof($uudet); $i < $size; ++$i) {
                                 ?>
 
-                                <td><?php print $uudet[$i]['kysymys']; ?></td>
+                                <td><?php print htmlspecialchars($uudet[$i]['kysymys']); ?></td>
                                 <td><a href=kpoisto.php?opettaja=<?php print $_GET["opettaja"]; ?>&remv=<?php print $uudet[$i]['kysymysid']; ?>&kyselyid=<?php print $_GET["kyselyid"]; ?>&mista=m>Poista</a>
                             </tr>
                         <?php } ?>
@@ -121,7 +121,7 @@ $yhteys = db::getDB();
                         for ($i = 0, $size = sizeof($uudet); $i < $size; ++$i) {
                             ?>
 
-                            <td><?php print $uudet[$i]['kysymys']; ?></td>
+                            <td><?php print htmlspecialchars($uudet[$i]['kysymys']); ?></td>
                         </tr>
                     <?php } ?>
                 </table>
@@ -153,15 +153,15 @@ $yhteys = db::getDB();
             <FORM action="poisto.php?opettaja=<?php print $_GET['opettaja']; ?>" method="post">
                 <input type="hidden" name="poisto" value="<?php print $_GET['kyselyid']; ?>">
                 <input type="submit" value="Poista">
-            </FORM> 
-            <br>            
+            </FORM>
+            <br>
          </div>
             <!-- Paluulinkki -->
          <ul class="navbar">
             <li><p><a href="opettaja.php?opettaja=<?php print $_GET["opettaja"] ?>">Oma sivu</a></p></li>
             <li><p><a href=index.php>Kirjaudu ulos</a></p></li>
          </ul>
-         <?php         
+         <?php
     }
     // Istuntotarkastus failaa
     else {

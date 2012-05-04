@@ -38,6 +38,26 @@ INSERT INTO kommentti VALUES ('ihan huano kurssi. tiatokoneet on tyhmii.', 1, 1)
 INSERT INTO kommentti VALUES ('Tosi kivoja tehtäviä! :))', 2, 1);
 INSERT INTO kommentti VALUES ('Plääh, ihan huonoja.', 2, 1);
 INSERT INTO kommentti VALUES ('JOOOOOO!', 3, 1);
+INSERT INTO kommentti VALUES ('Kurssi oli ihan jees.', 1, 1);
+INSERT INTO kommentti VALUES ('Liian työläs, ei ollu!', 1, 1);
+INSERT INTO kommentti VALUES ('Ei!!!11', 2, 1);
+INSERT INTO kommentti VALUES ('Vähä liian kiree mun makuun :P', 3, 1);
+INSERT INTO kommentti VALUES ('Tyhmään kysymykseen tyhmä vastaus', 3, 1);
+INSERT INTO kommentti VALUES ('En kiinnittäny huomiota, tämä paha? xDDDD', 3, 1);
+INSERT INTO kommentti VALUES ('Varmaa te tällästä kysytte -___-', 3, 1);
+INSERT INTO kommentti VALUES ('Asteikolla 1-5 antaisin 6.', 4, 1);
+INSERT INTO kommentti VALUES ('Ei, pelasin miinaharavaa ^^', 5, 2);
+INSERT INTO kommentti VALUES ('Opin tajuamaan kuinka paljon mulla on vielä opittavaa', 6, 2);
+INSERT INTO kommentti VALUES ('En, koska moon koodannu 10v javaa työkseni', 6, 2);
+INSERT INTO kommentti VALUES ('Opin tekemään if-lauseen!', 6, 2);
+INSERT INTO kommentti VALUES ('Olisin käyny mut olin kipee koko periodin', 7, 2);
+INSERT INTO kommentti VALUES ('En, jäi joululomafiilis päälle eikä pygenny :DDD', 7, 2);
+INSERT INTO kommentti VALUES ('Osa tehtävistä oli mahdottomia', 9, 3);
+INSERT INTO kommentti VALUES ('Ei, tein kaikki tehtävät 10 eri ohjelmointikielellä kun oli tylsää ja liian helppoa. Voisitte jatkossa laittaa vähän haasteellisempia kysymyksiä', 10, 3);
+INSERT INTO kommentti VALUES ('Riippuu arvosanasta.', 10, 3);
+INSERT INTO kommentti VALUES ('Kiinnostava kurssi oli.', 12, 3);
+INSERT INTO kommentti VALUES ('En päässyt edes kokeesta läpi', 13, 4);
+INSERT INTO kommentti VALUES ('Ehdottomasti, se on hieno meriitti CV:ssä', 14, 4);
 
 INSERT INTO vastaus VALUES (1, 5, 1);
 INSERT INTO vastaus VALUES (1, 5, 1);

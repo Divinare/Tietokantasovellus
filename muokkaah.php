@@ -25,7 +25,7 @@ $yhteys = db::getDB();
         ?>
 
         <!-- Lomakkeet käyttäjän tietojen muokkaamiseen -->
-        <h1>Käyttäjätietojen muokkaus - <?php print $sqlt[0][0] . " " . $sqlt[0][1]; ?></h1>
+        <h1>Käyttäjätietojen muokkaus - <?php print htmlspecialchars($sqlt[0][0]) . " " . htmlspecialchars($sqlt[0][1]); ?></h1>
         <div class="box">
 
             <table>
@@ -36,7 +36,7 @@ $yhteys = db::getDB();
                 </tr>
                 <tr>
                     <td><p>Etunimi:</p></td>
-                    <td><p><b><?php print $sqlt[0][0]; ?></b></p></td>
+                    <td><p><b><?php print htmlspecialchars($sqlt[0][0]); ?></b></p></td>
                     <td><form action="muutah.php?muutah=<?php print $_GET['admin']; ?>&henkiloid=<?php print $_GET['henkiloid']; ?>&viesti=etunimi" method="post">
                             <input type="text" name="etu">
                             <input type="submit" value = "Muuta">
@@ -50,7 +50,7 @@ $yhteys = db::getDB();
                 </tr>
                 <tr>
                     <td><p>Sukunimi:</p></td>
-                    <td><p><b><?php print $sqlt[0][1]; ?></b></p></td>
+                    <td><p><b><?php print htmlspecialchars($sqlt[0][1]); ?></b></p></td>
                     <td><form action="muutah.php?muutah=<?php print $_GET['admin']; ?>&henkiloid=<?php print $_GET['henkiloid']; ?>&viesti=sukunimi" method="post">
                             <input type="text" name="suku">
                             <input type="submit" value = "Muuta">
@@ -65,7 +65,7 @@ $yhteys = db::getDB();
                 </tr>
                 <tr>
                     <td><p>Sähköposti:</p></td>
-                    <td><p><b><?php print $sqlt[0][2]; ?></b></p></td>
+                    <td><p><b><?php print htmlspecialchars($sqlt[0][2]); ?></b></p></td>
                     <td><form action="muutah.php?muutah=<?php print $_GET['admin']; ?>&henkiloid=<?php print $_GET['henkiloid']; ?>&viesti=sähköposti" method="post">
                             <input type="text" name="sähkö">
                             <input type="submit" value = "Muuta">

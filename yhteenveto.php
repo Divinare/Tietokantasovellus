@@ -46,8 +46,8 @@ $yhteys = db::getDB();
                     $op = $yhteys->prepare($sql);
                     $op->execute(array($hloID[0]));
                     $hloTiedot = $op->fetchAll();
-                    print "<a href=luoyv.php?luoyv=" . $tulos['kurssikyselyid'] . "&henkiloid=" . $_GET['yhteenveto'] . ">" . $tulos['kknimi'] . "</a>" .
-                            " (" . $hloTiedot[0][0] . " " . $hloTiedot[0][1] . " - " . $hloTiedot[0][2] . " - Vuosi: " . $hloTiedot[0][3] . " Periodi: " . $hloTiedot[0][4] . ")" . "<br>";
+                    print "<a href=luoyv.php?luoyv=" . $tulos['kurssikyselyid'] . "&henkiloid=" . $_GET['yhteenveto'] . ">" . htmlspecialchars($tulos['kknimi']) . "</a>" .
+                            " (" . htmlspecialchars($hloTiedot[0][0]) . " " . htmlspecialchars($hloTiedot[0][1]) . " - " . htmlspecialchars($hloTiedot[0][2]) . " - Vuosi: " . $hloTiedot[0][3] . " Periodi: " . $hloTiedot[0][4] . ")" . "<br>";
                 }
                 ?>
                 <br>
@@ -68,8 +68,8 @@ $yhteys = db::getDB();
                     $op = $yhteys->prepare($sql);
                     $op->execute(array($hloID[0]));
                     $hloTiedot = $op->fetchAll();
-                    print "<a href=luoyv.php?luoyv=" . $tulos['kurssikyselyid'] . "&henkiloid=" . $_GET['yhteenveto'] . ">" . $tulos['kknimi'] . "</a>" .
-                            " (" . $hloTiedot[0][0] . " " . $hloTiedot[0][1] . " - " . $hloTiedot[0][2] . " - Vuosi: " . $hloTiedot[0][3] . " Periodi: " . $hloTiedot[0][4] . ")" . "<br>";
+                    print "<a href=luoyv.php?luoyv=" . $tulos['kurssikyselyid'] . "&henkiloid=" . $_GET['yhteenveto'] . ">" . htmlspecialchars($tulos['kknimi']) . "</a>" .
+                            " (" . htmlspecialchars($hloTiedot[0][0]) . " " . htmlspecialchars($hloTiedot[0][1]) . " - " . htmlspecialchars($hloTiedot[0][2]) . " - Vuosi: " . $hloTiedot[0][3] . " Periodi: " . $hloTiedot[0][4] . ")" . "<br>";
                 }
             }
             // Opettaja näkee vain omien kurssikyselyidensä tulokset
@@ -95,8 +95,8 @@ $yhteys = db::getDB();
                     $op = $yhteys->prepare($sql);
                     $op->execute(array($hloID[0]));
                     $hloTiedot = $op->fetchAll();
-                    print "<a href=luoyv.php?luoyv=" . $tulos['kurssikyselyid'] . "&henkiloid=" . $_GET['yhteenveto'] . ">" . $tulos['kknimi'] . "</a>" .
-                            " (" . $hloTiedot[0][0] . " " . $hloTiedot[0][1] . " - " . $hloTiedot[0][2] . " - Vuosi: " . $hloTiedot[0][3] . " Periodi: " . $hloTiedot[0][4] . ")" . "<br>";
+                    print "<a href=luoyv.php?luoyv=" . $tulos['kurssikyselyid'] . "&henkiloid=" . $_GET['yhteenveto'] . ">" . htmlspecialchars($tulos['kknimi']) . "</a>" .
+                            " (" . htmlspecialchars($hloTiedot[0][0]) . " " . htmlspecialchars($hloTiedot[0][1]) . " - " . htmlspecialchars($hloTiedot[0][2]) . " - Vuosi: " . $hloTiedot[0][3] . " Periodi: " . $hloTiedot[0][4] . ")" . "<br>";
                 }
                 ?>
                 <br>
@@ -122,7 +122,7 @@ $yhteys = db::getDB();
                     $op->execute(array($hloID[0]));
                     $hloTiedot = $op->fetchAll();
                     print "<a href=luoyv.php?luoyv=" . $tulos['kurssikyselyid'] . "&henkiloid=" . $_GET['yhteenveto'] . ">" . $tulos['kknimi'] . "</a>" .
-                            " (" . $hloTiedot[0][0] . " " . $hloTiedot[0][1] . " - " . $hloTiedot[0][2] . " - Vuosi: " . $hloTiedot[0][3] . " Periodi: " . $hloTiedot[0][4] . ")" . "<br>";
+                            " (" . htmlspecialchars($hloTiedot[0][0]) . " " . htmlspecialchars($hloTiedot[0][1]) . " - " . htmlspecialchars($hloTiedot[0][2]) . " - Vuosi: " . $hloTiedot[0][3] . " Periodi: " . $hloTiedot[0][4] . ")" . "<br>";
                 }
             }
             ?>

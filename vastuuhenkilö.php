@@ -22,7 +22,7 @@ $yhteys = db::getDB();
         $kyselyadmin->execute(array($_GET["vastuuhenkilö"]));
         $nimi = $kyselyadmin->fetch();
         ?>
-        <h1>Laitoksen vastuuhenkilö - <?php print $nimi[0] . " " . $nimi[1]; ?> </h1>
+        <h1>Laitoksen vastuuhenkilö - <?php print htmlspecialchars($nimi[0]) . " " . htmlspecialchars($nimi[1]); ?> </h1>
 
         <div class="box">
            <br><br><br><br><br><br><br><br><br><br>

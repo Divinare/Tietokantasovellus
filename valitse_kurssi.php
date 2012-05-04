@@ -40,9 +40,9 @@ $yhteys = db::getDB();
                         <?php
                         foreach ($kurssit as $k) {
                             ?>
-                            <td><?php print $k['nimi']; ?></td>
-                            <td><?php print $k['periodi']; ?></td>
-                            <td><?php print $k['vuosi']; ?></td>
+                            <td><?php print htmlspecialchars($k['nimi']); ?></td>
+                            <td><?php print htmlspecialchars($k['periodi']); ?></td>
+                            <td><?php print htmlspecialchars($k['vuosi']); ?></td>
                             <td><Form action="luo_kysely.php?opettaja=<?php print $_GET['opettaja']; ?>" method="post">
                                     <input type="hidden" name="knimi" value="<?php print $k['nimi']; ?>">
                                     <input type="hidden" name="periodi" value="<?php print $k['periodi']; ?>">

@@ -19,7 +19,7 @@ if ($_SESSION["ihminen"] == $_GET["admin"]) {
         <h1>Henkilön poisto</h1>
         <div class = "box">
 
-            <p>Henkilö <b><?php print $_SESSION["pnimi"]; ?></b> poistettu onnistuneesti!</p>
+            <p>Henkilö <b><?php print htmlspecialchars($_SESSION["pnimi"]); ?></b> poistettu onnistuneesti!</p>
 
         </div>
 

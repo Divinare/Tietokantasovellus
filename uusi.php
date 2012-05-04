@@ -33,7 +33,7 @@ $yhteys = db::getDB();
         <h1>Uusi kysely</h1>
 
         <div class="box">
-            <p>Kyselyn nimi: <b><?php print $otsikkov[0]; ?></b></p>
+            <p>Kyselyn nimi: <b><?php print htmlspecialchars($otsikkov[0]); ?></b></p>
 
             <?php
             // Otsikon vaihtamisen virhe- tai onnistumisilmoitus ja sen käsittely
@@ -43,7 +43,7 @@ $yhteys = db::getDB();
             } else if ($viesti == "yhyy") {
                 print "<font color='red'>Otsikon sallittu pituus 1-50 merkkiä - antamasi pituus oli " . $_GET["p"] . ".</font>";
             }
-            ?>            
+            ?>
             <form action="uusi_nimi.php?opettaja=<?php print $_GET['opettaja']; ?>&kyselyid=<?php print $_GET['kyselyid']; ?>&mista=u" method="post">
                 <input type="text" name="kknimi" id="kknimi">
                 <input type="submit" value = "Muuta nimeä">
@@ -63,7 +63,7 @@ $yhteys = db::getDB();
                         for ($i = 0, $size = sizeof($uudet); $i < $size; ++$i) {
                             ?>
 
-                            <td><?php print $uudet[$i]['kysymys']; ?></td>
+                            <td><?php print htmlspecialchars($uudet[$i]['kysymys']); ?></td>
 
                             <!-- Kysymyksen poisto -->
                             <td><a href=kpoisto.php?opettaja=<?php print $_GET["opettaja"]; ?>&&remv=<?php print $uudet[$i]['kysymysid']; ?>&&kyselyid=<?php print $_GET["kyselyid"]; ?>&mista=u>Poista</a>
@@ -110,7 +110,7 @@ $yhteys = db::getDB();
         </ul>
 
     <?php
-} 
+}
 // Istuntotarkastus failaa
 else {
     header("Location: access_denied.php");
