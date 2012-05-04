@@ -74,13 +74,12 @@ $yhteys = db::getDB();
         ?>
         // Tarkastukset ok!
         // Siirretään tiedot session muuttujilla vahvista_henkilo.php:seen
-        $_SESSION["etu"] = $_POST["etu"];
-        $_SESSION["suku"] = $_POST["suku"];
-        $_SESSION["email"] = $_POST["sposti"];
-        $_SESSION["pw"] = $_POST["passu"];
-        header("Location: vahvista_henkilo.php?admin=" . $_GET["lisays"]);
-
-	<!-- Jos kaikki on kunnossa näytetään vielä tiedot, jotka täytyy vahvistaa -->
+        //$_SESSION["etu"] = $_POST["etu"];
+        //$_SESSION["suku"] = $_POST["suku"];
+        //$_SESSION["email"] = $_POST["sposti"];
+        //$_SESSION["pw"] = $_POST["passu"];
+        //header("Location: vahvista_henkilo.php?admin=" . $_GET["lisays"]);
+        <!-- Jos kaikki on kunnossa näytetään vielä tiedot, jotka täytyy vahvistaa -->
         <h2>Vahvista alla olevat tiedot</h2>
         <div class="box">
             <table>
