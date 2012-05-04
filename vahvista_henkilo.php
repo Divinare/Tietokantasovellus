@@ -51,7 +51,7 @@ $yhteys = db::getDB();
             </table>
             <br>
             <!-- Nappula, joka lähettää tiedot lomakelahetys.php:lle -->
-            <Form name ='tiedot' Method ='Post' ACTION ='lomakelahetys.php?lomakelahetys = <?php print $_GET['admin']; ?>'>
+            <Form name ='tiedot' Method ='Post' ACTION ='lomakelahetys.php?lomakelahetys=<?php print $_GET['admin']; ?>'>
                 <input type='hidden' name='etu' value='<?php print htmlspecialchars($_POST['etu']); ?>'>
                 <input type='hidden' name='suku' value='<?php print htmlspecialchars($_POST['suku']); ?>'>
                 <input type='hidden' name='sposti' value='<?php print htmlspecialchars($_POST['sposti']); ?>'>
