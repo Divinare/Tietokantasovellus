@@ -8,6 +8,9 @@ $yhteys = db::getDB();
 if (isset($_SESSION["ihminen"])) {
     unset($_SESSION["ihminen"]);
 }
+if (isset($_SESSION["kyselyid"])) {
+    unset($_SESSION["kyselyid"]);
+}
 ?>
 <!DOCTYPE html>
 <head>

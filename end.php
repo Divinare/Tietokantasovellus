@@ -1,8 +1,8 @@
 <?php
+
 // Kyselyn loppusivu - näytetään kyselyyn vastanneelle vastausten tallentamisen jälkeen
 require_once 'DB.php';
 session_start();
-
 $yhteys = db::getDB();
 
 // Äskeiseltä sivulta lähetetyt
@@ -39,24 +39,10 @@ $sqlkurssi = 'SELECT nimi FROM kurssi INNER JOIN kurssikysely ON kurssikysely.ku
 $kurssi = $yhteys->prepare($sqlkurssi);
 $kurssi->execute();
 $kurssinnimi = $kurssi->fetch();
+
+$_SESSION["kknimi"] = $htmltitle['kknimi'];
+$_SESSION["knimi"] = $kurssinnimi['nimi'];
+
+header("Location: end_kysely.php");
+
 ?>
-<!DOCTYPE html>
-<head>
-    <link rel="stylesheet" type="text/css" href="tyylit.css" />
-    <meta charset="utf-8">
-    <title><?php print $htmltitle['kknimi'] ?></title>
-</head>
-
-<body>
-
-    <h1>Kiitos vastauksistasi</h1>
-    <div class="box">
-        <h2>Vastauksesi kurssin <?php print htmlspecialchars($kurssinnimi['nimi']); ?> kurssikyselyyn on tallennettu!</h2>
-        <img src="KIITOS.png" width="307" height="284" alt=":)" align="center">
-    </div>
-    <ul class="navbar">
-        <li><a href="luoyv.php">Kyselyn yhteenveto</a>
-        <li><a href="index.php">Etusivulle</a>
-    </ul>
-
-</body>
