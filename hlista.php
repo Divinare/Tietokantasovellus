@@ -61,11 +61,11 @@ $yhteys = db::getDB();
                         <?php
                         for ($i = 0, $size = sizeof($nimiT); $i < $size; ++$i) {
                             ?>
-                            <td><?php print $nimiT[$i][0]; ?></td>
-                            <td><?php print $nimiT[$i][1]; ?></td>
-                            <td><?php print $nimiT[$i][2]; ?></td>
-                            <td><?php print $nimi2; ?></td>
-                            <td><?php print $nimiT[$i][4]; ?></td>
+                            <td><?php print htmlspecialchars($nimiT[$i][0]); ?></td>
+                            <td><?php print htmlspecialchars($nimiT[$i][1]); ?></td>
+                            <td><?php print htmlspecialchars($nimiT[$i][2]); ?></td>
+                            <td><?php print htmlspecialchars($nimi2); ?></td>
+                            <td><?php print htmlspecialchars($nimiT[$i][4]); ?></td>
                             <td><FORM action="muokkaah.php?admin=<?php print $_GET['hlista']; ?>&henkiloid=<?php print $nimiT[$i][4]; ?>&viesti=tyhja" method="post">
                                     <input type="submit" value="Muokkaa">
                                 </FORM></td>

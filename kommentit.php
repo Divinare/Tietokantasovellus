@@ -27,11 +27,11 @@ $yhteys = db::getDB();
         $tulos = $sqlk->fetchAll();
         ?>
 
-        <h1><b><?php print $nimi["kysymys"]; ?></b> -kysymyksen kommentit</h1>
+        <h1><b><?php print htmlspecialchars($nimi["kysymys"]); ?></b> -kysymyksen kommentit</h1>
         <div class="box">
             <?php
             for ($i = 0; $i < sizeof($tulos); $i++) {
-                print "<p>" . $tulos[$i]["kommentti"] . "</p><br>";
+                print "<p>" . htmlspecialchars($tulos[$i]["kommentti"]) . "</p><br>";
             }
             ?>
         </div>
