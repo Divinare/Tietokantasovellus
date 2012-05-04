@@ -61,6 +61,7 @@ $yhteys = db::getDB();
             </form>
         </div>
         <ul class="navbar">
+	    <li><p><a href=hlisays.php?hlisays=<?php print $_GET['admin']; ?>>Takaisin</a></p></li>
             <li><p><a href=admin.php?admin=<?php print $_GET['admin']; ?>>Oma sivu</a></p></li>
             <li><p><a href=index.php>Kirjaudu ulos</a></p></li>
         </ul>
