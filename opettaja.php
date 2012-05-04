@@ -39,7 +39,7 @@ $yhteys = db::getDB();
                     <tr>
                         <th>Nimi</th>
                         <th>Kurssi</th>
-                        <th>Tila</th>
+                        <th>Näkyvyys</th>
                         <th>Julkaistu</th>
                         <th> </th>
                     </tr>
