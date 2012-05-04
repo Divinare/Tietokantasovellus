@@ -34,7 +34,6 @@ $yhteys = db::getDB();
                         <th align = left>Periodi</th>
                         <th align = left>Vuosi </th>
                         <th> </th>
-                        <th> </th>
                     </tr>
                     <tr>
 
@@ -50,11 +49,6 @@ $yhteys = db::getDB();
                                     <input type="hidden" name="vuosi" value="<?php print $k['vuosi']; ?>">
                                     <input type="hidden" name="kurssiid" value="<?php print $k['kurssiid']; ?>">
                                     <input type="submit" value="Valitse">
-                                </Form>
-                            </td>
-                            <td><Form action="poista_kurssi.php?opettaja=<?php print $_GET['opettaja']; ?>&mista=l" method="post">
-                                    <input type="hidden" name="kurssiid" value="<?php print $k['kurssiid']; ?>">
-                                    <input type="submit" value="Poista">
                                 </Form>
                             </td>
                         </tr>
