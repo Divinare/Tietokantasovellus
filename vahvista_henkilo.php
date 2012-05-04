@@ -51,11 +51,10 @@ $yhteys = db::getDB();
             </table>
             <br>
             <!-- Nappula, joka lähettää tiedot lomakelahetys.php:lle -->
-            <Form name ='tiedot' Method ='Post' ACTION ='lomakelahetys.php?lomakelahetys = <?php print $_GET['admin']; ?>'>
+            <Form name ='tiedot' Method ='Post' ACTION ='lomakelahetys.php?lomakelahetys=<?php print $_GET['admin']; ?>'>
                 <input type='hidden' name='etu' value='<?php print htmlspecialchars($_POST['etu']); ?>'>
                 <input type='hidden' name='suku' value='<?php print htmlspecialchars($_POST['suku']); ?>'>
-                <input type='hidden' name='sposti' value='<?php print htmlspecialchars($_POST['sposti']); ?>'>
-                <input type='hidden' name='passu' value='<?php print htmlspecialchars($_POST['passu']); ?>'>
+                <input type='hidden' name='sposti' value='<?php print htmlspecialchars($_POST['sposti']); ?>'>                <input type='hidden' name='passu' value='<?php print htmlspecialchars($_POST['passu']); ?>'>
                 <input type='hidden' name='rooli' value='<?php print htmlspecialchars($_POST['rooli']); ?>'>
                 <Input type = 'Submit' Name = 'submit' Value = 'Vahvista tiedot'>
             </form>
@@ -64,6 +63,14 @@ $yhteys = db::getDB();
             <li><p><a href=admin.php?admin=<?php print $_GET['admin']; ?>>Oma sivu</a></p></li>
             <li><p><a href=index.php>Kirjaudu ulos</a></p></li>
         </ul>
+	<?php
+	// Unsetataan tarpeettomat session muuttujat
+	unset($_SESSION["etu"]);
+	unset($_SESSION["suku"]);
+	unset($_SESSION["email"]);
+	unset($_SESSION["pw"]);
+	unset($_SESSION["rooli"]);
+	?>
     </body>
     <?php
 // Istuntotarkistus failaa
@@ -72,3 +79,4 @@ $yhteys = db::getDB();
     die();
 }
 ?>
+
