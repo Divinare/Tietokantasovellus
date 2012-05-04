@@ -141,6 +141,7 @@ $yhteys = db::getDB();
                 $bo = TRUE;
             }
             ?>
+            <!-- Muuta tilaa -->
             <p><b>Kyselyn tila: </b><?php print $tila; ?></p>
             <FORM action="muuta_tila.php?opettaja=<?php print $_GET['opettaja']; ?>&kyselyid=<?php print $_GET['kyselyid']; ?>" method="post">
                 <input type="hidden" name="tila" value="<?php print $bo; ?>">

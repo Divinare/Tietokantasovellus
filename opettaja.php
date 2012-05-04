@@ -49,11 +49,11 @@ $yhteys = db::getDB();
                         foreach ($kyselyt as $k) {
 
                             if ($k['esilla']) {
-                                $tila = 'Julkaistu';
+                                $tila = "Näkyvä";
                                 $bo = TRUE;
                             }
                             else {
-                                $tila = 'Piilossa';
+                                $tila = "Piilossa";
                                 $bo = FALSE;
                             }
 
