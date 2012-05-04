@@ -35,7 +35,8 @@ if ($_SESSION["ihminen"] == $_GET["svaihto"]) {
         die();
     }
 
-// Tarkastukset ok!
+// Tarkistukset ok!
+// Käytetään session muuttujaa siirtämään uusi salasana svaihto2.php:seen
     $_SESSION["uusi"] = $_POST["uusi"];
     header("Location: svaihto2.php?svaihto2=" . $_GET["svaihto"]);
 }

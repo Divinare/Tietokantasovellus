@@ -132,6 +132,7 @@ $yhteys = db::getDB();
             <li><p><a href=admin.php?admin=<?php print $_GET["admin"]; ?>>Oma sivu</a></p></li>
         </ul>
     <?php
+// Istuntotarkistus failaa
 } else {
     header("Location: access_denied.php");
     die();

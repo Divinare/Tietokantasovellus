@@ -72,6 +72,7 @@ $yhteys = db::getDB();
             die();
         }
         ?>
+
         <!-- Jos kaikki on kunnossa näytetään vielä tiedot, jotka täytyy vahvistaa -->
         <h2>Vahvista alla olevat tiedot</h2>
         <div class="box">

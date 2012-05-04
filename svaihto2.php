@@ -19,7 +19,7 @@ $yhteys = db::getDB();
     if ($_SESSION["ihminen"] == $_GET["svaihto2"]) {
 
         // Uuden salasanan kryptaaminen
-        $salasana = $_POST["uusi"];
+        $salasana = $_SESSION["uusi"];
         $tiiviste = md5(md5($salasana . "greippejäomnomnom") . "lisääsitruksia");
 
         // Salasanan päivittäminen kantaan
@@ -32,6 +32,9 @@ $yhteys = db::getDB();
         $kyselyrooli = $yhteys->prepare($sql);
         $kyselyrooli->execute(array($_GET["svaihto2"]));
         $rooli = $kyselyrooli->fetch();
+
+	// Session muuttujaa ei enään tarvita
+	unset($_SESSION["uusi"]);
         ?>
         <h1>Salasanan vaihto</h1>
         <div class="box">
