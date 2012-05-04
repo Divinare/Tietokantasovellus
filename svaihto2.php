@@ -33,6 +33,10 @@ $yhteys = db::getDB();
         $kyselyrooli->execute(array($_GET["svaihto2"]));
         $rooli = $kyselyrooli->fetch();
 
+        if ($rooli[0] == "vastuuhenkilö") {
+           $rooli[0] = "vastuuhenkilo";
+        }
+
 	// Session muuttujaa ei enään tarvita
 	unset($_SESSION["uusi"]);
         ?>

@@ -71,6 +71,7 @@ $yhteys = db::getDB();
                     print "<a href=luoyv.php?luoyv=" . $tulos['kurssikyselyid'] . "&henkiloid=" . $_GET['yhteenveto'] . ">" . htmlspecialchars($tulos['kknimi']) . "</a>" .
                             " (" . htmlspecialchars($hloTiedot[0][0]) . " " . htmlspecialchars($hloTiedot[0][1]) . " - " . htmlspecialchars($hloTiedot[0][2]) . " - Vuosi: " . $hloTiedot[0][3] . " Periodi: " . $hloTiedot[0][4] . ")" . "<br>";
                 }
+                $rooli[0] = vastuuhenkilo;
             }
             // Opettaja näkee vain omien kurssikyselyidensä tulokset
             if ($rooli[0] == "opettaja") {

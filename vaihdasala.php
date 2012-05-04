@@ -30,6 +30,7 @@ $yhteys = db::getDB();
             $rooli = "Admin";
         } else {
             $rooli = "Vastuuhenkilö";
+            $nimi[2] = vastuuhenkilo;
         }
         print "<h1>$rooli - $nimi[0] $nimi[1]</h1>";
         ?>

@@ -39,7 +39,7 @@ if ($rooli["rooli"] == "opettaja") {
 
 if ($rooli["rooli"] == "vastuuhenkilö") {
     $_SESSION["ihminen"] = $taulu["henkiloid"];
-    header("Location: vastuuhenkilö.php?vastuuhenkilö=" . $taulu["henkiloid"]);
+    header("Location: vastuuhenkilo.php?vastuuhenkilo=" . $taulu["henkiloid"]);
     die();
 }
 
