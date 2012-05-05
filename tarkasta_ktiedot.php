@@ -25,7 +25,7 @@ if ($_SESSION["ihminen"] == $_GET["opettaja"]) {
         $pituus = strlen($_POST["vuosi"]);
 
         // Jos vuosiluvun pituus sopiva...
-        if ($pituus > 0 && $pituus < 5) {
+        if ($pituus == 4) {
 
             // Jos vuosiluvussa on vain numeroita...
             if (ctype_digit($_POST["vuosi"])) {

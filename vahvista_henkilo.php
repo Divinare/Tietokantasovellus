@@ -50,16 +50,24 @@ $yhteys = db::getDB();
                 </tr>
             </table>
             <br>
+
             <!-- Nappula, joka lähettää tiedot lomakelahetys.php:lle -->
             <Form name ='tiedot' Method ='Post' ACTION ='lomakelahetys.php?lomakelahetys=<?php print $_GET['admin']; ?>'>
-                <input type='hidden' name='etu' value='<?php print htmlspecialchars($_POST['etu']); ?>'>
-                <input type='hidden' name='suku' value='<?php print htmlspecialchars($_POST['suku']); ?>'>
-                <input type='hidden' name='sposti' value='<?php print htmlspecialchars($_POST['sposti']); ?>'>
-                <input type='hidden' name='passu' value='<?php print htmlspecialchars($_POST['passu']); ?>'>
-                <input type='hidden' name='rooli' value='<?php print htmlspecialchars($_POST['rooli']); ?>'>
+                <input type='hidden' name='etu' value='<?php print htmlspecialchars($_SESSION["etu"]); ?>'>
+                <input type='hidden' name='suku' value='<?php print htmlspecialchars($_SESSION["suku"]); ?>'>
+                <input type='hidden' name='sposti' value='<?php print htmlspecialchars($_SESSION["email"]); ?>'>
+                <input type='hidden' name='passu' value='<?php print htmlspecialchars($_SESSION["pw"]); ?>'>
+                <input type='hidden' name='rooli' value='<?php print htmlspecialchars($_SESSION["rooli"]); ?>'>
                 <Input type = 'Submit' Name = 'submit' Value = 'Vahvista tiedot'>
             </form>
         </div>
+
+        <?php
+            unset($_SESSION["suku"]);
+            unset($_SESSION["email"]);
+            unset($_SESSION["pw"]);
+            unset($_SESSION["rooli"]);
+        ?>
         <ul class="navbar">
 	    <li><p><a href=hlisays.php?hlisays=<?php print $_GET['admin']; ?>>Takaisin</a></p></li>
             <li><p><a href=admin.php?admin=<?php print $_GET['admin']; ?>>Oma sivu</a></p></li>
