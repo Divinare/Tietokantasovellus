@@ -29,11 +29,13 @@ $yhteys = db::getDB();
 
         <h1><b><?php print htmlspecialchars($nimi["kysymys"]); ?></b> -kysymyksen kommentit</h1>
         <div class="box">
+           <ul>
             <?php
             for ($i = 0; $i < sizeof($tulos); $i++) {
-                print "<p>" . htmlspecialchars($tulos[$i]["kommentti"]) . "</p><br>";
+                print "<li><p>" . htmlspecialchars($tulos[$i]["kommentti"]) . "</p></li>";
             }
             ?>
+           </ul>
         </div>
         <ul class="navbar">
             <li><p><a href=luoyv.php?luoyv=<?php print $_GET['kurssikyselyid']; ?>&henkiloid=<?php print $_GET['henkiloid']; ?>>Takaisin</a></p></li>

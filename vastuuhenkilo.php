@@ -30,7 +30,7 @@ $yhteys = db::getDB();
 
         <ul class="navbar">
 
-            <li><p><a href=yhteenveto.php?yhteenveto=<?php print $_GET["vastuuhenkilo"]; ?>>Kaikkien kurssikyselyiden tulokset</a></p></li>
+            <li><p><a href=yhteenveto.php?yhteenveto=<?php print $_GET["vastuuhenkilo"]; ?>>Kaikkien kurssikyselyjen tulokset</a></p></li>
 
             <li><p><a href=vaihdasala.php?vaihdasala=<?php print $_GET["vastuuhenkilo"]; ?>>Salasanan vaihto</a></p></li>
 
